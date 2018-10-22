@@ -32,7 +32,7 @@ select {
 	width: 205px;
 	margin-bottom: 2px;
 	position: relative;
-	background-color: var(--corPrimaria);
+	background-color: var(--corSecundaria);
 	padding: 10px 20px 10px 20px;
 	color: var(--corDeLetraBotao);
 	display: block;

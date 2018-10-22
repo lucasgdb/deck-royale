@@ -511,7 +511,7 @@ function matche(x) {
     navSection.style.transition = 'all 0s';
     navSection.style.height = '100%';
     navSection.style.overflow = 'initial';
-    navSection.style.borderRight = '1px solid var(--corDeLetraBotao)';
+    navSection.style.borderRight = '1px solid var(--corDeBorda)';
   }
 }
 matche(x);

@@ -1,0 +1,15 @@
+{
+  "short_name": "Deck Buider",
+  "name": "Deck Builder",
+  "icons": [
+    {
+      "src": "./icon.ico",
+      "type": "image-x/ico",
+      "sizes": "16x16"
+    }
+  ],
+  "start_url": "./",
+  "background_color": "rgb(42, 44, 51)",
+  "display": "standalone",
+  "theme_color": "rgb(35, 35, 35)"
+}

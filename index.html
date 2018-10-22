@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Gerador de Deck - Clash Royale</title>
+		<link rel="manifest" href="./manifest.json" />
+		<link rel="stylesheet" href="./src/styles.css" />
+		<link rel="icon" href="icon.ico" />
+	</head>
+
+	<body>
+		<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+		<nav class="navSection">
+			<div class="container" onclick="showSections();"><div></div></div>
+			<h1>Coded by <a href="http://youtube.com/c/LucasNaja/" target="_blank" rel="noopener noreferrer" class="effect">Lucas&nbsp;Naja</a></h1>
+			<button id="selectedButton" title="Gerador de Deck" onclick="closeNav(); switchContainer()">Gerador de Deck</button>
+			<button title="Seleção de Cartas" onclick="closeNav(); switchContainer(selectSection)">Seleção de Cartas</button>
+			<button title="Configurações" onclick="closeNav(); switchContainer(configSection)">Configurações</button>
+			<button title="Sobre" onclick="closeNav(); switchContainer(aboutSection)">Sobre</button>
+		</nav>
+
+		<section class="builderSection">
+			<section>
+				<!-- Centralizar todo o Gerador de Deck -->
+				<section class="cardsContainer">
+					<div><img /></div>
+					<div><img /></div>
+					<div><img /></div>
+					<div><img /></div>
+					<div><img /></div>
+					<div><img /></div>
+					<div><img /></div>
+					<div><img /></div>
+				</section>
+
+				<section class="configContainer">
+					<button class="btnCopiar" id="copy" onclick="copyDeck();" oncontextmenu="copyDeckSec();" title="Copiar Deck">Copiar&nbsp;
+						Deck</button>
+					<button class="btnColar" onclick="pasteDeck();" oncontextmenu="setDeck(currentDeck = [0, 0, 0, 0, 0, 0, 0, 0]);" title="Colar Deck">Colar Deck</button>
+					<img onclick="infoCards();" title="Informações" src="./images/info.png" />
+					<button class="btnVoltar" onclick="previousDeck();" title="Voltar Deck" hidden>&lt;</button>
+					<button class="btnGerar" onclick="buildDeck();" oncontextmenu="randomizeDeck();" title="Gerar Deck"><ins>G</ins>erar Deck</button>
+					<div>
+						<input type="checkbox" id="smartDeck" /><label for="smartDeck">Deck Inteligente</label>
+					</div>
+				</section>
+
+				<section class="infoContainer">
+					<h3 id="elixirMedio"></h3>
+
+					<h1>Informações</h1>
+
+					<h2>Nenhuma Carta selecionada</h2>
+
+					<select id="ddArena">
+						<option>Todas as Arenas</option>
+						<option>Arena 11</option>
+						<option>Arena 10</option>
+						<option>Arena 9</option>
+						<option>Arena 8</option>
+						<option>Arena 7</option>
+						<option>Arena 6</option>
+						<option>Arena 5</option>
+						<option>Arena 4</option>
+						<option>Arena 3</option>
+						<option>Arena 2</option>
+						<option>Arena 1</option>
+					</select>
+
+					<select id="ddRarity">
+						<option>Todas as Raridades</option>
+						<option>Comuns</option>
+						<option>Raras</option>
+						<option>Épicas</option>
+						<option>Lendárias</option>
+					</select>
+
+					<select id="ddType">
+						<option>Todos os Tipos</option>
+						<option>Tropas</option>
+						<option>Construções</option>
+						<option>Feitiços</option>
+					</select>
+				</section>
+			</section>
+		</section>
+
+		<section class="selectSection">
+			<div>
+				<button title="Marcar todas">Marcar todas as Cartas</button>
+				<button title="Desmarcar todas">Desmarcar todas as Cartas</button>
+			</div>
+			<!-- Código gerado pelo JavaScript -->
+		</section>
+
+		<section class="configSection">
+			<section><div><input type="checkbox" id="theme"><label for="theme">Dark theme</label></div></section>
+		</section>
+
+		<section class="aboutSection">
+			<h1>Ferramenta desenvolvida por <span class="effect"><a href="http://youtube.com/c/lucasnaja/" target="_blank" rel="noopener noreferrer">Lucas&nbsp;Bittencourt</a></span></h1>
+			<section>
+				<!-- Centralizar as informações -->
+				<a href="http://lucasnaja.github.io/portfolio-reactjs/" target="_blank" rel="noopener noreferrer"><img title="Lucas Naja"
+					 src="images/logo.png" alt="Lucas Naja" /></a>
+				<h2>• Totalmente grátis<br />
+					• O melhor e mais rápido<br />
+					• Sem propagandas<br />
+					• <a class="effect" href="https://github.com/LucasNaja/web.deck-generator" target="_blank" rel="noopener noreferrer">Código&nbsp;aberto</a><br />
+					• Responsivo
+				</h2>
+			</section>
+			<h3>E-mail para contato: <address>lucasnaja0@gmail.com</address></h3>
+			<h3>Facebook: <a class="effect" href="http://facebook.com/lucas.naja0" target="_blank" rel="noopener noreferrer">Lucas&nbsp;Bittencourt</a></h3>
+			<h3>GitHub: <a class="effect" href="http://github.com/LucasNaja" target="_blank" rel="noopener noreferrer">Clique&nbsp;aqui</a></h3>
+			<h3>Portfólio: <a class="effect" href="http://lucasnaja.github.io/portfolio-reactjs" target="_blank" rel="noopener noreferrer">Clique&nbsp;aqui</a></h3>
+		</section>
+
+		<noscript>Ative seu JavaScript!</noscript>
+		<script async src="./src/scripts.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,526 @@
+/*	GERAL
+********************/
+html, body {
+	margin: 0;
+	height: 100%;
+	background-color: var(--corDeFundo);
+	color: var(--corDeLetra);
+	font-family: Arial, Helvetica, sans-serif
+}
+
+html, body { min-width: 300px }
+
+img, ins, .navSection h1 {
+	user-select: none;
+	-moz-user-select: none
+}
+
+button {
+	outline: none;
+	border: 1px solid var(--corDeBorda);
+	color: var(--corDeLetraBotao);
+	position: relative;
+	user-select: none;
+	-moz-user-select: none;
+	background-color: var(--corSecundaria);
+	font-weight: bold
+}
+
+select {
+	margin-top: 5px;
+	outline: none;
+	width: 205px;
+	margin-bottom: 2px;
+	position: relative;
+	background-color: var(--corPrimaria);
+	padding: 10px 20px 10px 20px;
+	color: var(--corDeLetraBotao);
+	display: block;
+	left: 50%;
+	font-size: 15px;
+	font-weight: bold;
+	transform: translateX(-50%)
+}
+
+ins {
+	font-size: 20px;
+	font-weight: bolder
+}
+
+::-webkit-scrollbar {	width: 4px }
+::-webkit-scrollbar-thumb {	background-color: var(--corSecundaria) }
+::-webkit-scrollbar-track {	background-color: var(--corDeLetraBotao) }
+
+.lds-ring {
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid var(--corDeLetra);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: var(--corDeLetra) transparent transparent transparent
+}
+.lds-ring div:nth-child(1) { animation-delay: -0.45s }
+.lds-ring div:nth-child(2) { animation-delay: -0.3s }
+.lds-ring div:nth-child(3) { animation-delay: -0.15s }
+
+@keyframes lds-ring {
+  from { transform: rotate(0deg) }
+  to { transform: rotate(360deg) }
+}
+
+/* NAVIGATION
+********************/
+.navSection {
+	background-color: var(--corPrimaria);
+	color: var(--corDeLetraBotao);
+	z-index: 1;
+	position: fixed
+}
+
+.navSection .effect { color: var(--corDeLetraBotao) }
+.navSection .effect:after { background-color: var(--corDeLetraBotao) }
+.navSection h1 { display: none }
+
+.navSection button {
+	min-width: 175px;
+	width: 100%;
+	height: 50px;
+	font-size: 17px;
+	border: 1px solid var(--corDeLetraBotao);
+	padding: 0;
+}
+
+#selectedButton {
+	background-color: var(--corDeFundo);
+	color: var(--corDeLetra);
+}
+
+.container {
+	width: 40px;
+	height: 35px;
+	position: relative;
+}
+
+.container div {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: relative;
+}
+
+.container div:after, .container div:before, .container div {
+	background-color: var(--corDeLetraBotao);
+	width: 100%;
+	height: 4px;
+}
+
+.container div:after, .container div:before {
+	content: '';
+	position: absolute
+}
+.container div:after {
+	top: -10px;
+}
+
+.container div:before {
+	bottom: -10px;
+}
+
+/* BUILDER SECTION
+********************/
+.navSection, .builderSection { display: none }
+.builderSection, .selectSection, .configSection, .aboutSection {
+	position: relative;
+	top: 35px;
+	width: 100%;
+	min-height: 0
+}
+
+.builderSection { overflow-x: hidden }
+
+.cardsContainer, .configContainer, .infoContainer {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	max-width: 600px
+}
+
+/* CARDS CONTAINER
+********************/
+.cardsContainer {
+	height: 210px;
+	margin-bottom: 5px;
+	transition: all .1s
+}
+
+.cardsContainer div {
+	width: 25%;
+	height: 50%;
+	float: left;
+	overflow: hidden
+}
+
+.cardsContainer img {
+	width: 100%;
+	height: 100%
+}
+
+/* CONFIG CONTAINER
+********************/
+.btnCopiar, .btnColar, .btnVoltar, .btnGerar { margin-top: 5px }
+
+.btnCopiar, .btnColar {
+	left: 5px;
+	height: 44px;
+	font-size: 17px;
+	width: 121px
+}
+
+.btnColar {	top: 47px }
+
+.btnCopiar, .btnColar, .btnVoltar, .btnGerar, .configContainer img, .configContainer div { position: absolute }
+
+.btnVoltar {
+	right: 132px;
+	font-size: 15px;
+	padding: 0;
+	width: 30px
+}
+
+.btnVoltar, .btnGerar {	height: 60px }
+
+.btnGerar {
+	right: 5px;
+	width: 128px;
+	font-size: 17px;
+	font-weight: 800
+}
+
+.configContainer {
+	height: 124px;
+	border: 1px solid var(--corDeBorda)
+}
+
+.configContainer img {
+	right: 6px;
+	top: 68px
+}
+
+.configContainer div {
+	top: 99px;
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap
+}
+
+.configContainer input, .configContainer label { user-select: none }
+
+.configContainer label {
+	font-size: 19px;
+	font-weight: bold
+}
+
+.btnGerar ins { cursor: pointer }
+
+/* INFO CONTAINER
+********************/
+.infoContainer { min-height: 0 }
+
+.infoContainer h1 { font-size: 30px }
+
+.infoContainer h1, .infoContainer h3, .infoContainer h2 {
+	text-align: center;
+	margin: 0
+}
+
+.infoContainer h2 {
+	font-size: 18px;
+	margin: 0
+}
+
+/* CARD SELECTOR
+********************/
+.selectSection section {
+	border: 1px solid var(--corDeBorda);
+	width: calc(100% - 2px);
+	height: 180px;
+	margin-top: 5px;
+	float: left
+}
+
+.selectSection img {
+	position: relative;
+	width: 150px;
+	height: 180px;
+	left: 50%;
+	transform: translateX(-50%)
+}
+
+.selectSection div {
+	width: 100%;
+	height: 55px
+}
+
+.selectSection button {
+	margin-top: 5px;
+	width: 50%;
+	float: left;
+	font-size: 17px;
+	height: 50px
+}
+
+.notAllowed {	filter: grayscale(1) }
+
+/* CONFIG
+********************/
+.configSection { display: none }
+
+.configSection section {
+	position: relative;
+	width: 100%;
+	height: 20px
+}
+
+.configSection div {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%)
+}
+
+.configSection label {
+	font-variant: small-caps;
+	font-size: 20px
+}
+
+/* ABOUT
+********************/
+.aboutSection, .selectSection { display: none }
+
+.aboutSection h1 {
+	margin: 0;
+	font-weight: 900;
+	font-size: 30px;
+	text-align: center
+}
+
+.aboutSection h3 { margin: 0 }
+
+.aboutSection>section {
+	position: relative;
+	min-height: 0;
+	width: 300px;
+	left: 50%;
+	transform: translateX(-50%);
+	overflow: hidden
+}
+
+.aboutSection h2 {
+	position: relative;
+	left: 10px;
+	top: -20px;
+	white-space: nowrap;
+	margin: 0
+}
+
+.aboutSection address {	display: inline }
+
+.aboutSection img {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%)
+}
+
+.aboutSection a, .navSection a { color: var(--corDeLetra) }
+
+/* RESPONSIVIDADE
+********************/
+@media (min-width: 360px) {	.cardsContainer {	height: 240px	} }
+@media (min-width: 420px) {	.cardsContainer {	height: 270px	} }
+@media (min-width: 480px) {	.cardsContainer {	height: 300px	} }
+@media (min-width: 540px) {	.cardsContainer {	height: 330px	} }
+@media (min-width: 600px) {	.cardsContainer {	height: 360px } }
+
+@media (min-width: 768px) {
+	.selectSection button:nth-last-of-type(2) { margin-left: 10px }
+	.selectSection section {
+		width: calc(50% - 16px);
+		margin-left: 10px
+	}
+	.selectSection button {
+		display: inline-block;
+		margin-left: 5px;
+		width: 240px;
+	}
+
+	.navSection h1 {
+		display: block;
+		font-size: 15px;
+		margin-top: 2px;
+		margin-bottom: 2px;
+		text-align: center
+	}
+
+	select {
+		left: 50%;
+		transform: translateX(-50%)
+	}
+
+	.aboutSection>section {
+		width: 580px;
+		height: 300px
+	}
+
+	.aboutSection img {
+		left: 0;
+		transform: translateX(0)
+	}
+
+	.aboutSection h2 {
+		position: relative;
+		display: inline-block;
+		top: -230px;
+		left: 300px
+	}
+	.aboutSection h3 { text-align: center }
+
+	.infoContainer h3 {	width: 100%	}
+
+	.configContainer { height: 85px	}
+
+	.configContainer img,	.btnGerar, .btnVoltar {
+		top: 50%;
+		transform: translateY(-50%)
+	}
+
+	.configContainer img { right: 162px	}
+
+	.btnCopiar, .btnColar {	height: 35px }
+
+	.btnColar {	top: 40px	}
+
+	.btnGerar, .btnVoltar {	margin-top: 0 }
+
+	.configContainer div {
+		top: 50%;
+		left: 50%;
+		transform: translate(-55%, -50%)
+	}
+
+	#selectedButton {
+		width: calc(100% + 1px);
+		border-right: none
+	}
+
+	.navSection div { display: none }
+
+	.navSection button {
+		width: 100%;
+		font-size: 19px;
+	}
+
+	.builderSection, .selectSection, .configSection, .aboutSection {
+		top: 0;
+		left: 176px;
+		width: calc(100% - 176px)
+	}
+}
+
+@media (min-width: 1024px) {
+	ins {
+		cursor: default;
+		font-size: 17px
+	}
+
+	.selectSection section {
+		width: calc(25% - 14px);
+		margin-left: 10px
+	}
+
+	button:hover { background-color: var(--corTercearia) }
+
+	button:active {	background-color: var(--corSecundaria)	}
+
+	img, button, select, input, label {	cursor: pointer	}
+	label { user-select: none }
+
+	.aboutSection h1 { cursor: default }
+
+	.builderSection>section {
+		position: relative;
+		width: 850px;
+		left: 50%;
+		transform: translateX(-50%)
+	}
+
+	.cardsContainer img:hover {
+		width: 104%;
+		height: 104%;
+		transform: translate(-2%, -2%)
+	}
+
+	.cardsContainer img:active {
+		width: 100%;
+		height: 100%;
+		transform: translate(0, 0)
+	}
+
+	.selectSection img { transition: all .1s }
+
+	.cardsContainer, .configContainer {
+		left: calc(100% - 600px);
+		transform: translateX(0)
+	}
+
+	.infoContainer {
+		position: absolute;
+		width: 250px;
+		top: 0;
+		left: calc(100% - 850px);
+		transform: translateX(0)
+	}
+
+	.configContainer div { transform: translate(-50%, -50%)	}
+
+	.configContainer img { right: 152px }
+
+	.btnVoltar { width: 20px }
+
+	.infoContainer h2 { font-size: 17px }
+
+	.aboutSection a, .navSection a { text-decoration: none }
+
+	.effect {	position: relative }
+
+	.effect:after {
+		content: '';
+		background-color: var(--corDeLetra);
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: 0;
+		width: 0;
+		height: 2px;
+		transition: width .3s
+	}
+
+	.effect:hover.effect:after { width: 100% }
+}
+
+@media (min-width: 2560px) {
+	.selectSection section {
+		width: calc(20% - 18px);
+		margin-left: 14px
+	}
+}

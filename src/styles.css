@@ -438,10 +438,7 @@ ins {
 }
 
 @media (min-width: 1024px) {
-	ins {
-		cursor: default;
-		font-size: 17px
-	}
+	ins {	cursor: default; }
 
 	.selectSection section {
 		width: calc(25% - 14px);

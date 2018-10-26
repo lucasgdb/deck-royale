@@ -521,7 +521,6 @@ function matche2(yvar) {
     navSection.style.overflow = 'hidden';
     navSection.style.transition = 'all .2s';
     navSection.style.borderRight = 'none';
-    navSection.style.borderRadius = '5px';
   }
 }
 
@@ -542,7 +541,6 @@ function showSections() {
   } else {
     navSection.style.width = '40px';
     navSection.style.height = '35px';
-    navSection.style.borderRadius = '5px';
     if (selectedContainer === 0)
       dbSection.style.display = 'block';
     else if (selectedContainer === 1)

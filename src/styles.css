@@ -86,7 +86,6 @@ ins {
 	background-color: var(--corPrimaria);
 	color: var(--corDeLetraBotao);
 	z-index: 1;
-	border-radius: 5px;
 	position: fixed
 }
 

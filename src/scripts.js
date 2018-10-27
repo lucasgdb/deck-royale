@@ -155,7 +155,7 @@ const cardsName = [
   Surp = ['Mineiro', 'Barril de Goblins'],
   Ciclar = ['Esqueletos', 'Goblins', 'Goblins Lanceiros', 'Espírito de Gelo', 'Espíritos de Fogo', 'Morcegos', 'Golem de Gelo'],
   Sup = ['Bruxa', 'Príncipe', 'Megacavaleiro', 'Mosqueteira', 'Três Mosqueteiras', 'Bruxa Sombria', 'Lançador', 'Caçador', 'Executor', 'Carrinho de Canhão', 'Patifes'],
-  SV2 = ['Bebê Dragão', 'Mini P.E.K.K.A', 'Valquíria', 'Dragão Infernal', 'Mago Elétrico', 'Príncipe das Trevas', 'Lenhador', 'Eletrocutadores', 'Máquina Voadora'],
+  SV2 = ['Bebê Dragão', 'Dragão Elétrico', 'Mini P.E.K.K.A', 'Valquíria', 'Dragão Infernal', 'Mago Elétrico', 'Príncipe das Trevas', 'Lenhador', 'Eletrocutadores', 'Máquina Voadora'],
   SV3 = ['Fantasma Real', 'Arqueiro Mágico', 'Bandida', 'Princesa', 'Mago de Gelo', 'Barril de Esqueletos', 'Exército de Esqueletos', 'Cavaleiro', 'Gangue de Goblins', 'Guardas', 'Arqueiras'],
   M = ['Servos', 'Horda de Servos', 'Megasservo'],
   tipos = [
@@ -471,8 +471,8 @@ function previousDeck() {
 
 function randomizeDeck() {
   if (currentDeck.indexOf(0) === -1) {
-    const newDeck = [],
-      num = currentDeck[parseInt(Math.random() * currentDeck.length, 10)];
+    const newDeck = [];
+    let num = currentDeck[parseInt(Math.random() * currentDeck.length, 10)];
     for (let i = 0; i < currentDeck.length; i++) {
       while (newDeck.indexOf(num) !== -1)
         num = currentDeck[parseInt(Math.random() * currentDeck.length, 10)];

@@ -283,10 +283,12 @@ cbDeckInteligente.addEventListener('change', () => {
     ddArena.style.display = 'none';
     ddRarity.style.display = 'none';
     ddType.style.display = 'none';
+    changeContainers[1].style.display = 'none';
   } else {
     ddArena.style.display = 'block';
     ddRarity.style.display = 'block';
     ddType.style.display = 'block';
+    changeContainers[1].style.display = 'block';
   }
 });
 

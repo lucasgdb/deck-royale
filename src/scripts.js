@@ -18,7 +18,7 @@ const cardsName = [
     'ice-wizard', 'lumberjack', 'bowler', 'tornado', 'ice-golem', 'elixir-collector', 'ice-spirit', 'giant-snowball',
     'bandit', 'executioner', 'goblin-giant', 'dart-goblin', 'goblin-gang', 'rascals',
     'mega-knight', 'magic-archer', 'rage', 'royal-hogs', 'bomb-tower', 'elite-barbarians',
-    'sparky', 'electro-wizard', 'mirror', 'clone', 'zappies', 'tesla'
+    'sparky', 'electro-wizard', 'electro-dragon', 'mirror', 'clone', 'zappies', 'tesla'
   ],
   cardsInformation = [
     'Nenhuma Carta selecionada',
@@ -106,6 +106,7 @@ const cardsName = [
     '<ins>Bárbaros de Elite</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.5seg<br />Alvos: Terrestre<br />Velocidade: Muito rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg<br />Contagem: x2',
     '<ins>Sparky</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 4seg<br />Alvos: Terrestre<br />Velocidade: Lenta<br />Alcance: 4.5<br />Tempo de mobilização: 1seg',
     '<ins>Mago Elétrico</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Duração de Paralisia: 0.5seg<br />Velocidade de impacto: 1.8seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Rápida<br />Alcance: 5<br />Tempo de mobilização: 1seg',
+    '<ins>Dragão Elétrico</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 2.1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 3.5',
     '<ins>Espelho</ins><br />Raridade: Épica<br />Tipo: Feitiço',
     '<ins>Clone</ins><br />Raridade: Épica<br />Tipo: Feitiço<br />Raio: 4',
     '<ins>Eletrocutadores</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.6seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 4.5<br />Duração de Paralisar: 0.5seg<br />Contagem: x3<br />Tempo de mobilização: 1seg',
@@ -124,7 +125,7 @@ const cardsName = [
     3, 4, 5, 3, 2, 6, 1, 2,
     3, 5, 6, 3, 3, 5,
     7, 4, 2, 5, 4, 6,
-    6, 4, 1.6, 3, 4, 4
+    6, 4, 5, 1.6, 3, 4, 4
   ],
   cardsCode = [
     '0',
@@ -139,7 +140,7 @@ const cardsName = [
     '26000023', '26000035', '26000034', '28000012', '26000038', '27000007', '26000030', '28000017',
     '26000046', '26000045', '26000060', '26000040', '26000041', '26000053',
     '26000055', '26000062', '28000002', '26000059', '27000004', '26000043',
-    '26000033', '26000042', '28000006', '28000013', '26000052', '27000006'
+    '26000033', '26000042', '26000063', '28000006', '28000013', '26000052', '27000006'
   ],
   defesa = ['Gigante', 'Golem', 'Gigante Real', 'Goblin Gigante'],
   towerAttack = ['Corredor', 'Ariete de Batalha', 'Gigante Real', 'Porcos Reais'],
@@ -155,7 +156,7 @@ const cardsName = [
   Surp = ['Mineiro', 'Barril de Goblins'],
   Ciclar = ['Esqueletos', 'Goblins', 'Goblins Lanceiros', 'Espírito de Gelo', 'Espíritos de Fogo', 'Morcegos', 'Golem de Gelo'],
   Sup = ['Bruxa', 'Príncipe', 'Megacavaleiro', 'Mosqueteira', 'Três Mosqueteiras', 'Bruxa Sombria', 'Lançador', 'Caçador', 'Executor', 'Carrinho de Canhão', 'Patifes'],
-  SV2 = ['Bebê Dragão', 'Dragão Elétrico', 'Mini P.E.K.K.A', 'Valquíria', 'Dragão Infernal', 'Mago Elétrico', 'Príncipe das Trevas', 'Lenhador', 'Eletrocutadores', 'Máquina Voadora'],
+  SV2 = ['Bebê Dragão', 'Mini P.E.K.K.A', 'Valquíria', 'Dragão Infernal', 'Mago Elétrico', 'Príncipe das Trevas', 'Lenhador', 'Eletrocutadores', 'Máquina Voadora'],
   SV3 = ['Fantasma Real', 'Arqueiro Mágico', 'Bandida', 'Princesa', 'Mago de Gelo', 'Barril de Esqueletos', 'Exército de Esqueletos', 'Cavaleiro', 'Gangue de Goblins', 'Guardas', 'Arqueiras'],
   M = ['Servos', 'Horda de Servos', 'Megasservo'],
   tipos = [
@@ -238,7 +239,7 @@ const cardsName = [
   root = document.querySelector(':root');
 
 function changeDeck() {
-  const selectedArena = [89, 89, 83, 77, 71, 63, 55, 47, 39, 31, 25, 19][ddArena.selectedIndex];
+  const selectedArena = [90, 90, 83, 77, 71, 63, 55, 47, 39, 31, 25, 19][ddArena.selectedIndex];
 
   allowedCards.splice(0, allowedCards.length);
   for (let i = 1; i < selectedArena; i++) {
@@ -383,16 +384,13 @@ function copyDeck() {
     prevDeck.pop();
   if (screen.width < 1024 && confirm('Deseja abrir o Deck no Clash Royale?'))
     window.open('clashroyale://copyDeck?' + contentToCopy, '_self');
-  else {
+  else
     btnCopy.setAttribute('data-clipboard-text', 'https://link.clashroyale.com/deck/pt?' + contentToCopy);
-    new ClipboardJS(btnCopy);
-  }
 }
 
 function copyDeckSec() {
   if (screen.width < 1024) {
     btnCopy.setAttribute('data-clipboard-text', 'https://link.clashroyale.com/deck/pt?' + contentToCopy);
-    new ClipboardJS(btnCopy);
     alert('Link do Deck copiado para a área de transferência.');
   }
 }
@@ -504,7 +502,6 @@ function matche(xvar) {
     navSection.style.height = '100%';
     navSection.style.overflow = 'initial';
     navSection.style.borderRight = '1px solid var(--corDeBorda)';
-    navSection.style.borderRadius = '0';
   }
 }
 
@@ -531,7 +528,6 @@ function showSections() {
   if (navSection.style.width !== '100%') {
     navSection.style.width = '100%';
     navSection.style.height = '100%';
-    navSection.style.borderRadius = '0';
     if (selectedContainer === 0)
       dbSection.style.display = 'none';
     else if (selectedContainer === 1)
@@ -554,7 +550,6 @@ function closeNav() {
   if (navSection.style.width === '100%') {
     navSection.style.width = '40px';
     navSection.style.height = '35px';
-    navSection.style.borderRadius = '5px';
   }
 }
 

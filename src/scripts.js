@@ -1,25 +1,27 @@
 // ClipboardJS
 !function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.ClipboardJS=e():t.ClipboardJS=e()}(this,function(){return function(t){function e(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return t[o].call(r.exports,r,r.exports,e),r.l=!0,r.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,o){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:o})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=3)}([function(t,e,n){var o,r,i;!function(a,c){r=[t,n(7)],o=c,void 0!==(i="function"==typeof o?o.apply(e,r):o)&&(t.exports=i)}(0,function(t,e){"use strict";function n(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}var o=function(t){return t&&t.__esModule?t:{default:t}}(e),r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},i=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),a=function(){function t(e){n(this,t),this.resolveOptions(e),this.initSelection()}return i(t,[{key:"resolveOptions",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action=t.action,this.container=t.container,this.emitter=t.emitter,this.target=t.target,this.text=t.text,this.trigger=t.trigger,this.selectedText=""}},{key:"initSelection",value:function(){this.text?this.selectFake():this.target&&this.selectTarget()}},{key:"selectFake",value:function(){var t=this,e="rtl"==document.documentElement.getAttribute("dir");this.removeFake(),this.fakeHandlerCallback=function(){return t.removeFake()},this.fakeHandler=this.container.addEventListener("click",this.fakeHandlerCallback)||!0,this.fakeElem=document.createElement("textarea"),this.fakeElem.style.fontSize="12pt",this.fakeElem.style.border="0",this.fakeElem.style.padding="0",this.fakeElem.style.margin="0",this.fakeElem.style.position="absolute",this.fakeElem.style[e?"right":"left"]="-9999px";var n=window.pageYOffset||document.documentElement.scrollTop;this.fakeElem.style.top=n+"px",this.fakeElem.setAttribute("readonly",""),this.fakeElem.value=this.text,this.container.appendChild(this.fakeElem),this.selectedText=(0,o.default)(this.fakeElem),this.copyText()}},{key:"removeFake",value:function(){this.fakeHandler&&(this.container.removeEventListener("click",this.fakeHandlerCallback),this.fakeHandler=null,this.fakeHandlerCallback=null),this.fakeElem&&(this.container.removeChild(this.fakeElem),this.fakeElem=null)}},{key:"selectTarget",value:function(){this.selectedText=(0,o.default)(this.target),this.copyText()}},{key:"copyText",value:function(){var t=void 0;try{t=document.execCommand(this.action)}catch(e){t=!1}this.handleResult(t)}},{key:"handleResult",value:function(t){this.emitter.emit(t?"success":"error",{action:this.action,text:this.selectedText,trigger:this.trigger,clearSelection:this.clearSelection.bind(this)})}},{key:"clearSelection",value:function(){this.trigger&&this.trigger.focus(),window.getSelection().removeAllRanges()}},{key:"destroy",value:function(){this.removeFake()}},{key:"action",set:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"copy";if(this._action=t,"copy"!==this._action&&"cut"!==this._action)throw new Error('Invalid "action" value, use either "copy" or "cut"')},get:function(){return this._action}},{key:"target",set:function(t){if(void 0!==t){if(!t||"object"!==(void 0===t?"undefined":r(t))||1!==t.nodeType)throw new Error('Invalid "target" value, use a valid Element');if("copy"===this.action&&t.hasAttribute("disabled"))throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');if("cut"===this.action&&(t.hasAttribute("readonly")||t.hasAttribute("disabled")))throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');this._target=t}},get:function(){return this._target}}]),t}();t.exports=a})},function(t,e,n){function o(t,e,n){if(!t&&!e&&!n)throw new Error("Missing required arguments");if(!c.string(e))throw new TypeError("Second argument must be a String");if(!c.fn(n))throw new TypeError("Third argument must be a Function");if(c.node(t))return r(t,e,n);if(c.nodeList(t))return i(t,e,n);if(c.string(t))return a(t,e,n);throw new TypeError("First argument must be a String, HTMLElement, HTMLCollection, or NodeList")}function r(t,e,n){return t.addEventListener(e,n),{destroy:function(){t.removeEventListener(e,n)}}}function i(t,e,n){return Array.prototype.forEach.call(t,function(t){t.addEventListener(e,n)}),{destroy:function(){Array.prototype.forEach.call(t,function(t){t.removeEventListener(e,n)})}}}function a(t,e,n){return u(document.body,t,e,n)}var c=n(6),u=n(5);t.exports=o},function(t,e){function n(){}n.prototype={on:function(t,e,n){var o=this.e||(this.e={});return(o[t]||(o[t]=[])).push({fn:e,ctx:n}),this},once:function(t,e,n){function o(){r.off(t,o),e.apply(n,arguments)}var r=this;return o._=e,this.on(t,o,n)},emit:function(t){var e=[].slice.call(arguments,1),n=((this.e||(this.e={}))[t]||[]).slice(),o=0,r=n.length;for(o;o<r;o++)n[o].fn.apply(n[o].ctx,e);return this},off:function(t,e){var n=this.e||(this.e={}),o=n[t],r=[];if(o&&e)for(var i=0,a=o.length;i<a;i++)o[i].fn!==e&&o[i].fn._!==e&&r.push(o[i]);return r.length?n[t]=r:delete n[t],this}},t.exports=n},function(t,e,n){var o,r,i;!function(a,c){r=[t,n(0),n(2),n(1)],o=c,void 0!==(i="function"==typeof o?o.apply(e,r):o)&&(t.exports=i)}(0,function(t,e,n,o){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}function i(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function a(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function c(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}function u(t,e){var n="data-clipboard-"+t;if(e.hasAttribute(n))return e.getAttribute(n)}var l=r(e),s=r(n),f=r(o),d="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},h=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),p=function(t){function e(t,n){i(this,e);var o=a(this,(e.__proto__||Object.getPrototypeOf(e)).call(this));return o.resolveOptions(n),o.listenClick(t),o}return c(e,t),h(e,[{key:"resolveOptions",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action="function"==typeof t.action?t.action:this.defaultAction,this.target="function"==typeof t.target?t.target:this.defaultTarget,this.text="function"==typeof t.text?t.text:this.defaultText,this.container="object"===d(t.container)?t.container:document.body}},{key:"listenClick",value:function(t){var e=this;this.listener=(0,f.default)(t,"click",function(t){return e.onClick(t)})}},{key:"onClick",value:function(t){var e=t.delegateTarget||t.currentTarget;this.clipboardAction&&(this.clipboardAction=null),this.clipboardAction=new l.default({action:this.action(e),target:this.target(e),text:this.text(e),container:this.container,trigger:e,emitter:this})}},{key:"defaultAction",value:function(t){return u("action",t)}},{key:"defaultTarget",value:function(t){var e=u("target",t);if(e)return document.querySelector(e)}},{key:"defaultText",value:function(t){return u("text",t)}},{key:"destroy",value:function(){this.listener.destroy(),this.clipboardAction&&(this.clipboardAction.destroy(),this.clipboardAction=null)}}],[{key:"isSupported",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:["copy","cut"],e="string"==typeof t?[t]:t,n=!!document.queryCommandSupported;return e.forEach(function(t){n=n&&!!document.queryCommandSupported(t)}),n}}]),e}(s.default);t.exports=p})},function(t,e){function n(t,e){for(;t&&t.nodeType!==o;){if("function"==typeof t.matches&&t.matches(e))return t;t=t.parentNode}}var o=9;if("undefined"!=typeof Element&&!Element.prototype.matches){var r=Element.prototype;r.matches=r.matchesSelector||r.mozMatchesSelector||r.msMatchesSelector||r.oMatchesSelector||r.webkitMatchesSelector}t.exports=n},function(t,e,n){function o(t,e,n,o,r){var a=i.apply(this,arguments);return t.addEventListener(n,a,r),{destroy:function(){t.removeEventListener(n,a,r)}}}function r(t,e,n,r,i){return"function"==typeof t.addEventListener?o.apply(null,arguments):"function"==typeof n?o.bind(null,document).apply(null,arguments):("string"==typeof t&&(t=document.querySelectorAll(t)),Array.prototype.map.call(t,function(t){return o(t,e,n,r,i)}))}function i(t,e,n,o){return function(n){n.delegateTarget=a(n.target,e),n.delegateTarget&&o.call(t,n)}}var a=n(4);t.exports=r},function(t,e){e.node=function(t){return void 0!==t&&t instanceof HTMLElement&&1===t.nodeType},e.nodeList=function(t){var n=Object.prototype.toString.call(t);return void 0!==t&&("[object NodeList]"===n||"[object HTMLCollection]"===n)&&"length"in t&&(0===t.length||e.node(t[0]))},e.string=function(t){return"string"==typeof t||t instanceof String},e.fn=function(t){return"[object Function]"===Object.prototype.toString.call(t)}},function(t,e){function n(t){var e;if("SELECT"===t.nodeName)t.focus(),e=t.value;else if("INPUT"===t.nodeName||"TEXTAREA"===t.nodeName){var n=t.hasAttribute("readonly");n||t.setAttribute("readonly",""),t.select(),t.setSelectionRange(0,t.value.length),n||t.removeAttribute("readonly"),e=t.value}else{t.hasAttribute("contenteditable")&&t.focus();var o=window.getSelection(),r=document.createRange();r.selectNodeContents(t),o.removeAllRanges(),o.addRange(r),e=o.toString()}return e}t.exports=n}])});
+// SmallTalk
+let smalltalk=function(t){var n={};function e(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,e),o.l=!0,o.exports}return e.m=t,e.c=n,e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{enumerable:!0,get:r})},e.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},e.t=function(t,n){if(1&n&&(t=e(t)),8&n)return t;if(4&n&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(e.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&n&&"string"!=typeof t)for(var o in t)e.d(r,o,function(n){return t[n]}.bind(null,o));return r},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,n){return Object.prototype.hasOwnProperty.call(t,n)},e.p="",e(e.s=8)}([function(t,n,e){var r=e(1);"string"==typeof r&&(r=[[t.i,r,""]]);var o={hmr:!0,transform:void 0,insertInto:void 0};e(6)(r,o);r.locals&&(t.exports=r.locals)},function(t,n,e){var r=e(/*! ../node_modules/css-loader/lib/url/escape.js */2);(t.exports=e(/*! ../node_modules/css-loader/lib/css-base.js */3)(!1)).push([t.i,".smalltalk{display:flex;align-items:center;flex-direction:column;justify-content:center;transition:.2s opacity;bottom:0;left:0;overflow:auto;padding:20px;position:fixed;right:0;top:0;z-index:100}.smalltalk+.smalltalk{transition:ease 1s;display:none}.smalltalk .page{border-radius:3px;background:#fff;box-shadow:0 4px 23px 5px rgba(0,0,0,.2),0 2px 6px rgba(0,0,0,.15);color:#333;min-width:400px;padding:0;position:relative;z-index:0}@media only screen and (max-width:500px){.smalltalk .page{min-width:0}}.smalltalk .page>.close-button{background-image:url("+r(e(/*! ../img/IDR_CLOSE_DIALOG.png */4))+");background-position:center;background-repeat:no-repeat;height:14px;position:absolute;right:7px;top:7px;width:14px;z-index:1}.smalltalk .page>.close-button:hover{background-image:url("+r(e(/*! ../img/IDR_CLOSE_DIALOG_H.png */5))+")}.smalltalk .page header{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:500px;user-select:none;color:#333;font-size:120%;font-weight:700;margin:0;padding:14px 17px;text-shadow:#fff 0 1px 2px}.smalltalk .page .content-area{overflow:hidden;text-overflow:ellipsis;padding:6px 17px;position:relative}.smalltalk .page .action-area{padding:14px 17px}button{font-family:Ubuntu,Arial,sans-serif}.smalltalk .smalltalk,.smalltalk button{min-height:2em;min-width:4em}.smalltalk button{appearance:none;user-select:none;background-image:linear-gradient(#ededed,#ededed 38%,#dedede);border:1px solid rgba(0,0,0,.25);border-radius:2px;box-shadow:0 1px 0 rgba(0,0,0,.08),inset 0 1px 2px rgba(255,255,255,.75);color:#444;font:inherit;margin:0 1px 0 0;text-shadow:0 1px 0 #f0f0f0}.smalltalk button::-moz-focus-inner{border:0}.smalltalk button:enabled:active{background-image:linear-gradient(#e7e7e7,#e7e7e7 38%,#d7d7d7);box-shadow:none;text-shadow:none}.smalltalk .page .button-strip{display:flex;flex-direction:row;justify-content:flex-end}.smalltalk .page .button-strip>button{margin-left:10px}.smalltalk input{width:100%;border:1px solid #bfbfbf;border-radius:2px;box-sizing:border-box;color:#444;font:inherit;margin:0;min-height:2em;padding:3px;outline:0}.smalltalk button:enabled:focus,.smalltalk input:enabled:focus{transition:border-color .2s;border-color:#4d90fe;outline:0}",""])},function(t,n){t.exports=function(t){return"string"!=typeof t?t:(/^['"].*['"]$/.test(t)&&(t=t.slice(1,-1)),/["'() \t\n]/.test(t)?'"'+t.replace(/"/g,'\\"').replace(/\n/g,"\\n")+'"':t)}},function(t,n){t.exports=function(t){var n=[];return n.toString=function(){return this.map(function(n){var e=function(t,n){var e=t[1]||"",r=t[3];if(!r)return e;if(n&&"function"==typeof btoa){var o=function(t){return"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(t))))+" */"}(r),i=r.sources.map(function(t){return"/*# sourceURL="+r.sourceRoot+t+" */"});return[e].concat(i).concat([o]).join("\n")}return[e].join("\n")}(n,t);return n[2]?"@media "+n[2]+"{"+e+"}":e}).join("")},n.i=function(t,e){"string"==typeof t&&(t=[[null,t,""]]);for(var r={},o=0;o<this.length;o++){var i=this[o][0];"number"==typeof i&&(r[i]=!0)}for(o=0;o<t.length;o++){var a=t[o];"number"==typeof a[0]&&r[a[0]]||(e&&!a[2]?a[2]=e:e&&(a[2]="("+a[2]+") and ("+e+")"),n.push(a))}},n}},function(t,n){t.exports="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAAUklEQVR4XqXPYQrAIAhAYW/gXd8NJxTopVqsGEhtf+L9/ERU2k/HSMFQpKcYJeNFI9Be0LCMij8cYyjj5EHIivGBkwLfrbX3IF8PqumVmnDpEG+eDsKibPG2JwAAAABJRU5ErkJggg=="},function(t,n){t.exports="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAAnUlEQVR4XoWQQQ6CQAxFewjkJkMCyXgJPMk7AiYczyBeZEAX6AKctGIaN+bt+trk9wtGQc/IkhnoKGxqqiWxOSZalapWFZ6VrIUDExsN0a5JRBq9LoVOR0eEQMoEhKizXhhsn0p1sCWVo7CwOf1RytPL8CPvwuBUoHL6ugeK30CVD1TqK7V/hdpe+VNChhOzV8xWny/+xosHF8578W/Hmc1OOC3wmwAAAABJRU5ErkJggg=="},function(t,n,e){var r={},o=function(t){var n;return function(){return void 0===n&&(n=t.apply(this,arguments)),n}}(function(){return window&&document&&document.all&&!window.atob}),i=function(t){var n={};return function(t,e){if("function"==typeof t)return t();if(void 0===n[t]){var r=function(t,n){return n?n.querySelector(t):document.querySelector(t)}.call(this,t,e);if(window.HTMLIFrameElement&&r instanceof window.HTMLIFrameElement)try{r=r.contentDocument.head}catch(t){r=null}n[t]=r}return n[t]}}(),a=null,u=0,c=[],l=e(/*! ./urls */7);function s(t,n){for(var e=0;e<t.length;e++){var o=t[e],i=r[o.id];if(i){i.refs++;for(var a=0;a<i.parts.length;a++)i.parts[a](o.parts[a]);for(;a<o.parts.length;a++)i.parts.push(m(o.parts[a],n))}else{var u=[];for(a=0;a<o.parts.length;a++)u.push(m(o.parts[a],n));r[o.id]={id:o.id,refs:1,parts:u}}}}function f(t,n){for(var e=[],r={},o=0;o<t.length;o++){var i=t[o],a=n.base?i[0]+n.base:i[0],u={css:i[1],media:i[2],sourceMap:i[3]};r[a]?r[a].parts.push(u):e.push(r[a]={id:a,parts:[u]})}return e}function p(t,n){var e=i(t.insertInto);if(!e)throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");var r=c[c.length-1];if("top"===t.insertAt)r?r.nextSibling?e.insertBefore(n,r.nextSibling):e.appendChild(n):e.insertBefore(n,e.firstChild),c.push(n);else if("bottom"===t.insertAt)e.appendChild(n);else{if("object"!=typeof t.insertAt||!t.insertAt.before)throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");var o=i(t.insertAt.before,e);e.insertBefore(n,o)}}function d(t){if(null===t.parentNode)return!1;t.parentNode.removeChild(t);var n=c.indexOf(t);n>=0&&c.splice(n,1)}function v(t){var n=document.createElement("style");if(void 0===t.attrs.type&&(t.attrs.type="text/css"),void 0===t.attrs.nonce){var r=function(){0;return e.nc}();r&&(t.attrs.nonce=r)}return h(n,t.attrs),p(t,n),n}function h(t,n){Object.keys(n).forEach(function(e){t.setAttribute(e,n[e])})}function m(t,n){var e,r,o,i;if(n.transform&&t.css){if(!(i="function"==typeof n.transform?n.transform(t.css):n.transform.default(t.css)))return function(){};t.css=i}if(n.singleton){var c=u++;e=a||(a=v(n)),r=g.bind(null,e,c,!1),o=g.bind(null,e,c,!0)}else t.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(e=function(t){var n=document.createElement("link");return void 0===t.attrs.type&&(t.attrs.type="text/css"),t.attrs.rel="stylesheet",h(n,t.attrs),p(t,n),n}(n),r=function(t,n,e){var r=e.css,o=e.sourceMap,i=void 0===n.convertToAbsoluteUrls&&o;(n.convertToAbsoluteUrls||i)&&(r=l(r));o&&(r+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+" */");var a=new Blob([r],{type:"text/css"}),u=t.href;t.href=URL.createObjectURL(a),u&&URL.revokeObjectURL(u)}.bind(null,e,n),o=function(){d(e),e.href&&URL.revokeObjectURL(e.href)}):(e=v(n),r=function(t,n){var e=n.css,r=n.media;r&&t.setAttribute("media",r);if(t.styleSheet)t.styleSheet.cssText=e;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(e))}}.bind(null,e),o=function(){d(e)});return r(t),function(n){if(n){if(n.css===t.css&&n.media===t.media&&n.sourceMap===t.sourceMap)return;r(t=n)}else o()}}t.exports=function(t,n){if("undefined"!=typeof DEBUG&&DEBUG&&"object"!=typeof document)throw new Error("The style-loader cannot be used in a non-browser environment");(n=n||{}).attrs="object"==typeof n.attrs?n.attrs:{},n.singleton||"boolean"==typeof n.singleton||(n.singleton=o()),n.insertInto||(n.insertInto="head"),n.insertAt||(n.insertAt="bottom");var e=f(t,n);return s(e,n),function(t){for(var o=[],i=0;i<e.length;i++){var a=e[i];(u=r[a.id]).refs--,o.push(u)}t&&s(f(t,n),n);for(i=0;i<o.length;i++){var u;if(0===(u=o[i]).refs){for(var c=0;c<u.parts.length;c++)u.parts[c]();delete r[u.id]}}}};var b=function(){var t=[];return function(n,e){return t[n]=e,t.filter(Boolean).join("\n")}}();function g(t,n,e,r){var o=e?"":r.css;if(t.styleSheet)t.styleSheet.cssText=b(n,o);else{var i=document.createTextNode(o),a=t.childNodes;a[n]&&t.removeChild(a[n]),a.length?t.insertBefore(i,a[n]):t.appendChild(i)}}},function(t,n){t.exports=function(t){var n="undefined"!=typeof window&&window.location;if(!n)throw new Error("fixUrls requires window.location");if(!t||"string"!=typeof t)return t;var e=n.protocol+"//"+n.host,r=e+n.pathname.replace(/\/[^\/]*$/,"/");return t.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi,function(t,n){var o,i=n.trim().replace(/^"(.*)"$/,function(t,n){return n}).replace(/^'(.*)'$/,function(t,n){return n});return/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(i)?t:(o=0===i.indexOf("//")?i:0===i.indexOf("/")?e+i:r+i.replace(/^\.\//,""),"url("+JSON.stringify(o)+")")})}},function(t,n,e){"use strict";e(0);var r=e(9),o=e(11),i=e(13),a=r(function(t,n,e,r){var o={ENTER:13,ESC:27,TAB:9,LEFT:37,UP:38,RIGHT:39,DOWN:40},i=r.keyCode,a=r.target,c=b(t,["ok","cancel","input"]).map(d);switch(i){case o.ENTER:m(a,t,n,e),r.preventDefault();break;case o.ESC:u(),e();break;case o.TAB:r.shiftKey&&h(t,c),h(t,c),r.preventDefault();break;default:["left","right","up","down"].filter(function(t){return i===o[t.toUpperCase()]}).forEach(function(){!function(t,n){var e=d(document.activeElement),r=/ok|cancel/.test(e),o=n.length-1;if("input"===e||!o||!r)return;var i=function(t){return"cancel"===t?"ok":"cancel"}(e);b(t,[i]).forEach(function(t){t.focus()})}(t,c)})}r.stopPropagation()}),u=function(t){for(var n=arguments.length,e=new Array(n>1?n-1:0),r=1;r<n;r++)e[r-1]=arguments[r];return function(){return t.apply(void 0,e)}}(function(t){var n=document.querySelector(t);n.parentElement.removeChild(n)},".smalltalk"),c={ok:"OK"},l={ok:"OK",cancel:"Cancel"};function s(){var t=(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).buttons;return t||null}function f(t,n,e,o){var i=n.replace(/\n/g,"<br>");return'<div class="page">\n        <div data-name="js-close" class="close-button"></div>\n        <header>'.concat(t,'</header>\n        <div class="content-area">').concat(i).concat(e,'</div>\n        <div class="action-area">\n            <div class="button-strip">\n                ').concat(function(t){var n=Object.keys(t),e=r(function(t,n,e){return"<button\n            tabindex=".concat(e,'\n            data-name="js-').concat(n.toLowerCase(),'">\n            ').concat(t[n],"\n        </button>")});return n.map(e(t)).join("")}(o),"\n            </div>\n        </div>\n    </div>")}function p(t,n,e,r,u){var c=o(),l=o(),s=new Promise(function(t,n){var e=u&&!1===u.cancel;c(t),l(e?function(){}:n)}),p=f(t,n,e,r),d=i("div",{innerHTML:p,className:"smalltalk"});return b(d,["ok","input"]).forEach(function(t){return t.focus()}),b(d,["input"]).forEach(function(t){t.setSelectionRange(0,e.length)}),function(t,n,e,r){b(n,e).forEach(function(n){return n.addEventListener(t,r)})}("click",d,["cancel","close","ok"],function(t){m(t.target,d,c(),l())}),["click","contextmenu"].forEach(function(t){return d.addEventListener(t,function(){return b(d,["ok","input"]).forEach(function(t){return t.focus()})})}),d.addEventListener("keydown",a(d,c(),l())),s}function d(t){return t.getAttribute("data-name").replace("js-","")}n.alert=function(t,n,e){return p(t,n,"",s(e)||c,e)},n.prompt=function(t,n){var e=arguments.length>2&&void 0!==arguments[2]?arguments[2]:"",r=arguments.length>3?arguments[3]:void 0,o=function(){return"password"===(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).type?"password":"text"}(r),i=String(e).replace(/"/g,"&quot;");return p(t,n,'<input type="'.concat(o,'" value="').concat(i,'" data-name="js-input">'),s(r)||l,r)},n.confirm=function(t,n,e){return p(t,n,"",s(e)||l,e)};var v=function(t,n){return n===t?0:n+1};function h(t,n){var e=d(document.activeElement),r=n.length-1,o=n.indexOf(e);b(t,[n[v(r,o)]]).forEach(function(t){return t.focus()})}function m(t,n,e,r){var o=t.getAttribute("data-name").replace("js-","");if(/close|cancel/.test(o))return r(),void u();e(b(n,["input"]).reduce(function(t,n){return n.value},null)),u()}function b(t,n){return n.map(function(n){return t.querySelector('[data-name="js-'.concat(n,'"]'))}).filter(function(t){return t})}},function(t,n,e){t.exports=e(10)},function(t,n,e){"use strict";t.exports=function t(n){for(var e=arguments.length,r=new Array(e>1?e-1:0),o=1;o<e;o++)r[o-1]=arguments[o];if(function(t){if("function"!=typeof t)throw Error("fn should be function!")}(n),r.length>=n.length)return n.apply(void 0,r);var i=function(){for(var e=arguments.length,o=new Array(e),i=0;i<e;i++)o[i]=arguments[i];return t.apply(void 0,[n].concat(r.concat(o)))},a=n.length-r.length-1;return function(t){return[function(n){return t.apply(void 0,arguments)},function(n,e){return t.apply(void 0,arguments)},function(n,e,r){return t.apply(void 0,arguments)},function(n,e,r,o){return t.apply(void 0,arguments)},function(n,e,r,o,i){return t.apply(void 0,arguments)}]}(i)[a]||i}},function(t,n,e){t.exports=e(12)},function(t,n,e){"use strict";t.exports=function(t){var n={value:t};return function(t){return arguments.length?(n.value=t,t):n.value}}},function(t,n,e){"use strict";function r(t,n){if(null==t)return{};var e,r,o=function(t,n){if(null==t)return{};var e,r,o={},i=Object.keys(t);for(r=0;r<i.length;r++)e=i[r],n.indexOf(e)>=0||(o[e]=t[e]);return o}(t,n);if(Object.getOwnPropertySymbols){var i=Object.getOwnPropertySymbols(t);for(r=0;r<i.length;r++)e=i[r],n.indexOf(e)>=0||Object.prototype.propertyIsEnumerable.call(t,e)&&(o[e]=t[e])}return o}var o=e(/*! currify/legacy */14),i=function(t){return document.querySelector('[data-name="'.concat(t,'"]'))},a=o(function(t,n,e){return t.setAttribute(e,n[e])}),u=o(function(t,n,e){return t[e]=n[e]}),c=o(function(t,n){return!t(n)}),l=function(t){return t!=t.toLowerCase()};function s(t){if(t)return i(t)}t.exports=function(t){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},e=n.dataName,o=n.notAppend,i=n.parent,f=void 0===i?document.body:i,p=n.uniq,d=void 0===p||p,v=r(n,["dataName","notAppend","parent","uniq"]),h=s(e);if(d&&h)return h;var m=document.createElement(t);return e&&(m.dataset.name=e),Object.keys(v).filter(l).map(u(m,n)),Object.keys(v).filter(c(l)).map(a(m,n)),o||f.appendChild(m),m},t.exports.isElementPresent=s},function(t,n,e){t.exports=e(15)},function(t,n,e){"use strict";t.exports=function t(n){for(var e=arguments.length,r=Array(e>1?e-1:0),o=1;o<e;o++)r[o-1]=arguments[o];if(function(t){if("function"!=typeof t)throw Error("fn should be function!")}(n),r.length>=n.length)return n.apply(void 0,r);var i=function(){return t.apply(void 0,[n].concat(r,Array.prototype.slice.call(arguments)))},a=n.length-r.length-1;return function(t){return[function(n){return t.apply(void 0,arguments)},function(n,e){return t.apply(void 0,arguments)},function(n,e,r){return t.apply(void 0,arguments)},function(n,e,r,o){return t.apply(void 0,arguments)},function(n,e,r,o,i){return t.apply(void 0,arguments)}]}(i)[a]||i}}]);
 
 let currentDeck = [0, 0, 0, 0, 0, 0, 0, 0],
   contentToCopy,
   selectedContainer = 0;
 
 const cardsName = [
-    'new-card',
-    'witch', 'skeleton-army', 'baby-dragon', 'prince', 'giant', 'musketeer', 'mini-pekka', 'fireball', 'knight', 'archers', 'minions', 'arrows',
-    'hunter', 'goblin-barrel', 'hog-rider', 'goblin-hut', 'goblins', 'spear-goblins',
-    'balloon', 'giant-skeleton', 'valkyrie', 'tombstone', 'skeletons', 'bomber',
-    'golem', 'barbarian-barrel', 'battle-ram', 'barbarian-hut', 'barbarians', 'cannon',
-    'lava-hound', 'miner', 'pekka', 'lightning', 'mega-minion', 'inferno-tower', 'minion-horde', 'zap',
-    'night-witch', 'graveyard', 'freeze', 'poison', 'wizard', 'furnace', 'fire-spirits', 'bats',
-    'inferno-dragon', 'the-log', 'cannon-cart', 'x-bow', 'flying-machine', 'rocket', 'skeleton-barrel', 'mortar',
-    'princess', 'royal-ghost', 'guards', 'dark-prince', 'three-musketeers', 'heal', 'royal-giant', 'royal-recruits',
-    'ice-wizard', 'lumberjack', 'bowler', 'tornado', 'ice-golem', 'elixir-collector', 'ice-spirit', 'giant-snowball',
-    'bandit', 'executioner', 'goblin-giant', 'dart-goblin', 'goblin-gang', 'rascals',
-    'mega-knight', 'magic-archer', 'rage', 'royal-hogs', 'bomb-tower', 'elite-barbarians',
-    'sparky', 'electro-wizard', 'electro-dragon', 'mirror', 'clone', 'zappies', 'tesla'
-  ],
+  'new-card',
+  'witch', 'skeleton-army', 'baby-dragon', 'prince', 'giant', 'musketeer', 'mini-pekka', 'fireball', 'knight', 'archers', 'minions', 'arrows',
+  'hunter', 'goblin-barrel', 'hog-rider', 'goblin-hut', 'goblins', 'spear-goblins',
+  'balloon', 'giant-skeleton', 'valkyrie', 'tombstone', 'skeletons', 'bomber',
+  'golem', 'barbarian-barrel', 'battle-ram', 'barbarian-hut', 'barbarians', 'cannon',
+  'lava-hound', 'miner', 'pekka', 'lightning', 'mega-minion', 'inferno-tower', 'minion-horde', 'zap',
+  'night-witch', 'graveyard', 'freeze', 'poison', 'wizard', 'furnace', 'fire-spirits', 'bats',
+  'inferno-dragon', 'the-log', 'cannon-cart', 'x-bow', 'flying-machine', 'rocket', 'skeleton-barrel', 'mortar',
+  'princess', 'royal-ghost', 'guards', 'dark-prince', 'three-musketeers', 'heal', 'royal-giant', 'royal-recruits',
+  'ice-wizard', 'lumberjack', 'bowler', 'tornado', 'ice-golem', 'elixir-collector', 'ice-spirit', 'giant-snowball',
+  'bandit', 'executioner', 'goblin-giant', 'dart-goblin', 'goblin-gang', 'rascals',
+  'mega-knight', 'magic-archer', 'rage', 'royal-hogs', 'bomb-tower', 'elite-barbarians',
+  'sparky', 'electro-wizard', 'electro-dragon', 'mirror', 'clone', 'zappies', 'tesla'
+],
   cardsInformation = [
     'Nenhuma Carta selecionada',
     '<ins>Bruxa</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de geração: 5seg<br />Velocidade de impacto: 1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 5',
@@ -330,7 +332,7 @@ function buildDeck() {
           currentDeck.push(newTroop);
           break;
         } else if (j === troop.length - 1)
-        currentDeck.push(typeSelected.split('|')[i]);
+          currentDeck.push(typeSelected.split('|')[i]);
     }
 
     for (let i = 0; i < currentDeck.length; i++)
@@ -381,22 +383,6 @@ function switchContainer(container = dbSection) {
   }
 }
 
-function copyDeck() {
-  if (prevDeck.length > 0)
-    prevDeck.pop();
-  if (screen.width < 1024 && confirm('Deseja abrir o Deck no Clash Royale?'))
-    window.open('clashroyale://copyDeck?' + contentToCopy, '_self');
-  else
-    btnCopy.setAttribute('data-clipboard-text', 'https://link.clashroyale.com/deck/pt?' + contentToCopy);
-}
-
-function copyDeckSec() {
-  if (screen.width < 1024) {
-    btnCopy.setAttribute('data-clipboard-text', 'https://link.clashroyale.com/deck/pt?' + contentToCopy);
-    alert('Link do Deck copiado para a área de transferência.');
-  }
-}
-
 function combination() {
   const i = allowedCards.length,
     b = allowedCards.length < 8 ? allowedCards : 8;
@@ -417,32 +403,51 @@ function combination() {
 }
 
 function infoCards() {
-  alert(
+  smalltalk.alert('Informações',
     (window.screen.width < 1024 ? 'Para trocar alguma Carta, basta pressionar e segurar a Carta.\nPara copiar o link do Deck sem abrir no Clash Royale, basta pressionar e segurar o botão Copiar Deck.\nPara remover o Deck atual, basta pressionar e segurar o botão Colar Deck.\nPara embaralhar o Deck atal, basta pressionar e segurar o botão Gerar Deck.\nA função Voltar Deck só é válida para Decks Inteligentes.' : 'Para trocar alguma Carta, clique com o botão direito na Carta.\nPara remover o Deck atual, clique com o botão direito do mouse no botão Colar Deck.\nPara Embaralhar o Deck atual, clique com o botão direito do mouse em Gerar Deck.') +
     (cbDeckInteligente.checked ? '\nA Seleção de Cartas e os DropDowns de Arenas, Raridades e Tipos só funcionam no modo Deck Inteligente desligado.' : '\nQuantidade de Cartas a serem geradas: ' + allowedCards.length + '\nCombinações de Decks possíveis: ' + combination())
   );
 }
 
-function pasteDeck() {
-  let linkDeck = prompt('Cole o link do seu deck abaixo');
-  if (linkDeck !== null && linkDeck.match(/;/) && !(linkDeck.length < 71)) {
-    if (linkDeck.match(/\?deck=/)) {
-      linkDeck = linkDeck.split('?deck=');
-      linkDeck.shift();
-      linkDeck = linkDeck.join().split(';');
-    } else linkDeck = linkDeck.split(';');
+function copyDeck() {
+  if (prevDeck.length > 0)
+    prevDeck.pop();
+  if (screen.width < 1024 && confirm('Deseja abrir o Deck no Clash Royale?'))
+    window.open('clashroyale://copyDeck?' + contentToCopy, '_self');
+  else
+    btnCopy.setAttribute('data-clipboard-text', 'https://link.clashroyale.com/deck/pt?' + contentToCopy);
+}
 
-    for (let i = 0; i < linkDeck.length; i++)
-      for (let j = 1; j < cardsCode.length; j++)
-        if (linkDeck[i] === cardsCode[j])
-          linkDeck[i] = j;
-
-    for (let i = linkDeck; i < 8; i++)
-      linkDeck.push(0);
-
-    currentDeck = linkDeck;
-    setDeck(linkDeck);
+function copyDeckSec() {
+  if (screen.width < 1024) {
+    btnCopy.setAttribute('data-clipboard-text', 'https://link.clashroyale.com/deck/pt?' + contentToCopy);
+    smalltalk.alert('Link copiado', 'Link do Deck copiado para a área de transferência.');
   }
+}
+
+function pasteDeck() {
+  smalltalk.prompt('Colar Deck', 'Cole o Deck abaixo')
+    .then(linkDeck => {
+      if (linkDeck.trim().indexOf(' ') === -1 &&
+        linkDeck.trim().startsWith('https://link.clashroyale.com/deck/')) {
+        if (linkDeck.match(/\?deck=/)) {
+          linkDeck = linkDeck.split('?deck=');
+          linkDeck.shift();
+          linkDeck = linkDeck.join().split(';');
+        } else linkDeck = linkDeck.split(';');
+
+        for (let i = 0; i < linkDeck.length; i++)
+          for (let j = 1; j < cardsCode.length; j++)
+            if (linkDeck[i] === cardsCode[j])
+              linkDeck[i] = j;
+
+        for (let i = linkDeck; i < 8; i++)
+          linkDeck.push(0);
+
+        currentDeck = linkDeck;
+        setDeck(linkDeck);
+      }
+    }).catch(() => { });
 }
 
 function formatText(text) {
@@ -484,7 +489,7 @@ function randomizeDeck() {
       currentDeck[i] = newDeck[i];
 
     setDeck(currentDeck);
-  } else alert('Não é permitido Embaralhar o Deck com Cartas faltando.');
+  } else smalltalk.alert('Embaralhar Deck', 'Não é permitido Embaralhar o Deck com Cartas faltando.');
 }
 
 const x = matchMedia('(min-width: 768px)');
@@ -637,17 +642,16 @@ else {
 
 for (let i = 0; i < cards.length; i++) {
   cards[i].addEventListener('contextmenu', () => {
-    let name = prompt('Digite o nome da Carta');
-
-    if (name !== null && name !== '')
-      name = formatText(name);
-    for (let j = 1; j < cardsInformation.length; j++) {
-      if (currentDeck.indexOf(j) === -1 && name === formatText(cardsInformation[j].split('<br />')[0].replace(/<ins>|<\/ins>/g, ''))) {
-        currentDeck[i] = j;
-        setDeck(currentDeck);
-        break;
-      }
-    }
+    smalltalk.prompt('Nome de Carta', 'Digite o nome da Carta abaixo').then(name => {
+      if (name.trim() !== '')
+        name = formatText(name);
+      for (let j = 1; j < cardsInformation.length; j++)
+        if (currentDeck.indexOf(j) === -1 && name === formatText(cardsInformation[j].split('<br />')[0].replace(/<ins>|<\/ins>/g, ''))) {
+          currentDeck[i] = j;
+          setDeck(currentDeck);
+          break;
+        }
+    }).catch(() => { });
   });
   cards[i].addEventListener('click', () => {
     info.innerHTML = cardsInformation[currentDeck[i]] + (currentDeck[i] === 0 ? '' : '<br />Elixir: ' + cardsElixir[currentDeck[i]]);

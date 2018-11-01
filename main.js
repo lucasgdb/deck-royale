@@ -8,9 +8,13 @@ function createWindow() {
         width: 1030,
         height: 454,
         */
+        /* Windows
+        width: 1052,
+        height: 495,
+        */
         width: 1030,
         height: 454,
-        minWidth: 300,
+        minWidth: 320,
         autoHideMenuBar: true,
         icon: path.join(__dirname, 'icon.png'),
         show: false

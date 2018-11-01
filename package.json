@@ -6,9 +6,9 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64  --prune=true --out=release-builds",
-    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=x64  --prune=true --out=release-builds ",
-    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64  --prune=true --icon=assets/icons/png/1024x1024.png --out=release-builds"
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --prune=true --icon=images/icon.ico --out=release-builds ",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --prune=true --icon=assets/icons/png/1024x1024.png --out=release-builds"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/LucasNaja/deck-royale#readme",
   "devDependencies": {
-    "electron": "^3.0.6",
+    "electron": "^3.0.7",
     "electron-packager": "^12.2.0"
   }
 }

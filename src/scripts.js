@@ -294,6 +294,26 @@ cbDeckInteligente.addEventListener('change', () => {
   }
 });
 
+function allowDrag(event) {
+  event.preventDefault();
+}
+
+let id = -1;
+function getId(event) {
+  event.stopPropagation();
+  id = parseInt(event.target.id);
+}
+function pasteCard(event) {
+  event.preventDefault();
+  if (id !== -1) {
+    let temp = currentDeck[id];
+    currentDeck[id] = currentDeck[parseInt(event.target.id)];
+    currentDeck[parseInt(event.target.id)] = temp;
+    setDeck(currentDeck);
+    id = -1;
+  }
+}
+
 function setDeck(deck = Array) {
   let media = 0.0;
   contentToCopy = 'deck=';
@@ -425,29 +445,39 @@ function copyDeckSec() {
   }
 }
 
+function paste(linkDeck) {
+if (linkDeck !== null && linkDeck.trim().indexOf(' ') === -1 &&
+    (linkDeck.trim().startsWith('https://link.clashroyale.com/deck/') ||
+    linkDeck.trim().startsWith('link.clashroyale.com/deck/'))) {
+    if (linkDeck.match(/\?deck=/)) {
+      linkDeck = linkDeck.split('?deck=');
+      linkDeck.shift();
+      linkDeck = linkDeck.join().split(';');
+    } else linkDeck = linkDeck.split(';');
+
+    for (let i = 0; i < linkDeck.length; i++)
+      for (let j = 1; j < cardsCode.length; j++)
+        if (linkDeck[i] === cardsCode[j])
+          linkDeck[i] = j;
+
+    for (let i = linkDeck; i < 8; i++)
+      linkDeck.push(0);
+
+    currentDeck = linkDeck;
+    setDeck(linkDeck);
+  }
+}
+
 function pasteDeck() {
-  smalltalk.prompt('Colar Deck', 'Cole o Deck abaixo')
-    .then(linkDeck => {
-      if (linkDeck.trim().indexOf(' ') === -1 &&
-        linkDeck.trim().startsWith('https://link.clashroyale.com/deck/')) {
-        if (linkDeck.match(/\?deck=/)) {
-          linkDeck = linkDeck.split('?deck=');
-          linkDeck.shift();
-          linkDeck = linkDeck.join().split(';');
-        } else linkDeck = linkDeck.split(';');
-
-        for (let i = 0; i < linkDeck.length; i++)
-          for (let j = 1; j < cardsCode.length; j++)
-            if (linkDeck[i] === cardsCode[j])
-              linkDeck[i] = j;
-
-        for (let i = linkDeck; i < 8; i++)
-          linkDeck.push(0);
-
-        currentDeck = linkDeck;
-        setDeck(linkDeck);
-      }
-    }).catch(() => { });
+  if (screen.width >= 1024 )
+    smalltalk.prompt('Colar Deck', 'Cole o link do Deck abaixo')
+      .then(linkDeck => {
+        paste(linkDeck);
+      }).catch(() => { });
+  else {
+    let linkDeck = prompt('Cole o link do Deck abaixo');
+    paste(linkDeck);
+  }
 }
 
 function formatText(text) {
@@ -640,18 +670,29 @@ else {
   cbConfigs[0].checked = true;
 }
 
+function change(name, ind) {
+  if (name !== null && name.trim() !== '') {
+    name = formatText(name);
+    for (let j = 1; j < cardsInformation.length; j++) {
+      if (currentDeck.indexOf(j) === -1 && name === formatText(cardsInformation[j].split('<br />')[0].replace(/<ins>|<\/ins>/g, ''))) {
+        currentDeck[ind] = j;
+        setDeck(currentDeck);
+        break;
+      }
+    }
+  }
+}
+
 for (let i = 0; i < cards.length; i++) {
   cards[i].addEventListener('contextmenu', () => {
-    smalltalk.prompt('Nome de Carta', 'Digite o nome da Carta abaixo').then(name => {
-      if (name.trim() !== '')
-        name = formatText(name);
-      for (let j = 1; j < cardsInformation.length; j++)
-        if (currentDeck.indexOf(j) === -1 && name === formatText(cardsInformation[j].split('<br />')[0].replace(/<ins>|<\/ins>/g, ''))) {
-          currentDeck[i] = j;
-          setDeck(currentDeck);
-          break;
-        }
-    }).catch(() => { });
+    if (screen.width >= 1024)
+      smalltalk.prompt('Nome de Carta', 'Digite o nome da Carta abaixo').then(name => {
+        change(name, i);
+      }).catch(() => { });
+    else {
+      let name = prompt('Digite o nome da Carta abaixo');
+      change(name, i);
+    }
   });
   cards[i].addEventListener('click', () => {
     info.innerHTML = cardsInformation[currentDeck[i]] + (currentDeck[i] === 0 ? '' : '<br />Elixir: ' + cardsElixir[currentDeck[i]]);

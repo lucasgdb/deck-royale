@@ -4,6 +4,10 @@ let win = BrowserWindow;
 
 function createWindow() {
     win = new BrowserWindow({
+        /* Linux
+        width: 1030,
+        height: 454,
+        */
         width: 1030,
         height: 454,
         minWidth: 300,

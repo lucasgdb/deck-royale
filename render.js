@@ -9,7 +9,7 @@ self.onmessage = e => {
 
   for (let i = 0; i < decks.length; i++) {
     contentToCopy = `${cardsCode[decks[i][0]]};${cardsCode[decks[i][1]]};${cardsCode[decks[i][2]]};${cardsCode[decks[i][3]]};${cardsCode[decks[i][4]]};${cardsCode[decks[i][5]]};${cardsCode[decks[i][6]]};${cardsCode[decks[i][7]]}`;
-    let copy = e.data.screenSize < 1024 ? `onclick="copyDeckSaved('${contentToCopy}')" data-clipboard-text="https://link.clashroyale.com/deck/pt?deck=${contentToCopy}"` : `data-clipboard-text="https://link.clashroyale.com/deck/pt?deck=${contentToCopy}"`;
+    let copy = e.data.screenSize > 1024 ? `onclick="copyDeckSaved('${contentToCopy}')" data-clipboard-text="https://link.clashroyale.com/deck/pt?deck=${contentToCopy}"` : `data-clipboard-text="https://link.clashroyale.com/deck/pt?deck=${contentToCopy}"`;
     html += `
     <section class="cardsContainerS">
       <div><img src="./images/${cardsName[decks[i][0]]}_opt-min.png" alt=${cardsName[decks[i][0]]} title="${cardsInformation[decks[i][0]].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}"/></div>

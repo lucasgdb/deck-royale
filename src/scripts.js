@@ -439,12 +439,12 @@ function copyDeck() {
   if (screen.width < 1024)
     smalltalk.confirm('Abrir Deck', 'Deseja abrir o Deck no Clash Royale?').then(() => window.open(`clashroyale://copyDeck?${contentToCopy}`, '_self')).catch(() => {});
   else
-    btnCopy.setAttribute('data-clipboard-text', 'https://link.clashroyale.com/deck/pt?' + contentToCopy);
+    btnCopy.setAttribute('data-clipboard-text', `https://link.clashroyale.com/deck/pt?${contentToCopy}`);
 }
 
 function copyDeckSec() {
   if (screen.width < 1024) {
-    btnCopy.setAttribute('data-clipboard-text', 'https://link.clashroyale.com/deck/pt?' + contentToCopy);
+    btnCopy.setAttribute('data-clipboard-text', `https://link.clashroyale.com/deck/pt?${contentToCopy}`);
     smalltalk.alert('Link copiado', 'Link do Deck copiado para a área de transferência.');
   }
 }
@@ -709,7 +709,7 @@ function compareArrays(array1, array2) {
 }
 
 function deleteDeck(deck = Array) {
-  smalltalk.confirm('Remover Deck', 'Deseja remover o Deck acima?').then(() => {
+  smalltalk.confirm('Remover Deck', 'Deseja remover o Deck?').then(() => {
     let newDeck = (() => {
       const decksCurrent = JSON.parse(localStorage.getItem('decks')).deckList;
       let newDecksCurrent = '[';

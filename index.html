@@ -15,9 +15,10 @@
 		<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 		<nav class="navSection">
 			<div class="container" onclick="showSections();"><div></div></div>
-			<h1>Coded by <a href="http://youtube.com/c/LucasNaja/" target="_blank" rel="noopener noreferrer" class="effect">Lucas&nbsp;Naja</a></h1>
+			<h1>Coded by <a href="http://youtube.com/c/LucasNaja/" target="_blank" rel="noopener noreferrer" class="effect">Lucas Naja</a></h1>
 			<button id="selectedButton" title="Gerador de Deck" onclick="closeNav(); switchContainer()">Gerador de Deck</button>
 			<button title="Seleção de Cartas" onclick="closeNav(); switchContainer(selectSection)">Seleção de Cartas</button>
+			<button title="Decks salvos" onclick="closeNav(); switchContainer(savedSection)">Decks salvos</button>
 			<button title="Configurações" onclick="closeNav(); switchContainer(configSection)">Configurações</button>
 			<button title="Sobre" onclick="closeNav(); switchContainer(aboutSection)">Sobre</button>
 		</nav>
@@ -37,12 +38,12 @@
 				</section>
 
 				<section class="configContainer">
-					<button class="btnCopiar" id="copy" onclick="copyDeck();" oncontextmenu="copyDeckSec();" title="Copiar Deck">Copiar&nbsp;
-						Deck</button>
-					<button class="btnColar" onclick="pasteDeck();" oncontextmenu="setDeck(currentDeck = [0, 0, 0, 0, 0, 0, 0, 0]);" title="Colar Deck">Colar Deck</button>
+					<button class="btnCopiar" id="copy" onclick="copyDeck()" oncontextmenu="copyDeckSec()" title="Copiar Deck">Copiar Deck</button>
+					<button class="btnColar" onclick="pasteDeck()" oncontextmenu="setDeck(currentDeck = [0, 0, 0, 0, 0, 0, 0, 0])" title="Colar Deck">Colar Deck</button>
+					<button class="btnSalvar" onclick="saveDeck()"><ins>S</ins>alvar Deck</button>
 					<img onclick="infoCards();" title="Informações" src="./images/info.png" />
-					<button class="btnVoltar" onclick="previousDeck();" title="Voltar Deck" hidden>&lt;</button>
-					<button class="btnGerar" onclick="buildDeck();" oncontextmenu="randomizeDeck();" title="Gerar Deck"><ins>G</ins>erar Deck</button>
+					<button class="btnVoltar" onclick="previousDeck()" title="Voltar Deck" hidden>&lt;</button>
+					<button class="btnGerar" onclick="buildDeck()" oncontextmenu="randomizeDeck()" title="Gerar Deck"><ins>G</ins>erar Deck</button>
 					<div>
 						<input type="checkbox" id="smartDeck" /><label for="smartDeck">Deck Inteligente</label>
 					</div>
@@ -96,6 +97,13 @@
 			<!-- Código gerado pelo JavaScript -->
 		</section>
 
+		<section class="savedSection">
+			<section>
+				<h1>Nenhum Deck salvo.</h1>
+				<!-- Código a ser gerado pelo JavaScript -->
+			</section>
+		</section>
+
 		<section class="configSection">
 			<section><div><input type="checkbox" id="theme"><label for="theme">Dark theme</label></div></section>
 		</section>
@@ -119,7 +127,7 @@
 		</section>
 
 		<noscript>Ative seu JavaScript!</noscript>
-		<script async src="./src/scripts.js"></script>
+		<script src="./src/scripts.js"></script>
 
 	</body>
 

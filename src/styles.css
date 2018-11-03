@@ -141,8 +141,8 @@ ins {
 
 /* BUILDER SECTION
 ********************/
-.navSection, .builderSection { display: none }
-.builderSection, .selectSection, .configSection, .aboutSection {
+.navSection, .builderSection, .savedSection { display: none }
+.builderSection, .selectSection, .savedSection, .configSection, .aboutSection {
 	position: relative;
 	top: 35px;
 	width: 100%;
@@ -151,7 +151,7 @@ ins {
 
 .builderSection { overflow-x: hidden }
 
-.cardsContainer, .configContainer, .infoContainer {
+.cardsContainer, .cardsContainerS, .configContainer, .infoContainer {
 	position: relative;
 	left: 50%;
 	transform: translateX(-50%);
@@ -160,38 +160,39 @@ ins {
 
 /* CARDS CONTAINER
 ********************/
-.cardsContainer {
+.cardsContainer, .cardsContainerS {
 	height: 210px;
 	margin-bottom: 5px;
 	transition: all .1s
 }
 
-.cardsContainer div {
+.cardsContainer div, .cardsContainerS div {
 	width: 25%;
 	height: 50%;
 	float: left;
 	overflow: hidden
 }
 
-.cardsContainer img {
+.cardsContainer img, .cardsContainerS img {
 	width: 100%;
 	height: 100%
 }
 
 /* CONFIG CONTAINER
 ********************/
-.btnCopiar, .btnColar, .btnVoltar, .btnGerar { margin-top: 5px }
+.btnCopiar, .btnSalvar, .btnColar, .btnVoltar, .btnGerar { margin-top: 5px }
 
-.btnCopiar, .btnColar {
+.btnCopiar, .btnSalvar, .btnColar {
 	left: 5px;
-	height: 44px;
+	height: 40px;
 	font-size: 17px;
 	width: 121px
 }
 
-.btnColar {	top: 47px }
+.btnColar {	top: 43px }
+.btnSalvar { top: 86px }
 
-.btnCopiar, .btnColar, .btnVoltar, .btnGerar, .configContainer img, .configContainer div { position: absolute }
+.btnCopiar, .btnColar, .btnSalvar, .btnVoltar, .btnGerar, .configContainer img, .configContainer div { position: absolute }
 
 .btnVoltar {
 	right: 132px;
@@ -210,7 +211,7 @@ ins {
 }
 
 .configContainer {
-	height: 124px;
+	height: 136px;
 	border: 1px solid var(--corDeBorda)
 }
 
@@ -220,9 +221,9 @@ ins {
 }
 
 .configContainer div {
-	top: 99px;
-	left: 50%;
-	transform: translateX(-50%);
+	top: 114px;
+	left: 97%;
+	transform: translateX(-97%);
 	white-space: nowrap
 }
 
@@ -232,8 +233,6 @@ ins {
 	font-size: 19px;
 	font-weight: bold
 }
-
-.btnGerar ins { cursor: pointer }
 
 /* INFO CONTAINER
 ********************/
@@ -283,6 +282,47 @@ ins {
 }
 
 .notAllowed {	filter: grayscale(1) }
+
+/* SAVED CARDS
+********************/
+.configContainerS {
+	min-height: 50px;
+	max-width: 600px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	border: 1px solid white;
+	position: relative
+}
+
+.configContainerS, .btnApagar {
+	left: 50%;
+	transform: translateX(-50%)
+}
+
+.configContainerS button {
+	height: 100%;
+	width: 100px;
+	font-size: 14px;
+	position: absolute
+}
+
+.btnColarS {
+	left: 100%;
+	transform: translateX(-100%)
+}
+
+.savedSection h1 {
+	margin: 0;
+	margin-bottom: 10px;
+	text-align: center
+}
+
+.savedSection button {
+	width: 100%;
+	height: 50px;
+	font-size: 20px;
+	margin-bottom: 5px
+}
 
 /* CONFIG
 ********************/
@@ -347,11 +387,11 @@ ins {
 
 /* RESPONSIVIDADE
 ********************/
-@media (min-width: 360px) {	.cardsContainer {	height: 240px	} }
-@media (min-width: 420px) {	.cardsContainer {	height: 270px	} }
-@media (min-width: 480px) {	.cardsContainer {	height: 300px	} }
-@media (min-width: 540px) {	.cardsContainer {	height: 330px	} }
-@media (min-width: 600px) {	.cardsContainer {	height: 360px } }
+@media (min-width: 360px) {	.cardsContainer, .cardsContainerS {	height: 240px	} }
+@media (min-width: 420px) {	.cardsContainer, .cardsContainerS {	height: 270px	} }
+@media (min-width: 480px) {	.cardsContainer, .cardsContainerS {	height: 300px	} }
+@media (min-width: 540px) {	.cardsContainer, .cardsContainerS {	height: 330px	} }
+@media (min-width: 600px) {	.cardsContainer, .cardsContainerS {	height: 360px } }
 
 @media (min-width: 768px) {
 	.selectSection button:nth-last-of-type(2) { margin-left: 10px }
@@ -398,18 +438,12 @@ ins {
 
 	.infoContainer h3 {	width: 100%	}
 
-	.configContainer { height: 85px	}
-
-	.configContainer img,	.btnGerar, .btnVoltar {
+	.configContainer img, .btnGerar, .btnVoltar {
 		top: 50%;
 		transform: translateY(-50%)
 	}
 
 	.configContainer img { right: 162px	}
-
-	.btnCopiar, .btnColar {	height: 35px }
-
-	.btnColar {	top: 40px	}
 
 	.btnGerar, .btnVoltar {	margin-top: 0 }
 
@@ -417,6 +451,11 @@ ins {
 		top: 50%;
 		left: 50%;
 		transform: translate(-55%, -50%)
+	}
+
+	.configContainerS button {
+		font-size: 20px;
+		width: 140px
 	}
 
 	#selectedButton {
@@ -431,7 +470,7 @@ ins {
 		font-size: 19px;
 	}
 
-	.builderSection, .selectSection, .configSection, .aboutSection {
+	.builderSection, .selectSection, .savedSection, .configSection, .aboutSection {
 		top: 0;
 		left: 176px;
 		width: calc(100% - 176px)
@@ -439,7 +478,8 @@ ins {
 }
 
 @media (min-width: 1024px) {
-	ins {	cursor: default; }
+	ins { cursor: default }
+	.btnGerar ins { cursor: pointer }
 
 	.selectSection section {
 		width: calc(25% - 14px);
@@ -462,13 +502,13 @@ ins {
 		transform: translateX(-50%)
 	}
 
-	.cardsContainer img:hover {
+	.cardsContainer img:hover, .cardsContainerS img:hover {
 		width: 104%;
 		height: 104%;
 		transform: translate(-2%, -2%)
 	}
 
-	.cardsContainer img:active {
+	.cardsContainer img:active, .cardsContainerS img:active {
 		width: 100%;
 		height: 100%;
 		transform: translate(0, 0)

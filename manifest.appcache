@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 0.0.3
+# 0.0.4
 
 CACHE:
 ./icon.png
@@ -98,4 +98,5 @@ CACHE:
 ./images/new-card_opt-min.png
 ./images/undefined_opt-min.png
 ./images/logo.png
+./render.js
 ./src/scripts.js

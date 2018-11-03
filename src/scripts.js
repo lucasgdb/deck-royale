@@ -435,8 +435,8 @@ function infoCards() {
 function copyDeck() {
   if (prevDeck.length > 0)
     prevDeck.pop();
-  if (screen.width < 1024 && confirm('Deseja abrir o Deck no Clash Royale?'))
-    window.open('clashroyale://copyDeck?' + contentToCopy, '_self');
+  if (screen.width > 1024)
+    smalltalk.confirm('Abrir Deck', 'Deseja abrir o Deck no Clash Royale?').then(() => window.open('clashroyale://copyDeck?' + contentToCopy, '_self')).catch(() => {});
   else
     btnCopy.setAttribute('data-clipboard-text', 'https://link.clashroyale.com/deck/pt?' + contentToCopy);
 }
@@ -446,6 +446,10 @@ function copyDeckSec() {
     btnCopy.setAttribute('data-clipboard-text', 'https://link.clashroyale.com/deck/pt?' + contentToCopy);
     smalltalk.alert('Link copiado', 'Link do Deck copiado para a área de transferência.');
   }
+}
+
+function copyDeckSaved(deck) {
+  smalltalk.confirm('Abrir Deck', 'Desejja abrir o Deck no Clash Royale?').then(() => window.open('clashroyale://copyDeck?deck=' + deck, '_self')).catch(() => {});
 }
 
 function paste(linkDeck) {
@@ -687,9 +691,9 @@ function saveDeck() {
   if (!exists && !empty && !max) {
     localStorage.setItem('decks', `{"deckList": [${localStorage.getItem('decks') !== null ? `[${JSON.parse(localStorage.getItem('decks')).deckList.join('],[')}],[${currentDeck.join(',')}]` : `[${currentDeck.join(',')}]`}]}`);
     render();
-  } else if (exists) alert('O Deck atual já está salvo.');
-  else if (empty) alert('Não é permitido salvar Decks com Cartas faltando.');
-  else alert('Não é permitido salvar mais de 100 Decks.');
+  } else if (exists) smalltalk.alert('Deck repetido', 'O Deck atual já está salvo.');
+  else if (empty) smalltalk.alert('Deck incompleto', 'Não é permitido salvar Decks com Cartas faltando.');
+  else smalltalk.alert('Limite excedido', 'Não é permitido salvar mais de 100 Decks.');
 }
 
 function compareArrays(array1, array2) {
@@ -735,9 +739,9 @@ function deleteAll() {
 let createDecks = new Worker('./render.js');
 function render() {
   if (localStorage.getItem('decks') !== null && JSON.parse(localStorage.getItem('decks')).deckList.length > 0) {
-    createDecks.postMessage({ 'decks': JSON.parse(localStorage.getItem('decks')).deckList, 'cardsName': cardsName, 'cardsInformation': cardsInformation, 'cardsElixir': cardsElixir, 'cardsCode': cardsCode });
+    createDecks.postMessage({ 'decks': JSON.parse(localStorage.getItem('decks')).deckList, 'cardsName': cardsName, 'cardsInformation': cardsInformation, 'cardsElixir': cardsElixir, 'cardsCode': cardsCode, 'screenSize': screen.width });
   }
-  else savedDecks.innerHTML = '<h1>Nenhum Deck salvo.</h1>';
+  else savedDecks.innerHTML = '<h1 class="noneDeck">Nenhum Deck salvo.</h1>';
 }
 
 createDecks.onmessage = e => {

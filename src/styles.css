@@ -217,7 +217,7 @@ ins {
 }
 
 .configContainer div {
-	top: 114px;
+	top: 112px;
 	left: 97%;
 	transform: translateX(-97%);
 	white-space: nowrap
@@ -281,12 +281,11 @@ ins {
 
 /* SAVED CARDS
 ********************/
+.cardsContainerS { margin-top: 10px }
 .configContainerS {
 	min-height: 50px;
 	max-width: 600px;
-	margin-bottom: 10px;
-	margin-top: 10px;
-	border: 1px solid white;
+	border: 1px solid var(--corDeBorda);
 	position: relative
 }
 
@@ -307,10 +306,14 @@ ins {
 	transform: translateX(-100%)
 }
 
-.savedSection h1 {
+.noneDeck, .elixir {
 	margin: 0;
-	margin-bottom: 10px;
 	text-align: center
+}
+
+.elixir {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .btnRemoveAll {

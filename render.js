@@ -5,7 +5,7 @@ self.onmessage = e => {
       cardsCode = e.data.cardsCode,
       cardsElixir = e.data.cardsElixir,
       contentToCopy,
-      html = '<button title="Apagar todos os Decks" onclick="deleteAll()">Apagar todos os Decks</button><h1>Quantidade de Decks salvos: </h1>';
+      html = '<button title="Apagar todos os Decks" class="btnRemoveAll" onclick="deleteAll()">Apagar todos os Decks</button><h1>Quantidade de Decks salvos: </h1>';
 
   for (let i = 0; i < decks.length; i++) {
     contentToCopy = `https://link.clashroyale.com/deck/pt?deck=${cardsCode[decks[i][0]]};${cardsCode[decks[i][1]]};${cardsCode[decks[i][2]]};${cardsCode[decks[i][3]]};${cardsCode[decks[i][4]]};${cardsCode[decks[i][5]]};${cardsCode[decks[i][6]]};${cardsCode[decks[i][7]]}`;

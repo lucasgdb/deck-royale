@@ -429,7 +429,7 @@ function combination() {
 function infoCards() {
   smalltalk.alert('Informações',
     (window.screen.width < 1024 ? 'Para trocar alguma Carta, basta pressionar e segurar a Carta.\nPara copiar o link do Deck sem abrir no Clash Royale, basta pressionar e segurar o botão Copiar Deck.\nPara remover o Deck atual, basta pressionar e segurar o botão Colar Deck.\nPara embaralhar o Deck atal, basta pressionar e segurar o botão Gerar Deck.\nA função Voltar Deck só é válida para Decks Inteligentes.' : 'Para trocar alguma Carta, clique com o botão direito na Carta.\nPara remover o Deck atual, clique com o botão direito do mouse no botão Colar Deck.\nPara Embaralhar o Deck atual, clique com o botão direito do mouse em Gerar Deck.') +
-    (cbDeckInteligente.checked ? '\nA Seleção de Cartas e os DropDowns de Arenas, Raridades e Tipos só funcionam no modo Deck Inteligente desligado.' : '\nQuantidade de Cartas a serem geradas: ' + allowedCards.length + '\nCombinações de Decks possíveis: ' + combination())
+    (cbDeckInteligente.checked ? '\nA Seleção de Cartas e os DropDowns de Arenas, Raridades e Tipos só funcionam no modo Deck Inteligente desligado.' : `\nQuantidade de Cartas a serem geradas: ${allowedCards.length}\nCombinações de Decks possíveis: ${combination()}`)
   );
 }
 
@@ -437,7 +437,7 @@ function copyDeck() {
   if (prevDeck.length > 0)
     prevDeck.pop();
   if (screen.width < 1024)
-    smalltalk.confirm('Abrir Deck', 'Deseja abrir o Deck no Clash Royale?').then(() => window.open('clashroyale://copyDeck?' + contentToCopy, '_self')).catch(() => {});
+    smalltalk.confirm('Abrir Deck', 'Deseja abrir o Deck no Clash Royale?').then(() => window.open(`clashroyale://copyDeck?${contentToCopy}`, '_self')).catch(() => {});
   else
     btnCopy.setAttribute('data-clipboard-text', 'https://link.clashroyale.com/deck/pt?' + contentToCopy);
 }
@@ -450,7 +450,7 @@ function copyDeckSec() {
 }
 
 function copyDeckSaved(deck) {
-  smalltalk.confirm('Abrir Deck', 'Deseja abrir o Deck no Clash Royale?').then(() => window.open('clashroyale://copyDeck?deck=' + deck, '_self')).catch(() => {});
+  smalltalk.confirm('Abrir Deck', 'Deseja abrir o Deck no Clash Royale?').then(() => window.open(`clashroyale://copyDeck?deck=${deck}`, '_self')).catch(() => {});
 }
 
 function paste(linkDeck = String) {
@@ -479,7 +479,7 @@ function paste(linkDeck = String) {
 function pasteDeck(content = null) {
   if (content === null) {
     if (screen.width >= 1024)
-      smalltalk.prompt('Colar Deck', 'Cole o link do Deck abaixo\nEx: https://link.clashroyale.com/deck/pt?deck=26000018;28000009;26000003;28000008....')
+      smalltalk.prompt('Colar Deck', 'Cole o link do Deck abaixo\nEx: https://link.clashroyale.com/deck/pt?deck=26000018;28000009;26000003;28000008...')
       .then(linkDeck => {
         paste(linkDeck);
       }).catch(() => {});

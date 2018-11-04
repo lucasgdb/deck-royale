@@ -577,18 +577,26 @@ function showSections() {
     navSection.style.height = '100%';
     if (selectedContainer === 0)
       dbSection.style.display = 'none';
-    else if (selectedContainer === 1)
+    if (selectedContainer === 1)
       selectSection.style.display = 'none';
-    else if (selectedContainer === 2)
+    if (selectedContainer === 2)
+      savedSection.style.display = 'none';
+    if (selectedContainer === 3)
+      configSection.style.display = 'none';
+    else
       aboutSection.style.display = 'none';
   } else {
     navSection.style.width = '40px';
     navSection.style.height = '35px';
     if (selectedContainer === 0)
       dbSection.style.display = 'block';
-    else if (selectedContainer === 1)
+    if (selectedContainer === 1)
       selectSection.style.display = 'block';
-    else if (selectedContainer === 2)
+    if (selectedContainer === 2)
+      savedSection.style.display = 'block';
+    if (selectedContainer === 3)
+      configSection.style.display = 'block';
+    else
       aboutSection.style.display = 'block';
   }
 }

@@ -684,7 +684,7 @@ function lightTheme() {
 function saveDeck() {
   let exists = false,
     empty = currentDeck.indexOf(0) === -1 ? false : true,
-    max = (localStorage.getItem('decks') !== null && JSON.parse(localStorage.getItem('decks')).deckList.length > 99) ? true : false;
+    max = (localStorage.getItem('decks') !== null && JSON.parse(localStorage.getItem('decks')).deckList.length > 39) ? true : false;
 
   for (let i = 0; i < (localStorage.getItem('decks') === null || empty || max ? 0 : JSON.parse(localStorage.getItem('decks')).deckList.length); i++) {
     let qtd = 0;
@@ -703,7 +703,7 @@ function saveDeck() {
     render();
   } else if (exists) smalltalk.alert('Deck repetido', 'O Deck atual já está salvo.');
   else if (empty) smalltalk.alert('Deck incompleto', 'Não é permitido salvar Decks com Cartas faltando.');
-  else smalltalk.alert('Limite excedido', 'Não é permitido salvar mais de 100 Decks.');
+  else smalltalk.alert('Limite excedido', 'Não é permitido salvar mais de 40 Decks.');
 }
 
 function compareArrays(array1, array2) {
@@ -727,15 +727,14 @@ function deleteDeck(deck = Array) {
             newDecksCurrent = `${newDecksCurrent.substring(0, newDecksCurrent.length - 1)}${decksCurrent.length === 1 ? 'empty' : ']'}`;
         }
       else newDecksCurrent += `[${decksCurrent[i]}]${i === decksCurrent.length - 1 ? ']' : ','}`;
-  
+
       return newDecksCurrent;
     })();
-  
-    if (newDeck === 'empty')
-      localStorage.removeItem('decks');
+
+    if (newDeck === 'empty') localStorage.removeItem('decks');
     else localStorage.setItem('decks', `{"deckList": ${newDeck}}`);
     render();
-  }).catch(() => {});  
+  }).catch(() => {});
 }
 
 function deleteAll() {

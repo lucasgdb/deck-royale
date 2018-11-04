@@ -18,9 +18,10 @@ img, ins, .navSection h1 {
 button {
 	outline: none;
 	border: 1px solid var(--corDeBorda);
-	color: var(--corDeLetraBotao);
+  color: var(--corDeLetraBotao);
 	position: relative;
-	user-select: none;
+  user-select: none;
+  line-height: 22px;
 	-moz-user-select: none;
 	background-color: var(--corSecundaria);
 	font-weight: bold
@@ -181,7 +182,7 @@ ins {
 .btnCopiar, .btnSalvar, .btnColar {
 	left: 5px;
 	height: 40px;
-	font-size: 17px;
+	font-size: 15px;
 	width: 121px
 }
 
@@ -297,7 +298,7 @@ ins {
 .btnApagar, .btnColarS, .btnCopiarS {
 	height: 100%;
 	width: 100px;
-	font-size: 14px;
+  font-size: 14px;
 	position: absolute
 }
 

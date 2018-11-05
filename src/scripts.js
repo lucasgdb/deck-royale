@@ -240,10 +240,11 @@ const cardsName = [
   cbConfigs = document.querySelectorAll('.configSection input'),
   cbDeckInteligente = document.querySelector('#smartDeck'),
   btnVoltar = document.querySelector('.btnVoltar'),
+  arenas = [90, 90, 83, 77, 71, 63, 55, 47, 39, 31, 25, 19],
   root = document.querySelector(':root');
 
 function changeDeck() {
-  const selectedArena = [90, 90, 83, 77, 71, 63, 55, 47, 39, 31, 25, 19][ddArena.selectedIndex];
+  const selectedArena = arenas[ddArena.selectedIndex];
 
   allowedCards.splice(0, allowedCards.length);
   for (let i = 1; i < selectedArena; i++) {
@@ -583,7 +584,7 @@ function showSections() {
       savedSection.style.display = 'none';
     if (selectedContainer === 3)
       configSection.style.display = 'none';
-    else
+    else if (selectedContainer === 4)
       aboutSection.style.display = 'none';
   } else {
     navSection.style.width = '40px';
@@ -596,7 +597,7 @@ function showSections() {
       savedSection.style.display = 'block';
     if (selectedContainer === 3)
       configSection.style.display = 'block';
-    else
+    else if (selectedContainer === 4)
       aboutSection.style.display = 'block';
   }
 }
@@ -681,73 +682,27 @@ function lightTheme() {
     });
 })();
 
-function saveDeck() {
-  let exists = false,
-    empty = currentDeck.indexOf(0) === -1 ? false : true,
-    max = (localStorage.getItem('decks') !== null && JSON.parse(localStorage.getItem('decks')).deckList.length > 39) ? true : false;
+const createDecks = new Worker('./render.js'),
+  saveDecks = new Worker('./save.js'),
+  deleteDecks = new Worker('./delete.js');
 
-  for (let i = 0; i < (localStorage.getItem('decks') === null || empty || max ? 0 : JSON.parse(localStorage.getItem('decks')).deckList.length); i++) {
-    let qtd = 0;
-    for (let j = 0; j < currentDeck.length; j++)
-      for (let k = 0; k < currentDeck.length; k++)
-        if (currentDeck[j] === JSON.parse(localStorage.getItem('decks')).deckList[i][k])
-          qtd++;
+createDecks.onmessage = e => {
+  savedDecks.innerHTML = e.data;
+  document.querySelector('.savedSection h1').innerText = `Quantidade de Decks salvos: ${JSON.parse(localStorage.getItem('decks')).deckList.length}`;
+}
 
-    if (qtd === 8) {
-      exists = true;
-      break;
-    }
-  }
-  if (!exists && !empty && !max) {
-    localStorage.setItem('decks', `{"deckList": [${localStorage.getItem('decks') !== null ? `[${JSON.parse(localStorage.getItem('decks')).deckList.join('],[')}],[${currentDeck.join(',')}]` : `[${currentDeck.join(',')}]`}]}`);
+saveDecks.onmessage = e => {
+  if (!e.data.exists) {
+    localStorage.setItem('decks', e.data.deck);
     render();
-  } else if (exists) smalltalk.alert('Deck repetido', 'O Deck atual já está salvo.');
-  else if (empty) smalltalk.alert('Deck incompleto', 'Não é permitido salvar Decks com Cartas faltando.');
-  else smalltalk.alert('Limite excedido', 'Não é permitido salvar mais de 40 Decks.');
+  } else smalltalk.alert('Deck repetido', 'O Deck atual já está salvo.');
 }
 
-function compareArrays(array1, array2) {
-  let qtd = 0;
-  if (array1.length === array2.length)
-    for (let i = 0; i < array1.length; i++)
-      if (array1[i] === array2[i])
-        qtd++;
-
-  return array1.length === qtd;
+deleteDecks.onmessage = e => {
+  if (e.data === 'empty') localStorage.removeItem('decks');
+  else localStorage.setItem('decks', `{"deckList": ${e.data}}`);
+  render();
 }
-
-function deleteDeck(deck = Array) {
-  smalltalk.confirm('Remover Deck', 'Deseja remover o Deck?').then(() => {
-    let newDeck = (() => {
-      const decksCurrent = JSON.parse(localStorage.getItem('decks')).deckList;
-      let newDecksCurrent = '[';
-      for (let i = 0; i < decksCurrent.length; i++)
-        if (compareArrays(decksCurrent[i], deck)) {
-          if (i === decksCurrent.length - 1)
-            newDecksCurrent = `${newDecksCurrent.substring(0, newDecksCurrent.length - 1)}${decksCurrent.length === 1 ? 'empty' : ']'}`;
-        }
-      else newDecksCurrent += `[${decksCurrent[i]}]${i === decksCurrent.length - 1 ? ']' : ','}`;
-
-      return newDecksCurrent;
-    })();
-
-    if (newDeck === 'empty') localStorage.removeItem('decks');
-    else localStorage.setItem('decks', `{"deckList": ${newDeck}}`);
-    render();
-  }).catch(() => {});
-}
-
-function deleteAll() {
-  smalltalk
-    .confirm('Remover Decks', 'Deseja remover todos os Decks salvos?')
-    .then(() => {
-      localStorage.removeItem('decks');
-      render();
-    })
-    .catch(() => {});
-}
-
-let createDecks = new Worker('./render.js');
 
 function render() {
   if (localStorage.getItem('decks') !== null && JSON.parse(localStorage.getItem('decks')).deckList.length > 0) {
@@ -762,9 +717,35 @@ function render() {
   } else savedDecks.innerHTML = '<h1 class="noneDeck">Nenhum Deck salvo.</h1>';
 }
 
-createDecks.onmessage = e => {
-  savedDecks.innerHTML = e.data;
-  document.querySelector('.savedSection h1').innerText = `Quantidade de Decks salvos: ${JSON.parse(localStorage.getItem('decks')).deckList.length}`;
+function saveDeck() {
+  let empty = currentDeck.indexOf(0) === -1 ? false : true,
+  max = (localStorage.getItem('decks') !== null && JSON.parse(localStorage.getItem('decks')).deckList.length > 99) ? true : false;
+  
+  if (!empty && !max)
+    saveDecks.postMessage({"decks": JSON.parse(localStorage.getItem('decks')), "currentDeck": currentDeck});
+  else if (empty) smalltalk.alert('Deck incompleto', 'Não é permitido salvar Decks com Cartas faltando.');
+  else smalltalk.alert('Limite excedido', 'Não é permitido salvar mais de 100 Decks.');
+}
+
+function deleteDeck(deck = Array) {
+  smalltalk.confirm('Remover Deck', 'Deseja remover o Deck?').then(() => {
+    deleteDecks.postMessage({"deckList": JSON.parse(localStorage.getItem('decks')).deckList, "deck": deck});    
+  }).catch(() => {});
+}
+
+function deleteAll() {
+  smalltalk
+    .confirm('Remover Decks', 'Deseja remover todos os Decks salvos?')
+    .then(() => {
+      localStorage.removeItem('decks');
+      render();
+    })
+    .catch(() => {});
+}
+
+function showInfo(index = Number) {
+  const arena = (() => { for (let j = 1; j < arenas.length; j++) if (index < arenas[arenas.length - j]) return j })();
+  info.innerHTML = `${cardsInformation[index]}<br />Elixir: ${cardsElixir[index]}<br />Arena: ${arena}`;
 }
 
 if (localStorage.getItem('theme') === 'light')
@@ -798,7 +779,8 @@ for (let i = 0; i < cards.length; i++) {
     }
   });
   cards[i].addEventListener('click', () => {
-    info.innerHTML = cardsInformation[currentDeck[i]] + (currentDeck[i] === 0 ? '' : '<br />Elixir: ' + cardsElixir[currentDeck[i]]);
+    if (currentDeck[i] !== 0) showInfo(currentDeck[i]);
+    else info.innerText = 'Nenhuma Carta selecionada';
   });
 }
 
@@ -813,12 +795,15 @@ cbConfigs[0].addEventListener('change', () => {
 });
 
 document.onkeydown = e => {
+  e.preventDefault();
   if (e.which === 67)
     btnCopy.click();
   if (e.which === 71)
     buildDeck();
   else if (e.which === 83)
     saveDeck();
+  else if (e.ctrlKey && e.which === 86)
+    pasteDeck();
 }
 
 window.onload = function () {

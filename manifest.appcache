@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 0.1.4
+# 0.1.5
 
 CACHE:
 ./icon.png
@@ -99,4 +99,6 @@ CACHE:
 ./images/undefined_opt-min.png
 ./images/logo.png
 ./render.js
+./save.js
+./delete.js
 ./src/scripts.js

@@ -24,7 +24,7 @@ button {
   line-height: 22px;
 	-moz-user-select: none;
 	background-color: var(--corSecundaria);
-	font-weight: bold
+	font-weight: 500
 }
 
 select {
@@ -182,7 +182,7 @@ ins {
 .btnCopiar, .btnSalvar, .btnColar {
 	left: 5px;
 	height: 40px;
-	font-size: 15px;
+	font-size: 16px;
 	width: 121px
 }
 
@@ -203,8 +203,8 @@ ins {
 .btnGerar {
 	right: 5px;
 	width: 128px;
-	font-size: 18px;
-	font-weight: 800
+	font-size: 19px;
+	font-weight: 600
 }
 
 .configContainer {
@@ -230,6 +230,8 @@ ins {
 	font-size: 19px;
 	font-weight: bold
 }
+
+.configContainer button ins { font-size: 18px }
 
 /* INFO CONTAINER
 ********************/

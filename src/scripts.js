@@ -651,7 +651,8 @@ async function downDecks() {
     response = await fetch('https://docs.royaleapi.com/json/popular_decks.json').then(data => data.json()).catch(() => smalltalk.alert('Erro', 'Um erro aconteceu, tente novamente mais tarde.'));
  
   if (response !== null)
-    if (response.length >= maxDown) {
+    if (response.length === maxDown) smalltalk.alert('Chegou ao limite', 'Não há mais Decks para mostrar.');
+    else {
       for (let i = maxDown; i < maxDown + (maxDown + 10 > response.length ? response.length - maxDown : 10); i++)
         html += `
           <section class="cardsContainerS">
@@ -677,7 +678,7 @@ async function downDecks() {
       bestDecks.innerHTML = html;
       maxDown += (maxDown + 10 > response.length ? response.length - maxDown : 10);
       document.querySelector('.bestSection h1').innerText = `Quantidade de Decks nesta área: ${maxDown}`;
-    } else smalltalk.alert('Chegou ao limite', 'Não há mais Decks para mostrar.');
+    }
 }
 
 (function updateCards() {

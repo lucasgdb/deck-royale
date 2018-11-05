@@ -102,3 +102,7 @@ CACHE:
 ./src/save.js
 ./src/delete.js
 ./src/scripts.js
+./manifest.appcache
+
+NETWORK:
+*

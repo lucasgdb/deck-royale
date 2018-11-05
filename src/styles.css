@@ -138,8 +138,8 @@ ins {
 
 /* BUILDER SECTION
 ********************/
-.navSection, .builderSection, .savedSection { display: none }
-.builderSection, .selectSection, .savedSection, .configSection, .aboutSection {
+.navSection, .builderSection, .savedSection, .bestSection { display: none }
+.builderSection, .selectSection, .savedSection, .bestSection, .configSection, .aboutSection {
 	position: relative;
 	top: 35px;
 	width: 100%;
@@ -288,6 +288,7 @@ ins {
 .configContainerS {
 	min-height: 50px;
 	max-width: 600px;
+	margin-top: 10px;
 	border: 1px solid var(--corDeBorda);
 	position: relative
 }
@@ -316,7 +317,6 @@ ins {
 
 .elixir {
 	margin-top: 10px;
-	margin-bottom: 10px;
 }
 
 .btnRemoveAll {
@@ -324,6 +324,17 @@ ins {
 	width: 100%;
 	height: 50px;
 	font-size: 20px;
+}
+
+/* BEST DECKS
+********************/
+.btnCenter {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 10px 20px;
+	font-size: 18px;
+	margin-top: 5px
 }
 
 /* CONFIG
@@ -472,7 +483,7 @@ ins {
 		font-size: 19px;
 	}
 
-	.builderSection, .selectSection, .savedSection, .configSection, .aboutSection {
+	.builderSection, .selectSection, .savedSection, .bestSection, .configSection, .aboutSection {
 		top: 0;
 		left: 176px;
 		width: calc(100% - 176px)

@@ -230,6 +230,8 @@ const cardsName = [
   savedDecks = document.querySelector('.savedSection section'),
   selectSection = document.querySelector('.selectSection'),
   configSection = document.querySelector('.configSection'),
+  bestSection = document.querySelector('.bestSection'),
+  bestDecks = document.querySelector('.bestSection section'),
   mediaComponent = document.querySelector('#elixirMedio'),
   ddArena = document.querySelector('#ddArena'),
   ddRarity = document.querySelector('#ddRarity'),
@@ -392,7 +394,7 @@ function buildDeck() {
 }
 
 function switchContainer(container = dbSection) {
-  const containers = [dbSection, selectSection, savedSection, configSection, aboutSection];
+  const containers = [dbSection, selectSection, savedSection, bestSection, configSection, aboutSection];
 
   for (let i = 0; i < containers.length; i++) {
     if (containers[i] === container) {
@@ -543,6 +545,12 @@ function matche(xvar) {
       else if (selectedContainer === 1)
         selectSection.style.display = 'block';
       else if (selectedContainer === 2)
+        savedSection.style.display = 'block';
+      else if (selectedContainer === 3)
+        bestSection.style.display = 'block';
+      else if (selectedContainer === 4)
+        configSection.style.display = 'block';
+      else
         aboutSection.style.display = 'block';
     }
     navSection.style.width = '175px';
@@ -556,7 +564,6 @@ function matche(xvar) {
 matche(x);
 
 x.addListener(matche);
-
 const y = matchMedia('(max-width: 767px)');
 
 function matche2(yvar) {
@@ -578,26 +585,30 @@ function showSections() {
     navSection.style.height = '100%';
     if (selectedContainer === 0)
       dbSection.style.display = 'none';
-    if (selectedContainer === 1)
+    else if (selectedContainer === 1)
       selectSection.style.display = 'none';
-    if (selectedContainer === 2)
+    else if (selectedContainer === 2)
       savedSection.style.display = 'none';
-    if (selectedContainer === 3)
-      configSection.style.display = 'none';
+    else if (selectedContainer === 3)
+      bestSection.style.display = 'none';
     else if (selectedContainer === 4)
+      configSection.style.display = 'none';
+    else
       aboutSection.style.display = 'none';
   } else {
     navSection.style.width = '40px';
     navSection.style.height = '35px';
     if (selectedContainer === 0)
       dbSection.style.display = 'block';
-    if (selectedContainer === 1)
+    else if (selectedContainer === 1)
       selectSection.style.display = 'block';
-    if (selectedContainer === 2)
+    else if (selectedContainer === 2)
       savedSection.style.display = 'block';
-    if (selectedContainer === 3)
-      configSection.style.display = 'block';
+    else if (selectedContainer === 3)
+      bestSection.style.display = 'block';
     else if (selectedContainer === 4)
+      configSection.style.display = 'block';
+    else
       aboutSection.style.display = 'block';
   }
 }
@@ -629,6 +640,44 @@ function lightTheme() {
   root.style.setProperty('--corDeBorda', 'var(--corPrimaria)');
   root.style.setProperty('--corDeLetra', 'var(--corPrimaria)');
   localStorage.setItem('theme', 'light');
+}
+
+let maxDown = 0,
+  response = null,
+  html = '<button title="Remover todos os Decks" class="btnRemoveAll" onclick="deleteAllBest()">Remover todos os Decks</button><h1 class="elixir">Quantidade de Decks nesta área: </h1>';
+
+async function downDecks() {
+  if (response === null)
+    response = await fetch('https://docs.royaleapi.com/json/popular_decks.json').then(data => data.json()).catch(() => smalltalk.alert('Erro', 'Um erro aconteceu, tente novamente mais tarde.'));
+ 
+  if (response !== null)
+    if (response.length >= maxDown) {
+      for (let i = maxDown; i < maxDown + (maxDown + 10 > response.length ? response.length - maxDown : 10); i++)
+        html += `
+          <section class="cardsContainerS">
+            <div><img src="./images/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[0].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[1].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[2].key}_opt-min.png" alt="${response[i].cards[2].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[2].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[2].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[3].key}_opt-min.png" alt="${response[i].cards[3].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[3].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[3].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[4].key}_opt-min.png" alt="${response[i].cards[4].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[4].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[4].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[5].key}_opt-min.png" alt="${response[i].cards[5].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[5].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[5].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[6].key}_opt-min.png" alt="${response[i].cards[6].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[6].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[6].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[7].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id.toString())})"/></div>
+          </section>
+
+          <h1 class="elixir">Elixir médio: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
+
+          <section class="configContainerS">
+            <button class="btnCopiarS" title="Copiar Deck" ${screen.width < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `data-clipboard-text=${response[i].decklink}`}>Copiar Deck</button>
+            <button class="btnApagar" title="Salvar Deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id.toString())},${cardsCode.indexOf(response[i].cards[1].id.toString())},${cardsCode.indexOf(response[i].cards[2].id.toString())},${cardsCode.indexOf(response[i].cards[3].id.toString())},${cardsCode.indexOf(response[i].cards[4].id.toString())},${cardsCode.indexOf(response[i].cards[5].id.toString())},${cardsCode.indexOf(response[i].cards[6].id.toString())},${cardsCode.indexOf(response[i].cards[7].id.toString())}])">Salvar Deck</button>
+            <button class="btnColarS" title="Colar Deck" onclick="pasteDeck('${response[i].decklink}')">Colar Deck</button>
+          </section>
+        `;
+
+      bestDecks.innerHTML = html;
+      maxDown += (maxDown + 10 > response.length ? response.length - maxDown : 10);
+      document.querySelector('.bestSection h1').innerText = `Quantidade de Decks nesta área: ${maxDown}`;
+    } else smalltalk.alert('Chegou ao limite', 'Não há mais Decks para mostrar.');
 }
 
 (function updateCards() {
@@ -682,9 +731,9 @@ function lightTheme() {
     });
 })();
 
-const createDecks = new Worker('./render.js'),
-  saveDecks = new Worker('./save.js'),
-  deleteDecks = new Worker('./delete.js');
+const createDecks = new Worker('./src/render.js'),
+  saveDecks = new Worker('./src/save.js'),
+  deleteDecks = new Worker('./src/delete.js');
 
 createDecks.onmessage = e => {
   savedDecks.innerHTML = e.data;
@@ -717,19 +766,25 @@ function render() {
   } else savedDecks.innerHTML = '<h1 class="noneDeck">Nenhum Deck salvo.</h1>';
 }
 
-function saveDeck() {
-  let empty = currentDeck.indexOf(0) === -1 ? false : true,
-  max = (localStorage.getItem('decks') !== null && JSON.parse(localStorage.getItem('decks')).deckList.length > 99) ? true : false;
-  
+function saveDeck(deck = currentDeck) {
+  let empty = deck.indexOf(0) === -1 ? false : true,
+    max = (localStorage.getItem('decks') !== null && JSON.parse(localStorage.getItem('decks')).deckList.length > 99) ? true : false;
+
   if (!empty && !max)
-    saveDecks.postMessage({"decks": JSON.parse(localStorage.getItem('decks')), "currentDeck": currentDeck});
+    saveDecks.postMessage({
+      "decks": JSON.parse(localStorage.getItem('decks')),
+      "currentDeck": deck
+    });
   else if (empty) smalltalk.alert('Deck incompleto', 'Não é permitido salvar Decks com Cartas faltando.');
   else smalltalk.alert('Limite excedido', 'Não é permitido salvar mais de 100 Decks.');
 }
 
 function deleteDeck(deck = Array) {
   smalltalk.confirm('Remover Deck', 'Deseja remover o Deck?').then(() => {
-    deleteDecks.postMessage({"deckList": JSON.parse(localStorage.getItem('decks')).deckList, "deck": deck});    
+    deleteDecks.postMessage({
+      "deckList": JSON.parse(localStorage.getItem('decks')).deckList,
+      "deck": deck
+    });
   }).catch(() => {});
 }
 
@@ -743,8 +798,22 @@ function deleteAll() {
     .catch(() => {});
 }
 
+function deleteAllBest() {
+  smalltalk
+    .confirm('Remover Decks', 'Deseja remover todos os Decks desta área?')
+    .then(() => {
+      html = '<button title="Remover todos os Decks" class="btnRemoveAll" onclick="deleteAllBest()">Remover todos os Decks</button><h1 class="elixir">Quantidade de Decks nesta área: </h1>';
+      bestDecks.innerHTML = '<h1 class="noneDeck">Nenhum Deck nesta área.</h1>';
+      maxDown = 0;
+    })
+    .catch(() => {});
+}
+
 function showInfo(index = Number) {
-  const arena = (() => { for (let j = 1; j < arenas.length; j++) if (index < arenas[arenas.length - j]) return j })();
+  const arena = (() => {
+    for (let j = 1; j < arenas.length; j++)
+      if (index < arenas[arenas.length - j]) return j
+  })();
   info.innerHTML = `${cardsInformation[index]}<br />Elixir: ${cardsElixir[index]}<br />Arena: ${arena}`;
 }
 
@@ -795,10 +864,9 @@ cbConfigs[0].addEventListener('change', () => {
 });
 
 document.onkeydown = e => {
-  e.preventDefault();
   if (e.which === 67)
     btnCopy.click();
-  if (e.which === 71)
+  else if (e.which === 71)
     buildDeck();
   else if (e.which === 83)
     saveDeck();

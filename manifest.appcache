@@ -98,9 +98,9 @@ CACHE:
 ./images/new-card_opt-min.png
 ./images/undefined_opt-min.png
 ./images/logo.png
-./render.js
-./save.js
-./delete.js
+./src/render.js
+./src/save.js
+./src/delete.js
 ./src/scripts.js
 ./sitemap.xml
 ./google1abf4ecce1258ee8.html

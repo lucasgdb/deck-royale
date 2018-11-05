@@ -26,6 +26,7 @@
 			<button id="selectedButton" title="Gerador de Deck" onclick="closeNav(); switchContainer()">Gerador de Deck</button>
 			<button title="Seleção de Cartas" onclick="closeNav(); switchContainer(selectSection)">Seleção de Cartas</button>
 			<button title="Decks salvos" onclick="closeNav(); switchContainer(savedSection)">Decks salvos</button>
+			<button title="Decks salvos" onclick="closeNav(); switchContainer(bestSection)">Melhores Decks</button>
 			<button title="Configurações" onclick="closeNav(); switchContainer(configSection)">Configurações</button>
 			<button title="Sobre" onclick="closeNav(); switchContainer(aboutSection)">Sobre</button>
 		</nav>
@@ -109,6 +110,14 @@
 				<h1 class="noneDeck">Nenhum Deck salvo.</h1>
 				<!-- Código a ser gerado pelo JavaScript -->
 			</section>
+		</section>
+
+		<section class="bestSection">
+			<section>
+				<h1 class="noneDeck">Nenhum Deck nesta área.</h1>
+				<!-- Código a ser gerado pelo JavaScript -->
+			</section>
+			<button class="btnCenter" onclick="downDecks()" title="Mostrar mais 10 Decks">Mostrar mais 10 Decks</button>
 		</section>
 
 		<section class="configSection">

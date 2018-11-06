@@ -462,6 +462,10 @@ function copyDeckSec() {
 	} else location.search = `deck=${contentToCopy.split('deck=')[1].split(';').map(id => cardsCode.indexOf(id)).join(';')}`
 }
 
+function copyDeckPhone(deck) {
+	location.search = `deck=${deck.split(';').map(id => cardsCode.indexOf(id)).join(';')}`
+}
+
 function copyDeckSaved(deck) {
 	if (screen.width < 1024)
 		smalltalk.confirm('Abrir Deck', 'Deseja abrir o Deck no Clash Royale?').then(() => window.open(`clashroyale://copyDeck?deck=${deck}`, '_self')).catch(() => { })
@@ -700,7 +704,7 @@ async function downDecks() {
           <h1 class="elixir">Elixir médio: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
 
           <section class="configContainerS">
-            <button class="btnCopiarS" title="Copiar Deck" ${screen.width < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `data-clipboard-text=${response[i].decklink} oncontextmenu="copyDeckSaved('${response[i].cards.map(card => card.id).join(';')}')"`}>Copiar Deck</button>
+            <button class="btnCopiarS" title="Copiar Deck" oncontextmenu="copyDeckSaved('${response[i].cards.map(card => card.id).join(';')}')" ${screen.width < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `data-clipboard-text=${response[i].decklink}`}>Copiar Deck</button>
             <button class="btnApagar" title="Salvar Deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id.toString())},${cardsCode.indexOf(response[i].cards[1].id.toString())},${cardsCode.indexOf(response[i].cards[2].id.toString())},${cardsCode.indexOf(response[i].cards[3].id.toString())},${cardsCode.indexOf(response[i].cards[4].id.toString())},${cardsCode.indexOf(response[i].cards[5].id.toString())},${cardsCode.indexOf(response[i].cards[6].id.toString())},${cardsCode.indexOf(response[i].cards[7].id.toString())}])">Salvar Deck</button>
             <button class="btnColarS" title="Colar Deck" onclick="pasteDeck('${response[i].decklink}')">Colar Deck</button>
           </section>

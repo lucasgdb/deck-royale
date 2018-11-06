@@ -23,12 +23,12 @@
 		<nav class="navSection">
 			<div class="container" onclick="showSections();"><div></div></div>
 			<h1>Coded by <a href="http://youtube.com/c/LucasNaja/" target="_blank" rel="noopener noreferrer" class="effect">Lucas Naja</a></h1>
-			<button id="selectedButton" title="Gerador de Deck" onclick="closeNav(); switchContainer()">Gerador de Deck</button>
-			<button title="Seleção de Cartas" onclick="closeNav(); switchContainer(selectSection)">Seleção de Cartas</button>
-			<button title="Decks salvos" onclick="closeNav(); switchContainer(savedSection)">Decks salvos</button>
-			<button title="Decks salvos" onclick="closeNav(); switchContainer(bestSection)">Melhores Decks</button>
-			<button title="Configurações" onclick="closeNav(); switchContainer(configSection)">Configurações</button>
-			<button title="Sobre" onclick="closeNav(); switchContainer(aboutSection)">Sobre</button>
+			<button id="selectedButton" title="Gerador de Deck" onclick="closeNav(); switchContainer(); if (history.state !== 0 && history.state !== null) history.pushState(0, 'changed')">Gerador de Deck</button>
+			<button title="Seleção de Cartas" onclick="closeNav(); switchContainer(selectSection); if (history.state !== 1) history.pushState(1, 'changed')">Seleção de Cartas</button>
+			<button title="Decks salvos" onclick="closeNav(); switchContainer(savedSection); if (history.state !== 2) history.pushState(2, 'changed')">Decks salvos</button>
+			<button title="Melhores Decks" onclick="closeNav(); switchContainer(bestSection); if (history.state !== 3) history.pushState(3, 'changed')">Melhores Decks</button>
+			<button title="Configurações" onclick="closeNav(); switchContainer(configSection); if (history.state !== 4) history.pushState(4, 'changed')">Configurações</button>
+			<button title="Sobre" onclick="closeNav(); switchContainer(aboutSection); if (history.state !== 5) history.pushState(5, 'changed')">Sobre</button>
 		</nav>
 
 		<section class="builderSection">
@@ -102,6 +102,7 @@
 				<button title="Marcar todas">Marcar todas as Cartas</button>
 				<button title="Desmarcar todas">Desmarcar todas as Cartas</button>
 			</div>
+			<h2 class="noneDeck">Quantidade de Cartas permitidas: 89</h2>
 			<!-- Código gerado pelo JavaScript -->
 		</section>
 
@@ -121,7 +122,9 @@
 		</section>
 
 		<section class="configSection">
-			<section><div><input type="checkbox" id="theme"><label for="theme">Dark theme</label></div></section>
+			<section><div><input type="radio" name="theme" id="theme"><label for="theme">Tema dark</label></div></section>
+			<section><div><input type="radio" name="theme" id="theme1"><label for="theme1">Tema light</label></div></section>
+			<section><div><input type="radio" name="theme" id="theme2"><label for="theme2">Tema azul</label></div></section>
 		</section>
 
 		<section class="aboutSection">

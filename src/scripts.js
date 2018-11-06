@@ -45,7 +45,7 @@ const cardsName = [
     '<ins>Balão</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 3seg<br />Alvos: Construções<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
     '<ins>Esqueleto Gigante</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 1.5seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
     '<ins>Valquíria</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.6seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-    '<ins>Lápide</ins><br />Raridade: Rara<br />Tipo: Construção<br />Velocidade de geração: 2.9seg<br />Tempo de mobilização: 1seg<br />Tempo de efeito: 40seg',
+    '<ins>Lápide</ins><br />Raridade: Rara<br />Tipo: Construção<br />Velocidade de geração: 3.1seg<br />Tempo de mobilização: 1seg<br />Tempo de efeito: 40seg',
     '<ins>Esqueletos</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1seg<br />Alvos: Terrestre<br />Velocidade: Rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg<br />Contagem: x3',
     '<ins>Bombardeiro</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.9seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: 5<br />Tempo de mobilização: 1seg',
     '<ins>Golem</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 2.5seg<br />Alvos: Construções<br />Velocidade: Lenta<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 3seg',
@@ -72,7 +72,7 @@ const cardsName = [
     '<ins>Morcegos</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Muito rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg<br />Contagem: x5',
     '<ins>Dragão Infernal</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 0.4seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 3.5<br />Tempo de mobilização: 1seg',
     '<ins>Tronco</ins><br />Raridade: Lendária<br />Tipo: Feitiço<br />Alvos: Terrestre<br />Largura: 3.9<br />Alcance: 11.1',
-    '<ins>Carrinho de Canhão</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 1.2seg<br />Alvos: Terrestre<br />Velocidade: Rápida<br />Alcance: 5<br />Tempo de mobilização: 1seg',
+    '<ins>Carrinho de Canhão</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 1.3seg<br />Alvos: Terrestre<br />Velocidade: Rápida<br />Alcance: 5<br />Tempo de mobilização: 1seg',
     '<ins>X-Besta</ins><br />Raridade: Épica<br />Tipo: Construção<br />Velocidade de impacto: 0.25seg<br />Alvos: Terrestre<br />Alcance: 11.5<br />Tempo de mobilização: 3.5seg<br />Tempo de efeito: 40seg',
     '<ins>Máquina Voadora</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Rápida<br />Alcance: 6<br />Tempo de mobilização: 1seg',
     '<ins>Foguete</ins><br />Raridade: Rara<br />Tipo: Feitiço<br />Raio: 2',
@@ -100,7 +100,7 @@ const cardsName = [
     '<ins>Goblin com Dardo</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 0.6seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Muito rápida<br />Alcance: 6.5<br />Tempo de mobilização: 1seg',
     '<ins>Gangue de Goblins</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Contagem de Goblin: x3<br />Contagem de Goblin Lanceiro: x2<br />Tempo de mobilização: 1seg',
     '<ins>Patifes</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Contagem de Patifa: x2<br />Contagem de Patife: x1<br />Tempo de mobilização: 1seg',
-    '<ins>Megacavaleiro</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 1.8seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Alcance por colisão: 3.5 - 5<br />Tempo de mobilização: 1seg',
+    '<ins>Megacavaleiro</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 1.7seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Alcance por colisão: 3.5 - 5<br />Tempo de mobilização: 1seg',
     '<ins>Arqueiro Mágico</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 7<br />Alcance da bala: 11<br />Tempo de mobilização: 1seg',
     '<ins>Fúria</ins><br />Raridade: Épica<br />Tipo: Feitiço<br />Duração: 7.5seg<br />Melhorar: +35%<br />Raio: 5',
     '<ins>Porcos Reais</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.2seg<br />Alvos: Construções<br />Velocidade: Muito rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg<br />Contagem: x4',
@@ -275,29 +275,38 @@ function changeDeck() {
     if (allowedCards[i] !== 0 && localStorage.getItem(cardsName[allowedCards[i]]) !== 'e')
       allowedCards[i] = 0;
 
+  let amount = 0;
+  for (let i = 0; i < cardsName.length; i++)
+    if (localStorage.getItem(cardsName[i]) === 'e')
+      amount++;
+
+  document.querySelector('.selectSection h2').textContent = `Quantidade de Cartas permitidas: ${amount}`;
+
   while (allowedCards.indexOf(0) !== -1)
     for (let i = 0; i < allowedCards.length; i++)
       if (allowedCards[i] === 0)
         allowedCards.splice(i, 1);
 }
 
-ddArena.addEventListener('change', changeDeck);
-ddRarity.addEventListener('change', changeDeck);
-ddType.addEventListener('change', changeDeck);
+ddArena.onchange = changeDeck;
+ddRarity.onchange = changeDeck;
+ddType.onchange = changeDeck;
 
-cbDeckInteligente.addEventListener('change', () => {
+cbDeckInteligente.onchange = () => {
   if (cbDeckInteligente.checked === true) {
     ddArena.style.display = 'none';
     ddRarity.style.display = 'none';
     ddType.style.display = 'none';
     changeContainers[1].style.display = 'none';
+    if (prevDeck.length > 1) btnVoltar.hidden = false;
   } else {
     ddArena.style.display = 'block';
     ddRarity.style.display = 'block';
     ddType.style.display = 'block';
     changeContainers[1].style.display = 'block';
+    if (prevDeck.length > 1) btnVoltar.hidden = true;
   }
-});
+}
 
 function allowDrag(event) {
   event.preventDefault();
@@ -636,10 +645,21 @@ function lightTheme() {
   root.style.setProperty('--corPrimaria', 'rgb(7, 42, 70)');
   root.style.setProperty('--corSecundaria', 'rgb(2, 28, 49)');
   root.style.setProperty('--corTercearia', 'rgb(0, 20, 36)');
-  root.style.setProperty('--corDeLetraBotao', 'var(--corDeFundo)');
-  root.style.setProperty('--corDeBorda', 'var(--corPrimaria)');
-  root.style.setProperty('--corDeLetra', 'var(--corPrimaria)');
+  root.style.setProperty('--corDeLetraBotao', 'rgb(237, 237, 237)');
+  root.style.setProperty('--corDeBorda', 'rgb(7, 42, 70)');
+  root.style.setProperty('--corDeLetra', 'rgb(7, 42, 70)');
   localStorage.setItem('theme', 'light');
+}
+
+function blueTheme() {
+  root.style.setProperty('--corDeFundo', '#343e51');
+  root.style.setProperty('--corPrimaria', '#242b38');
+  root.style.setProperty('--corSecundaria', '#1a1f29');
+  root.style.setProperty('--corTercearia', '#13161d');
+  root.style.setProperty('--corDeLetraBotao', 'white');
+  root.style.setProperty('--corDeBorda', 'white');
+  root.style.setProperty('--corDeLetra', 'white');
+  localStorage.setItem('theme', 'blue');
 }
 
 let maxDown = 0,
@@ -818,11 +838,16 @@ function showInfo(index = Number) {
   info.innerHTML = `${cardsInformation[index]}<br />Elixir: ${cardsElixir[index]}<br />Arena: ${arena}`;
 }
 
-if (localStorage.getItem('theme') === 'light')
+if (localStorage.getItem('theme') === 'light') {
   lightTheme();
-else {
-  darkTheme();
+  cbConfigs[1].checked = true;
+}
+else if (localStorage.getItem('theme') === 'blue') {
+  blueTheme();
+  cbConfigs[2].checked = true;
+} else {
   cbConfigs[0].checked = true;
+  darkTheme();
 }
 
 function change(name, ind) {
@@ -858,11 +883,10 @@ window.addEventListener('contextmenu', event => {
   event.preventDefault();
 });
 
-cbConfigs[0].addEventListener('change', () => {
-  if (cbConfigs[0].checked)
-    darkTheme();
-  else lightTheme();
-});
+cbConfigs[0].addEventListener('change', darkTheme);
+cbConfigs[1].addEventListener('change', lightTheme);
+cbConfigs[2].addEventListener('change', blueTheme);
+
 
 document.onkeydown = e => {
   if (e.which === 67)
@@ -879,6 +903,15 @@ window.onload = function () {
   document.querySelector('.lds-ring').style.display = 'none';
   navSection.style.display = 'block';
   dbSection.style.display = 'block';
+}
+
+let cont = [dbSection, selectSection, savedSection, bestSection, configSection, aboutSection];
+window.onpopstate = function() {
+  switchContainer(cont[history.state]);
+}
+
+window.onunload = () => {
+  history.go(-history.length);
 }
 
 render();

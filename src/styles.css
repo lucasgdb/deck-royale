@@ -39,7 +39,7 @@ select {
 	display: block;
 	left: 50%;
 	font-size: 15px;
-	font-weight: bold;
+	font-weight: 900;
 	transform: translateX(-50%)
 }
 
@@ -199,6 +199,10 @@ ins {
 }
 
 .btnVoltar, .btnGerar {	height: 60px }
+.btnVoltar {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px
+}
 
 .btnGerar {
 	right: 5px;

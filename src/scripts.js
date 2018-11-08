@@ -8,7 +8,7 @@ let currentDeck = [0, 0, 0, 0, 0, 0, 0, 0],
 	selectedContainer = 0
 
 const cardsName = [
-	'new-card',
+	'none-card',
 	'witch', 'skeleton-army', 'baby-dragon', 'prince', 'giant', 'musketeer', 'mini-pekka', 'fireball', 'knight', 'archers', 'minions', 'arrows',
 	'hunter', 'goblin-barrel', 'hog-rider', 'goblin-hut', 'goblins', 'spear-goblins',
 	'balloon', 'giant-skeleton', 'valkyrie', 'tombstone', 'skeletons', 'bomber',
@@ -23,96 +23,96 @@ const cardsName = [
 	'sparky', 'electro-wizard', 'electro-dragon', 'mirror', 'clone', 'zappies', 'tesla'
 ],
 	cardsInformation = [
-		'Nenhuma Carta selecionada',
-		'<ins>Bruxa</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de geração: 5seg<br />Velocidade de impacto: 1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 5',
-		'<ins>Exército de Esqueletos</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Contagem de Esqueleto: x15<br />Tempo de mobilização: 1seg',
-		'<ins>Bebê Dragão</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Alvos: Aéreo/Terrestre<br />Velocidade de impacto: 1.5seg<br />Velocidade: Rápida<br />Alcance: 3.5<br />Tempo de mobilização: 1seg',
-		'<ins>Príncipe</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 1.4seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Gigante</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.5seg<br />Alvos: Construções<br />Velocidade: Lenta<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Mosqueteira</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 6<br />Tempo de mobilização: 1seg',
-		'<ins>Mini P.E.K.K.A</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.8seg<br />Alvos: Terrestre<br />Velocidade: Rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Bola de Fogo</ins><br />Raridade: Rara<br />Tipo: Feitiço<br />Raio: 2.5',
-		'<ins>Cavaleiro</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.2seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Arqueiras</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.2seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 5<br />Tempo de mobilização: 1seg<br />Contagem: x2',
-		'<ins>Servos</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Rápida<br />Alcance: 2<br />Tempo de mobilização: 1seg<br />Contagem: x3',
-		'<ins>Flechas</ins><br />Raridade: Comum<br />Tipo: Feitiço<br />Raio: 4',
-		'<ins>Caçador</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 2.2seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 4<br />Alcance da bala: 6.5<br />Tempo de mobilização: 1seg',
-		'<ins>Barril de Goblins</ins><br />Raridade: Épica<br />Tipo: Feitiço<br />Contagem de Goblin: x3',
-		'<ins>Corredor</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.6seg<br />Alvos: Construções<br />Velocidade: Muito rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Cabana de Goblins</ins><br />Raridade: Rara<br />Tipo: Construção<br />Velocidade de geração: 4.7seg<br />Tempo de mobilização: 1seg<br />Tempo de efeito: 1min 0seg',
-		'<ins>Goblins</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.1seg<br />Alvos: Terrestre<br />Velocidade: Muito rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg<br />Contagem: x3',
-		'<ins>Goblins Lanceiros</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Muito rápida<br />Alcance: 5<br />Tempo de mobilização: 1seg<br />Contagem: x3',
-		'<ins>Balão</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 3seg<br />Alvos: Construções<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Esqueleto Gigante</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 1.5seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Valquíria</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.6seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Lápide</ins><br />Raridade: Rara<br />Tipo: Construção<br />Velocidade de geração: 3.1seg<br />Tempo de mobilização: 1seg<br />Tempo de efeito: 40seg',
-		'<ins>Esqueletos</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1seg<br />Alvos: Terrestre<br />Velocidade: Rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg<br />Contagem: x3',
-		'<ins>Bombardeiro</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.9seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: 5<br />Tempo de mobilização: 1seg',
-		'<ins>Golem</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 2.5seg<br />Alvos: Construções<br />Velocidade: Lenta<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 3seg',
-		'<ins>Barril de Bárbaro</ins><br />Raridade: Épica<br />Tipo: Feitiço<br />Alvos: Terrestre<br />Largura: 3.9<br />Alcance: 5',
-		'<ins>Ariete de Batalha</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Alvos: Construções<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Cabana de Bárbaros</ins><br />Raridade: Rara<br />Tipo: Construção<br />Velocidade de geração: 14seg<br />Tempo de mobilização: 1seg<br />Tempo de efeito: 1min 0seg',
-		'<ins>Bárbaros</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.5seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg<br />Contagem: x4',
-		'<ins>Canhão</ins><br />Raridade: Comum<br />Tipo: Construção<br />Velocidade de impacto: 0.8seg<br />Alvos: Terrestre<br />Alcance: 5.5<br />Tempo de mobilização: 1seg<br />Tempo de efeito: 30seg',
-		'<ins>Lava Hound</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 1.3seg<br />Alvos: Construções<br />Velocidade: Lenta<br />Alcance: 2<br />Tempo de mobilização: 1seg',
-		'<ins>Mineiro</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 1.2seg<br />Alvos: Terrestre<br />Velocidade: Rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>P.E.K.K.A</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 1.8seg<br />Alvos: Terrestre<br />Velocidade: Lenta<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Relâmpago</ins><br />Raridade: Épica<br />Tipo: Feitiço<br />Contagem: x3<br />Duração de Paralisia: 0.5seg<br />Raio: 3',
-		'<ins>Megasservo</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.6seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 2<br />Tempo de mobilização: 1seg',
-		'<ins>Torre Inferno</ins><br />Raridade: Rara<br />Tipo: Construção<br />Velocidade de impacto: 0.4seg<br />Alvos: Aéreo/Terrestre<br />Alcance: 6<br />Tempo de mobilização: 1seg<br />Tempo de efeito: 40seg',
-		'<ins>Horda de Servos</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Rápida<br />Alcance: 2<br />Tempo de mobilização: 1seg<br />Contagem: x6',
-		'<ins>Zap</ins><br />Raridade: Comum<br />Tipo: Feitiço<br />Duração de Paralisia: 0.5seg<br />Raio: 2.5',
-		'<ins>Bruxa Sombria</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de geração: 7seg<br />Velocidade de impacto: 1.5seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Cemitério</ins><br />Raridade: Lendária<br />Tipo: Feitiço<br />Velocidade de geração: 0.5seg<br />Duração: 10seg<br />Raio: 4',
-		'<ins>Gelo</ins><br />Raridade: Épica<br />Tipo: Feitiço<br />Duração: 4.9seg<br />Raio: 3',
-		'<ins>Veneno</ins><br />Raridade: Épica<br />Tipo: Feitiço<br />Duração: 8seg<br />Raio: 3.5',
-		'<ins>Mago</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.4seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 5.5<br />Tempo de mobilização: 1seg',
-		'<ins>Fornalha</ins><br />Raridade: Rara<br />Tipo: Construção<br />Velocidade de geração: 10seg<br />Tempo de mobilização: 1seg<br />Tempo de efeito: 50seg',
-		'<ins>Espíritos de Fogo</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Alvos: Aéreo/Terrestre<br />Velocidade: Muito rápida<br />Alcance: 2<br />Tempo de mobilização: 1seg<br />Contagem: x3',
-		'<ins>Morcegos</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Muito rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg<br />Contagem: x5',
-		'<ins>Dragão Infernal</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 0.4seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 3.5<br />Tempo de mobilização: 1seg',
-		'<ins>Tronco</ins><br />Raridade: Lendária<br />Tipo: Feitiço<br />Alvos: Terrestre<br />Largura: 3.9<br />Alcance: 11.1',
-		'<ins>Carrinho de Canhão</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 1.3seg<br />Alvos: Terrestre<br />Velocidade: Rápida<br />Alcance: 5<br />Tempo de mobilização: 1seg',
-		'<ins>X-Besta</ins><br />Raridade: Épica<br />Tipo: Construção<br />Velocidade de impacto: 0.25seg<br />Alvos: Terrestre<br />Alcance: 11.5<br />Tempo de mobilização: 3.5seg<br />Tempo de efeito: 40seg',
-		'<ins>Máquina Voadora</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Rápida<br />Alcance: 6<br />Tempo de mobilização: 1seg',
-		'<ins>Foguete</ins><br />Raridade: Rara<br />Tipo: Feitiço<br />Raio: 2',
-		'<ins>Barril de Esqueletos</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Alvos: Construções<br />Velocidade: Média<br />Tempo de mobilização: 1seg<br />Contagem de Esqueleto: x6',
-		'<ins>Morteiro</ins><br />Raridade: Comum<br />Tipo: Construção<br />Velocidade de impacto: 5seg<br />Alvos: Terrestre<br />Alcance: 11.5<br />Alcance mínimo: 3.5<br />Tempo de mobilização: 3.5seg<br />Tempo de efeito: 30seg',
-		'<ins>Princesa</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 3seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 9<br />Tempo de mobilização: 1seg',
-		'<ins>Fantasma Real</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 1.8seg<br />Alvos: Terrestre<br />Velocidade: Rápida<br />Alcance: Corpo a corpo<br />Atraso da Invisibilidade: 1.2seg<br />Tempo de mobilização: 1seg',
-		'<ins>Guardas</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 1.1seg<br />Alvos: Terrestre<br />Velocidade: Rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg<br />Contagem: x3',
-		'<ins>Príncipe das Trevas</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 1.3seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Três Mosqueteiras</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 6<br />Tempo de mobilização: 1seg<br />Contagem: x3',
-		'<ins>Cura</ins><br />Raridade: Rara<br />Tipo: Feitiço<br />Duração: 2.5seg<br />Raio: 4',
-		'<ins>Gigante Real</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.7seg<br />Alvos: Construções<br />Velocidade: Lenta<br />Alcance: 5<br />Tempo de mobilização: 1seg',
-		'<ins>Recrutas Reais</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.2sec<br />Alvos: Terrestre<br />Velocidade: Médio<br />Alcance: Corpo a corpo<br />Contagem: x6',
-		'<ins>Mago de Gelo</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 1.7seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 5.5<br />Tempo de mobilização: 1seg',
-		'<ins>Lenhador</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 0.7seg<br />Alvos: Terrestre<br />Velocidade: Muito rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Lançador</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 2.5seg<br />Alvos: Terrestre<br />Velocidade: Lenta<br />Alcance: 5<br />Tempo de mobilização: 1seg',
-		'<ins>Tornado</ins><br />Raridade: Épica<br />Tipo: Feitiço<br />Alvos: Tropas<br />Duração: 2.5seg<br />Raio: 5.5',
-		'<ins>Golem de Gelo</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 2.5seg<br />Alvos: Construções<br />Velocidade: Lenta<br />Alcance: Corpo a corpo<br />Duração do efeito de morte: 1seg<br />Tempo de mobilização: 1seg',
-		'<ins>Coletor de Elixir</ins><br />Raridade: Rara<br />Tipo: Construção<br />Velocidade de produção: 8.5seg<br />Tempo de mobilização: 1seg<br />tempo de efeito: 1min 10seg',
-		'<ins>Espírito de Gelo</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Duração de gelo: 1.5seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Muito rápida<br />Alcance: 2.5<br />Tempo de mobilização: 1seg',
-		'<ins>Bola de Neve</ins><br />Raridade: Comum<br />Tipo: Feitiço<br />Duração de Desaceleração: 2.5seg<br />Raio: 3',
-		'<ins>Bandida</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Alcance por colisão: 3.5 - 6<br />Velocidade de impacto: 1seg<br />Alvos: Terrestre<br />Velocidade: Rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg',
-		'<ins>Executor</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 2.4seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 4.5<br />Alcance da bala: 6.5<br />Tempo de mobilização: 1seg',
-		'<ins>Goblin Gigante</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 1.7seg<br />Alvos: Construções<br />Velocidade: Média<br />Alcance: Corpo a corpo',
-		'<ins>Goblin com Dardo</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 0.6seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Muito rápida<br />Alcance: 6.5<br />Tempo de mobilização: 1seg',
-		'<ins>Gangue de Goblins</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Contagem de Goblin: x3<br />Contagem de Goblin Lanceiro: x2<br />Tempo de mobilização: 1seg',
-		'<ins>Patifes</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Contagem de Patifa: x2<br />Contagem de Patife: x1<br />Tempo de mobilização: 1seg',
-		'<ins>Megacavaleiro</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 1.7seg<br />Alvos: Terrestre<br />Velocidade: Média<br />Alcance: Corpo a corpo<br />Alcance por colisão: 3.5 - 5<br />Tempo de mobilização: 1seg',
-		'<ins>Arqueiro Mágico</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 7<br />Alcance da bala: 11<br />Tempo de mobilização: 1seg',
-		'<ins>Fúria</ins><br />Raridade: Épica<br />Tipo: Feitiço<br />Duração: 7.5seg<br />Melhorar: +35%<br />Raio: 5',
-		'<ins>Porcos Reais</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.2seg<br />Alvos: Construções<br />Velocidade: Muito rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg<br />Contagem: x4',
-		'<ins>Torre de Bombas</ins><br />Raridade: Rara<br />Tipo: Construção<br />Velocidade de impacto: 1.6seg<br />Alvos: Terrestre<br />Alcance: 6<br />Tempo de mobilização: 1seg<br />Tempo de efeito: 35seg',
-		'<ins>Bárbaros de Elite</ins><br />Raridade: Comum<br />Tipo: Tropa<br />Velocidade de impacto: 1.5seg<br />Alvos: Terrestre<br />Velocidade: Muito rápida<br />Alcance: Corpo a corpo<br />Tempo de mobilização: 1seg<br />Contagem: x2',
-		'<ins>Sparky</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Velocidade de impacto: 4seg<br />Alvos: Terrestre<br />Velocidade: Lenta<br />Alcance: 4.5<br />Tempo de mobilização: 1seg',
-		'<ins>Mago Elétrico</ins><br />Raridade: Lendária<br />Tipo: Tropa<br />Duração de Paralisia: 0.5seg<br />Velocidade de impacto: 1.8seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Rápida<br />Alcance: 5<br />Tempo de mobilização: 1seg',
-		'<ins>Dragão Elétrico</ins><br />Raridade: Épica<br />Tipo: Tropa<br />Velocidade de impacto: 2.1seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 3.5',
-		'<ins>Espelho</ins><br />Raridade: Épica<br />Tipo: Feitiço',
-		'<ins>Clone</ins><br />Raridade: Épica<br />Tipo: Feitiço<br />Raio: 4',
-		'<ins>Eletrocutadores</ins><br />Raridade: Rara<br />Tipo: Tropa<br />Velocidade de impacto: 1.6seg<br />Alvos: Aéreo/Terrestre<br />Velocidade: Média<br />Alcance: 4.5<br />Duração de Paralisar: 0.5seg<br />Contagem: x3<br />Tempo de mobilização: 1seg',
-		'<ins>Tesla</ins><br />Raridade: Comum<br />Tipo: Construção<br />Velocidade de impacto: 1.1seg<br />Alvos: Aéreo/Terrestre<br />Alcance: 5.5<br />Tempo de mobilização: 1seg<br />Tempo de efeito: 35seg'
+		'None card selected',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Spell',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Spell',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Spell',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Construction',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Construction',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Spell',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Construction',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Construction',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Spell',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Construction',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Spell',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Legendary<br />Type: Spell',
+		'Rarity: Epic<br />Type: Spell',
+		'Rarity: Epic<br />Type: Spell',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Construction',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Legendary<br />Type: Spell',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Construction',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Spell',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Construction',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Spell',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Spell',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Construction',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Spell',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Epic<br />Type: Spell',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Rare<br />Type: Construction',
+		'Rarity: Common<br />Type: Troop',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Legendary<br />Type: Troop',
+		'Rarity: Epic<br />Type: Troop',
+		'Rarity: Epic<br />Type: Spell',
+		'Rarity: Epic<br />Type: Spell',
+		'Rarity: Rare<br />Type: Troop',
+		'Rarity: Common<br />Type: Construction'
 	],
 	cardsElixir = [
 		0,
@@ -144,6 +144,7 @@ const cardsName = [
 		'26000055', '26000062', '28000002', '26000059', '27000004', '26000043',
 		'26000033', '26000042', '26000063', '28000006', '28000013', '26000052', '27000006'
 	],
+	cardPtName = ["", "Bruxa", "Exército de Esqueletos", "Bebê Dragão", "Príncipe", "Gigante", "Mosqueteira", "Mini P.E.K.K.A", "Bola de Fogo", "Cavaleiro", "Arqueiras", "Servos", "Flechas", "Caçador", "Barril de Goblins", "Corredor", "Cabana de Goblins", "Goblins", "Goblins Lanceiros", "Balão", "Esqueleto Gigante", "Valquíria", "Lápide", "Esqueletos", "Bombardeiro", "Golem", "Barril de Bárbaro", "Ariete de Batalha", "Cabana de Bárbaros", "Bárbaros", "Canhão", "Lava Hound", "Mineiro", "P.E.K.K.A", "Relâmpago", "Megasservo", "Torre Inferno", "Horda de Servos", "Zap", "Bruxa Sombria", "Cemitério", "Gelo", "Veneno", "Mago", "Fornalha", "Espíritos de Fogo", "Morcegos", "Dragão Infernal", "Tronco", "Carrinho de Canhão", "X-Besta", "Máquina Voadora", "Foguete", "Barril de Esqueletos", "Morteiro", "Princesa", "Fantasma Real", "Guardas", "Príncipe das Trevas", "Três Mosqueteiras", "Cura", "Gigante Real", "Recrutas Reais", "Mago de Gelo", "Lenhador", "Lançador", "Tornado", "Golem de Gelo", "Coletor de Elixir", "Espírito de Gelo", "Bola de Neve", "Bandida", "Executor", "Goblin Gigante", "Goblin com Dardo", "Gangue de Goblins", "Patifes", "Megacavaleiro", "Arqueiro Mágico", "Fúria", "Porcos Reais", "Torre de Bombas", "Bárbaros de Elite", "Sparky", "Mago Elétrico", "Dragão Elétrico", "Espelho", "Clone", "Eletrocutadores", "Tesla"],
 	defesa = ['Gigante', 'Golem', 'Gigante Real', 'Goblin Gigante'],
 	towerAttack = ['Corredor', 'Ariete de Batalha', 'Gigante Real', 'Porcos Reais'],
 	mainAttack = ['Bárbaros de Elite', 'Gigante Real', 'P.E.K.K.A'],
@@ -252,22 +253,22 @@ function changeDeck() {
 	for (let i = 1; i < selectedArena; i++) {
 		if (ddRarity.selectedIndex === 0)
 			allowedCards.push(i)
-		else if (ddRarity.selectedIndex === 1 && cardsInformation[i].split('<br />')[1] === 'Raridade: Comum')
+		else if (ddRarity.selectedIndex === 1 && cardsInformation[i].split('<br />')[0] === 'Rarity: Common')
 			allowedCards.push(i)
-		else if (ddRarity.selectedIndex === 2 && cardsInformation[i].split('<br />')[1] === 'Raridade: Rara')
+		else if (ddRarity.selectedIndex === 2 && cardsInformation[i].split('<br />')[0] === 'Rarity: Rare')
 			allowedCards.push(i)
-		else if (ddRarity.selectedIndex === 3 && cardsInformation[i].split('<br />')[1] === 'Raridade: Épica')
+		else if (ddRarity.selectedIndex === 3 && cardsInformation[i].split('<br />')[0] === 'Rarity: Epic')
 			allowedCards.push(i)
-		else if (ddRarity.selectedIndex === 4 && cardsInformation[i].split('<br />')[1] === 'Raridade: Lendária')
+		else if (ddRarity.selectedIndex === 4 && cardsInformation[i].split('<br />')[0] === 'Rarity: Legendary')
 			allowedCards.push(i)
 	}
 
 	for (let i = 0; i < allowedCards.length; i++) {
-		if (ddType.selectedIndex === 1 && cardsInformation[allowedCards[i]].split('<br />')[2] !== 'Tipo: Tropa')
+		if (ddType.selectedIndex === 1 && cardsInformation[allowedCards[i]].split('<br />')[1] !== 'Type: Troop')
 			allowedCards[i] = 0;
-		else if (ddType.selectedIndex === 2 && cardsInformation[allowedCards[i]].split('<br />')[2] !== 'Tipo: Construção')
+		else if (ddType.selectedIndex === 2 && cardsInformation[allowedCards[i]].split('<br />')[1] !== 'Type: Construction')
 			allowedCards[i] = 0;
-		else if (ddType.selectedIndex === 3 && cardsInformation[allowedCards[i]].split('<br />')[2] !== 'Tipo: Feitiço')
+		else if (ddType.selectedIndex === 3 && cardsInformation[allowedCards[i]].split('<br />')[1] !== 'Type: Spell')
 			allowedCards[i] = 0;
 	}
 
@@ -280,7 +281,7 @@ function changeDeck() {
 		if (localStorage.getItem(cardsName[i]) === 'e')
 			amount++;
 
-	document.querySelector('.selectSection h2').textContent = `Quantidade de Cartas permitidas: ${amount}`;
+	document.querySelector('.selectSection h2').textContent = `Amount of allowed decks: ${amount}`;
 
 	while (allowedCards.indexOf(0) !== -1)
 		for (let i = 0; i < allowedCards.length; i++)
@@ -308,9 +309,7 @@ cbDeckInteligente.onchange = () => {
 	}
 }
 
-function allowDrag(event) {
-	event.preventDefault()
-}
+function allowDrag(event) { event.preventDefault() }
 
 let id = -1;
 
@@ -330,6 +329,10 @@ function pasteCard(event) {
 	}
 }
 
+function capitalize(string) {
+	return string.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+}
+
 function setDeck(deck = Array) {
 	let media = 0.0;
 	contentToCopy = 'deck=';
@@ -337,17 +340,17 @@ function setDeck(deck = Array) {
 		contentToCopy += cardsCode[deck[i]] + (i === deck.length - 1 ? '' : ';');
 		cards[i].src = `./images/${cardsName[deck[i]]}_opt-min.png`;
 		cards[i].alt = cardsName[deck[i]];
-		cards[i].title = cardsInformation[deck[i]].split('<br />')[0].replace(/<ins>|<\/ins>/g, '');
+		cards[i].title = capitalize(cardsName[deck[i]]);
 		media += cardsElixir[deck[i]] / 8
 	}
 
-	mediaComponent.textContent = `Elixir médio: ${media.toFixed(1)}`;
+	mediaComponent.textContent = `Elixir average: ${media.toFixed(1)}`;
 
 	for (let i = deck.length; i < 8; i++) {
 		currentDeck.push(0);
-		cards[i].src = './images/new-card_opt-min.png';
-		cards[i].alt = 'Nenuma Carta selecionada';
-		cards[i].title = 'Nenhuma Carta selecionada'
+		cards[i].src = './images/none-card_opt-min.png';
+		cards[i].alt = 'None Card';
+		cards[i].title = 'None Card'
 	}
 }
 
@@ -374,7 +377,7 @@ function buildDeck() {
 
 		for (let i = 0; i < currentDeck.length; i++)
 			for (let j = 1; j < cardsInformation.length; j++)
-				if (currentDeck[i] === cardsInformation[j].split('<br />')[0].replace(/<ins>|<\/ins>/g, ''))
+				if (currentDeck[i] === cardPtName[j])
 					currentDeck[i] = j
 
 		randomizeDeck();
@@ -440,9 +443,9 @@ function combination() {
 }
 
 function infoCards() {
-	smalltalk.alert('Informações',
-		(window.screen.width < 1024 ? 'Para trocar alguma Carta, basta pressionar e segurar a Carta.\nPara copiar o link do Deck sem abrir no Clash Royale, basta pressionar e segurar o botão Copiar Deck.\nPara remover o Deck atual, basta pressionar e segurar o botão Colar Deck.\nPara embaralhar o Deck atal, basta pressionar e segurar o botão Gerar Deck.\nA função Voltar Deck só é válida para Decks Inteligentes.' : 'Para trocar alguma Carta, clique com o botão direito na Carta.\nPara remover o Deck atual, clique com o botão direito em Colar Deck.\nPara Embaralhar o Deck atual, clique com o botão direito em Gerar Deck.\nPara transformar o link do site em um link direto de Deck, clique com o botão direito em Copiar Deck.') +
-		(cbDeckInteligente.checked ? '\nA Seleção de Cartas e os DropDowns de Arenas, Raridades e Tipos só funcionam no modo Deck Inteligente desligado.' : `\nQuantidade de Cartas a serem geradas: ${allowedCards.length}\nCombinações de Decks possíveis: ${combination()}`)
+	smalltalk.alert('Information',
+		(window.screen.width < 1024 ? 'To change any card, simply press and hold a card.\nTo copy a deck link without open on Clash Royale, simply press and hold the Copy deck button.\nTo remove the current deck, simply press and hold the Paste deck button.\nTo shuffle the current deck, simply press and hold the Build deck button.\nThe function Previous deck is only valid for smart decks.\nTo make the site link a direct link to deck, simply press and hold the Copy deck button.' : 'To change any card, simply press right click on card.\nTo remove current deck, simply press right click on Paste deck button.\nTo shuffle current deck, simply press right click on Build deck button.\nTo make the site link to direct deck link, simply press right click on Build deck button.') +
+		(cbDeckInteligente.checked ? '\nCard selector, dropdowns of arenas, rarities and types only works when smart deck are deactived.' : `\nAmount cards to generate: ${allowedCards.length}\nPossible deck combinations: ${combination()}`)
 	);
 }
 
@@ -450,7 +453,7 @@ function copyDeck() {
 	if (prevDeck.length > 0)
 		prevDeck.pop();
 	if (screen.width < 1024)
-		smalltalk.confirm('Abrir Deck', 'Deseja abrir o Deck no Clash Royale?').then(() => window.open(`clashroyale://copyDeck?${contentToCopy}`, '_self')).catch(() => { })
+		smalltalk.confirm('Open deck', 'Want to open deck in Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?${contentToCopy}`, '_self')).catch(() => { })
 	else
 		btnCopy.setAttribute('data-clipboard-text', `https://link.clashroyale.com/deck/pt?${contentToCopy}`)
 }
@@ -458,7 +461,7 @@ function copyDeck() {
 function copyDeckSec() {
 	if (screen.width < 1024) {
 		btnCopy.setAttribute('data-clipboard-text', `https://link.clashroyale.com/deck/pt?${contentToCopy}`);
-		smalltalk.alert('Link copiado', 'Link do Deck copiado para a área de transferência.')
+		smalltalk.alert('Link copied', 'Deck link copied to clipboard.')
 	} else location.search = `deck=${contentToCopy.split('deck=')[1].split(';').map(id => cardsCode.indexOf(id)).join(';')}`
 }
 
@@ -468,7 +471,7 @@ function copyDeckPhone(deck) {
 
 function copyDeckSaved(deck) {
 	if (screen.width < 1024)
-		smalltalk.confirm('Abrir Deck', 'Deseja abrir o Deck no Clash Royale?').then(() => window.open(`clashroyale://copyDeck?deck=${deck}`, '_self')).catch(() => { })
+		smalltalk.confirm('Open deck', 'Want to open deck in Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?deck=${deck}`, '_self')).catch(() => { })
 	else location.search = `deck=${deck.split(';').map(id => cardsCode.indexOf(id)).join(';')}`
 }
 
@@ -493,12 +496,12 @@ function paste(linkDeck = String) {
 			for (let i = linkDeck; i < 8; i++)
 				linkDeck.push(0);
 
-			currentDeck = linkDeck.map(card => card);
+			currentDeck = linkDeck.map(card => parseInt(card));
 			setDeck(currentDeck)
 		} catch {
 			currentDeck = backup.map(card => card);
 			setDeck(currentDeck);
-			smalltalk.alert('Erro', 'Link de Deck inválido!')
+			smalltalk.alert('Error', 'Invalid deck link!')
 		}
 	}
 }
@@ -506,7 +509,7 @@ function paste(linkDeck = String) {
 function pasteDeck(content = null) {
 	if (content === null) {
 		if (screen.width >= 1024)
-			smalltalk.prompt('Colar Deck', 'Cole o link do Deck abaixo\nEx: https://link.clashroyale.com/deck/pt?deck=26000018;28000009;26000003;28000008...')
+			smalltalk.prompt('Paste deck', 'Paste a deck link below\nE.g: https://link.clashroyale.com/deck/en?deck=26000018;28000009;26000003;28000008...')
 				.then(linkDeck => {
 					paste(linkDeck)
 				}).catch(() => { })
@@ -556,7 +559,7 @@ function randomizeDeck() {
 			currentDeck[i] = newDeck[i]
 
 		setDeck(currentDeck)
-	} else smalltalk.alert('Embaralhar Deck', 'Não é permitido Embaralhar o Deck com Cartas faltando.')
+	} else smalltalk.alert('Shuffle deck', 'Shuffling deck with missing cards is not allowed.')
 }
 
 const x = matchMedia('(min-width: 768px)');
@@ -657,10 +660,10 @@ function darkTheme() {
 
 function lightTheme() {
 	root.style.setProperty('--corDeFundo', '#ecf0f1');
-	root.style.setProperty('--corPrimaria', '#d5dde0');
-	root.style.setProperty('--corSecundaria', '#bfc7ca');
-	root.style.setProperty('--corTercearia', '#b1bbbe');
-	root.style.setProperty('--corDeLetraBotao', 'black');
+	root.style.setProperty('--corPrimaria', '#343e51');
+	root.style.setProperty('--corSecundaria', '#2a3241');
+	root.style.setProperty('--corTercearia', '#222833');
+	root.style.setProperty('--corDeLetraBotao', 'white');
 	root.style.setProperty('--corDeBorda', 'black');
 	root.style.setProperty('--corDeLetra', 'black');
 	localStorage.setItem('theme', 'light')
@@ -679,40 +682,40 @@ function blueTheme() {
 
 let maxDown = 0,
 	response = null,
-	html = '<button title="Remover todos os Decks" class="btnRemoveAll" onclick="deleteAllBest()">Remover todos os Decks</button><h1 class="elixir">Quantidade de Decks nesta área: </h1>';
+	html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all decks</button><h2 class="elixir"></h2>';
 
 async function downDecks() {
 	if (response === null)
-		response = await fetch('https://docs.royaleapi.com/json/popular_decks.json').then(data => data.json()).catch(() => smalltalk.alert('Erro', 'Um erro aconteceu, tente novamente mais tarde.'))
+		response = await fetch('https://docs.royaleapi.com/json/popular_decks.json').then(data => data.json()).catch(() => smalltalk.alert('Error', 'An error, come back later.'))
 
 	if (response !== null)
-		if (response.length === maxDown) smalltalk.alert('Chegou ao limite', 'Não há mais Decks para mostrar.')
+		if (response.length === maxDown) smalltalk.alert('Limit reached', 'No more decks to show.')
 		else {
 			for (let i = maxDown; i < maxDown + (maxDown + 10 > response.length ? response.length - maxDown : 10); i++)
 				html += `
           <section class="cardsContainerS">
-            <div><img src="./images/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[0].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[1].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[2].key}_opt-min.png" alt="${response[i].cards[2].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[2].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[2].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[3].key}_opt-min.png" alt="${response[i].cards[3].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[3].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[3].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[4].key}_opt-min.png" alt="${response[i].cards[4].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[4].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[4].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[5].key}_opt-min.png" alt="${response[i].cards[5].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[5].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[5].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[6].key}_opt-min.png" alt="${response[i].cards[6].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[6].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[6].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${cardsInformation[cardsCode.indexOf(response[i].cards[7].id.toString())].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${capitalize(response[i].cards[0].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${capitalize(response[i].cards[1].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[2].key}_opt-min.png" alt="${response[i].cards[2].key}" title="${capitalize(response[i].cards[2].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[2].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[3].key}_opt-min.png" alt="${response[i].cards[3].key}" title="${capitalize(response[i].cards[3].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[3].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[4].key}_opt-min.png" alt="${response[i].cards[4].key}" title="${capitalize(response[i].cards[4].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[4].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[5].key}_opt-min.png" alt="${response[i].cards[5].key}" title="${capitalize(response[i].cards[5].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[5].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[6].key}_opt-min.png" alt="${response[i].cards[6].key}" title="${capitalize(response[i].cards[6].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[6].id.toString())})"/></div>
+            <div><img src="./images/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${capitalize(response[i].cards[7].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id.toString())})"/></div>
           </section>
 
           <h1 class="elixir">Elixir médio: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
 
           <section class="configContainerS">
-            <button class="btnCopiarS" title="Copiar Deck" oncontextmenu="copyDeckSaved('${response[i].cards.map(card => card.id).join(';')}')" ${screen.width < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `data-clipboard-text=${response[i].decklink}`}>Copiar Deck</button>
-            <button class="btnApagar" title="Salvar Deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id.toString())},${cardsCode.indexOf(response[i].cards[1].id.toString())},${cardsCode.indexOf(response[i].cards[2].id.toString())},${cardsCode.indexOf(response[i].cards[3].id.toString())},${cardsCode.indexOf(response[i].cards[4].id.toString())},${cardsCode.indexOf(response[i].cards[5].id.toString())},${cardsCode.indexOf(response[i].cards[6].id.toString())},${cardsCode.indexOf(response[i].cards[7].id.toString())}])">Salvar Deck</button>
-            <button class="btnColarS" title="Colar Deck" onclick="pasteDeck('${response[i].decklink}')">Colar Deck</button>
+            <button class="btnCopiarS" title="Copy deck" oncontextmenu="copyDeckSaved('${response[i].cards.map(card => card.id).join(';')}')" ${screen.width < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `data-clipboard-text=${response[i].decklink}`}>Copy deck</button>
+            <button class="btnApagar" title="Save deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id.toString())},${cardsCode.indexOf(response[i].cards[1].id.toString())},${cardsCode.indexOf(response[i].cards[2].id.toString())},${cardsCode.indexOf(response[i].cards[3].id.toString())},${cardsCode.indexOf(response[i].cards[4].id.toString())},${cardsCode.indexOf(response[i].cards[5].id.toString())},${cardsCode.indexOf(response[i].cards[6].id.toString())},${cardsCode.indexOf(response[i].cards[7].id.toString())}])">Save deck</button>
+            <button class="btnColarS" title="Paste deck" onclick="pasteDeck('${response[i].decklink}')">Paste deck</button>
           </section>
         `;
 
 			bestDecks.innerHTML = html;
 			maxDown += (maxDown + 10 > response.length ? response.length - maxDown : 10);
-			document.querySelector('.bestSection h1').innerText = `Quantidade de Decks nesta área: ${maxDown}`
+			document.querySelector('.bestSection h2').innerText = `Amount best decks: ${maxDown}`
 		}
 }
 
@@ -727,7 +730,7 @@ async function downDecks() {
 	for (let i = 1; i < cardsInformation.length; i++) {
 		content += `
 			<section>
-				<img class="${localStorage.getItem(cardsName[i]) === 'e' ? '' : 'notAllowed'}" src="./images/${cardsName[i]}_opt-min.png" alt="${cardsName[i]}" title="${cardsInformation[i].split('<br />')[0].replace(/<ins>|<\/ins>/g, '')}" />				
+				<img class="${localStorage.getItem(cardsName[i]) === 'e' ? '' : 'notAllowed'}" src="./images/${cardsName[i]}_opt-min.png" alt="${cardsName[i]}" title="${capitalize(cardsName[i])}" />				
 			</section>
 		`;
 	}
@@ -773,14 +776,14 @@ const createDecks = new Worker('./src/render.js'),
 
 createDecks.onmessage = e => {
 	savedDecks.innerHTML = e.data;
-	document.querySelector('.savedSection h1').innerText = `Quantidade de Decks salvos: ${JSON.parse(localStorage.getItem('decks')).deckList.length}`
+	document.querySelector('.savedSection h2').innerText = `Amount saved decks: ${JSON.parse(localStorage.getItem('decks')).deckList.length}`
 }
 
 saveDecks.onmessage = e => {
 	if (!e.data.exists) {
 		localStorage.setItem('decks', e.data.deck);
 		render();
-	} else smalltalk.alert('Deck repetido', 'O Deck atual já está salvo.')
+	} else smalltalk.alert('Repeated deck', 'Deck is already saved.')
 }
 
 deleteDecks.onmessage = e => {
@@ -794,12 +797,11 @@ function render() {
 		createDecks.postMessage({
 			'decks': JSON.parse(localStorage.getItem('decks')).deckList,
 			'cardsName': cardsName,
-			'cardsInformation': cardsInformation,
 			'cardsElixir': cardsElixir,
 			'cardsCode': cardsCode,
 			'screenSize': screen.width
 		});
-	} else savedDecks.innerHTML = '<h1 class="noneDeck">Nenhum Deck salvo.</h1>'
+	} else savedDecks.innerHTML = '<h2 class="noneDeck">None deck saved.</h2>'
 }
 
 function saveDeck(deck = currentDeck) {
@@ -811,12 +813,12 @@ function saveDeck(deck = currentDeck) {
 			"decks": JSON.parse(localStorage.getItem('decks')),
 			"currentDeck": deck
 		})
-	else if (empty) smalltalk.alert('Deck incompleto', 'Não é permitido salvar Decks com Cartas faltando.')
-	else smalltalk.alert('Limite excedido', 'Não é permitido salvar mais de 100 Decks.')
+	else if (empty) smalltalk.alert('Incomplete Deck', 'Saving deck with missing cards is not allowed.')
+	else smalltalk.alert('Limit exceeded', 'Saving more than 100 decks is not allowed.')
 }
 
 function deleteDeck(deck = Array) {
-	smalltalk.confirm('Remover Deck', 'Deseja remover o Deck?').then(() => {
+	smalltalk.confirm('Remove Deck', 'Want to remove this Deck?').then(() => {
 		deleteDecks.postMessage({
 			"deckList": JSON.parse(localStorage.getItem('decks')).deckList,
 			"deck": deck
@@ -826,7 +828,7 @@ function deleteDeck(deck = Array) {
 
 function deleteAll() {
 	smalltalk
-		.confirm('Remover Decks', 'Deseja remover todos os Decks salvos?')
+		.confirm('Remove Decks', 'Want to remove all saved Decks?')
 		.then(() => {
 			localStorage.removeItem('decks');
 			render()
@@ -836,10 +838,10 @@ function deleteAll() {
 
 function deleteAllBest() {
 	smalltalk
-		.confirm('Remover Decks', 'Deseja remover todos os Decks desta área?')
+		.confirm('Remove Decks', 'Want to remove all best Decks?')
 		.then(() => {
-			html = '<button title="Remover todos os Decks" class="btnRemoveAll" onclick="deleteAllBest()">Remover todos os Decks</button><h1 class="elixir">Quantidade de Decks nesta área: </h1>';
-			bestDecks.innerHTML = '<h1 class="noneDeck">Nenhum Deck nesta área.</h1>';
+			html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all decks</button><h2 class="elixir"></h2>';
+			bestDecks.innerHTML = '<h1 class="noneDeck">None deck in this area.</h1>';
 			maxDown = 0
 		})
 		.catch(() => { })
@@ -850,7 +852,7 @@ function showInfo(index = Number) {
 		for (let j = 1; j < arenas.length; j++)
 			if (index < arenas[arenas.length - j]) return j
 	})();
-	info.innerHTML = `${cardsInformation[index]}<br />Elixir: ${cardsElixir[index]}<br />Arena: ${arena}`
+	info.innerHTML = `<ins>${capitalize(cardsName[index])}</ins><br />${cardsInformation[index]}<br />Elixir cost: ${cardsElixir[index]}<br />Arena: ${arena}`
 }
 
 if (localStorage.getItem('theme') === 'light') {
@@ -869,7 +871,7 @@ function change(name, ind) {
 	if (name !== null && name.trim() !== '') {
 		name = formatText(name)
 		for (let j = 1; j < cardsInformation.length; j++)
-			if (currentDeck.indexOf(j) === -1 && name === formatText(cardsInformation[j].split('<br />')[0].replace(/<ins>|<\/ins>/g, ''))) {
+			if (currentDeck.indexOf(j) === -1 && (name === cardsName[j].replace('-', ' ').toLowerCase() || name === formatText(cardPtName[j]))) {
 				currentDeck[ind] = j;
 				setDeck(currentDeck);
 				break
@@ -880,17 +882,17 @@ function change(name, ind) {
 for (let i = 0; i < cards.length; i++) {
 	cards[i].addEventListener('contextmenu', () => {
 		if (screen.width >= 1024)
-			smalltalk.prompt('Mudar Carta', 'Digite o nome da Carta abaixo\nEx: Mini P.E.K.K.A, mini p.e.k.k.a ou mini pekka').then(name => {
+			smalltalk.prompt('Change card', 'Type card name below\nE.g: Mini P.E.K.K.A, mini p.e.k.k.a or mini pekka').then(name => {
 				change(name, i)
 			}).catch(() => { })
 		else {
-			let name = prompt('Digite o nome da Carta abaixo');
+			let name = prompt('Type card name below');
 			change(name, i)
 		}
 	});
 	cards[i].addEventListener('click', () => {
 		if (currentDeck[i] !== 0) showInfo(currentDeck[i])
-		else info.innerText = 'Nenhuma Carta selecionada'
+		else info.innerText = 'None card selected'
 	});
 }
 
@@ -905,7 +907,7 @@ cbConfigs[2].addEventListener('change', blueTheme);
 document.onkeydown = e => {
 	if (e.which === 67)
 		btnCopy.click()
-	else if (e.which === 71)
+	else if (e.which === 66)
 		buildDeck()
 	else if (e.which === 83)
 		saveDeck()

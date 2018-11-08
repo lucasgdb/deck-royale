@@ -1,153 +1,179 @@
 <!DOCTYPE html>
 <html lang="pt-br" manifest="manifest.appcache">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<meta name="description" content="O Deck Royale é uma ferramenta online para gerar Decks aleatórios e inteligentes. Perfeito para batalhas amistosas." />
-    <meta name="keywords" content="gerador de deck,gerador,deck,builder,deck builder,royale,clash,clash royale,cartas,montar deck,lucas naja,salvar deck,geradores" />
-    <meta name="author" content="Lucas Naja" />
-    <meta name="robots" content="index,follow,noodp" />
-    <meta name="robots" content="noydir" />
-    <meta name="slurp" content="noydir" />
-		<title>Gerador de Deck - Clash Royale</title>
-		<link rel="manifest" href="./manifest.json" />
-		<link rel="stylesheet" href="./src/styles.css" />
-		<link rel="icon" href="./icon.png" />
-		<link rel="shortcut icon" href="./icon.png" />
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="The Deck Royale is an online tool for build random and smart decks for Clash Royale gamers. Perfect for friendly battles." />
+	<meta name="keywords" content="deck,deck builder,deck build,build,card,cards,save deck,card selector,gerador, derador de deck" />
+	<meta name="author" content="Lucas Naja" />
+	<meta name="robots" content="index,follow,noodp" />
+	<meta name="robots" content="noydir" />
+	<meta name="slurp" content="noydir" />
+	<title>Deck Builder for Clash Royale</title>
+	<link rel="manifest" href="./manifest.json" />
+	<link rel="stylesheet" href="./src/styles.css" />
+	<link rel="icon" href="./icon.png" />
+	<link rel="shortcut icon" href="./icon.png" />
+	<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+	</script>
+</head>
 
-	<body>
-		<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-		<nav class="navSection">
-			<div class="container" onclick="showSections();"><div></div></div>
-			<h1>Coded by <a href="http://youtube.com/c/LucasNaja/" target="_blank" rel="noopener noreferrer" class="effect">Lucas Naja</a></h1>
-			<button id="selectedButton" title="Gerador de Deck" onclick="closeNav(); switchContainer(); if (history.state !== 0 && history.state !== null) history.pushState(0, 'changed')">Gerador de Deck</button>
-			<button title="Seleção de Cartas" onclick="closeNav(); switchContainer(selectSection); if (history.state !== 1) history.pushState(1, 'changed')">Seleção de Cartas</button>
-			<button title="Decks salvos" onclick="closeNav(); switchContainer(savedSection); if (history.state !== 2) history.pushState(2, 'changed')">Decks salvos</button>
-			<button title="Melhores Decks" onclick="closeNav(); switchContainer(bestSection); if (history.state !== 3) history.pushState(3, 'changed')">Melhores Decks</button>
-			<button title="Configurações" onclick="closeNav(); switchContainer(configSection); if (history.state !== 4) history.pushState(4, 'changed')">Configurações</button>
-			<button title="Sobre" onclick="closeNav(); switchContainer(aboutSection); if (history.state !== 5) history.pushState(5, 'changed')">Sobre</button>
-		</nav>
+<body>
+	<div class="lds-ring">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+	<nav class="navSection">
+		<div class="container" onclick="showSections();">
+			<div></div>
+		</div>
+		<h1>Coded by <a href="http://youtube.com/c/LucasNaja/" target="_blank" rel="noopener noreferrer" class="effect">Lucas
+				Naja</a></h1>
+		<button id="selectedButton" title="Deck Builder" onclick="closeNav(); switchContainer(); if (history.state !== 0 && history.state !== null) history.pushState(0, 'changed')">Deck
+			Builder</button>
+		<button title="Card selector" onclick="closeNav(); switchContainer(selectSection); if (history.state !== 1) history.pushState(1, 'changed')">Card
+			selector</button>
+		<button title="Decks saved" onclick="closeNav(); switchContainer(savedSection); if (history.state !== 2) history.pushState(2, 'changed')">Decks
+			saved</button>
+		<button title="Best decks" onclick="closeNav(); switchContainer(bestSection); if (history.state !== 3) history.pushState(3, 'changed')">Best
+			decks</button>
+		<button title="Configurations" onclick="closeNav(); switchContainer(configSection); if (history.state !== 4) history.pushState(4, 'changed')">Configurations</button>
+		<button title="About" onclick="closeNav(); switchContainer(aboutSection); if (history.state !== 5) history.pushState(5, 'changed')">About</button>
+	</nav>
 
-		<section class="builderSection">
-			<section>
-				<!-- Centralizar todo o Gerador de Deck -->
-				<section class="cardsContainer">
-					<div><img id="0" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)"/></div>
-					<div><img id="1" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)"/></div>
-					<div><img id="2" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)"/></div>
-					<div><img id="3" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)"/></div>
-					<div><img id="4" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)"/></div>
-					<div><img id="5" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)"/></div>
-					<div><img id="6" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)"/></div>
-					<div><img id="7" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)"/></div>
-				</section>
+	<section class="builderSection">
+		<section>
+			<!-- Centralizar todo o Gerador de Deck -->
+			<section class="cardsContainer">
+				<div><img id="0" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)" /></div>
+				<div><img id="1" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)" /></div>
+				<div><img id="2" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)" /></div>
+				<div><img id="3" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)" /></div>
+				<div><img id="4" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)" /></div>
+				<div><img id="5" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)" /></div>
+				<div><img id="6" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)" /></div>
+				<div><img id="7" ondrag="getId(event)" ondragover="allowDrag(event)" ondrop="pasteCard(event)" /></div>
+			</section>
 
-				<section class="configContainer">
-					<button class="btnCopiar" id="copy" onclick="copyDeck()" oncontextmenu="copyDeckSec()" title="Copiar Deck"><ins>C</ins>opiar Deck</button>
-					<button class="btnColar" onclick="pasteDeck()" oncontextmenu="setDeck(currentDeck = [0, 0, 0, 0, 0, 0, 0, 0])" title="Colar Deck">Colar Deck</button>
-					<button class="btnSalvar" onclick="saveDeck()" title="Salvar Deck"><ins>S</ins>alvar Deck</button>
-					<img onclick="infoCards();" title="Informações" src="./images/info.png" />
-					<button class="btnVoltar" onclick="previousDeck()" title="Voltar Deck" hidden>&lt;</button>
-					<button class="btnGerar" onclick="buildDeck()" oncontextmenu="randomizeDeck()" title="Gerar Deck"><ins>G</ins>erar Deck</button>
-					<div>
-						<input type="checkbox" id="smartDeck" /><label for="smartDeck">Deck Inteligente</label>
-					</div>
-				</section>
+			<section class="configContainer">
+				<button class="btnCopiar" id="copy" onclick="copyDeck()" oncontextmenu="copyDeckSec()" title="Copy deck"><ins>C</ins>opy
+					deck</button>
+				<button class="btnColar" onclick="pasteDeck()" oncontextmenu="setDeck(currentDeck = [0, 0, 0, 0, 0, 0, 0, 0])"
+				 title="Paste deck">Paste deck</button>
+				<button class="btnSalvar" onclick="saveDeck()" title="Save deck"><ins>S</ins>ave deck</button>
+				<img onclick="infoCards();" title="Information" src="./images/info.png" />
+				<button class="btnVoltar" onclick="previousDeck()" title="Previous deck" hidden>&lt;</button>
+				<button class="btnGerar" onclick="buildDeck()" oncontextmenu="randomizeDeck()" title="Build deck"><ins>B</ins>uild
+					deck</button>
+				<div>
+					<input type="checkbox" id="smartDeck" /><label for="smartDeck">Smart decks</label>
+				</div>
+			</section>
 
-				<section class="infoContainer">
-					<h3 id="elixirMedio"></h3>
+			<section class="infoContainer">
+				<h3 id="elixirMedio"></h3>
 
-					<h1>Informações</h1>
+				<h1>Information</h1>
 
-					<h2>Nenhuma Carta selecionada</h2>
+				<h2>None card selected</h2>
 
-					<select id="ddArena">
-						<option>Todas as Arenas</option>
-						<option>Arena 11</option>
-						<option>Arena 10</option>
-						<option>Arena 9</option>
-						<option>Arena 8</option>
-						<option>Arena 7</option>
-						<option>Arena 6</option>
-						<option>Arena 5</option>
-						<option>Arena 4</option>
-						<option>Arena 3</option>
-						<option>Arena 2</option>
-						<option>Arena 1</option>
-					</select>
+				<select id="ddArena">
+					<option>All arenas</option>
+					<option>Arena 11</option>
+					<option>Arena 10</option>
+					<option>Arena 9</option>
+					<option>Arena 8</option>
+					<option>Arena 7</option>
+					<option>Arena 6</option>
+					<option>Arena 5</option>
+					<option>Arena 4</option>
+					<option>Arena 3</option>
+					<option>Arena 2</option>
+					<option>Arena 1</option>
+				</select>
 
-					<select id="ddRarity">
-						<option>Todas as Raridades</option>
-						<option>Comuns</option>
-						<option>Raras</option>
-						<option>Épicas</option>
-						<option>Lendárias</option>
-					</select>
+				<select id="ddRarity">
+					<option>All rarities</option>
+					<option>Common</option>
+					<option>Rares</option>
+					<option>Epics</option>
+					<option>Legendaries</option>
+				</select>
 
-					<select id="ddType">
-						<option>Todos os Tipos</option>
-						<option>Tropas</option>
-						<option>Construções</option>
-						<option>Feitiços</option>
-					</select>
-				</section>
+				<select id="ddType">
+					<option>All types</option>
+					<option>Troops</option>
+					<option>Constructions</option>
+					<option>Spells</option>
+				</select>
 			</section>
 		</section>
+	</section>
 
-		<section class="selectSection">
-			<div>
-				<button title="Marcar todas">Marcar todas as Cartas</button>
-				<button title="Desmarcar todas">Desmarcar todas as Cartas</button>
-			</div>
-			<h2 class="noneDeck">Quantidade de Cartas permitidas: 89</h2>
-			<!-- Código gerado pelo JavaScript -->
+	<section class="selectSection">
+		<div>
+			<button title="Mark all">Mark all cards</button>
+			<button title="Unmark all">Unmark all cards</button>
+		</div>
+		<h2 class="noneDeck">Amount of allowed cards: 89</h2>
+		<!-- Código gerado pelo JavaScript -->
+	</section>
+
+	<section class="savedSection">
+		<section>
+			<h2 class="noneDeck">None deck saved.</h2>
+			<!-- Código a ser gerado pelo JavaScript -->
 		</section>
+	</section>
 
-		<section class="savedSection">
-			<section>
-				<h1 class="noneDeck">Nenhum Deck salvo.</h1>
-				<!-- Código a ser gerado pelo JavaScript -->
-			</section>
+	<section class="bestSection">
+		<section>
+			<h2 class="noneDeck">None deck in this area.</h2>
+			<!-- Código a ser gerado pelo JavaScript -->
 		</section>
+		<button class="btnCenter" onclick="downDecks()" title="Show more">Show more 10 decks</button>
+	</section>
 
-		<section class="bestSection">
-			<section>
-				<h1 class="noneDeck">Nenhum Deck nesta área.</h1>
-				<!-- Código a ser gerado pelo JavaScript -->
-			</section>
-			<button class="btnCenter" onclick="downDecks()" title="Mostrar mais 10 Decks">Mostrar mais 10 Decks</button>
+	<section class="configSection">
+		<section>
+			<div><input type="radio" name="theme" id="theme"><label for="theme">Dark theme</label></div>
 		</section>
-
-		<section class="configSection">
-			<section><div><input type="radio" name="theme" id="theme"><label for="theme">Tema dark</label></div></section>
-			<section><div><input type="radio" name="theme" id="theme1"><label for="theme1">Tema light</label></div></section>
-			<section><div><input type="radio" name="theme" id="theme2"><label for="theme2">Tema azul</label></div></section>
+		<section>
+			<div><input type="radio" name="theme" id="theme1"><label for="theme1">Light theme</label></div>
 		</section>
-
-		<section class="aboutSection">
-			<h1>Ferramenta desenvolvida por <span class="effect"><a href="http://youtube.com/c/lucasnaja/" target="_blank" rel="noopener noreferrer">Lucas&nbsp;Bittencourt</a></span></h1>
-			<section>
-				<a href="http://lucasnaja.github.io/portfolio-reactjs/" target="_blank" rel="noopener noreferrer"><img title="Lucas Naja"
-					 src="images/logo.png" alt="Lucas Naja" /></a>
-				<h2>• Totalmente grátis<br />
-					• O melhor e mais rápido<br />
-					• Sem propagandas<br />
-					• <a class="effect" href="https://github.com/LucasNaja/deck-royale" target="_blank" rel="noopener noreferrer">Código&nbsp;aberto</a><br />
-					• Responsivo
-				</h2>
-			</section>
-			<h3>E-mail para contato: <address>lucasnaja0@gmail.com</address></h3>
-			<h3>Facebook: <a class="effect" href="http://facebook.com/lucas.naja0" target="_blank" rel="noopener noreferrer">Lucas&nbsp;Bittencourt</a></h3>
-			<h3>GitHub: <a class="effect" href="http://github.com/LucasNaja" target="_blank" rel="noopener noreferrer">Clique&nbsp;aqui</a></h3>
-			<h3>Portfólio: <a class="effect" href="http://lucasnaja.github.io/portfolio-reactjs" target="_blank" rel="noopener noreferrer">Clique&nbsp;aqui</a></h3>
+		<section>
+			<div><input type="radio" name="theme" id="theme2"><label for="theme2">Blue theme</label></div>
 		</section>
+	</section>
 
-		<noscript>Ative seu JavaScript!</noscript>
-		<script async src="./src/scripts.js"></script>
+	<section class="aboutSection">
+		<h1>Tool developed by <span class="effect"><a href="http://youtube.com/c/lucasnaja/" target="_blank" rel="noopener noreferrer">Lucas
+					Bittencourt</a></span></h1>
+		<a href="http://lucasnaja.github.io/portfolio-reactjs/" target="_blank" rel="noopener noreferrer"><img title="Lucas Naja"
+			 src="images/logo.png" alt="Lucas Naja" /></a>
+		<h2>• Fully free<br />
+			• Better and faster than others<br />
+			• <a class="effect" href="https://github.com/LucasNaja/deck-royale/" target="_blank" rel="noopener noreferrer">Open
+				source</a><br />
+			• Responsive layout
+		</h2>
+		<h3>E-mail for contact: <address>lucasnaja0@gmail.com</address></h3>
+		<h3>Facebook: <a class="effect" href="http://facebook.com/lucas.naja0/" target="_blank" rel="noopener noreferrer">Lucas
+				Bittencourt</a></h3>
+		<h3>GitHub: <a class="effect" href="http://github.com/LucasNaja/" target="_blank" rel="noopener noreferrer">Click
+				here</a></h3>
+		<h3>Portfolio: <a class="effect" href="http://lucasnaja.github.io/portfolio-reactjs/" target="_blank" rel="noopener noreferrer">Click
+				here</a></h3>
+	</section>
 
-	</body>
+	<noscript>Please, active your JavaScript!</noscript>
+	<script async src="./src/scripts.js"></script>
+	<amp-auto-ads type="adsense" data-ad-client="ca-pub-2082122254504797">
+	</amp-auto-ads>
+</body>
 
 </html>

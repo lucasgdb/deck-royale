@@ -2,7 +2,7 @@
 ********************/
 html, body {
 	margin: 0;
-	height: 100%;
+	min-height: 100%;
 	background-color: var(--corDeFundo);
 	color: var(--corDeLetra);
 	font-family: Arial, Helvetica, sans-serif
@@ -217,14 +217,14 @@ ins {
 }
 
 .configContainer img {
-	right: 6px;
+	right: 4px;
 	top: 65px
 }
 
 .configContainer div {
 	top: 112px;
-	left: 97%;
-	transform: translateX(-97%);
+	left: 99%;
+	transform: translateX(-99%);
 	white-space: nowrap
 }
 
@@ -375,31 +375,22 @@ ins {
 
 .aboutSection h3 { margin: 0 }
 
-.aboutSection>section {
-	position: relative;
-	min-height: 0;
-	width: 300px;
-	left: 50%;
-	transform: translateX(-50%);
-	overflow: hidden
-}
-
 .aboutSection h2 {
 	position: relative;
-	left: 10px;
-	top: -20px;
-	white-space: nowrap;
-	margin: 0
+	display: inline-block;
+	left: 50%;
+	transform: translateX(-50%);
+	margin: -10px 0 20px 0;
 }
 
 .aboutSection address {	display: inline }
 
 .aboutSection img {
 	position: relative;
+	display: block;
 	left: 50%;
 	transform: translateX(-50%)
 }
-
 .aboutSection a, .navSection a { color: var(--corDeLetra) }
 
 /* RESPONSIVIDADE
@@ -435,22 +426,6 @@ ins {
 		transform: translateX(-50%)
 	}
 
-	.aboutSection>section {
-		width: 580px;
-		height: 300px
-	}
-
-	.aboutSection img {
-		left: 0;
-		transform: translateX(0)
-	}
-
-	.aboutSection h2 {
-		position: relative;
-		display: inline-block;
-		top: -230px;
-		left: 300px
-	}
 	.aboutSection h3 { text-align: center }
 
 	.infoContainer h3 {	width: 100%	}
@@ -467,7 +442,7 @@ ins {
 	.configContainer div {
 		top: 50%;
 		left: 50%;
-		transform: translate(-55%, -50%)
+		transform: translate(-35%, -50%)
 	}
 
 	.btnApagar, .btnColarS, .btnCopiarS {
@@ -551,7 +526,7 @@ ins {
 		transform: translateX(0)
 	}
 
-	.configContainer div { transform: translate(-50%, -50%)	}
+	.configContainer div { transform: translate(-30%, -50%)	}
 
 	.configContainer img { right: 152px }
 

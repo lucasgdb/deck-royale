@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 0.2.1
+# 0.2.2
 
 CACHE:
 ./icon.png
@@ -95,7 +95,7 @@ CACHE:
 ./images/zappies_opt-min.png
 ./images/tesla_opt-min.png
 ./images/info.png
-./images/new-card_opt-min.png
+./images/none-card_opt-min.png
 ./images/undefined_opt-min.png
 ./images/logo.png
 ./src/render.js

@@ -2,7 +2,7 @@ self.onmessage = e => {
   const decksCurrent = e.data.deckList,
     deck = e.data.deck;
   let newDecksCurrent = '[';
-  
+
   for (let i = 0; i < decksCurrent.length; i++)
     if (compareArrays(decksCurrent[i], deck)) {
       if (i === decksCurrent.length - 1)

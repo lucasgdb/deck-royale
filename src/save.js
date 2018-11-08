@@ -20,5 +20,5 @@ self.onmessage = e => {
   if (!exists)
     deck = `{"deckList": [${decks !== null ? `[${decks.deckList.join('],[')}],[${currentDeck.join(',')}]` : `[${currentDeck.join(',')}]`}]}`;
 
-  self.postMessage({"exists": exists, "deck": deck});
+  self.postMessage({ "exists": exists, "deck": deck });
 }

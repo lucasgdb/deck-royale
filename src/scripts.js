@@ -701,7 +701,7 @@ async function downDecks() {
             <div><img src="./images/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${capitalize(response[i].cards[7].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id.toString())})"/></div>
           </section>
 
-          <h1 class="elixir">Elixir médio: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
+          <h1 class="elixir">Elixir average: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
 
           <section class="configContainerS">
             <button class="btnCopiarS" title="Copy deck" oncontextmenu="copyDeckSaved('${response[i].cards.map(card => card.id).join(';')}')" ${screen.width < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `data-clipboard-text=${response[i].decklink}`}>Copy deck</button>

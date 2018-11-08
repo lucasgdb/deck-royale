@@ -444,7 +444,7 @@ function combination() {
 
 function infoCards() {
 	smalltalk.alert('Information',
-		(window.screen.width < 1024 ? 'To change any card, simply press and hold a card.\nTo copy a deck link without open on Clash Royale, simply press and hold the Copy deck button.\nTo remove the current deck, simply press and hold the Paste deck button.\nTo shuffle the current deck, simply press and hold the Build deck button.\nThe function Previous deck is only valid for smart decks.\nTo make the site link a direct link to deck, simply press and hold the Copy deck button.' : 'To change any card, simply press right click on card.\nTo remove current deck, simply press right click on Paste deck button.\nTo shuffle current deck, simply press right click on Build deck button.\nTo make the site link to direct deck link, simply press right click on Build deck button.') +
+		(window.screen.width < 1024 ? 'To change any card, simply press and hold a card.\nTo remove the current deck, simply press and hold the Paste deck button.\nTo shuffle the current deck, simply press and hold the Build deck button.\nThe function Previous deck is only valid for smart decks.\nTo make the site link a direct link to deck, simply press and hold the Copy deck button.' : 'To change any card, simply press right click on card.\nTo remove current deck, simply press right click on Paste deck button.\nTo shuffle current deck, simply press right click on Build deck button.\nTo make the site link to direct deck link, simply press right click on Build deck button.') +
 		(cbDeckInteligente.checked ? '\nCard selector, dropdowns of arenas, rarities and types only works when smart deck are deactived.' : `\nAmount cards to generate: ${allowedCards.length}\nPossible deck combinations: ${combination()}`)
 	);
 }
@@ -453,16 +453,13 @@ function copyDeck() {
 	if (prevDeck.length > 0)
 		prevDeck.pop();
 	if (screen.width < 1024)
-		smalltalk.confirm('Open deck', 'Want to open deck in Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?${contentToCopy}`, '_self')).catch(() => { })
+		smalltalk.confirm('Open deck', 'Want to open this deck on Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?${contentToCopy}`, '_self')).catch(() => { })
 	else
 		btnCopy.setAttribute('data-clipboard-text', `https://link.clashroyale.com/deck/pt?${contentToCopy}`)
 }
 
 function copyDeckSec() {
-	if (screen.width < 1024) {
-		btnCopy.setAttribute('data-clipboard-text', `https://link.clashroyale.com/deck/pt?${contentToCopy}`);
-		smalltalk.alert('Link copied', 'Deck link copied to clipboard.')
-	} else location.search = `deck=${contentToCopy.split('deck=')[1].split(';').map(id => cardsCode.indexOf(id)).join(';')}`
+	location.search = `deck=${contentToCopy.split('deck=')[1].split(';').map(id => cardsCode.indexOf(id)).join(';')}`
 }
 
 function copyDeckPhone(deck) {
@@ -471,7 +468,7 @@ function copyDeckPhone(deck) {
 
 function copyDeckSaved(deck) {
 	if (screen.width < 1024)
-		smalltalk.confirm('Open deck', 'Want to open deck in Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?deck=${deck}`, '_self')).catch(() => { })
+		smalltalk.confirm('Open deck', 'Want to open this deck on Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?deck=${deck}`, '_self')).catch(() => { })
 	else location.search = `deck=${deck.split(';').map(id => cardsCode.indexOf(id)).join(';')}`
 }
 

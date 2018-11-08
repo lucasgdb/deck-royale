@@ -445,7 +445,7 @@ function combination() {
 function infoCards() {
 	smalltalk.alert('Information',
 		(window.screen.width < 1024 ? 'To change any card, simply press and hold a card.\nTo remove the current deck, simply press and hold the Paste deck button.\nTo shuffle the current deck, simply press and hold the Build deck button.\nThe function Previous deck is only valid for smart decks.\nTo make the site link a direct link to deck, simply press and hold the Copy deck button.' : 'To change any card, simply press right click on card.\nTo remove current deck, simply press right click on Paste deck button.\nTo shuffle current deck, simply press right click on Build deck button.\nTo make the site link to direct deck link, simply press right click on Build deck button.') +
-		(cbDeckInteligente.checked ? '\nCard selector, dropdowns of arenas, rarities and types only works when smart deck are deactived.' : `\nAmount cards to generate: ${allowedCards.length}\nPossible deck combinations: ${combination()}`)
+		(cbDeckInteligente.checked ? '\nCard selector, dropdowns of arenas, rarities and types only works when smart deck are deactived.' : `\nAmount of cards to generate: ${allowedCards.length}\nPossible deck combinations: ${combination()}`)
 	);
 }
 
@@ -511,7 +511,7 @@ function pasteDeck(content = null) {
 					paste(linkDeck)
 				}).catch(() => { })
 		else {
-			let linkDeck = prompt('Cole o link do Deck abaixo');
+			let linkDeck = prompt('Paste a deck link below\nE.g: https://link.clashroyale.com/deck/en?deck=26000018;28000009;26000003;28000008...');
 			paste(linkDeck)
 		}
 	} else paste(content)
@@ -686,7 +686,7 @@ async function downDecks() {
 		response = await fetch('https://docs.royaleapi.com/json/popular_decks.json').then(data => data.json()).catch(() => smalltalk.alert('Error', 'An error, come back later.'))
 
 	if (response !== null)
-		if (response.length === maxDown) smalltalk.alert('Limit reached', 'No more decks to show.')
+		if (response.length === maxDown) smalltalk.alert('Limit reached', 'Don\'t has more decks to show.')
 		else {
 			for (let i = maxDown; i < maxDown + (maxDown + 10 > response.length ? response.length - maxDown : 10); i++)
 				html += `
@@ -712,7 +712,7 @@ async function downDecks() {
 
 			bestDecks.innerHTML = html;
 			maxDown += (maxDown + 10 > response.length ? response.length - maxDown : 10);
-			document.querySelector('.bestSection h2').innerText = `Amount best decks: ${maxDown}`
+			document.querySelector('.bestSection h2').innerText = `Amount of best decks: ${maxDown}`
 		}
 }
 
@@ -773,7 +773,7 @@ const createDecks = new Worker('./src/render.js'),
 
 createDecks.onmessage = e => {
 	savedDecks.innerHTML = e.data;
-	document.querySelector('.savedSection h2').innerText = `Amount saved decks: ${JSON.parse(localStorage.getItem('decks')).deckList.length}`
+	document.querySelector('.savedSection h2').innerText = `Amount of saved decks: ${JSON.parse(localStorage.getItem('decks')).deckList.length}`
 }
 
 saveDecks.onmessage = e => {
@@ -883,7 +883,7 @@ for (let i = 0; i < cards.length; i++) {
 				change(name, i)
 			}).catch(() => { })
 		else {
-			let name = prompt('Type card name below');
+			let name = prompt('Type card name below\nE.g: Mini P.E.K.K.A, mini p.e.k.k.a or mini pekka');
 			change(name, i)
 		}
 	});

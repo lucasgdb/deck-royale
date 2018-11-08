@@ -372,6 +372,7 @@ ins {
 	font-size: 30px;
 	text-align: center
 }
+.aboutSection h1:nth-last-of-type(1) { margin: 20px 0 0 0 }
 
 .aboutSection h3 { margin: 0 }
 
@@ -383,9 +384,14 @@ ins {
 	margin: -10px 0 20px 0;
 }
 
+.aboutSection h4, .aboutSection p {
+	margin: 0;
+	text-align: center
+}
+
 .aboutSection address {	display: inline }
 
-.aboutSection img {
+.logo {
 	position: relative;
 	display: block;
 	left: 50%;

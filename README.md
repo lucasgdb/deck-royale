@@ -1,11 +1,11 @@
-# Deck Royale
+# _Deck Royale_
 
-## An [OnLine Tool](https://deckroyale.now.sh) for Clash Royale gamers
+## An [OnLine Tool](https://deckroyale.now.sh) for Clash Royale game
 
-### Made by JavaScript with <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f499.png" width=14> for y'all!
+### Made with <img src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f499.png" width=15> for y'all!
 
 ## Description
-  Deck Royale is a Deck Builder for Clash Royale game that makes easier your friendly and personal battles.
+  _Deck Royale_ is a **Deck Builder Tool** for Clash Royale game that makes easier your friendly and personal battles.
 
 ## Why
   - Save your preferred decks (until 100 decks!!!)
@@ -24,3 +24,5 @@
   - [Twitter](https://twitter.com/LucasNaja0)
   - [GitHub](https://github.com/LucasNaja)
   - [Portfolio](https://lucasnaja.github.io/portfolio-reactjs)
+
+### Current build: 0.2.5

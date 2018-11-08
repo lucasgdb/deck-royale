@@ -53,7 +53,7 @@ ins {
 ::-webkit-scrollbar-track {	background-color: var(--corDeLetraBotao) }
 
 .lds-ring {
-	position: relative;
+	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);

@@ -381,6 +381,7 @@ ins {
 	display: inline-block;
 	left: 50%;
 	transform: translateX(-50%);
+	font-weight: 400;
 	margin: -10px 0 20px 0;
 }
 
@@ -388,6 +389,8 @@ ins {
 	margin: 0;
 	text-align: center
 }
+
+.aboutSection p { font-size: 17px }
 
 .aboutSection address {	display: inline }
 
@@ -433,6 +436,7 @@ ins {
 	}
 
 	.aboutSection h3 { text-align: center }
+	.aboutSection h2 { transform: translateX(calc(-50% + 65px)) }
 
 	.infoContainer h3 {	width: 100%	}
 

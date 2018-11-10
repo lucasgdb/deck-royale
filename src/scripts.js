@@ -438,7 +438,7 @@ function combination() {
 
 	result = iFactorial / bFactorial;
 
-	const formatter = Intl.NumberFormat('pt-br');
+	const formatter = Intl.NumberFormat();
 	return allowedCards.length === 0 ? 0 : formatter.format(result)
 }
 
@@ -845,11 +845,12 @@ function deleteAllBest() {
 }
 
 function showInfo(index = Number) {
+	const arenaName = ['Training Camp', 'Goblin Stadium', 'Bone Pit', 'Barbarian Bowl', 'P.E.K.K.A\'s Playhouse', 'Spell Valley', 'Builder\'s Workshop', 'Royal Arena', 'Frozen Peak', 'Jungle Arena', 'Hog Mountain', 'Electro Valley'];
 	const arena = (() => {
-		for (let j = 1; j < arenas.length; j++)
-			if (index < arenas[arenas.length - j]) return j
+		for (let j = 0; j < arenas.length; j++)
+			if (index < (j === 0 ? 13 : arenas[arenas.length - j])) return j
 	})();
-	info.innerHTML = `<ins>${capitalize(cardsName[index])}</ins><br />${cardsInformation[index]}<br />Elixir cost: ${cardsElixir[index]}<br />Arena: ${arena}`
+	info.innerHTML = `<ins>${capitalize(cardsName[index])}</ins><br />${cardsInformation[index]}<br />Elixir cost: ${cardsElixir[index]}<br />Arena: ${arena === 0 ? arenaName[arena] : `${arenaName[arena]} (${arena})`}`
 }
 
 if (localStorage.getItem('theme') === 'light') {

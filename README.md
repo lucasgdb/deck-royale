@@ -20,9 +20,9 @@
   - Fastest tool
 
 ## Contact
-  - [Facebook](https://www.facebook.com/Lucas.Naja0)
-  - [Twitter](https://twitter.com/LucasNaja0)
-  - [GitHub](https://github.com/LucasNaja)
-  - [Portfolio](https://lucasnaja.github.io/portfolio-reactjs)
+  - **[Facebook](https://www.facebook.com/Lucas.Naja0)**
+  - **[Twitter](https://twitter.com/LucasNaja0)**
+  - **[GitHub](https://github.com/LucasNaja)**
+  - **[Portfolio](https://lucasnaja.github.io/portfolio-reactjs)**
 
-### Current build: 0.2.5
+### Current build: **0.2.6**

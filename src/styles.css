@@ -8,6 +8,8 @@ html, body {
 	font-family: Arial, Helvetica, sans-serif
 }
 
+* { outline: none }
+
 html, body { min-width: 300px }
 
 img, ins, .navSection h1 {
@@ -16,7 +18,6 @@ img, ins, .navSection h1 {
 }
 
 button {
-	outline: none;
 	border: 1px solid var(--corDeBorda);
   color: var(--corDeLetraBotao);
 	position: relative;
@@ -29,7 +30,6 @@ button {
 
 select {
 	margin-top: 5px;
-	outline: none;
 	width: 205px;
 	margin-bottom: 2px;
 	position: relative;
@@ -46,6 +46,15 @@ select {
 ins {
 	font-size: 20px;
 	font-weight: bolder
+}
+
+svg {
+	width: 24px;
+	height: 24px;
+	top: 2px;
+	left: 50%;
+	transform: translateX(-50%);
+	position: absolute
 }
 
 ::-webkit-scrollbar {	width: 4px }
@@ -97,10 +106,10 @@ ins {
 .navSection button {
 	min-width: 175px;
 	width: 100%;
-	height: 50px;
+	margin-bottom: 1px;
 	font-size: 17px;
 	border: 1px solid var(--corDeLetraBotao);
-	padding: 0
+	padding: 25px 0 3px 0;
 }
 
 #selectedButton {
@@ -124,8 +133,7 @@ ins {
 .container div:after, .container div:before, .container div {
 	background-color: var(--corDeLetraBotao);
 	width: 100%;
-	height: 4px;
-	border-radius: 10px
+	height: 4px
 }
 
 .container div:after, .container div:before {
@@ -147,6 +155,11 @@ ins {
 }
 
 .builderSection { overflow-x: hidden }
+
+.builderSection > section {
+	width: 100%;
+	min-height: 100%
+}
 
 .cardsContainer, .cardsContainerS, .configContainer, .infoContainer {
 	position: relative;
@@ -362,6 +375,27 @@ ins {
 	font-size: 20px
 }
 
+/* CONFIG
+********************/
+.containerConfig {
+	display: none;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .6);
+	position: absolute;
+	z-index: 2
+}
+
+.config {
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 375px;
+	height: 500px;
+	background-color: var(--corDeFundo)
+}
+
 /* ABOUT
 ********************/
 .aboutSection, .selectSection { display: none }
@@ -440,25 +474,33 @@ ins {
 
 	.infoContainer h3 {	width: 100%	}
 
+	.configContainer { height: 97px }
 	.configContainer img, .btnGerar, .btnVoltar {
 		top: 50%;
 		transform: translateY(-50%)
 	}
 
-	.configContainer img { right: 162px	}
+	.configContainer img {
+		left: 140px;
+		top: 70px
+	}
 
 	.btnGerar, .btnVoltar {	margin-top: 0 }
 
 	.configContainer div {
-		top: 50%;
-		left: 50%;
-		transform: translate(-35%, -50%)
+		top: 60px;
+		left: 5px;
+		transform: translate(0, 0)
 	}
 
 	.btnApagar, .btnColarS, .btnCopiarS {
 		font-size: 20px;
 		width: 140px
 	}
+
+	.btnSalvar { left: 255px }
+	.btnColar { left: 130px }
+	.btnSalvar, .btnColar { top: 0 }
 
 	#selectedButton {
 		width: calc(100% + 1px);
@@ -469,7 +511,7 @@ ins {
 
 	.navSection button {
 		width: 100%;
-		font-size: 19px;
+		font-size: 19px
 	}
 
 	.builderSection, .selectSection, .savedSection, .bestSection, .configSection, .aboutSection {
@@ -480,7 +522,7 @@ ins {
 
 	.btnRemoveAll {
 		width: calc(100% - 10px);
-		left: 5px;
+		left: 5px
 	}
 }
 
@@ -524,7 +566,7 @@ ins {
 	.selectSection img { transition: all .1s }
 
 	.cardsContainer, .configContainer {
-		left: calc(100% - 600px);
+		left: calc(100% - 605px);
 		transform: translateX(0)
 	}
 
@@ -535,10 +577,6 @@ ins {
 		left: calc(100% - 850px);
 		transform: translateX(0)
 	}
-
-	.configContainer div { transform: translate(-30%, -50%)	}
-
-	.configContainer img { right: 152px }
 
 	.btnVoltar { width: 20px }
 

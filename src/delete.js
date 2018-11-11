@@ -6,11 +6,11 @@ self.onmessage = e => {
   for (let i = 0; i < decksCurrent.length; i++)
     if (compareArrays(decksCurrent[i], deck)) {
       if (i === decksCurrent.length - 1)
-        newDecksCurrent = `${newDecksCurrent.substring(0, newDecksCurrent.length - 1)}${decksCurrent.length === 1 ? 'empty' : ']'}`;
+        newDecksCurrent = `${newDecksCurrent.substring(0, newDecksCurrent.length - 1)}${decksCurrent.length === 1 ? 'empty' : ']'}`
     }
-    else newDecksCurrent += `[${decksCurrent[i]}]${i === decksCurrent.length - 1 ? ']' : ','}`;
+    else newDecksCurrent += `[${decksCurrent[i]}]${i === decksCurrent.length - 1 ? ']' : ','}`
 
-  self.postMessage(newDecksCurrent);
+  self.postMessage(newDecksCurrent)
 }
 
 function compareArrays(array1, array2) {
@@ -18,7 +18,7 @@ function compareArrays(array1, array2) {
   if (array1.length === array2.length)
     for (let i = 0; i < array1.length; i++)
       if (array1[i] === array2[i])
-        qtd++;
+        qtd++
 
-  return array1.length === qtd;
+  return array1.length === qtd
 }

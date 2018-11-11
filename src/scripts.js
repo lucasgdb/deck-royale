@@ -244,7 +244,14 @@ const cardsName = [
 	cbDeckInteligente = document.querySelector('#smartDeck'),
 	btnVoltar = document.querySelector('.btnVoltar'),
 	arenas = [90, 90, 83, 77, 71, 63, 55, 47, 39, 31, 25, 19],
-	root = document.querySelector(':root')
+	root = document.querySelector(':root');
+
+if (localStorage.getItem('ddArena') !== null)
+	ddArena.selectedIndex = localStorage.getItem('ddArena');
+if (localStorage.getItem('ddRarity') !== null)
+	ddRarity.selectedIndex = localStorage.getItem('ddRarity');
+if (localStorage.getItem('ddType') !== null)
+	ddType.selectedIndex = localStorage.getItem('ddType');
 
 function changeDeck() {
 	const selectedArena = arenas[ddArena.selectedIndex];
@@ -265,33 +272,42 @@ function changeDeck() {
 
 	for (let i = 0; i < allowedCards.length; i++) {
 		if (ddType.selectedIndex === 1 && cardsInformation[allowedCards[i]].split('<br />')[1] !== 'Type: Troop')
-			allowedCards[i] = 0;
+			allowedCards[i] = 0
 		else if (ddType.selectedIndex === 2 && cardsInformation[allowedCards[i]].split('<br />')[1] !== 'Type: Construction')
-			allowedCards[i] = 0;
+			allowedCards[i] = 0
 		else if (ddType.selectedIndex === 3 && cardsInformation[allowedCards[i]].split('<br />')[1] !== 'Type: Spell')
-			allowedCards[i] = 0;
+			allowedCards[i] = 0
 	}
 
 	for (let i = 0; i < allowedCards.length; i++)
 		if (allowedCards[i] !== 0 && localStorage.getItem(cardsName[allowedCards[i]]) !== 'e')
-			allowedCards[i] = 0;
+			allowedCards[i] = 0
 
 	let amount = 0;
 	for (let i = 0; i < cardsName.length; i++)
 		if (localStorage.getItem(cardsName[i]) === 'e')
-			amount++;
+			amount++
 
 	document.querySelector('.selectSection h2').textContent = `Amount of allowed decks: ${amount}`;
 
 	while (allowedCards.indexOf(0) !== -1)
 		for (let i = 0; i < allowedCards.length; i++)
 			if (allowedCards[i] === 0)
-				allowedCards.splice(i, 1);
+				allowedCards.splice(i, 1)
 }
 
-ddArena.onchange = changeDeck;
-ddRarity.onchange = changeDeck;
-ddType.onchange = changeDeck;
+ddArena.onchange = () => {
+	changeDeck();
+	localStorage.setItem('ddArena', ddArena.selectedIndex)
+}
+ddRarity.onchange = () => {
+	changeDeck();
+	localStorage.setItem('ddRarity', ddRarity.selectedIndex)
+}
+ddType.onchange = () => {
+	changeDeck();
+	localStorage.setItem('ddType', ddType.selectedIndex)
+}
 
 cbDeckInteligente.onchange = () => {
 	if (cbDeckInteligente.checked === true) {
@@ -329,9 +345,7 @@ function pasteCard(event) {
 	}
 }
 
-function capitalize(string) {
-	return string.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
-}
+function capitalize(string) {	return string.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') }
 
 function setDeck(deck = Array) {
 	let media = 0.0;
@@ -438,7 +452,7 @@ function combination() {
 
 	result = iFactorial / bFactorial;
 
-	const formatter = Intl.NumberFormat();
+	const formatter = Intl.NumberFormat('en-US');
 	return allowedCards.length === 0 ? 0 : formatter.format(result)
 }
 
@@ -451,25 +465,25 @@ function infoCards() {
 
 function copyDeck() {
 	if (prevDeck.length > 0)
-		prevDeck.pop();
+		prevDeck.pop()
 	if (screen.width < 1024)
-		smalltalk.confirm('Open deck', 'Want to open this deck on Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?${contentToCopy}`, '_self')).catch(() => { })
+		smalltalk.confirm('Open deck', 'Do you wanna open this deck on Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?${contentToCopy}`, '_self')).catch(() => { })
 	else
 		btnCopy.setAttribute('data-clipboard-text', `https://link.clashroyale.com/deck/pt?${contentToCopy}`)
 }
 
 function copyDeckSec() {
-	location.search = `deck=${contentToCopy.split('deck=')[1].split(';').map(id => cardsCode.indexOf(id)).join(';')}`
+	smalltalk.confirm('Shareable link', 'Do you wanna create a shareable link?').then(() => location.search = `deck=${contentToCopy.split('deck=')[1]}`).catch(() => {})
 }
 
 function copyDeckPhone(deck) {
-	location.search = `deck=${deck.split(';').map(id => cardsCode.indexOf(id)).join(';')}`
+	smalltalk.confirm('Shareable link', 'Do you wanna create a shareable link?').then(() => location.search = `deck=${deck}`).catch(() => {})
 }
 
 function copyDeckSaved(deck) {
 	if (screen.width < 1024)
-		smalltalk.confirm('Open deck', 'Want to open this deck on Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?deck=${deck}`, '_self')).catch(() => { })
-	else location.search = `deck=${deck.split(';').map(id => cardsCode.indexOf(id)).join(';')}`
+		smalltalk.confirm('Open deck', 'Do you wanna open this deck on Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?deck=${deck}`, '_self')).catch(() => { })
+	else smalltalk.confirm('Shareable link', 'Do you wanna create a shareable link?').then(() => location.search = `deck=${deck}`).catch(() => {})
 }
 
 function paste(linkDeck = String) {
@@ -655,17 +669,6 @@ function darkTheme() {
 	localStorage.removeItem('theme')
 }
 
-function lightTheme() {
-	root.style.setProperty('--corDeFundo', '#ecf0f1');
-	root.style.setProperty('--corPrimaria', '#343e51');
-	root.style.setProperty('--corSecundaria', '#2a3241');
-	root.style.setProperty('--corTercearia', '#222833');
-	root.style.setProperty('--corDeLetraBotao', 'white');
-	root.style.setProperty('--corDeBorda', 'black');
-	root.style.setProperty('--corDeLetra', 'black');
-	localStorage.setItem('theme', 'light')
-}
-
 function blueTheme() {
 	root.style.setProperty('--corDeFundo', '#343e51');
 	root.style.setProperty('--corPrimaria', '#242b38');
@@ -815,7 +818,7 @@ function saveDeck(deck = currentDeck) {
 }
 
 function deleteDeck(deck = Array) {
-	smalltalk.confirm('Remove Deck', 'Want to remove this Deck?').then(() => {
+	smalltalk.confirm('Remove Deck', 'Do you wanna remove this Deck?').then(() => {
 		deleteDecks.postMessage({
 			"deckList": JSON.parse(localStorage.getItem('decks')).deckList,
 			"deck": deck
@@ -825,7 +828,7 @@ function deleteDeck(deck = Array) {
 
 function deleteAll() {
 	smalltalk
-		.confirm('Remove Decks', 'Want to remove all saved Decks?')
+		.confirm('Remove Decks', 'Do you wanna remove all saved Decks?')
 		.then(() => {
 			localStorage.removeItem('decks');
 			render()
@@ -835,7 +838,7 @@ function deleteAll() {
 
 function deleteAllBest() {
 	smalltalk
-		.confirm('Remove Decks', 'Want to remove all best Decks?')
+		.confirm('Remove Decks', 'Do you wanna remove all best Decks?')
 		.then(() => {
 			html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all decks</button><h2 class="elixir"></h2>';
 			bestDecks.innerHTML = '<h1 class="noneDeck">None deck in this area.</h1>';
@@ -853,13 +856,9 @@ function showInfo(index = Number) {
 	info.innerHTML = `<ins>${capitalize(cardsName[index])}</ins><br />${cardsInformation[index]}<br />Elixir cost: ${cardsElixir[index]}<br />Arena: ${arena === 0 ? arenaName[arena] : `${arenaName[arena]} (${arena})`}`
 }
 
-if (localStorage.getItem('theme') === 'light') {
-	lightTheme();
-	cbConfigs[1].checked = true
-}
-else if (localStorage.getItem('theme') === 'blue') {
+if (localStorage.getItem('theme') === 'blue') {
 	blueTheme();
-	cbConfigs[2].checked = true
+	cbConfigs[1].checked = true
 } else {
 	cbConfigs[0].checked = true;
 	darkTheme()
@@ -894,13 +893,10 @@ for (let i = 0; i < cards.length; i++) {
 	});
 }
 
-window.addEventListener('contextmenu', event => {
-	event.preventDefault()
-});
+window.addEventListener('contextmenu', event => event.preventDefault());
 
 cbConfigs[0].addEventListener('change', darkTheme);
-cbConfigs[1].addEventListener('change', lightTheme);
-cbConfigs[2].addEventListener('change', blueTheme);
+cbConfigs[1].addEventListener('change', blueTheme);
 
 document.onkeydown = e => {
 	if (e.which === 67)
@@ -928,9 +924,7 @@ window.onpopstate = function () {
 	switchContainer(cont[history.state])
 }
 
-window.onunload = () => {
-	history.go(-history.length)
-}
+window.onunload = () => { history.go(-history.length) }
 
 render();
 changeDeck();

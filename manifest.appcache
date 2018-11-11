@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 0.2.6
+# 0.2.7
 
 CACHE:
 ./icon.png
@@ -102,6 +102,7 @@ CACHE:
 ./src/save.js
 ./src/delete.js
 ./src/scripts.js
+./src/buttons.js
 ./manifest.appcache
 
 NETWORK:

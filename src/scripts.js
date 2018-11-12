@@ -418,16 +418,18 @@ ddType.onchange = () => {
 
 cbDeckInteligente.onchange = () => {
 	if (cbDeckInteligente.checked === true) {
-		ddArena.style.display = 'none';
-		ddRarity.style.display = 'none';
-		ddType.style.display = 'none';
-		changeContainers[1].style.display = 'none'
+		ddArena.disabled = true;
+		ddRarity.disabled = true;
+		ddType.disabled = true;
+		document.querySelector('button[title="Card selector"] svg path').setAttribute('fill', 'darkgray');
+		changeContainers[1].disabled = true;
 		if (prevDeck.length > 1) btnVoltar.hidden = false
 	} else {
-		ddArena.style.display = 'block';
-		ddRarity.style.display = 'block';
-		ddType.style.display = 'block';
-		changeContainers[1].style.display = 'block'
+		ddArena.disabled = false;
+		ddRarity.disabled = false;
+		ddType.disabled = false;
+		document.querySelector('button[title="Card selector"] svg path').setAttribute('fill', '#fff');
+		changeContainers[1].disabled = false;
 		if (prevDeck.length > 1) btnVoltar.hidden = true
 	}
 }

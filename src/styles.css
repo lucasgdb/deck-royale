@@ -32,8 +32,10 @@ button {
 	background-color: var(--corSecundaria);
 	background-position: center;
 	font-weight: 500;
-	transition: background 0.6s
+	transition: background 0.3s
 }
+
+button:disabled, select:disabled { color: darkgray !important }
 
 button:hover { background: var(--corSecundaria) radial-gradient(circle, transparent 1%, var(--corTercearia) 1%) center/15000% }
 

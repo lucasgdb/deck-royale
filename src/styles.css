@@ -1,11 +1,16 @@
 /*	GERAL
 ********************/
+@font-face {
+	font-family: 'Roboto';
+	src: url(Roboto-Regular.ttf)
+}
+
 html, body {
 	margin: 0;
 	min-height: 100%;
 	background-color: var(--corDeFundo);
 	color: var(--corDeLetra);
-	font-family: Arial, Helvetica, sans-serif
+	font-family: 'Roboto', Arial, Helvetica, sans-serif
 }
 
 * { outline: none }
@@ -25,7 +30,17 @@ button {
   line-height: 22px;
 	-moz-user-select: none;
 	background-color: var(--corSecundaria);
-	font-weight: 500
+	background-position: center;
+	font-weight: 500;
+	transition: background 0.6s
+}
+
+button:hover { background: var(--corSecundaria) radial-gradient(circle, transparent 1%, var(--corTercearia) 1%) center/15000% }
+
+button:active {
+	background-color: var(--corPrimaria);
+	background-size: 100%;
+	transition: background 0s
 }
 
 select {
@@ -38,7 +53,7 @@ select {
 	color: var(--corDeLetraBotao);
 	display: block;
 	left: 50%;
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: 900;
 	transform: translateX(-50%)
 }
@@ -46,15 +61,6 @@ select {
 ins {
 	font-size: 20px;
 	font-weight: bolder
-}
-
-svg {
-	width: 24px;
-	height: 24px;
-	top: 2px;
-	left: 50%;
-	transform: translateX(-50%);
-	position: absolute
 }
 
 ::-webkit-scrollbar {	width: 4px }
@@ -97,6 +103,15 @@ svg {
 	color: var(--corDeLetraBotao);
 	z-index: 1;
 	position: fixed
+}
+
+.navSection svg {
+	width: 24px;
+	height: 24px;
+	top: 2px;
+	left: 50%;
+	transform: translateX(-50%);
+	position: absolute
 }
 
 .navSection .effect { color: var(--corDeLetraBotao) }
@@ -151,7 +166,7 @@ svg {
 	position: relative;
 	top: 35px;
 	width: 100%;
-	min-height: 0
+	min-height: 100%
 }
 
 .builderSection { overflow-x: hidden }
@@ -269,14 +284,14 @@ svg {
 /* CARD SELECTOR
 ********************/
 .selectSection section {
+	display: inline-block;
 	border: 1px solid var(--corDeBorda);
 	width: calc(100% - 2px);
 	height: 180px;
-	margin-top: 5px;
-	float: left
+	margin-top: 5px
 }
 
-.selectSection img {
+.selectSection img:not(#configCards) {
 	position: relative;
 	width: 150px;
 	height: 180px;
@@ -295,6 +310,14 @@ svg {
 	float: left;
 	font-size: 17px;
 	height: 50px
+}
+
+#configCards {
+	width: 35px;
+	height: 35px;
+	top: -34px;
+	right: 5px;
+	position: absolute
 }
 
 .notAllowed {	filter: grayscale(1) }
@@ -354,7 +377,7 @@ svg {
 	margin-top: 5px
 }
 
-/* CONFIG
+/* THEME SECTION
 ********************/
 .configSection { display: none }
 
@@ -387,14 +410,36 @@ svg {
 }
 
 .config {
-	position: relative;
+	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-	width: 375px;
-	height: 500px;
+	width: 300px;
+	min-height: 0;
 	background-color: var(--corDeFundo)
 }
+
+.config h1 {
+	margin: 0;
+	font-size: 29px;
+	font-weight: 500;
+	text-align: center
+}
+
+.config label { font-size: 19px }
+
+.config section {
+	position: relative;
+	margin-bottom: 5px;
+	width: 100%;
+	height: 20px
+}
+
+.config div {
+	position: absolute;
+	white-space: nowrap
+}
+
 
 /* ABOUT
 ********************/
@@ -447,14 +492,16 @@ svg {
 @media (min-width: 768px) {
 	.selectSection button:nth-last-of-type(2) { margin-left: 10px }
 	.selectSection section {
-		width: calc(50% - 16px);
-		margin-left: 10px
+		width: calc(50% - 8px);
+		margin-left: 3px
 	}
 	.selectSection button {
 		display: inline-block;
 		margin-left: 5px;
 		width: 240px
 	}
+
+	#configCards { top: 2px	}
 
 	.navSection h1 {
 		display: block;
@@ -502,11 +549,6 @@ svg {
 	.btnColar { left: 130px }
 	.btnSalvar, .btnColar { top: 0 }
 
-	#selectedButton {
-		width: calc(100% + 1px);
-		border-right: none
-	}
-
 	.navSection div { display: none }
 
 	.navSection button {
@@ -531,13 +573,11 @@ svg {
 	.btnGerar ins { cursor: pointer }
 
 	.selectSection section {
-		width: calc(25% - 14px);
-		margin-left: 10px
+		width: calc(25% - 16px);
+		margin-left: 9px
 	}
 
-	button:hover { background-color: var(--corTercearia) }
-
-	button:active {	background-color: var(--corSecundaria)	}
+	#configCards { cursor: pointer }
 
 	img, button, select, input, label {	cursor: pointer	}
 	label { user-select: none }
@@ -563,7 +603,7 @@ svg {
 		transform: translate(0, 0)
 	}
 
-	.selectSection img { transition: all .1s }
+	.selectSection img:not(#configCards) { transition: all .1s }
 
 	.cardsContainer, .configContainer {
 		left: calc(100% - 605px);
@@ -576,6 +616,20 @@ svg {
 		top: 0;
 		left: calc(100% - 850px);
 		transform: translateX(0)
+	}
+
+	.dropdowns, .infoText {
+		left: 50%;
+		width: 100%;
+		transform: translateX(-50%)
+	}
+	.dropdowns {
+		position: absolute;
+		top: 5px
+	}
+	.infoText {
+		position: absolute;
+		top: 165px
 	}
 
 	.btnVoltar { width: 20px }
@@ -603,7 +657,7 @@ svg {
 
 @media (min-width: 2560px) {
 	.selectSection section {
-		width: calc(20% - 18px);
-		margin-left: 14px
+		width: calc(20% - 20px);
+		margin-left: 12px
 	}
 }

@@ -19,11 +19,18 @@
 </head>
 
 <body>
-	<section class="containerConfig">
-		<section class="config">
-			<p>Option 1</p>
+	<section onclick="showConfig()" class="containerConfig">
+		<section onclick="stop(event)" class="config">
+			<h1>Configurations</h1>
+			<section><div><input type="checkbox" id="all" /> <label for="all">All cards (89)</label></div></section>
+			<section><div><input type="checkbox" id="common" /> <label for="common">All common cards</label></div></section>
+			<section><div><input type="checkbox" id="rare" /> <label for="rare">All rare cards</label></div></section>
+			<section><div><input type="checkbox" id="epic" /> <label for="epic">All epic cards</label></div></section>
+			<section><div><input type="checkbox" id="legendary" /> <label for="legendary">All legendary cards</label></div></section>
+			<section><div><input type="checkbox" id="troop" /> <label for="troop">All troop cards</label></div></section>
+			<section><div><input type="checkbox" id="spell" /> <label for="spell">All spell cards</label></div></section>
+			<section><div><input type="checkbox" id="construction" /> <label for="construction">All construction cards</label></div></section>
 		</section>
-		<!-- Being developed -->
 	</section>
 
 	<div class="lds-ring">
@@ -104,55 +111,61 @@
 					deck</button>
 
 				<div>
-					<input type="checkbox" id="smartDeck" title="Smart deck mode" /><label title="Smart deck mode" for="smartDeck">Smart decks</label>
+					<input type="checkbox" id="smartDeck" title="Smart deck mode" /><label title="Smart deck mode" for="smartDeck">Smart
+						decks</label>
 				</div>
 			</section>
 
 			<section class="infoContainer">
-				<h3 id="elixirMedio"></h3>
+				<section class="infoText">
+					<h3 id="elixirMedio"></h3>
 
-				<h1>Information</h1>
+					<h1>Information</h1>
 
-				<h2>None card selected</h2>
+					<h2>None card selected</h2>
+				</section>
 
-				<select id="ddArena">
-					<option>All arenas</option>
-					<option>Arena 11</option>
-					<option>Arena 10</option>
-					<option>Arena 9</option>
-					<option>Arena 8</option>
-					<option>Arena 7</option>
-					<option>Arena 6</option>
-					<option>Arena 5</option>
-					<option>Arena 4</option>
-					<option>Arena 3</option>
-					<option>Arena 2</option>
-					<option>Arena 1</option>
-				</select>
+				<section class="dropdowns">
+					<select id="ddArena">
+						<option>All arenas</option>
+						<option>Arena 11</option>
+						<option>Arena 10</option>
+						<option>Arena 9</option>
+						<option>Arena 8</option>
+						<option>Arena 7</option>
+						<option>Arena 6</option>
+						<option>Arena 5</option>
+						<option>Arena 4</option>
+						<option>Arena 3</option>
+						<option>Arena 2</option>
+						<option>Arena 1</option>
+					</select>
 
-				<select id="ddRarity">
-					<option>All rarities</option>
-					<option>Common</option>
-					<option>Rares</option>
-					<option>Epics</option>
-					<option>Legendaries</option>
-				</select>
+					<select id="ddRarity">
+						<option>All rarities</option>
+						<option>Common</option>
+						<option>Rares</option>
+						<option>Epics</option>
+						<option>Legendaries</option>
+					</select>
 
-				<select id="ddType">
-					<option>All types</option>
-					<option>Troops</option>
-					<option>Constructions</option>
-					<option>Spells</option>
-				</select>
+					<select id="ddType">
+						<option>All types</option>
+						<option>Troops</option>
+						<option>Constructions</option>
+						<option>Spells</option>
+					</select>
+				</section>
 			</section>
 		</section>
 	</section>
 
-	<section class="selectSection">
+	<section oncontextmenu="showConfig()" class="selectSection">
 		<div>
 			<button title="Mark all">Mark all cards</button>
 			<button title="Unmark all">Unmark all cards</button>
 		</div>
+		<img onclick="showConfig()" id="configCards" title="Configurations" src="./images/config.png" />
 		<h2 class="noneDeck">Amount of allowed cards: 89</h2>
 		<!-- Código gerado pelo JavaScript -->
 	</section>
@@ -215,7 +228,7 @@
 		<h1><strong>Deck Builder</strong> for Clash Royale</h1>
 		<p>Deck Royale is a <strong>Deck Builder</strong> for Clash Royale game that makes easier your friendly and personal
 			battles.</p>
-		<h4>v0.2.7</h4>
+		<h4>v0.2.8</h4>
 	</section>
 
 	<noscript>Please, active your JavaScript to work!</noscript>

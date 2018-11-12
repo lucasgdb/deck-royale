@@ -1,10 +1,16 @@
 CACHE MANIFEST
-# 0.2.7
+# 0.2.8
 
 CACHE:
 ./icon.png
-./src/styles.css
 ./manifest.json
+./src/buttons.js
+./src/delete.js
+./src/render.js
+./src/Roboto-Regular.ttf
+./src/save.js
+./src/scripts.js
+./src/styles.css
 ./images/witch_opt-min.png
 ./images/skeleton-army_opt-min.png
 ./images/baby-dragon_opt-min.png
@@ -98,12 +104,6 @@ CACHE:
 ./images/none-card_opt-min.png
 ./images/undefined_opt-min.png
 ./images/logo.png
-./src/render.js
-./src/save.js
-./src/delete.js
-./src/scripts.js
-./src/buttons.js
-./manifest.appcache
 
 NETWORK:
 *

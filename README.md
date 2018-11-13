@@ -25,4 +25,4 @@
   - **[GitHub](https://github.com/LucasNaja)**
   - **[Portfolio](https://lucasnaja.github.io/portfolio-reactjs)**
 
-### Current build: **0.2.8**
+### Current build: **0.2.9**

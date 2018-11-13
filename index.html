@@ -2,7 +2,6 @@
 <html lang="en" manifest="manifest.appcache">
 
 <head>
-	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="description" content="The Deck Royale is an online tool that build random and smart decks for Clash Royale game. Perfect for friendly battles and much more." />
@@ -22,14 +21,30 @@
 	<section onclick="showConfig()" class="containerConfig">
 		<section onclick="stop(event)" class="config">
 			<h1>Configurations</h1>
-			<section><div><input type="checkbox" id="all" /> <label for="all">All cards (89)</label></div></section>
-			<section><div><input type="checkbox" id="common" /> <label for="common">All common cards</label></div></section>
-			<section><div><input type="checkbox" id="rare" /> <label for="rare">All rare cards</label></div></section>
-			<section><div><input type="checkbox" id="epic" /> <label for="epic">All epic cards</label></div></section>
-			<section><div><input type="checkbox" id="legendary" /> <label for="legendary">All legendary cards</label></div></section>
-			<section><div><input type="checkbox" id="troop" /> <label for="troop">All troop cards</label></div></section>
-			<section><div><input type="checkbox" id="spell" /> <label for="spell">All spell cards</label></div></section>
-			<section><div><input type="checkbox" id="construction" /> <label for="construction">All construction cards</label></div></section>
+			<section>
+				<div><input type="checkbox" id="all" /> <label for="all">All cards (89)</label></div>
+			</section>
+			<section>
+				<div><input type="checkbox" id="common" /> <label for="common">All common cards</label></div>
+			</section>
+			<section>
+				<div><input type="checkbox" id="rare" /> <label for="rare">All rare cards</label></div>
+			</section>
+			<section>
+				<div><input type="checkbox" id="epic" /> <label for="epic">All epic cards</label></div>
+			</section>
+			<section>
+				<div><input type="checkbox" id="legendary" /> <label for="legendary">All legendary cards</label></div>
+			</section>
+			<section>
+				<div><input type="checkbox" id="troop" /> <label for="troop">All troop cards</label></div>
+			</section>
+			<section>
+				<div><input type="checkbox" id="spell" /> <label for="spell">All spell cards</label></div>
+			</section>
+			<section>
+				<div><input type="checkbox" id="construction" /> <label for="construction">All construction cards</label></div>
+			</section>
 		</section>
 	</section>
 
@@ -66,12 +81,17 @@
 				<path fill="#fff" d="M2,2V11C2,12 3,13 4,13H6.2C6.6,15 7.9,16.7 11,17V19.1C8.8,19.3 8,20.4 8,21.7V22H16V21.7C16,20.4 15.2,19.3 13,19.1V17C16.1,16.7 17.4,15 17.8,13H20C21,13 22,12 22,11V2H18C17.1,2 16,3 16,4H8C8,3 6.9,2 6,2H2M4,4H6V6L6,11H4V4M18,4H20V11H18V6L18,4M8,6H16V11.5C16,13.43 15.42,15 12,15C8.59,15 8,13.43 8,11.5V6Z" />
 			</svg>
 			Best decks</button>
-		<button title="Themes" onclick="closeNav(); switchContainer(configSection); if (history.state !== 4) history.pushState(4, 'changed')">
+		<button title="Next chests" onclick="closeNav(); switchContainer(chestSection); if (history.state !== 4) history.pushState(4, 'changed')">
+			<svg viewBox="0 0 24 24">
+				<path fill="#fff" d="M12,2C14.3,2 16.3,4 16.3,6.2C16.21,8.77 14.34,9.83 14.04,10C15.04,9.5 16.5,9.5 16.5,9.5C19,9.5 21,11.3 21,13.8C21,16.3 19,18 16.5,18C16.5,18 15,18 13,17C13,17 12.7,19 15,22H9C11.3,19 11,17 11,17C9,18 7.5,18 7.5,18C5,18 3,16.3 3,13.8C3,11.3 5,9.5 7.5,9.5C7.5,9.5 8.96,9.5 9.96,10C9.66,9.83 7.79,8.77 7.7,6.2C7.7,4 9.7,2 12,2Z" />
+			</svg>
+			Next chests</button>
+		<button title="Themes" onclick="closeNav(); switchContainer(configSection); if (history.state !== 5) history.pushState(5, 'changed')">
 			<svg viewBox="0 0 24 24">
 				<path fill="#fff" d="M20,11H23V13H20V11M1,11H4V13H1V11M13,1V4H11V1H13M4.92,3.5L7.05,5.64L5.63,7.05L3.5,4.93L4.92,3.5M16.95,5.63L19.07,3.5L20.5,4.93L18.37,7.05L16.95,5.63M12,6A6,6 0 0,1 18,12C18,14.22 16.79,16.16 15,17.2V19A1,1 0 0,1 14,20H10A1,1 0 0,1 9,19V17.2C7.21,16.16 6,14.22 6,12A6,6 0 0,1 12,6M14,21V22A1,1 0 0,1 13,23H11A1,1 0 0,1 10,22V21H14M11,18H13V15.87C14.73,15.43 16,13.86 16,12A4,4 0 0,0 12,8A4,4 0 0,0 8,12C8,13.86 9.27,15.43 11,15.87V18Z" />
 			</svg>
 			Themes</button>
-		<button title="About" onclick="closeNav(); switchContainer(aboutSection); if (history.state !== 5) history.pushState(5, 'changed')">
+		<button title="About" onclick="closeNav(); switchContainer(aboutSection); if (history.state !== 6) history.pushState(6, 'changed')">
 			<svg viewBox="0 0 24 24">
 				<path fill="#fff" d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
 			</svg>
@@ -185,6 +205,19 @@
 		<button class="btnCenter" onclick="downDecks()" title="Show more">Show more 10 decks</button>
 	</section>
 
+	<section class="chestSection">
+		<section class="idContainer">
+			<div class="idCenter">
+				<p>User ID: </p><input type="text" size="9" placeholder="E.g: 82YPPYVOQ" id="id" /> <button id="showChests" onclick="showChests()"
+				 title="Show next chests">Show</button>
+			</div>
+		</section>
+
+		<section class="chestContainer">
+			<!-- Código gerado pelo JavaScript -->
+		</section>
+	</section>
+
 	<section class="configSection">
 		<section>
 			<div><input type="radio" name="theme" id="theme"><label for="theme">Dark theme</label></div>
@@ -228,11 +261,12 @@
 		<h1><strong>Deck Builder</strong> for Clash Royale</h1>
 		<p>Deck Royale is a <strong>Deck Builder</strong> for Clash Royale game that makes easier your friendly and personal
 			battles.</p>
-		<h4>v0.2.8</h4>
+		<h4>v0.2.9</h4>
 	</section>
 
 	<noscript>Please, active your JavaScript to work!</noscript>
-	<script async src="./src/scripts.js"></script>
+	<script async src="./src/jquery-3.3.1.min.js"></script>
+	<script async defer src="./src/scripts.js"></script>
 	<script async src="./src/buttons.js"></script>
 </body>
 

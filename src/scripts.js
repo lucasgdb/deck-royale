@@ -2,27 +2,27 @@
 !function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.ClipboardJS=e():t.ClipboardJS=e()}(this,function(){return function(t){function e(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return t[o].call(r.exports,r,r.exports,e),r.l=!0,r.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,o){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:o})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=3)}([function(t,e,n){var o,r,i;!function(a,c){r=[t,n(7)],o=c,void 0!==(i="function"==typeof o?o.apply(e,r):o)&&(t.exports=i)}(0,function(t,e){"use strict";function n(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}var o=function(t){return t&&t.__esModule?t:{default:t}}(e),r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},i=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),a=function(){function t(e){n(this,t),this.resolveOptions(e),this.initSelection()}return i(t,[{key:"resolveOptions",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action=t.action,this.container=t.container,this.emitter=t.emitter,this.target=t.target,this.text=t.text,this.trigger=t.trigger,this.selectedText=""}},{key:"initSelection",value:function(){this.text?this.selectFake():this.target&&this.selectTarget()}},{key:"selectFake",value:function(){var t=this,e="rtl"==document.documentElement.getAttribute("dir");this.removeFake(),this.fakeHandlerCallback=function(){return t.removeFake()},this.fakeHandler=this.container.addEventListener("click",this.fakeHandlerCallback)||!0,this.fakeElem=document.createElement("textarea"),this.fakeElem.style.fontSize="12pt",this.fakeElem.style.border="0",this.fakeElem.style.padding="0",this.fakeElem.style.margin="0",this.fakeElem.style.position="absolute",this.fakeElem.style[e?"right":"left"]="-9999px";var n=window.pageYOffset||document.documentElement.scrollTop;this.fakeElem.style.top=n+"px",this.fakeElem.setAttribute("readonly",""),this.fakeElem.value=this.text,this.container.appendChild(this.fakeElem),this.selectedText=(0,o.default)(this.fakeElem),this.copyText()}},{key:"removeFake",value:function(){this.fakeHandler&&(this.container.removeEventListener("click",this.fakeHandlerCallback),this.fakeHandler=null,this.fakeHandlerCallback=null),this.fakeElem&&(this.container.removeChild(this.fakeElem),this.fakeElem=null)}},{key:"selectTarget",value:function(){this.selectedText=(0,o.default)(this.target),this.copyText()}},{key:"copyText",value:function(){var t=void 0;try{t=document.execCommand(this.action)}catch(e){t=!1}this.handleResult(t)}},{key:"handleResult",value:function(t){this.emitter.emit(t?"success":"error",{action:this.action,text:this.selectedText,trigger:this.trigger,clearSelection:this.clearSelection.bind(this)})}},{key:"clearSelection",value:function(){this.trigger&&this.trigger.focus(),window.getSelection().removeAllRanges()}},{key:"destroy",value:function(){this.removeFake()}},{key:"action",set:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"copy";if(this._action=t,"copy"!==this._action&&"cut"!==this._action)throw new Error('Invalid "action" value, use either "copy" or "cut"')},get:function(){return this._action}},{key:"target",set:function(t){if(void 0!==t){if(!t||"object"!==(void 0===t?"undefined":r(t))||1!==t.nodeType)throw new Error('Invalid "target" value, use a valid Element');if("copy"===this.action&&t.hasAttribute("disabled"))throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');if("cut"===this.action&&(t.hasAttribute("readonly")||t.hasAttribute("disabled")))throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');this._target=t}},get:function(){return this._target}}]),t}();t.exports=a})},function(t,e,n){function o(t,e,n){if(!t&&!e&&!n)throw new Error("Missing required arguments");if(!c.string(e))throw new TypeError("Second argument must be a String");if(!c.fn(n))throw new TypeError("Third argument must be a Function");if(c.node(t))return r(t,e,n);if(c.nodeList(t))return i(t,e,n);if(c.string(t))return a(t,e,n);throw new TypeError("First argument must be a String, HTMLElement, HTMLCollection, or NodeList")}function r(t,e,n){return t.addEventListener(e,n),{destroy:function(){t.removeEventListener(e,n)}}}function i(t,e,n){return Array.prototype.forEach.call(t,function(t){t.addEventListener(e,n)}),{destroy:function(){Array.prototype.forEach.call(t,function(t){t.removeEventListener(e,n)})}}}function a(t,e,n){return u(document.body,t,e,n)}var c=n(6),u=n(5);t.exports=o},function(t,e){function n(){}n.prototype={on:function(t,e,n){var o=this.e||(this.e={});return(o[t]||(o[t]=[])).push({fn:e,ctx:n}),this},once:function(t,e,n){function o(){r.off(t,o),e.apply(n,arguments)}var r=this;return o._=e,this.on(t,o,n)},emit:function(t){var e=[].slice.call(arguments,1),n=((this.e||(this.e={}))[t]||[]).slice(),o=0,r=n.length;for(o;o<r;o++)n[o].fn.apply(n[o].ctx,e);return this},off:function(t,e){var n=this.e||(this.e={}),o=n[t],r=[];if(o&&e)for(var i=0,a=o.length;i<a;i++)o[i].fn!==e&&o[i].fn._!==e&&r.push(o[i]);return r.length?n[t]=r:delete n[t],this}},t.exports=n},function(t,e,n){var o,r,i;!function(a,c){r=[t,n(0),n(2),n(1)],o=c,void 0!==(i="function"==typeof o?o.apply(e,r):o)&&(t.exports=i)}(0,function(t,e,n,o){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}function i(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function a(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function c(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}function u(t,e){var n="data-clipboard-"+t;if(e.hasAttribute(n))return e.getAttribute(n)}var l=r(e),s=r(n),f=r(o),d="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},h=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),p=function(t){function e(t,n){i(this,e);var o=a(this,(e.__proto__||Object.getPrototypeOf(e)).call(this));return o.resolveOptions(n),o.listenClick(t),o}return c(e,t),h(e,[{key:"resolveOptions",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action="function"==typeof t.action?t.action:this.defaultAction,this.target="function"==typeof t.target?t.target:this.defaultTarget,this.text="function"==typeof t.text?t.text:this.defaultText,this.container="object"===d(t.container)?t.container:document.body}},{key:"listenClick",value:function(t){var e=this;this.listener=(0,f.default)(t,"click",function(t){return e.onClick(t)})}},{key:"onClick",value:function(t){var e=t.delegateTarget||t.currentTarget;this.clipboardAction&&(this.clipboardAction=null),this.clipboardAction=new l.default({action:this.action(e),target:this.target(e),text:this.text(e),container:this.container,trigger:e,emitter:this})}},{key:"defaultAction",value:function(t){return u("action",t)}},{key:"defaultTarget",value:function(t){var e=u("target",t);if(e)return document.querySelector(e)}},{key:"defaultText",value:function(t){return u("text",t)}},{key:"destroy",value:function(){this.listener.destroy(),this.clipboardAction&&(this.clipboardAction.destroy(),this.clipboardAction=null)}}],[{key:"isSupported",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:["copy","cut"],e="string"==typeof t?[t]:t,n=!!document.queryCommandSupported;return e.forEach(function(t){n=n&&!!document.queryCommandSupported(t)}),n}}]),e}(s.default);t.exports=p})},function(t,e){function n(t,e){for(;t&&t.nodeType!==o;){if("function"==typeof t.matches&&t.matches(e))return t;t=t.parentNode}}var o=9;if("undefined"!=typeof Element&&!Element.prototype.matches){var r=Element.prototype;r.matches=r.matchesSelector||r.mozMatchesSelector||r.msMatchesSelector||r.oMatchesSelector||r.webkitMatchesSelector}t.exports=n},function(t,e,n){function o(t,e,n,o,r){var a=i.apply(this,arguments);return t.addEventListener(n,a,r),{destroy:function(){t.removeEventListener(n,a,r)}}}function r(t,e,n,r,i){return"function"==typeof t.addEventListener?o.apply(null,arguments):"function"==typeof n?o.bind(null,document).apply(null,arguments):("string"==typeof t&&(t=document.querySelectorAll(t)),Array.prototype.map.call(t,function(t){return o(t,e,n,r,i)}))}function i(t,e,n,o){return function(n){n.delegateTarget=a(n.target,e),n.delegateTarget&&o.call(t,n)}}var a=n(4);t.exports=r},function(t,e){e.node=function(t){return void 0!==t&&t instanceof HTMLElement&&1===t.nodeType},e.nodeList=function(t){var n=Object.prototype.toString.call(t);return void 0!==t&&("[object NodeList]"===n||"[object HTMLCollection]"===n)&&"length"in t&&(0===t.length||e.node(t[0]))},e.string=function(t){return"string"==typeof t||t instanceof String},e.fn=function(t){return"[object Function]"===Object.prototype.toString.call(t)}},function(t,e){function n(t){var e;if("SELECT"===t.nodeName)t.focus(),e=t.value;else if("INPUT"===t.nodeName||"TEXTAREA"===t.nodeName){var n=t.hasAttribute("readonly");n||t.setAttribute("readonly",""),t.select(),t.setSelectionRange(0,t.value.length),n||t.removeAttribute("readonly"),e=t.value}else{t.hasAttribute("contenteditable")&&t.focus();var o=window.getSelection(),r=document.createRange();r.selectNodeContents(t),o.removeAllRanges(),o.addRange(r),e=o.toString()}return e}t.exports=n}])});
 // SmallTalk
 let smalltalk=function(a){function b(d){if(c[d])return c[d].exports;var e=c[d]={i:d,l:!1,exports:{}};return a[d].call(e.exports,e,e.exports,b),e.l=!0,e.exports}var c={};return b.m=a,b.c=c,b.d=function(d,e,f){b.o(d,e)||Object.defineProperty(d,e,{enumerable:!0,get:f})},b.r=function(d){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(d,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(d,"__esModule",{value:!0})},b.t=function(d,e){if(1&e&&(d=b(d)),8&e)return d;if(4&e&&"object"==typeof d&&d&&d.__esModule)return d;var f=Object.create(null);if(b.r(f),Object.defineProperty(f,"default",{enumerable:!0,value:d}),2&e&&"string"!=typeof d)for(var g in d)b.d(f,g,function(h){return d[h]}.bind(null,g));return f},b.n=function(d){var e=d&&d.__esModule?function(){return d.default}:function(){return d};return b.d(e,"a",e),e},b.o=function(d,e){return Object.prototype.hasOwnProperty.call(d,e)},b.p="",b(b.s=8)}([function(a,b,c){var d=c(1);"string"==typeof d&&(d=[[a.i,d,""]]),c(6)(d,{hmr:!0,transform:void 0,insertInto:void 0}),d.locals&&(a.exports=d.locals)},function(a,b,c){var d=c(2);(a.exports=c(3)(!1)).push([a.i,".smalltalk{display:flex;align-items:center;flex-direction:column;justify-content:center;transition:.2s opacity;bottom:0;left:0;overflow:auto;padding:20px;position:fixed;right:0;top:0;z-index:100}.smalltalk+.smalltalk{transition:ease 1s;display:none}.smalltalk .page{border-radius:3px;background:#fff;box-shadow:0 4px 23px 5px rgba(0,0,0,.2),0 2px 6px rgba(0,0,0,.15);color:#333;min-width:400px;padding:0;position:relative;z-index:0}@media only screen and (max-width:500px){.smalltalk .page{min-width:0}}.smalltalk .page>.close-button{background-image:url("+d(c(4))+");background-position:center;background-repeat:no-repeat;height:14px;position:absolute;right:7px;top:7px;width:14px;z-index:1}.smalltalk .page>.close-button:hover{background-image:url("+d(c(5))+")}.smalltalk .page header{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:500px;user-select:none;color:#333;font-size:120%;font-weight:700;margin:0;padding:14px 17px;text-shadow:#fff 0 1px 2px}.smalltalk .page .content-area{overflow:hidden;text-overflow:ellipsis;padding:6px 17px;position:relative}.smalltalk .page .action-area{padding:14px 17px}button{font-family:Ubuntu,Arial,sans-serif}.smalltalk .smalltalk,.smalltalk button{min-height:2em;min-width:4em}.smalltalk button{appearance:none;user-select:none;background-image:linear-gradient(#ededed,#ededed 38%,#dedede);border:1px solid rgba(0,0,0,.25);border-radius:2px;box-shadow:0 1px 0 rgba(0,0,0,.08),inset 0 1px 2px rgba(255,255,255,.75);color:#444;font:inherit;margin:0 1px 0 0;text-shadow:0 1px 0 #f0f0f0}.smalltalk button::-moz-focus-inner{border:0}.smalltalk button:enabled:active{background-image:linear-gradient(#e7e7e7,#e7e7e7 38%,#d7d7d7);box-shadow:none;text-shadow:none}.smalltalk .page .button-strip{display:flex;flex-direction:row;justify-content:flex-end}.smalltalk .page .button-strip>button{margin-left:10px}.smalltalk input{width:100%;border:1px solid #bfbfbf;border-radius:2px;box-sizing:border-box;color:#444;font:inherit;margin:0;min-height:2em;padding:3px;outline:0}.smalltalk button:enabled:focus,.smalltalk input:enabled:focus{transition:border-color .2s;border-color:#4d90fe;outline:0}",""])},function(a){a.exports=function(b){return"string"==typeof b?(/^['"].*['"]$/.test(b)&&(b=b.slice(1,-1)),/["'() \t\n]/.test(b)?"\""+b.replace(/"/g,"\\\"").replace(/\n/g,"\\n")+"\"":b):b}},function(a){a.exports=function(b){var c=[];return c.toString=function(){return this.map(function(d){var e=function(f,g){var h=f[1]||"",i=f[3];if(!i)return h;if(g&&"function"==typeof btoa){var l=function(n){return"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(n))))+" */"}(i),m=i.sources.map(function(n){return"/*# sourceURL="+i.sourceRoot+n+" */"});return[h].concat(m).concat([l]).join("\n")}return[h].join("\n")}(d,b);return d[2]?"@media "+d[2]+"{"+e+"}":e}).join("")},c.i=function(d,e){"string"==typeof d&&(d=[[null,d,""]]);for(var f,g={},h=0;h<this.length;h++)f=this[h][0],"number"==typeof f&&(g[f]=!0);for(h=0;h<d.length;h++){var i=d[h];"number"==typeof i[0]&&g[i[0]]||(e&&!i[2]?i[2]=e:e&&(i[2]="("+i[2]+") and ("+e+")"),c.push(i))}},c}},function(a){a.exports="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAAUklEQVR4XqXPYQrAIAhAYW/gXd8NJxTopVqsGEhtf+L9/ERU2k/HSMFQpKcYJeNFI9Be0LCMij8cYyjj5EHIivGBkwLfrbX3IF8PqumVmnDpEG+eDsKibPG2JwAAAABJRU5ErkJggg=="},function(a){a.exports="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAAnUlEQVR4XoWQQQ6CQAxFewjkJkMCyXgJPMk7AiYczyBeZEAX6AKctGIaN+bt+trk9wtGQc/IkhnoKGxqqiWxOSZalapWFZ6VrIUDExsN0a5JRBq9LoVOR0eEQMoEhKizXhhsn0p1sCWVo7CwOf1RytPL8CPvwuBUoHL6ugeK30CVD1TqK7V/hdpe+VNChhOzV8xWny/+xosHF8578W/Hmc1OOC3wmwAAAABJRU5ErkJggg=="},function(a,b,c){function d(_,aa){for(var ba=0;ba<_.length;ba++){var ca=_[ba],da=n[ca.id];if(da){da.refs++;for(var ea=0;ea<da.parts.length;ea++)da.parts[ea](ca.parts[ea]);for(;ea<ca.parts.length;ea++)da.parts.push(l(ca.parts[ea],aa))}else{var fa=[];for(ea=0;ea<ca.parts.length;ea++)fa.push(l(ca.parts[ea],aa));n[ca.id]={id:ca.id,refs:1,parts:fa}}}}function e(_,aa){for(var ba=[],ca={},da=0;da<_.length;da++){var ea=_[da],fa=aa.base?ea[0]+aa.base:ea[0],ga={css:ea[1],media:ea[2],sourceMap:ea[3]};ca[fa]?ca[fa].parts.push(ga):ba.push(ca[fa]={id:fa,parts:[ga]})}return ba}function f(_,aa){var ba=p(_.insertInto);if(!ba)throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");var ca=t[t.length-1];if("top"===_.insertAt)ca?ca.nextSibling?ba.insertBefore(aa,ca.nextSibling):ba.appendChild(aa):ba.insertBefore(aa,ba.firstChild),t.push(aa);else if("bottom"===_.insertAt)ba.appendChild(aa);else{if("object"!=typeof _.insertAt||!_.insertAt.before)throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");var da=p(_.insertAt.before,ba);ba.insertBefore(aa,da)}}function g(_){if(null===_.parentNode)return!1;_.parentNode.removeChild(_);var aa=t.indexOf(_);0<=aa&&t.splice(aa,1)}function h(_){var aa=document.createElement("style");if(void 0===_.attrs.type&&(_.attrs.type="text/css"),void 0===_.attrs.nonce){var ba=function(){return 0,c.nc}();ba&&(_.attrs.nonce=ba)}return i(aa,_.attrs),f(_,aa),aa}function i(_,aa){Object.keys(aa).forEach(function(ba){_.setAttribute(ba,aa[ba])})}function l(_,aa){var ba,ca,da,ea;if(aa.transform&&_.css){if(!(ea="function"==typeof aa.transform?aa.transform(_.css):aa.transform.default(_.css)))return function(){};_.css=ea}if(aa.singleton){var fa=s++;ba=r||(r=h(aa)),ca=m.bind(null,ba,fa,!1),da=m.bind(null,ba,fa,!0)}else _.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(ba=function(ga){var ha=document.createElement("link");return void 0===ga.attrs.type&&(ga.attrs.type="text/css"),ga.attrs.rel="stylesheet",i(ha,ga.attrs),f(ga,ha),ha}(aa),ca=function(ga,ha,ia){var ja=ia.css,ka=ia.sourceMap,la=void 0===ha.convertToAbsoluteUrls&&ka;(ha.convertToAbsoluteUrls||la)&&(ja=u(ja)),ka&&(ja+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(ka))))+" */");var ma=new Blob([ja],{type:"text/css"}),na=ga.href;ga.href=URL.createObjectURL(ma),na&&URL.revokeObjectURL(na)}.bind(null,ba,aa),da=function(){g(ba),ba.href&&URL.revokeObjectURL(ba.href)}):(ba=h(aa),ca=function(ga,ha){var ia=ha.css,ja=ha.media;if(ja&&ga.setAttribute("media",ja),ga.styleSheet)ga.styleSheet.cssText=ia;else{for(;ga.firstChild;)ga.removeChild(ga.firstChild);ga.appendChild(document.createTextNode(ia))}}.bind(null,ba),da=function(){g(ba)});return ca(_),function(ga){if(ga){if(ga.css===_.css&&ga.media===_.media&&ga.sourceMap===_.sourceMap)return;ca(_=ga)}else da()}}function m(_,aa,ba,ca){var da=ba?"":ca.css;if(_.styleSheet)_.styleSheet.cssText=v(aa,da);else{var ea=document.createTextNode(da),fa=_.childNodes;fa[aa]&&_.removeChild(fa[aa]),fa.length?_.insertBefore(ea,fa[aa]):_.appendChild(ea)}}var n={},o=function(_){var aa;return function(){return void 0==aa&&(aa=_.apply(this,arguments)),aa}}(function(){return window&&document&&document.all&&!window.atob}),p=function(){var _={};return function(aa,ba){if("function"==typeof aa)return aa();if(void 0===_[aa]){var ca=function(da,ea){return ea?ea.querySelector(da):document.querySelector(da)}.call(this,aa,ba);if(window.HTMLIFrameElement&&ca instanceof window.HTMLIFrameElement)try{ca=ca.contentDocument.head}catch(da){ca=null}_[aa]=ca}return _[aa]}}(),r=null,s=0,t=[],u=c(7);a.exports=function(_,aa){if("undefined"!=typeof DEBUG&&DEBUG&&"object"!=typeof document)throw new Error("The style-loader cannot be used in a non-browser environment");(aa=aa||{}).attrs="object"==typeof aa.attrs?aa.attrs:{},aa.singleton||"boolean"==typeof aa.singleton||(aa.singleton=o()),aa.insertInto||(aa.insertInto="head"),aa.insertAt||(aa.insertAt="bottom");var ba=e(_,aa);return d(ba,aa),function(ca){for(var da,ea=[],fa=0;fa<ba.length;fa++)da=ba[fa],(ga=n[da.id]).refs--,ea.push(ga);for(ca&&d(e(ca,aa),aa),fa=0;fa<ea.length;fa++){var ga;if(0===(ga=ea[fa]).refs){for(var ha=0;ha<ga.parts.length;ha++)ga.parts[ha]();delete n[ga.id]}}}};var v=function(){var _=[];return function(aa,ba){return _[aa]=ba,_.filter(Boolean).join("\n")}}()},function(a){a.exports=function(b){var c="undefined"!=typeof window&&window.location;if(!c)throw new Error("fixUrls requires window.location");if(!b||"string"!=typeof b)return b;var d=c.protocol+"//"+c.host,e=d+c.pathname.replace(/\/[^\/]*$/,"/");return b.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi,function(f,g){var h,i=g.trim().replace(/^"(.*)"$/,function(l,m){return m}).replace(/^'(.*)'$/,function(l,m){return m});return /^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(i)?f:(h=0===i.indexOf("//")?i:0===i.indexOf("/")?d+i:e+i.replace(/^\.\//,""),"url("+JSON.stringify(h)+")")})}},function(a,b,c){"use strict";function d(){var v=(0<arguments.length&&void 0!==arguments[0]?arguments[0]:{}).buttons;return v||null}function e(v,_,aa,ba){var ca=_.replace(/\n/g,"<br>");return"<div class=\"page\">\n        <div data-name=\"js-close\" class=\"close-button\"></div>\n        <header>".concat(v,"</header>\n        <div class=\"content-area\">").concat(ca).concat(aa,"</div>\n        <div class=\"action-area\">\n            <div class=\"button-strip\">\n                ").concat(function(da){var ea=Object.keys(da),fa=m(function(ga,ha,ia){return"<button\n            tabindex=".concat(ia,"\n            data-name=\"js-").concat(ha.toLowerCase(),"\">\n            ").concat(ga[ha],"\n        </button>")});return ea.map(fa(da)).join("")}(ba),"\n            </div>\n        </div>\n    </div>")}function f(v,_,aa,ba,ca){var da=n(),ea=n(),fa=new Promise(function(ia,ja){var ka=ca&&!1===ca.cancel;da(ia),ea(ka?function(){}:ja)}),ga=e(v,_,aa,ba),ha=o("div",{innerHTML:ga,className:"smalltalk"});return l(ha,["ok","input"]).forEach(function(ia){return ia.focus()}),l(ha,["input"]).forEach(function(ia){ia.setSelectionRange(0,aa.length)}),function(ia,ja,ka,la){l(ja,ka).forEach(function(ma){return ma.addEventListener(ia,la)})}("click",ha,["cancel","close","ok"],function(ia){i(ia.target,ha,da(),ea())}),["click","contextmenu"].forEach(function(ia){return ha.addEventListener(ia,function(){return l(ha,["ok","input"]).forEach(function(ja){return ja.focus()})})}),ha.addEventListener("keydown",p(ha,da(),ea())),fa}function g(v){return v.getAttribute("data-name").replace("js-","")}function h(v,_){var aa=g(document.activeElement),ba=_.length-1,ca=_.indexOf(aa);l(v,[_[u(ba,ca)]]).forEach(function(da){return da.focus()})}function i(v,_,aa,ba){var ca=v.getAttribute("data-name").replace("js-","");return /close|cancel/.test(ca)?(ba(),void r()):void(aa(l(_,["input"]).reduce(function(da,ea){return ea.value},null)),r())}function l(v,_){return _.map(function(aa){return v.querySelector("[data-name=\"js-".concat(aa,"\"]"))}).filter(function(aa){return aa})}c(0);var m=c(9),n=c(11),o=c(13),p=m(function(v,_,aa,ba){var ca={ENTER:13,ESC:27,TAB:9,LEFT:37,UP:38,RIGHT:39,DOWN:40},da=ba.keyCode,ea=ba.target,fa=l(v,["ok","cancel","input"]).map(g);da===ca.ENTER?(i(ea,v,_,aa),ba.preventDefault()):da===ca.ESC?(r(),aa()):da===ca.TAB?(ba.shiftKey&&h(v,fa),h(v,fa),ba.preventDefault()):["left","right","up","down"].filter(function(ga){return da===ca[ga.toUpperCase()]}).forEach(function(){!function(ga,ha){var ia=g(document.activeElement),ja=/ok|cancel/.test(ia),ka=ha.length-1;if("input"!==ia&&ka&&ja){var la=function(ma){return"cancel"===ma?"ok":"cancel"}(ia);l(ga,[la]).forEach(function(ma){ma.focus()})}}(v,fa)}),ba.stopPropagation()}),r=function(v){for(var _=arguments.length,aa=Array(1<_?_-1:0),ba=1;ba<_;ba++)aa[ba-1]=arguments[ba];return function(){return v.apply(void 0,aa)}}(function(v){var _=document.querySelector(v);_.parentElement.removeChild(_)},".smalltalk"),s={ok:"OK"},t={ok:"OK",cancel:"Cancelar"};b.alert=function(v,_,aa){return f(v,_,"",d(aa)||s,aa)},b.prompt=function(v,_){var aa=2<arguments.length&&void 0!==arguments[2]?arguments[2]:"",ba=3<arguments.length?arguments[3]:void 0,ca=function(){return"password"===(0<arguments.length&&void 0!==arguments[0]?arguments[0]:{}).type?"password":"text"}(ba),da=(aa+"").replace(/"/g,"&quot;");return f(v,_,"<input type=\"".concat(ca,"\" value=\"").concat(da,"\" data-name=\"js-input\">"),d(ba)||t,ba)},b.confirm=function(v,_,aa){return f(v,_,"",d(aa)||t,aa)};var u=function(v,_){return _===v?0:_+1}},function(a,b,c){a.exports=c(10)},function(a){"use strict";a.exports=function b(c){for(var d=arguments.length,e=Array(1<d?d-1:0),f=1;f<d;f++)e[f-1]=arguments[f];if(function(i){if("function"!=typeof i)throw Error("fn should be function!")}(c),e.length>=c.length)return c.apply(void 0,e);var g=function(){for(var i=arguments.length,l=Array(i),m=0;m<i;m++)l[m]=arguments[m];return b.apply(void 0,[c].concat(e.concat(l)))},h=c.length-e.length-1;return function(i){return[function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)}]}(g)[h]||g}},function(a,b,c){a.exports=c(12)},function(a){"use strict";a.exports=function(b){var c={value:b};return function(d){return arguments.length?(c.value=d,d):c.value}}},function(a,b,c){"use strict";function d(n,o){if(null==n)return{};var p,r,s=function(u,v){if(null==u)return{};var _,aa,ba={},ca=Object.keys(u);for(aa=0;aa<ca.length;aa++)_=ca[aa],0<=v.indexOf(_)||(ba[_]=u[_]);return ba}(n,o);if(Object.getOwnPropertySymbols){var t=Object.getOwnPropertySymbols(n);for(r=0;r<t.length;r++)p=t[r],0<=o.indexOf(p)||Object.prototype.propertyIsEnumerable.call(n,p)&&(s[p]=n[p])}return s}function e(n){if(n)return g(n)}var f=c(14),g=function(n){return document.querySelector("[data-name=\"".concat(n,"\"]"))},h=f(function(n,o,p){return n.setAttribute(p,o[p])}),i=f(function(n,o,p){return n[p]=o[p]}),l=f(function(n,o){return!n(o)}),m=function(n){return n!=n.toLowerCase()};a.exports=function(n){var o=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{},p=o.dataName,r=o.notAppend,s=o.parent,t=void 0===s?document.body:s,u=o.uniq,v=d(o,["dataName","notAppend","parent","uniq"]),_=e(p);if((void 0===u||u)&&_)return _;var aa=document.createElement(n);return p&&(aa.dataset.name=p),Object.keys(v).filter(m).map(i(aa,o)),Object.keys(v).filter(l(m)).map(h(aa,o)),r||t.appendChild(aa),aa},a.exports.isElementPresent=e},function(a,b,c){a.exports=c(15)},function(a){"use strict";a.exports=function b(c){for(var d=arguments.length,e=Array(1<d?d-1:0),f=1;f<d;f++)e[f-1]=arguments[f];if(function(i){if("function"!=typeof i)throw Error("fn should be function!")}(c),e.length>=c.length)return c.apply(void 0,e);var g=function(){return b.apply(void 0,[c].concat(e,Array.prototype.slice.call(arguments)))},h=c.length-e.length-1;return function(i){return[function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)}]}(g)[h]||g}}]);
-'use strict';
+
 let currentDeck = [0, 0, 0, 0, 0, 0, 0, 0],
 	contentToCopy,
 	selectedContainer = 0,
 	btn, img;
 
 const cardsName = [
-	'none-card',
-	'witch', 'skeleton-army', 'baby-dragon', 'prince', 'giant', 'musketeer', 'mini-pekka', 'fireball', 'knight', 'archers', 'minions', 'arrows',
-	'hunter', 'goblin-barrel', 'hog-rider', 'goblin-hut', 'goblins', 'spear-goblins',
-	'balloon', 'giant-skeleton', 'valkyrie', 'tombstone', 'skeletons', 'bomber',
-	'golem', 'barbarian-barrel', 'battle-ram', 'barbarian-hut', 'barbarians', 'cannon',
-	'lava-hound', 'miner', 'pekka', 'lightning', 'mega-minion', 'inferno-tower', 'minion-horde', 'zap',
-	'night-witch', 'graveyard', 'freeze', 'poison', 'wizard', 'furnace', 'fire-spirits', 'bats',
-	'inferno-dragon', 'the-log', 'cannon-cart', 'x-bow', 'flying-machine', 'rocket', 'skeleton-barrel', 'mortar',
-	'princess', 'royal-ghost', 'guards', 'dark-prince', 'three-musketeers', 'heal', 'royal-giant', 'royal-recruits',
-	'ice-wizard', 'lumberjack', 'bowler', 'tornado', 'ice-golem', 'elixir-collector', 'ice-spirit', 'giant-snowball',
-	'bandit', 'executioner', 'goblin-giant', 'dart-goblin', 'goblin-gang', 'rascals',
-	'mega-knight', 'magic-archer', 'rage', 'royal-hogs', 'bomb-tower', 'elite-barbarians',
-	'sparky', 'electro-wizard', 'electro-dragon', 'mirror', 'clone', 'zappies', 'tesla'
-],
+		'none-card',
+		'witch', 'skeleton-army', 'baby-dragon', 'prince', 'giant', 'musketeer', 'mini-pekka', 'fireball', 'knight', 'archers', 'minions', 'arrows',
+		'hunter', 'goblin-barrel', 'hog-rider', 'goblin-hut', 'goblins', 'spear-goblins',
+		'balloon', 'giant-skeleton', 'valkyrie', 'tombstone', 'skeletons', 'bomber',
+		'golem', 'barbarian-barrel', 'battle-ram', 'barbarian-hut', 'barbarians', 'cannon',
+		'lava-hound', 'miner', 'pekka', 'lightning', 'mega-minion', 'inferno-tower', 'minion-horde', 'zap',
+		'night-witch', 'graveyard', 'freeze', 'poison', 'wizard', 'furnace', 'fire-spirits', 'bats',
+		'inferno-dragon', 'the-log', 'cannon-cart', 'x-bow', 'flying-machine', 'rocket', 'skeleton-barrel', 'mortar',
+		'princess', 'royal-ghost', 'guards', 'dark-prince', 'three-musketeers', 'heal', 'royal-giant', 'royal-recruits',
+		'ice-wizard', 'lumberjack', 'bowler', 'tornado', 'ice-golem', 'elixir-collector', 'ice-spirit', 'giant-snowball',
+		'bandit', 'executioner', 'goblin-giant', 'dart-goblin', 'goblin-gang', 'rascals',
+		'mega-knight', 'magic-archer', 'rage', 'royal-hogs', 'bomb-tower', 'elite-barbarians',
+		'sparky', 'electro-wizard', 'electro-dragon', 'mirror', 'clone', 'zappies', 'tesla'
+	],
 	cardsInformation = [
 		'None card selected',
 		'Rarity: Epic<br />Type: Troop',
@@ -233,6 +233,7 @@ const cardsName = [
 	selectSection = document.querySelector('.selectSection'),
 	configSection = document.querySelector('.configSection'),
 	bestSection = document.querySelector('.bestSection'),
+	chestSection = document.querySelector('.chestSection'),
 	bestDecks = document.querySelector('.bestSection section'),
 	mediaComponent = document.querySelector('#elixirMedio'),
 	ddArena = document.querySelector('#ddArena'),
@@ -240,13 +241,16 @@ const cardsName = [
 	ddType = document.querySelector('#ddType'),
 	btnCopy = document.querySelector('#copy'),
 	changeContainers = document.querySelectorAll('.navSection button'),
+	chestContainer = document.querySelector('.chestContainer'),
 	navSection = document.querySelector('.navSection'),
 	cbConfigs = document.querySelectorAll('.configSection input'),
 	cbDeckInteligente = document.querySelector('#smartDeck'),
 	btnVoltar = document.querySelector('.btnVoltar'),
 	chkConfig = document.querySelectorAll('.config input'),
 	chkConfigText = document.querySelectorAll('.config label'),
+	idUser = document.querySelector('#id'),
 	arenas = [90, 90, 83, 77, 71, 63, 55, 47, 39, 31, 25, 19],
+	loading = document.querySelector('.lds-ring'),
 	root = document.querySelector(':root');
 
 if (localStorage.getItem('ddArena') !== null)
@@ -256,27 +260,28 @@ if (localStorage.getItem('ddRarity') !== null)
 if (localStorage.getItem('ddType') !== null)
 	ddType.selectedIndex = localStorage.getItem('ddType');
 
-chkConfig[0].onchange = function() {
+chkConfig[0].onchange = function () {
 	if (chkConfig[0].checked)
 		for (let i = 1; i < cardsName.length; i++) {
 			img[i - 1].removeAttribute('class');
 			localStorage.setItem(cardsName[i], 'e')
 		}
-	else for (let i = 1; i < cardsName.length; i++) {
-		img[i - 1].setAttribute('class', 'notAllowed');
-		localStorage.setItem(cardsName[i], 'd')
-	}
+	else
+		for (let i = 1; i < cardsName.length; i++) {
+			img[i - 1].setAttribute('class', 'notAllowed');
+			localStorage.setItem(cardsName[i], 'd')
+		}
 	changeDeck()
 }
 
 function changeAble(index, number, first, second) {
 	if (chkConfig[index].checked)
-	for (let i = 1; i < cardsName.length; i++) {
-		if (cardsInformation[i].split('<br />')[number] === `${first}: ${second}`) {
-			img[i - 1].removeAttribute('class');
-			localStorage.setItem(cardsName[i], 'e')
+		for (let i = 1; i < cardsName.length; i++) {
+			if (cardsInformation[i].split('<br />')[number] === `${first}: ${second}`) {
+				img[i - 1].removeAttribute('class');
+				localStorage.setItem(cardsName[i], 'e')
+			}
 		}
-	}
 	else
 		for (let i = 1; i < cardsName.length; i++)
 			if (cardsInformation[i].split('<br />')[number] === `${first}: ${second}`) {
@@ -294,10 +299,22 @@ for (let i = 1; i < chkConfig.length; i++)
 
 function changeDeck() {
 	const selectedArena = arenas[ddArena.selectedIndex];
-	let all = 0, common = 0, rare = 0, epic = 0, legendary = 0,
-		troop = 0, spell = 0, construction = 0,
-		qtdAll = 0, qtdCommon = 0, qtdRare = 0, qtdEpic = 0, qtdLegendary = 0,
-		qtdTroop = 0, qtdSpell = 0, qtdConstruction = 0;
+	let all = 0,
+		common = 0,
+		rare = 0,
+		epic = 0,
+		legendary = 0,
+		troop = 0,
+		spell = 0,
+		construction = 0,
+		qtdAll = 0,
+		qtdCommon = 0,
+		qtdRare = 0,
+		qtdEpic = 0,
+		qtdLegendary = 0,
+		qtdTroop = 0,
+		qtdSpell = 0,
+		qtdConstruction = 0;
 
 	allowedCards.splice(0, allowedCards.length);
 	for (let i = 1; i < selectedArena; i++) {
@@ -329,7 +346,7 @@ function changeDeck() {
 	for (let i = 1; i < cardsName.length; i++) {
 		qtdAll++;
 		if (cardsInformation[i].split('<br />')[0] === 'Rarity: Common')
-				qtdCommon++
+			qtdCommon++
 		if (cardsInformation[i].split('<br />')[0] === 'Rarity: Rare')
 			qtdRare++
 		if (cardsInformation[i].split('<br />')[0] === 'Rarity: Epic')
@@ -360,7 +377,7 @@ function changeDeck() {
 				construction++
 		}
 	}
-		
+
 	chkConfigText[0].textContent = `All cards (${all})`;
 	chkConfigText[1].textContent = `All common cards (${common})`;
 	chkConfigText[2].textContent = `All rare cards (${rare})`;
@@ -396,7 +413,7 @@ function changeDeck() {
 	else chkConfig[7].checked = false;
 
 	document.querySelector('.selectSection h2').textContent = `Amount of allowed decks: ${all}`;
-	
+
 	while (allowedCards.indexOf(0) !== -1)
 		for (let i = 0; i < allowedCards.length; i++)
 			if (allowedCards[i] === 0)
@@ -421,20 +438,18 @@ cbDeckInteligente.onchange = () => {
 		ddArena.disabled = true;
 		ddRarity.disabled = true;
 		ddType.disabled = true;
-		document.querySelector('button[title="Card selector"] svg path').setAttribute('fill', 'darkgray');
-		changeContainers[1].disabled = true;
 		if (prevDeck.length > 1) btnVoltar.hidden = false
 	} else {
 		ddArena.disabled = false;
 		ddRarity.disabled = false;
 		ddType.disabled = false;
-		document.querySelector('button[title="Card selector"] svg path').setAttribute('fill', '#fff');
-		changeContainers[1].disabled = false;
 		if (prevDeck.length > 1) btnVoltar.hidden = true
 	}
 }
 
-function allowDrag(event) { event.preventDefault() }
+function allowDrag(event) {
+	event.preventDefault()
+}
 
 let id = -1;
 
@@ -454,7 +469,9 @@ function pasteCard(event) {
 	}
 }
 
-function capitalize(string) {	return string.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') }
+function capitalize(string) {
+	return string.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+}
 
 function setDeck(deck = Array) {
 	let media = 0.0;
@@ -495,7 +512,7 @@ function buildDeck() {
 					currentDeck.push(newTroop);
 					break
 				} else if (j === troop.length - 1)
-					currentDeck.push(typeSelected.split('|')[i])
+				currentDeck.push(typeSelected.split('|')[i])
 		}
 
 		for (let i = 0; i < currentDeck.length; i++)
@@ -530,7 +547,7 @@ function buildDeck() {
 }
 
 function switchContainer(container = dbSection) {
-	const containers = [dbSection, selectSection, savedSection, bestSection, configSection, aboutSection];
+	const containers = [dbSection, selectSection, savedSection, bestSection, chestSection, configSection, aboutSection];
 
 	for (let i = 0; i < containers.length; i++) {
 		if (containers[i] === container) {
@@ -576,7 +593,7 @@ function copyDeck() {
 	if (prevDeck.length > 0)
 		prevDeck.pop()
 	if (screen.width < 1024)
-		smalltalk.confirm('Open deck', 'Do you wanna open this deck on Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?${contentToCopy}`, '_self')).catch(() => { })
+		smalltalk.confirm('Open deck', 'Do you wanna open this deck on Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?${contentToCopy}`, '_self')).catch(() => {})
 	else
 		btnCopy.setAttribute('data-clipboard-text', `https://link.clashroyale.com/deck/pt?${contentToCopy}`)
 }
@@ -591,7 +608,7 @@ function copyDeckPhone(deck) {
 
 function copyDeckSaved(deck) {
 	if (screen.width < 1024)
-		smalltalk.confirm('Open deck', 'Do you wanna open this deck on Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?deck=${deck}`, '_self')).catch(() => { })
+		smalltalk.confirm('Open deck', 'Do you wanna open this deck on Clash Royale game?').then(() => window.open(`clashroyale://copyDeck?deck=${deck}`, '_self')).catch(() => {})
 	else smalltalk.confirm('Shareable link', 'Do you wanna create a shareable link?').then(() => location.search = `deck=${deck}`).catch(() => {})
 }
 
@@ -630,9 +647,9 @@ function pasteDeck(content = null) {
 	if (content === null) {
 		if (screen.width >= 1024)
 			smalltalk.prompt('Paste deck', 'Paste a deck link below\nE.g: https://link.clashroyale.com/deck/en?deck=26000018;28000009;26000003;28000008...')
-				.then(linkDeck => {
-					paste(linkDeck)
-				}).catch(() => { })
+			.then(linkDeck => {
+				paste(linkDeck)
+			}).catch(() => {})
 		else {
 			let linkDeck = prompt('Paste a deck link below\nE.g: https://link.clashroyale.com/deck/en?deck=26000018;28000009;26000003;28000008...');
 			paste(linkDeck)
@@ -696,10 +713,13 @@ function matche(xvar) {
 			else if (selectedContainer === 3)
 				bestSection.style.display = 'block'
 			else if (selectedContainer === 4)
+				chestSection.style.display = 'block'
+			else if (selectedContainer === 5)
 				configSection.style.display = 'block'
 			else
 				aboutSection.style.display = 'block'
 		}
+		loading.style.left = 'calc(50% + 87.5px)';
 		navSection.style.width = '175px';
 		navSection.style.transition = 'all 0s';
 		navSection.style.height = '100%';
@@ -719,7 +739,8 @@ function matche2(yvar) {
 		navSection.style.height = '35px';
 		navSection.style.overflow = 'hidden';
 		navSection.style.transition = 'all .2s';
-		navSection.style.borderRight = 'none'
+		navSection.style.borderRight = 'none';
+		loading.style.left = '50%'
 	}
 }
 
@@ -739,6 +760,8 @@ function showSections() {
 		else if (selectedContainer === 3)
 			bestSection.style.display = 'none'
 		else if (selectedContainer === 4)
+			chestSection.style.display = 'none'
+		else if (selectedContainer === 5)
 			configSection.style.display = 'none'
 		else
 			aboutSection.style.display = 'none'
@@ -754,6 +777,8 @@ function showSections() {
 		else if (selectedContainer === 3)
 			bestSection.style.display = 'block'
 		else if (selectedContainer === 4)
+			chestSection.style.display = 'block';
+		else if (selectedContainer === 5)
 			configSection.style.display = 'block'
 		else
 			aboutSection.style.display = 'block'
@@ -794,38 +819,42 @@ let maxDown = 0,
 	html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all decks</button><h2 class="elixir"></h2>';
 
 async function downDecks() {
-	if (response === null)
+	if (response === null) {
+		loading.style.display = 'block';
 		response = await fetch('https://docs.royaleapi.com/json/popular_decks.json').then(data => data.json()).catch(() => smalltalk.alert('Error', 'An error occurred, please come back later.'))
+	}
 
 	if (response !== null)
 		if (response.length === maxDown) smalltalk.alert('Limit reached', 'Don\'t has more decks to show.')
-		else {
-			for (let i = maxDown; i < maxDown + (maxDown + 10 > response.length ? response.length - maxDown : 10); i++)
-				html += `
-          <section class="cardsContainerS">
-            <div><img src="./images/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${capitalize(response[i].cards[0].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${capitalize(response[i].cards[1].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[2].key}_opt-min.png" alt="${response[i].cards[2].key}" title="${capitalize(response[i].cards[2].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[2].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[3].key}_opt-min.png" alt="${response[i].cards[3].key}" title="${capitalize(response[i].cards[3].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[3].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[4].key}_opt-min.png" alt="${response[i].cards[4].key}" title="${capitalize(response[i].cards[4].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[4].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[5].key}_opt-min.png" alt="${response[i].cards[5].key}" title="${capitalize(response[i].cards[5].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[5].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[6].key}_opt-min.png" alt="${response[i].cards[6].key}" title="${capitalize(response[i].cards[6].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[6].id.toString())})"/></div>
-            <div><img src="./images/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${capitalize(response[i].cards[7].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id.toString())})"/></div>
-          </section>
+	else {
+		for (let i = maxDown; i < maxDown + (maxDown + 10 > response.length ? response.length - maxDown : 10); i++)
+			html += `
+						<section class="cardsContainerS">
+							<div><img src="./images/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${capitalize(response[i].cards[0].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id.toString())})"/></div>
+							<div><img src="./images/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${capitalize(response[i].cards[1].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id.toString())})"/></div>
+							<div><img src="./images/${response[i].cards[2].key}_opt-min.png" alt="${response[i].cards[2].key}" title="${capitalize(response[i].cards[2].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[2].id.toString())})"/></div>
+							<div><img src="./images/${response[i].cards[3].key}_opt-min.png" alt="${response[i].cards[3].key}" title="${capitalize(response[i].cards[3].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[3].id.toString())})"/></div>
+							<div><img src="./images/${response[i].cards[4].key}_opt-min.png" alt="${response[i].cards[4].key}" title="${capitalize(response[i].cards[4].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[4].id.toString())})"/></div>
+							<div><img src="./images/${response[i].cards[5].key}_opt-min.png" alt="${response[i].cards[5].key}" title="${capitalize(response[i].cards[5].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[5].id.toString())})"/></div>
+							<div><img src="./images/${response[i].cards[6].key}_opt-min.png" alt="${response[i].cards[6].key}" title="${capitalize(response[i].cards[6].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[6].id.toString())})"/></div>
+							<div><img src="./images/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${capitalize(response[i].cards[7].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id.toString())})"/></div>
+						</section>
 
-          <h1 class="elixir">Elixir average: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
+						<h1 class="elixir">Elixir average: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
 
-          <section class="configContainerS">
-            <button class="btnCopiarS" title="Copy deck" oncontextmenu="copyDeckSaved('${response[i].cards.map(card => card.id).join(';')}')" ${screen.width < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `data-clipboard-text=${response[i].decklink}`}>Copy deck</button>
-            <button class="btnApagar" title="Save deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id.toString())},${cardsCode.indexOf(response[i].cards[1].id.toString())},${cardsCode.indexOf(response[i].cards[2].id.toString())},${cardsCode.indexOf(response[i].cards[3].id.toString())},${cardsCode.indexOf(response[i].cards[4].id.toString())},${cardsCode.indexOf(response[i].cards[5].id.toString())},${cardsCode.indexOf(response[i].cards[6].id.toString())},${cardsCode.indexOf(response[i].cards[7].id.toString())}])">Save deck</button>
-            <button class="btnColarS" title="Paste deck" onclick="pasteDeck('${response[i].decklink}')">Paste deck</button>
-          </section>
-        `;
+						<section class="configContainerS">
+							<button class="btnCopiarS" title="Copy deck" oncontextmenu="copyDeckSaved('${response[i].cards.map(card => card.id).join(';')}')" ${screen.width < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `data-clipboard-text=${response[i].decklink}`}>Copy deck</button>
+							<button class="btnApagar" title="Save deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id.toString())},${cardsCode.indexOf(response[i].cards[1].id.toString())},${cardsCode.indexOf(response[i].cards[2].id.toString())},${cardsCode.indexOf(response[i].cards[3].id.toString())},${cardsCode.indexOf(response[i].cards[4].id.toString())},${cardsCode.indexOf(response[i].cards[5].id.toString())},${cardsCode.indexOf(response[i].cards[6].id.toString())},${cardsCode.indexOf(response[i].cards[7].id.toString())}])">Save deck</button>
+							<button class="btnColarS" title="Paste deck" onclick="pasteDeck('${response[i].decklink}')">Paste deck</button>
+						</section>
+					`;
 
-			bestDecks.innerHTML = html;
-			maxDown += (maxDown + 10 > response.length ? response.length - maxDown : 10);
-			document.querySelector('.bestSection h2').innerText = `Amount of best decks: ${maxDown}`
-		}
+		bestDecks.innerHTML = html;
+		maxDown += (maxDown + 10 > response.length ? response.length - maxDown : 10);
+		document.querySelector('.bestSection h2').innerText = `Amount of best decks: ${maxDown}`
+	}
+
+	loading.style.display = 'none';
 }
 
 (function updateCards() {
@@ -931,7 +960,7 @@ function deleteDeck(deck = Array) {
 			"deckList": JSON.parse(localStorage.getItem('decks')).deckList,
 			"deck": deck
 		});
-	}).catch(() => { })
+	}).catch(() => {})
 }
 
 function deleteAll() {
@@ -941,7 +970,7 @@ function deleteAll() {
 			localStorage.removeItem('decks');
 			render()
 		})
-		.catch(() => { })
+		.catch(() => {})
 }
 
 function deleteAllBest() {
@@ -952,7 +981,7 @@ function deleteAllBest() {
 			bestDecks.innerHTML = '<h1 class="noneDeck">None deck in this area.</h1>';
 			maxDown = 0
 		})
-		.catch(() => { })
+		.catch(() => {})
 }
 
 function showInfo(index = Number) {
@@ -962,6 +991,59 @@ function showInfo(index = Number) {
 			if (index < (j === 0 ? 13 : arenas[arenas.length - j])) return j
 	})();
 	info.innerHTML = `<ins>${capitalize(cardsName[index])}</ins><br />${cardsInformation[index]}<br />Elixir cost: ${cardsElixir[index]}<br />Arena: ${arena === 0 ? arenaName[arena] : `${arenaName[arena]} (${arena})`}`
+}
+
+function showChests() {
+	const button = document.querySelector('#showChests');
+	button.disabled = true;
+	loading.style.display = 'block';
+	chestContainer.innerHTML = '';
+	let settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": `https://api.royaleapi.com/player/${idUser.value.trim()}/chests`,
+		"method": "GET",
+		"headers": {
+			"auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk3MiwiaWRlbiI6IjMxOTkwNTQwNjg4NzY1NzQ4MiIsIm1kIjp7fSwidHMiOjE1NDE3NTY5Nzk5MDN9.T8S-5L59E8SB4ZDOcany1goGjGd3V6pHUnSdgFXHVQg"
+		}
+	}
+
+	$.ajax(settings).done(response => {
+		loading.style.display = 'none';
+		let html = '';
+		const chests = [];
+		for (let i = 0; i < response.upcoming.length; i++)
+			html += `
+				<div class="chestInfo">
+					<img title="${capitalize(response.upcoming[i])} chest" alt="${response.upcoming[i]}" src="../images/${response.upcoming[i]}.png" />
+					<p>${i === 0 ? 'Next' : '+' + (i)}</p>
+				</div>
+			`
+
+		for (let chest in response)
+			if (chest !== 'upcoming')
+				chests.push([chest, response[chest]]);
+
+		chests.sort((a, b) => {
+			return a[1] - b[1]
+		});
+
+		for (let i = 0; i < chests.length; i++)
+			if (!(chests[i][1] < 9))
+				html += `
+				<div class="chestInfo">
+					<img title="${capitalize(chests[i][0])} chest" alt="${chests[i][0]}" src="../images/${chests[i][0]}.png" />
+					<p>+${chests[i][1]}</p>
+				</div>
+			`
+
+		chestContainer.innerHTML = html;
+		button.disabled = false;
+	}).catch(() => {
+		loading.style.display = 'none';
+		button.disabled = false;
+		smalltalk.alert('Error', 'An error occurred, please come back later.');
+	});
 }
 
 if (localStorage.getItem('theme') === 'blue') {
@@ -989,7 +1071,7 @@ for (let i = 0; i < cards.length; i++) {
 		if (screen.width >= 1024)
 			smalltalk.prompt('Change card', 'Type card name below\nE.g: Mini P.E.K.K.A, mini p.e.k.k.a or mini pekka').then(name => {
 				change(name, i)
-			}).catch(() => { })
+			}).catch(() => {})
 		else {
 			let name = prompt('Type card name below\nE.g: Mini P.E.K.K.A, mini p.e.k.k.a or mini pekka');
 			change(name, i)
@@ -1006,9 +1088,17 @@ window.addEventListener('contextmenu', event => event.preventDefault());
 cbConfigs[0].addEventListener('change', darkTheme);
 cbConfigs[1].addEventListener('change', blueTheme);
 
+idUser.onkeydown = e => {
+	if (e.which === 13) showChests()
+}
+idUser.onkeyup = e => {
+	idUser.value = idUser.value.toUpperCase()
+}
+
 document.onkeydown = e => {
-	if (e.which === 67)
-		btnCopy.click()
+	if (dbSection.style.display === 'block')
+		if (e.which === 67)
+			btnCopy.click()
 	else if (e.which === 66)
 		buildDeck()
 	else if (e.which === 83)
@@ -1018,7 +1108,7 @@ document.onkeydown = e => {
 }
 
 window.onload = function () {
-	document.querySelector('.lds-ring').style.display = 'none';
+	loading.style.display = 'none';
 	navSection.style.display = 'block';
 	dbSection.style.display = 'block';
 	if (location.search.startsWith('?deck='))
@@ -1030,21 +1120,22 @@ function showConfig() {
 	if (cntConfig.style.display === 'block') {
 		document.querySelector('body').style.overflowY = 'auto';
 		cntConfig.style.display = 'none'
-	}
-	else {
+	} else {
 		document.querySelector('body').style.overflowY = 'hidden';
 		cntConfig.style.display = 'block';
-		scrollTo(0, 0);
+		scrollTo(0, 0)
 	}
 }
 
-function stop(event) { event.stopPropagation() }
+function stop(event) {
+	event.stopPropagation()
+}
 
-let cont = [dbSection, selectSection, savedSection, bestSection, configSection, aboutSection];
+let cont = [dbSection, selectSection, savedSection, bestSection, chestSection, configSection, aboutSection];
 window.onpopstate = function () {
-	switchContainer(cont[history.state]);
 	if (document.querySelector('.containerConfig').style.display === 'block')
-		showConfig();
+		showConfig()
+	switchContainer(cont[history.state])
 }
 
 render();

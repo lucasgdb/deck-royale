@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 0.2.8
+# 0.2.9
 
 CACHE:
 ./icon.png
@@ -10,7 +10,15 @@ CACHE:
 ./src/Roboto-Regular.ttf
 ./src/save.js
 ./src/scripts.js
+./src/jquery-3.3.1.min.js
 ./src/styles.css
+./images/epic.png
+./images/giant.png
+./images/gold.png
+./images/legendary.png
+./images/magical.png
+./images/silver.png
+./images/superMagical.png
 ./images/config.png
 ./images/witch_opt-min.png
 ./images/skeleton-army_opt-min.png

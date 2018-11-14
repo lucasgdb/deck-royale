@@ -728,9 +728,6 @@ function matche(xvar) {
 	}
 }
 
-matche(x);
-
-x.addListener(matche);
 const y = matchMedia('(max-width: 767px)');
 
 function matche2(yvar) {
@@ -743,9 +740,6 @@ function matche2(yvar) {
 		loading.style.left = '50%'
 	}
 }
-
-matche2(y);
-y.addListener(matche2);
 
 function showSections() {
 	if (navSection.style.width !== '100%') {
@@ -1108,6 +1102,10 @@ document.onkeydown = e => {
 }
 
 window.onload = function () {
+	matche(x);
+	x.addListener(matche);
+	matche2(y);
+	y.addListener(matche2);
 	loading.style.display = 'none';
 	navSection.style.display = 'block';
 	dbSection.style.display = 'block';

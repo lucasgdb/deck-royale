@@ -15,6 +15,7 @@
   - Copy/paste decks directly into the game
   - Remove cards that you don't have
   - Filter between arena, rarity and type
+  - See your next chests after battle
   - Open source
   - Easy to use
   - Fastest tool
@@ -25,4 +26,4 @@
   - **[GitHub](https://github.com/LucasNaja)**
   - **[Portfolio](https://lucasnaja.github.io/portfolio-reactjs)**
 
-### Current build: **0.2.9**
+### Current build: **0.3.0**

@@ -15,6 +15,7 @@
   - Copy/paste decks directly into the game
   - Remove cards that you don't have
   - Filter between arena, rarity and type
+  - Login using your Clash Royale ID for stats view
   - See your next chests after battle
   - Open source
   - Easy to use

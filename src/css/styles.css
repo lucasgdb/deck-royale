@@ -2,7 +2,7 @@
 ********************/
 @font-face {
 	font-family: 'Roboto';
-	src: url(Roboto-Regular.ttf)
+	src: url('./Roboto-Regular.ttf')
 }
 
 html, body {
@@ -71,29 +71,30 @@ ins {
 ::-webkit-scrollbar-thumb {	background-color: var(--corSecundaria) }
 ::-webkit-scrollbar-track {	background-color: var(--corDeLetraBotao) }
 
+.chest-ring, .player-ring { display: none }
 .lds-ring {
-	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px
+	width: 64px;
+  height: 64px;
+	position: absolute
 }
-.lds-ring div {
+
+.lds-ring div, .chest-ring div, .player-ring div {
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 51px;
-  height: 51px;
-  margin: 6px;
+  width: 100%;
+  height: 100%;
   border: 6px solid var(--corDeLetra);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: var(--corDeLetra) transparent transparent transparent
 }
-.lds-ring div:nth-child(1) { animation-delay: -0.45s }
-.lds-ring div:nth-child(2) { animation-delay: -0.3s }
-.lds-ring div:nth-child(3) { animation-delay: -0.15s }
+.lds-ring div:nth-child(1), .chest-ring div:nth-child(1), .player-ring div:nth-child(1) { animation-delay: -0.45s }
+.lds-ring div:nth-child(2), .chest-ring div:nth-child(2), .player-ring div:nth-child(2) { animation-delay: -0.3s }
+.lds-ring div:nth-child(3), .chest-ring div:nth-child(3), .player-ring div:nth-child(3) { animation-delay: -0.15s }
 
 @keyframes lds-ring {
   from { transform: rotate(0deg) }
@@ -165,8 +166,8 @@ ins {
 
 /* BUILDER SECTION
 ********************/
-.navSection, .builderSection, .savedSection, .bestSection, .chestSection { display: none }
-.builderSection, .selectSection, .savedSection, .bestSection, .chestSection, .configSection, .aboutSection {
+.navSection, .builderSection, .playerSection, .savedSection, .bestSection, .chestSection { display: none }
+.builderSection, .playerSection, .selectSection, .savedSection, .bestSection, .chestSection, .configSection, .aboutSection {
 	position: relative;
 	top: 35px;
 	width: 100%;
@@ -450,9 +451,24 @@ ins {
 	white-space: nowrap
 }
 
+.config button {
+	padding: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 5px
+}
+
 /* CHEST SECTION
 ********************/
-.idContainer, .chestContainer {
+.player-ring, .chest-ring {
+	float: right;
+	margin-left: 2px;
+	margin-top: 2px;
+	width: 28px;
+	height: 28px;
+	position: relative
+}
+.idContainer, .chestContainer, .playerContainer {
 	width: 100%;
 	position: relative
 }
@@ -485,10 +501,10 @@ ins {
 	display: inline-block;
 	position: relative;
 	width: 180px;
-	height: 210px;
+	height: 210px
 }
 
-.chestSection input {
+.chestSection input, .playerSection input {
 	margin-top: 2px;
 	font-size: 19px;
 	background-color: var(--corDeFundo);
@@ -496,9 +512,7 @@ ins {
 	text-align: center
 }
 
-.chestSection button {
-	top: -2px
-}
+.idContainer button { top: -2px }
 
 /* ABOUT
 ********************/
@@ -576,7 +590,6 @@ ins {
 	}
 
 	.aboutSection h3 { text-align: center }
-	.aboutSection h2 { transform: translateX(calc(-50% + 65px)) }
 
 	.infoContainer h3 {	width: 100%	}
 
@@ -615,7 +628,7 @@ ins {
 		font-size: 19px
 	}
 
-	.builderSection, .selectSection, .savedSection, .chestSection, .bestSection, .configSection, .aboutSection {
+	.builderSection, .playerSection, .selectSection, .savedSection, .chestSection, .bestSection, .configSection, .aboutSection {
 		top: 0;
 		left: 176px;
 		width: calc(100% - 176px)

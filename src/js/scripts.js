@@ -3,6 +3,7 @@
 // SmallTalk
 let smalltalk=function(a){function b(d){if(c[d])return c[d].exports;var e=c[d]={i:d,l:!1,exports:{}};return a[d].call(e.exports,e,e.exports,b),e.l=!0,e.exports}var c={};return b.m=a,b.c=c,b.d=function(d,e,f){b.o(d,e)||Object.defineProperty(d,e,{enumerable:!0,get:f})},b.r=function(d){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(d,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(d,"__esModule",{value:!0})},b.t=function(d,e){if(1&e&&(d=b(d)),8&e)return d;if(4&e&&"object"==typeof d&&d&&d.__esModule)return d;var f=Object.create(null);if(b.r(f),Object.defineProperty(f,"default",{enumerable:!0,value:d}),2&e&&"string"!=typeof d)for(var g in d)b.d(f,g,function(h){return d[h]}.bind(null,g));return f},b.n=function(d){var e=d&&d.__esModule?function(){return d.default}:function(){return d};return b.d(e,"a",e),e},b.o=function(d,e){return Object.prototype.hasOwnProperty.call(d,e)},b.p="",b(b.s=8)}([function(a,b,c){var d=c(1);"string"==typeof d&&(d=[[a.i,d,""]]),c(6)(d,{hmr:!0,transform:void 0,insertInto:void 0}),d.locals&&(a.exports=d.locals)},function(a,b,c){var d=c(2);(a.exports=c(3)(!1)).push([a.i,".smalltalk{display:flex;align-items:center;flex-direction:column;justify-content:center;transition:.2s opacity;bottom:0;left:0;overflow:auto;padding:20px;position:fixed;right:0;top:0;z-index:100}.smalltalk+.smalltalk{transition:ease 1s;display:none}.smalltalk .page{border-radius:3px;background:#fff;box-shadow:0 4px 23px 5px rgba(0,0,0,.2),0 2px 6px rgba(0,0,0,.15);color:#333;min-width:400px;padding:0;position:relative;z-index:0}@media only screen and (max-width:500px){.smalltalk .page{min-width:0}}.smalltalk .page>.close-button{background-image:url("+d(c(4))+");background-position:center;background-repeat:no-repeat;height:14px;position:absolute;right:7px;top:7px;width:14px;z-index:1}.smalltalk .page>.close-button:hover{background-image:url("+d(c(5))+")}.smalltalk .page header{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:500px;user-select:none;color:#333;font-size:120%;font-weight:700;margin:0;padding:14px 17px;text-shadow:#fff 0 1px 2px}.smalltalk .page .content-area{overflow:hidden;text-overflow:ellipsis;padding:6px 17px;position:relative}.smalltalk .page .action-area{padding:14px 17px}button{font-family:Ubuntu,Arial,sans-serif}.smalltalk .smalltalk,.smalltalk button{min-height:2em;min-width:4em}.smalltalk button{appearance:none;user-select:none;background-image:linear-gradient(#ededed,#ededed 38%,#dedede);border:1px solid rgba(0,0,0,.25);border-radius:2px;box-shadow:0 1px 0 rgba(0,0,0,.08),inset 0 1px 2px rgba(255,255,255,.75);color:#444;font:inherit;margin:0 1px 0 0;text-shadow:0 1px 0 #f0f0f0}.smalltalk button::-moz-focus-inner{border:0}.smalltalk button:enabled:active{background-image:linear-gradient(#e7e7e7,#e7e7e7 38%,#d7d7d7);box-shadow:none;text-shadow:none}.smalltalk .page .button-strip{display:flex;flex-direction:row;justify-content:flex-end}.smalltalk .page .button-strip>button{margin-left:10px}.smalltalk input{width:100%;border:1px solid #bfbfbf;border-radius:2px;box-sizing:border-box;color:#444;font:inherit;margin:0;min-height:2em;padding:3px;outline:0}.smalltalk button:enabled:focus,.smalltalk input:enabled:focus{transition:border-color .2s;border-color:#4d90fe;outline:0}",""])},function(a){a.exports=function(b){return"string"==typeof b?(/^['"].*['"]$/.test(b)&&(b=b.slice(1,-1)),/["'() \t\n]/.test(b)?"\""+b.replace(/"/g,"\\\"").replace(/\n/g,"\\n")+"\"":b):b}},function(a){a.exports=function(b){var c=[];return c.toString=function(){return this.map(function(d){var e=function(f,g){var h=f[1]||"",i=f[3];if(!i)return h;if(g&&"function"==typeof btoa){var l=function(n){return"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(n))))+" */"}(i),m=i.sources.map(function(n){return"/*# sourceURL="+i.sourceRoot+n+" */"});return[h].concat(m).concat([l]).join("\n")}return[h].join("\n")}(d,b);return d[2]?"@media "+d[2]+"{"+e+"}":e}).join("")},c.i=function(d,e){"string"==typeof d&&(d=[[null,d,""]]);for(var f,g={},h=0;h<this.length;h++)f=this[h][0],"number"==typeof f&&(g[f]=!0);for(h=0;h<d.length;h++){var i=d[h];"number"==typeof i[0]&&g[i[0]]||(e&&!i[2]?i[2]=e:e&&(i[2]="("+i[2]+") and ("+e+")"),c.push(i))}},c}},function(a){a.exports="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAAUklEQVR4XqXPYQrAIAhAYW/gXd8NJxTopVqsGEhtf+L9/ERU2k/HSMFQpKcYJeNFI9Be0LCMij8cYyjj5EHIivGBkwLfrbX3IF8PqumVmnDpEG+eDsKibPG2JwAAAABJRU5ErkJggg=="},function(a){a.exports="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAAnUlEQVR4XoWQQQ6CQAxFewjkJkMCyXgJPMk7AiYczyBeZEAX6AKctGIaN+bt+trk9wtGQc/IkhnoKGxqqiWxOSZalapWFZ6VrIUDExsN0a5JRBq9LoVOR0eEQMoEhKizXhhsn0p1sCWVo7CwOf1RytPL8CPvwuBUoHL6ugeK30CVD1TqK7V/hdpe+VNChhOzV8xWny/+xosHF8578W/Hmc1OOC3wmwAAAABJRU5ErkJggg=="},function(a,b,c){function d(_,aa){for(var ba=0;ba<_.length;ba++){var ca=_[ba],da=n[ca.id];if(da){da.refs++;for(var ea=0;ea<da.parts.length;ea++)da.parts[ea](ca.parts[ea]);for(;ea<ca.parts.length;ea++)da.parts.push(l(ca.parts[ea],aa))}else{var fa=[];for(ea=0;ea<ca.parts.length;ea++)fa.push(l(ca.parts[ea],aa));n[ca.id]={id:ca.id,refs:1,parts:fa}}}}function e(_,aa){for(var ba=[],ca={},da=0;da<_.length;da++){var ea=_[da],fa=aa.base?ea[0]+aa.base:ea[0],ga={css:ea[1],media:ea[2],sourceMap:ea[3]};ca[fa]?ca[fa].parts.push(ga):ba.push(ca[fa]={id:fa,parts:[ga]})}return ba}function f(_,aa){var ba=p(_.insertInto);if(!ba)throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");var ca=t[t.length-1];if("top"===_.insertAt)ca?ca.nextSibling?ba.insertBefore(aa,ca.nextSibling):ba.appendChild(aa):ba.insertBefore(aa,ba.firstChild),t.push(aa);else if("bottom"===_.insertAt)ba.appendChild(aa);else{if("object"!=typeof _.insertAt||!_.insertAt.before)throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");var da=p(_.insertAt.before,ba);ba.insertBefore(aa,da)}}function g(_){if(null===_.parentNode)return!1;_.parentNode.removeChild(_);var aa=t.indexOf(_);0<=aa&&t.splice(aa,1)}function h(_){var aa=document.createElement("style");if(void 0===_.attrs.type&&(_.attrs.type="text/css"),void 0===_.attrs.nonce){var ba=function(){return 0,c.nc}();ba&&(_.attrs.nonce=ba)}return i(aa,_.attrs),f(_,aa),aa}function i(_,aa){Object.keys(aa).forEach(function(ba){_.setAttribute(ba,aa[ba])})}function l(_,aa){var ba,ca,da,ea;if(aa.transform&&_.css){if(!(ea="function"==typeof aa.transform?aa.transform(_.css):aa.transform.default(_.css)))return function(){};_.css=ea}if(aa.singleton){var fa=s++;ba=r||(r=h(aa)),ca=m.bind(null,ba,fa,!1),da=m.bind(null,ba,fa,!0)}else _.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(ba=function(ga){var ha=document.createElement("link");return void 0===ga.attrs.type&&(ga.attrs.type="text/css"),ga.attrs.rel="stylesheet",i(ha,ga.attrs),f(ga,ha),ha}(aa),ca=function(ga,ha,ia){var ja=ia.css,ka=ia.sourceMap,la=void 0===ha.convertToAbsoluteUrls&&ka;(ha.convertToAbsoluteUrls||la)&&(ja=u(ja)),ka&&(ja+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(ka))))+" */");var ma=new Blob([ja],{type:"text/css"}),na=ga.href;ga.href=URL.createObjectURL(ma),na&&URL.revokeObjectURL(na)}.bind(null,ba,aa),da=function(){g(ba),ba.href&&URL.revokeObjectURL(ba.href)}):(ba=h(aa),ca=function(ga,ha){var ia=ha.css,ja=ha.media;if(ja&&ga.setAttribute("media",ja),ga.styleSheet)ga.styleSheet.cssText=ia;else{for(;ga.firstChild;)ga.removeChild(ga.firstChild);ga.appendChild(document.createTextNode(ia))}}.bind(null,ba),da=function(){g(ba)});return ca(_),function(ga){if(ga){if(ga.css===_.css&&ga.media===_.media&&ga.sourceMap===_.sourceMap)return;ca(_=ga)}else da()}}function m(_,aa,ba,ca){var da=ba?"":ca.css;if(_.styleSheet)_.styleSheet.cssText=v(aa,da);else{var ea=document.createTextNode(da),fa=_.childNodes;fa[aa]&&_.removeChild(fa[aa]),fa.length?_.insertBefore(ea,fa[aa]):_.appendChild(ea)}}var n={},o=function(_){var aa;return function(){return void 0==aa&&(aa=_.apply(this,arguments)),aa}}(function(){return window&&document&&document.all&&!window.atob}),p=function(){var _={};return function(aa,ba){if("function"==typeof aa)return aa();if(void 0===_[aa]){var ca=function(da,ea){return ea?ea.querySelector(da):document.querySelector(da)}.call(this,aa,ba);if(window.HTMLIFrameElement&&ca instanceof window.HTMLIFrameElement)try{ca=ca.contentDocument.head}catch(da){ca=null}_[aa]=ca}return _[aa]}}(),r=null,s=0,t=[],u=c(7);a.exports=function(_,aa){if("undefined"!=typeof DEBUG&&DEBUG&&"object"!=typeof document)throw new Error("The style-loader cannot be used in a non-browser environment");(aa=aa||{}).attrs="object"==typeof aa.attrs?aa.attrs:{},aa.singleton||"boolean"==typeof aa.singleton||(aa.singleton=o()),aa.insertInto||(aa.insertInto="head"),aa.insertAt||(aa.insertAt="bottom");var ba=e(_,aa);return d(ba,aa),function(ca){for(var da,ea=[],fa=0;fa<ba.length;fa++)da=ba[fa],(ga=n[da.id]).refs--,ea.push(ga);for(ca&&d(e(ca,aa),aa),fa=0;fa<ea.length;fa++){var ga;if(0===(ga=ea[fa]).refs){for(var ha=0;ha<ga.parts.length;ha++)ga.parts[ha]();delete n[ga.id]}}}};var v=function(){var _=[];return function(aa,ba){return _[aa]=ba,_.filter(Boolean).join("\n")}}()},function(a){a.exports=function(b){var c="undefined"!=typeof window&&window.location;if(!c)throw new Error("fixUrls requires window.location");if(!b||"string"!=typeof b)return b;var d=c.protocol+"//"+c.host,e=d+c.pathname.replace(/\/[^\/]*$/,"/");return b.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi,function(f,g){var h,i=g.trim().replace(/^"(.*)"$/,function(l,m){return m}).replace(/^'(.*)'$/,function(l,m){return m});return /^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(i)?f:(h=0===i.indexOf("//")?i:0===i.indexOf("/")?d+i:e+i.replace(/^\.\//,""),"url("+JSON.stringify(h)+")")})}},function(a,b,c){"use strict";function d(){var v=(0<arguments.length&&void 0!==arguments[0]?arguments[0]:{}).buttons;return v||null}function e(v,_,aa,ba){var ca=_.replace(/\n/g,"<br>");return"<div class=\"page\">\n        <div data-name=\"js-close\" class=\"close-button\"></div>\n        <header>".concat(v,"</header>\n        <div class=\"content-area\">").concat(ca).concat(aa,"</div>\n        <div class=\"action-area\">\n            <div class=\"button-strip\">\n                ").concat(function(da){var ea=Object.keys(da),fa=m(function(ga,ha,ia){return"<button\n            tabindex=".concat(ia,"\n            data-name=\"js-").concat(ha.toLowerCase(),"\">\n            ").concat(ga[ha],"\n        </button>")});return ea.map(fa(da)).join("")}(ba),"\n            </div>\n        </div>\n    </div>")}function f(v,_,aa,ba,ca){var da=n(),ea=n(),fa=new Promise(function(ia,ja){var ka=ca&&!1===ca.cancel;da(ia),ea(ka?function(){}:ja)}),ga=e(v,_,aa,ba),ha=o("div",{innerHTML:ga,className:"smalltalk"});return l(ha,["ok","input"]).forEach(function(ia){return ia.focus()}),l(ha,["input"]).forEach(function(ia){ia.setSelectionRange(0,aa.length)}),function(ia,ja,ka,la){l(ja,ka).forEach(function(ma){return ma.addEventListener(ia,la)})}("click",ha,["cancel","close","ok"],function(ia){i(ia.target,ha,da(),ea())}),["click","contextmenu"].forEach(function(ia){return ha.addEventListener(ia,function(){return l(ha,["ok","input"]).forEach(function(ja){return ja.focus()})})}),ha.addEventListener("keydown",p(ha,da(),ea())),fa}function g(v){return v.getAttribute("data-name").replace("js-","")}function h(v,_){var aa=g(document.activeElement),ba=_.length-1,ca=_.indexOf(aa);l(v,[_[u(ba,ca)]]).forEach(function(da){return da.focus()})}function i(v,_,aa,ba){var ca=v.getAttribute("data-name").replace("js-","");return /close|cancel/.test(ca)?(ba(),void r()):void(aa(l(_,["input"]).reduce(function(da,ea){return ea.value},null)),r())}function l(v,_){return _.map(function(aa){return v.querySelector("[data-name=\"js-".concat(aa,"\"]"))}).filter(function(aa){return aa})}c(0);var m=c(9),n=c(11),o=c(13),p=m(function(v,_,aa,ba){var ca={ENTER:13,ESC:27,TAB:9,LEFT:37,UP:38,RIGHT:39,DOWN:40},da=ba.keyCode,ea=ba.target,fa=l(v,["ok","cancel","input"]).map(g);da===ca.ENTER?(i(ea,v,_,aa),ba.preventDefault()):da===ca.ESC?(r(),aa()):da===ca.TAB?(ba.shiftKey&&h(v,fa),h(v,fa),ba.preventDefault()):["left","right","up","down"].filter(function(ga){return da===ca[ga.toUpperCase()]}).forEach(function(){!function(ga,ha){var ia=g(document.activeElement),ja=/ok|cancel/.test(ia),ka=ha.length-1;if("input"!==ia&&ka&&ja){var la=function(ma){return"cancel"===ma?"ok":"cancel"}(ia);l(ga,[la]).forEach(function(ma){ma.focus()})}}(v,fa)}),ba.stopPropagation()}),r=function(v){for(var _=arguments.length,aa=Array(1<_?_-1:0),ba=1;ba<_;ba++)aa[ba-1]=arguments[ba];return function(){return v.apply(void 0,aa)}}(function(v){var _=document.querySelector(v);_.parentElement.removeChild(_)},".smalltalk"),s={ok:"OK"},t={ok:"OK",cancel:"Cancelar"};b.alert=function(v,_,aa){return f(v,_,"",d(aa)||s,aa)},b.prompt=function(v,_){var aa=2<arguments.length&&void 0!==arguments[2]?arguments[2]:"",ba=3<arguments.length?arguments[3]:void 0,ca=function(){return"password"===(0<arguments.length&&void 0!==arguments[0]?arguments[0]:{}).type?"password":"text"}(ba),da=(aa+"").replace(/"/g,"&quot;");return f(v,_,"<input type=\"".concat(ca,"\" value=\"").concat(da,"\" data-name=\"js-input\">"),d(ba)||t,ba)},b.confirm=function(v,_,aa){return f(v,_,"",d(aa)||t,aa)};var u=function(v,_){return _===v?0:_+1}},function(a,b,c){a.exports=c(10)},function(a){"use strict";a.exports=function b(c){for(var d=arguments.length,e=Array(1<d?d-1:0),f=1;f<d;f++)e[f-1]=arguments[f];if(function(i){if("function"!=typeof i)throw Error("fn should be function!")}(c),e.length>=c.length)return c.apply(void 0,e);var g=function(){for(var i=arguments.length,l=Array(i),m=0;m<i;m++)l[m]=arguments[m];return b.apply(void 0,[c].concat(e.concat(l)))},h=c.length-e.length-1;return function(i){return[function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)}]}(g)[h]||g}},function(a,b,c){a.exports=c(12)},function(a){"use strict";a.exports=function(b){var c={value:b};return function(d){return arguments.length?(c.value=d,d):c.value}}},function(a,b,c){"use strict";function d(n,o){if(null==n)return{};var p,r,s=function(u,v){if(null==u)return{};var _,aa,ba={},ca=Object.keys(u);for(aa=0;aa<ca.length;aa++)_=ca[aa],0<=v.indexOf(_)||(ba[_]=u[_]);return ba}(n,o);if(Object.getOwnPropertySymbols){var t=Object.getOwnPropertySymbols(n);for(r=0;r<t.length;r++)p=t[r],0<=o.indexOf(p)||Object.prototype.propertyIsEnumerable.call(n,p)&&(s[p]=n[p])}return s}function e(n){if(n)return g(n)}var f=c(14),g=function(n){return document.querySelector("[data-name=\"".concat(n,"\"]"))},h=f(function(n,o,p){return n.setAttribute(p,o[p])}),i=f(function(n,o,p){return n[p]=o[p]}),l=f(function(n,o){return!n(o)}),m=function(n){return n!=n.toLowerCase()};a.exports=function(n){var o=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{},p=o.dataName,r=o.notAppend,s=o.parent,t=void 0===s?document.body:s,u=o.uniq,v=d(o,["dataName","notAppend","parent","uniq"]),_=e(p);if((void 0===u||u)&&_)return _;var aa=document.createElement(n);return p&&(aa.dataset.name=p),Object.keys(v).filter(m).map(i(aa,o)),Object.keys(v).filter(l(m)).map(h(aa,o)),r||t.appendChild(aa),aa},a.exports.isElementPresent=e},function(a,b,c){a.exports=c(15)},function(a){"use strict";a.exports=function b(c){for(var d=arguments.length,e=Array(1<d?d-1:0),f=1;f<d;f++)e[f-1]=arguments[f];if(function(i){if("function"!=typeof i)throw Error("fn should be function!")}(c),e.length>=c.length)return c.apply(void 0,e);var g=function(){return b.apply(void 0,[c].concat(e,Array.prototype.slice.call(arguments)))},h=c.length-e.length-1;return function(i){return[function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)},function(){return i.apply(void 0,arguments)}]}(g)[h]||g}}]);
 
+
 let currentDeck = [0, 0, 0, 0, 0, 0, 0, 0],
 	contentToCopy,
 	selectedContainer = 0,
@@ -131,19 +132,19 @@ const cardsName = [
 		6, 4, 5, 1.6, 3, 4, 4
 	],
 	cardsCode = [
-		'0',
-		'26000007', '26000012', '26000015', '26000016', '26000003', '26000014', '26000018', '28000000', '26000000', '26000001', '26000005', '28000001',
-		'26000044', '28000004', '26000021', '27000001', '26000002', '26000019',
-		'26000006', '26000020', '26000011', '27000009', '26000010', '26000013',
-		'26000009', '28000015', '26000036', '27000005', '26000008', '27000000',
-		'26000029', '26000032', '26000004', '28000007', '26000039', '27000003', '26000022', '28000008',
-		'26000048', '28000010', '28000005', '28000009', '26000017', '27000010', '26000031', '26000049',
-		'26000037', '28000011', '26000054', '27000008', '26000057', '28000003', '26000056', '27000002',
-		'26000026', '26000050', '26000025', '26000027', '26000028', '28000016', '26000024', '26000047',
-		'26000023', '26000035', '26000034', '28000012', '26000038', '27000007', '26000030', '28000017',
-		'26000046', '26000045', '26000060', '26000040', '26000041', '26000053',
-		'26000055', '26000062', '28000002', '26000059', '27000004', '26000043',
-		'26000033', '26000042', '26000063', '28000006', '28000013', '26000052', '27000006'
+		0,
+		26000007, 26000012, 26000015, 26000016, 26000003, 26000014, 26000018, 28000000, 26000000, 26000001, 26000005, 28000001,
+		26000044, 28000004, 26000021, 27000001, 26000002, 26000019,
+		26000006, 26000020, 26000011, 27000009, 26000010, 26000013,
+		26000009, 28000015, 26000036, 27000005, 26000008, 27000000,
+		26000029, 26000032, 26000004, 28000007, 26000039, 27000003, 26000022, 28000008,
+		26000048, 28000010, 28000005, 28000009, 26000017, 27000010, 26000031, 26000049,
+		26000037, 28000011, 26000054, 27000008, 26000057, 28000003, 26000056, 27000002,
+		26000026, 26000050, 26000025, 26000027, 26000028, 28000016, 26000024, 26000047,
+		26000023, 26000035, 26000034, 28000012, 26000038, 27000007, 26000030, 28000017,
+		26000046, 26000045, 26000060, 26000040, 26000041, 26000053,
+		26000055, 26000062, 28000002, 26000059, 27000004, 26000043,
+		26000033, 26000042, 26000063, 28000006, 28000013, 26000052, 27000006
 	],
 	cardPtName = ["", "Bruxa", "Exército de Esqueletos", "Bebê Dragão", "Príncipe", "Gigante", "Mosqueteira", "Mini P.E.K.K.A", "Bola de Fogo", "Cavaleiro", "Arqueiras", "Servos", "Flechas", "Caçador", "Barril de Goblins", "Corredor", "Cabana de Goblins", "Goblins", "Goblins Lanceiros", "Balão", "Esqueleto Gigante", "Valquíria", "Lápide", "Esqueletos", "Bombardeiro", "Golem", "Barril de Bárbaro", "Ariete de Batalha", "Cabana de Bárbaros", "Bárbaros", "Canhão", "Lava Hound", "Mineiro", "P.E.K.K.A", "Relâmpago", "Megasservo", "Torre Inferno", "Horda de Servos", "Zap", "Bruxa Sombria", "Cemitério", "Gelo", "Veneno", "Mago", "Fornalha", "Espíritos de Fogo", "Morcegos", "Dragão Infernal", "Tronco", "Carrinho de Canhão", "X-Besta", "Máquina Voadora", "Foguete", "Barril de Esqueletos", "Morteiro", "Princesa", "Fantasma Real", "Guardas", "Príncipe das Trevas", "Três Mosqueteiras", "Cura", "Gigante Real", "Recrutas Reais", "Mago de Gelo", "Lenhador", "Lançador", "Tornado", "Golem de Gelo", "Coletor de Elixir", "Espírito de Gelo", "Bola de Neve", "Bandida", "Executor", "Goblin Gigante", "Goblin com Dardo", "Gangue de Goblins", "Patifes", "Megacavaleiro", "Arqueiro Mágico", "Fúria", "Porcos Reais", "Torre de Bombas", "Bárbaros de Elite", "Sparky", "Mago Elétrico", "Dragão Elétrico", "Espelho", "Clone", "Eletrocutadores", "Tesla"],
 	defesa = ['Gigante', 'Golem', 'Gigante Real', 'Goblin Gigante'],
@@ -233,6 +234,7 @@ const cardsName = [
 	selectSection = document.querySelector('.selectSection'),
 	configSection = document.querySelector('.configSection'),
 	bestSection = document.querySelector('.bestSection'),
+	playerSection = document.querySelector('.playerSection'),
 	chestSection = document.querySelector('.chestSection'),
 	bestDecks = document.querySelector('.bestSection section'),
 	mediaComponent = document.querySelector('#elixirMedio'),
@@ -248,9 +250,12 @@ const cardsName = [
 	btnVoltar = document.querySelector('.btnVoltar'),
 	chkConfig = document.querySelectorAll('.config input'),
 	chkConfigText = document.querySelectorAll('.config label'),
-	idUser = document.querySelector('#id'),
+	playerRing = document.querySelector('.player-ring'),
+	chestRing = document.querySelector('.chest-ring'),
+	idUser = document.querySelector('#idUser'),
+	idPlayer = document.querySelector('#idPlayer'),
+	cntConfig = document.querySelector('.containerConfig'),
 	arenas = [90, 90, 83, 77, 71, 63, 55, 47, 39, 31, 25, 19],
-	loading = document.querySelector('.lds-ring'),
 	root = document.querySelector(':root');
 
 if (localStorage.getItem('ddArena') !== null)
@@ -546,21 +551,20 @@ function buildDeck() {
 	setDeck(currentDeck)
 }
 
-function switchContainer(container = dbSection) {
-	const containers = [dbSection, selectSection, savedSection, bestSection, chestSection, configSection, aboutSection];
+const cont = [dbSection, playerSection, selectSection, savedSection, bestSection, chestSection, configSection, aboutSection];
 
-	for (let i = 0; i < containers.length; i++) {
-		if (containers[i] === container) {
+function switchContainer(container = dbSection) {
+	for (let i = 0; i < cont.length; i++)
+		if (cont[i] === container) {
 			changeContainers[i].setAttribute('id', 'selectedButton');
 			changeContainers[i].style.color = 'var(--corDeLetra)';
-			containers[i].style.display = 'block';
+			cont[i].style.display = 'block';
 			selectedContainer = i
 		} else {
 			changeContainers[i].removeAttribute('id');
 			changeContainers[i].style.color = 'var(--corDeLetraBotao)';
-			containers[i].style.display = 'none'
+			cont[i].style.display = 'none'
 		}
-	}
 }
 
 function combination() {
@@ -627,7 +631,7 @@ function paste(linkDeck = String) {
 
 			for (let i = 0; i < linkDeck.length; i++)
 				for (let j = 0; j < cardsCode.length; j++)
-					if (linkDeck[i] === cardsCode[j])
+					if (parseInt(linkDeck[i]) === cardsCode[j])
 						linkDeck[i] = j
 
 			for (let i = linkDeck; i < 8; i++)
@@ -707,19 +711,20 @@ function matche(xvar) {
 			if (selectedContainer === 0)
 				dbSection.style.display = 'block'
 			else if (selectedContainer === 1)
-				selectSection.style.display = 'block'
+				playerSection.style.display = 'block'
 			else if (selectedContainer === 2)
-				savedSection.style.display = 'block'
+				selectSection.style.display = 'block'
 			else if (selectedContainer === 3)
-				bestSection.style.display = 'block'
+				savedSection.style.display = 'block'
 			else if (selectedContainer === 4)
-				chestSection.style.display = 'block'
+				bestSection.style.display = 'block'
 			else if (selectedContainer === 5)
+				chestSection.style.display = 'block'
+			else if (selectedContainer === 6)
 				configSection.style.display = 'block'
 			else
 				aboutSection.style.display = 'block'
 		}
-		loading.style.left = 'calc(50% + 87.5px)';
 		navSection.style.width = '175px';
 		navSection.style.transition = 'all 0s';
 		navSection.style.height = '100%';
@@ -737,7 +742,6 @@ function matche2(yvar) {
 		navSection.style.overflow = 'hidden';
 		navSection.style.transition = 'all .2s';
 		navSection.style.borderRight = 'none';
-		loading.style.left = '50%'
 	}
 }
 
@@ -748,14 +752,16 @@ function showSections() {
 		if (selectedContainer === 0)
 			dbSection.style.display = 'none'
 		else if (selectedContainer === 1)
-			selectSection.style.display = 'none'
+			playerSection.style.display = 'none'
 		else if (selectedContainer === 2)
-			savedSection.style.display = 'none'
+			selectSection.style.display = 'none'
 		else if (selectedContainer === 3)
-			bestSection.style.display = 'none'
+			savedSection.style.display = 'none'
 		else if (selectedContainer === 4)
-			chestSection.style.display = 'none'
+			bestSection.style.display = 'none'
 		else if (selectedContainer === 5)
+			chestSection.style.display = 'none'
+		else if (selectedContainer === 6)
 			configSection.style.display = 'none'
 		else
 			aboutSection.style.display = 'none'
@@ -765,14 +771,16 @@ function showSections() {
 		if (selectedContainer === 0)
 			dbSection.style.display = 'block'
 		else if (selectedContainer === 1)
-			selectSection.style.display = 'block'
+			playerSection.style.display = 'block'
 		else if (selectedContainer === 2)
-			savedSection.style.display = 'block'
+			selectSection.style.display = 'block'
 		else if (selectedContainer === 3)
-			bestSection.style.display = 'block'
+			savedSection.style.display = 'block'
 		else if (selectedContainer === 4)
-			chestSection.style.display = 'block';
+			bestSection.style.display = 'block'
 		else if (selectedContainer === 5)
+			chestSection.style.display = 'block';
+		else if (selectedContainer === 6)
 			configSection.style.display = 'block'
 		else
 			aboutSection.style.display = 'block'
@@ -814,7 +822,7 @@ let maxDown = 0,
 
 async function downDecks() {
 	if (response === null) {
-		loading.style.display = 'block';
+
 		response = await fetch('https://docs.royaleapi.com/json/popular_decks.json').then(data => data.json()).catch(() => smalltalk.alert('Error', 'An error occurred, please come back later.'))
 	}
 
@@ -824,21 +832,21 @@ async function downDecks() {
 		for (let i = maxDown; i < maxDown + (maxDown + 10 > response.length ? response.length - maxDown : 10); i++)
 			html += `
 						<section class="cardsContainerS">
-							<div><img src="./images/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${capitalize(response[i].cards[0].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id.toString())})"/></div>
-							<div><img src="./images/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${capitalize(response[i].cards[1].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id.toString())})"/></div>
-							<div><img src="./images/${response[i].cards[2].key}_opt-min.png" alt="${response[i].cards[2].key}" title="${capitalize(response[i].cards[2].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[2].id.toString())})"/></div>
-							<div><img src="./images/${response[i].cards[3].key}_opt-min.png" alt="${response[i].cards[3].key}" title="${capitalize(response[i].cards[3].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[3].id.toString())})"/></div>
-							<div><img src="./images/${response[i].cards[4].key}_opt-min.png" alt="${response[i].cards[4].key}" title="${capitalize(response[i].cards[4].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[4].id.toString())})"/></div>
-							<div><img src="./images/${response[i].cards[5].key}_opt-min.png" alt="${response[i].cards[5].key}" title="${capitalize(response[i].cards[5].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[5].id.toString())})"/></div>
-							<div><img src="./images/${response[i].cards[6].key}_opt-min.png" alt="${response[i].cards[6].key}" title="${capitalize(response[i].cards[6].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[6].id.toString())})"/></div>
-							<div><img src="./images/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${capitalize(response[i].cards[7].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id.toString())})"/></div>
+							<div><img src="./images/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${capitalize(response[i].cards[0].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id)})"/></div>
+							<div><img src="./images/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${capitalize(response[i].cards[1].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id)})"/></div>
+							<div><img src="./images/${response[i].cards[2].key}_opt-min.png" alt="${response[i].cards[2].key}" title="${capitalize(response[i].cards[2].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[2].id)})"/></div>
+							<div><img src="./images/${response[i].cards[3].key}_opt-min.png" alt="${response[i].cards[3].key}" title="${capitalize(response[i].cards[3].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[3].id)})"/></div>
+							<div><img src="./images/${response[i].cards[4].key}_opt-min.png" alt="${response[i].cards[4].key}" title="${capitalize(response[i].cards[4].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[4].id)})"/></div>
+							<div><img src="./images/${response[i].cards[5].key}_opt-min.png" alt="${response[i].cards[5].key}" title="${capitalize(response[i].cards[5].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[5].id)})"/></div>
+							<div><img src="./images/${response[i].cards[6].key}_opt-min.png" alt="${response[i].cards[6].key}" title="${capitalize(response[i].cards[6].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[6].id)})"/></div>
+							<div><img src="./images/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${capitalize(response[i].cards[7].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id)})"/></div>
 						</section>
 
 						<h1 class="elixir">Elixir average: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
 
 						<section class="configContainerS">
 							<button class="btnCopiarS" title="Copy deck" oncontextmenu="copyDeckSaved('${response[i].cards.map(card => card.id).join(';')}')" ${screen.width < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `data-clipboard-text=${response[i].decklink}`}>Copy deck</button>
-							<button class="btnApagar" title="Save deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id.toString())},${cardsCode.indexOf(response[i].cards[1].id.toString())},${cardsCode.indexOf(response[i].cards[2].id.toString())},${cardsCode.indexOf(response[i].cards[3].id.toString())},${cardsCode.indexOf(response[i].cards[4].id.toString())},${cardsCode.indexOf(response[i].cards[5].id.toString())},${cardsCode.indexOf(response[i].cards[6].id.toString())},${cardsCode.indexOf(response[i].cards[7].id.toString())}])">Save deck</button>
+							<button class="btnApagar" title="Save deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id)},${cardsCode.indexOf(response[i].cards[1].id)},${cardsCode.indexOf(response[i].cards[2].id)},${cardsCode.indexOf(response[i].cards[3].id)},${cardsCode.indexOf(response[i].cards[4].id)},${cardsCode.indexOf(response[i].cards[5].id)},${cardsCode.indexOf(response[i].cards[6].id)},${cardsCode.indexOf(response[i].cards[7].id)}])">Save deck</button>
 							<button class="btnColarS" title="Paste deck" onclick="pasteDeck('${response[i].decklink}')">Paste deck</button>
 						</section>
 					`;
@@ -848,7 +856,7 @@ async function downDecks() {
 		document.querySelector('.bestSection h2').innerText = `Amount of best decks: ${maxDown}`
 	}
 
-	loading.style.display = 'none';
+
 }
 
 (function updateCards() {
@@ -901,9 +909,9 @@ async function downDecks() {
 		})
 })();
 
-const createDecks = new Worker('./src/render.js'),
-	saveDecks = new Worker('./src/save.js'),
-	deleteDecks = new Worker('./src/delete.js');
+const createDecks = new Worker('./src/js/render.js'),
+	saveDecks = new Worker('./src/js/save.js'),
+	deleteDecks = new Worker('./src/js/delete.js');
 
 createDecks.onmessage = e => {
 	savedDecks.innerHTML = e.data;
@@ -989,8 +997,8 @@ function showInfo(index = Number) {
 
 function showChests() {
 	const button = document.querySelector('#showChests');
+	chestRing.style.display = 'block';
 	button.disabled = true;
-	loading.style.display = 'block';
 	chestContainer.innerHTML = '';
 	let settings = {
 		"async": true,
@@ -1003,7 +1011,7 @@ function showChests() {
 	}
 
 	$.ajax(settings).done(response => {
-		loading.style.display = 'none';
+		localStorage.setItem('id', idUser.value.trim());
 		let html = '';
 		const chests = [];
 		for (let i = 0; i < response.upcoming.length; i++)
@@ -1016,7 +1024,7 @@ function showChests() {
 
 		for (let chest in response)
 			if (chest !== 'upcoming')
-				chests.push([chest, response[chest]]);
+				chests.push([chest, response[chest]])
 
 		chests.sort((a, b) => {
 			return a[1] - b[1]
@@ -1032,12 +1040,98 @@ function showChests() {
 			`
 
 		chestContainer.innerHTML = html;
-		button.disabled = false;
+		chestRing.style.display = 'none';
+		button.disabled = false
 	}).catch(() => {
-		loading.style.display = 'none';
 		button.disabled = false;
-		smalltalk.alert('Error', 'An error occurred, please come back later.');
+		chestRing.style.display = 'none';
+		smalltalk.alert('Error', 'An error occurred, please come back later.')
 	});
+}
+
+let playerInfo;
+
+function login(id = idPlayer.value.trim()) {
+	document.querySelector('#showPlayer').disabled = true;
+	playerRing.style.display = 'block';
+	let settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": `https://api.royaleapi.com/player/${id}`,
+		"method": "GET",
+		"headers": {
+			"auth": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk3MiwiaWRlbiI6IjMxOTkwNTQwNjg4NzY1NzQ4MiIsIm1kIjp7fSwidHMiOjE1NDE3NTY5Nzk5MDN9.T8S-5L59E8SB4ZDOcany1goGjGd3V6pHUnSdgFXHVQg"
+		}
+	}
+
+	$.ajax(settings).done(response => {
+		playerInfo = response.cards;
+		const html = `
+			<h2 class="elixir">Current deck</h2>
+			<section class="cardsContainerS">
+				<div><img src="./images/${response.currentDeck[0].key}_opt-min.png" alt="${response.currentDeck[0].key}" title="${capitalize(response.currentDeck[0].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[0].id)})"/></div>
+				<div><img src="./images/${response.currentDeck[1].key}_opt-min.png" alt="${response.currentDeck[1].key}" title="${capitalize(response.currentDeck[1].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[1].id)})"/></div>
+				<div><img src="./images/${response.currentDeck[2].key}_opt-min.png" alt="${response.currentDeck[2].key}" title="${capitalize(response.currentDeck[2].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[2].id)})"/></div>
+				<div><img src="./images/${response.currentDeck[3].key}_opt-min.png" alt="${response.currentDeck[3].key}" title="${capitalize(response.currentDeck[3].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[3].id)})"/></div>
+				<div><img src="./images/${response.currentDeck[4].key}_opt-min.png" alt="${response.currentDeck[4].key}" title="${capitalize(response.currentDeck[4].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[4].id)})"/></div>
+				<div><img src="./images/${response.currentDeck[5].key}_opt-min.png" alt="${response.currentDeck[5].key}" title="${capitalize(response.currentDeck[5].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[5].id)})"/></div>
+				<div><img src="./images/${response.currentDeck[6].key}_opt-min.png" alt="${response.currentDeck[6].key}" title="${capitalize(response.currentDeck[6].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[6].id)})"/></div>
+				<div><img src="./images/${response.currentDeck[7].key}_opt-min.png" alt="${response.currentDeck[7].key}" title="${capitalize(response.currentDeck[7].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[7].id)})"/></div>
+			</section>
+
+			<h1 class="elixir">Elixir average: ${((response.currentDeck[0].elixir + response.currentDeck[1].elixir + response.currentDeck[2].elixir + response.currentDeck[3].elixir + response.currentDeck[4].elixir + response.currentDeck[5].elixir + response.currentDeck[6].elixir + response.currentDeck[7].elixir) / 8).toFixed(1)}</h1>
+
+			<section class="configContainerS">
+				<button class="btnApagar" title="Save deck" onclick="saveDeck([${response.deckLink.split('deck=')[1].split(';').map(id => cardsCode.indexOf(parseInt(id))).join(',')}])">Save deck</button>
+			</section>
+		`;
+
+		document.querySelector('.playerContainer').innerHTML = html;
+		document.querySelector('#showPlayer').disabled = false;
+		idUser.value = id;
+		playerRing.style.display = 'none';
+		localStorage.setItem('id', id);
+		showChests()
+	}).catch(() => {
+		document.querySelector('#showPlayer').disabled = false;
+		playerRing.style.display = 'none'
+	})
+}
+
+function basedCards() {
+	if (localStorage.getItem('id') !== null) {
+		if (playerInfo !== null) {
+			try {
+				if (playerInfo.length === cardsName.length - 1) {
+					for (let i = 0; i < img.length; i++) {
+						img[i].removeAttribute('class');
+						localStorage.setItem(cardsName[i + 1], 'e');
+					}
+				} else {
+					const cards = [];
+					for (let card in playerInfo)
+						cards.push(playerInfo[card].key);
+					for (let i = 1; i < cardsName.length; i++)
+						if (cards.indexOf(cardsName[i]) === -1) {
+							img[i - 1].setAttribute('class', 'notAllowed');
+							localStorage.setItem(cardsName[i], 'd')
+						} else {
+							img[i - 1].removeAttribute('class');
+							localStorage.setItem(cardsName[i], 'e')
+						}
+				}
+			} catch {
+				basedCards();
+			}
+			changeDeck();
+		}
+	} else {
+		showConfig();
+		closeNav();
+		switchContainer(playerSection);
+		idPlayer.select();
+		history.pushState(1, 'changed')
+	}
 }
 
 if (localStorage.getItem('theme') === 'blue') {
@@ -1088,17 +1182,30 @@ idUser.onkeydown = e => {
 idUser.onkeyup = e => {
 	idUser.value = idUser.value.toUpperCase()
 }
+idPlayer.onkeydown = e => {
+	if (e.which === 13) login()
+}
+idPlayer.onkeyup = e => {
+	idPlayer.value = idPlayer.value.toUpperCase()
+}
+
+if (localStorage.getItem('id') !== null) {
+	login(localStorage.getItem('id'));
+	idPlayer.value = localStorage.getItem('id')
+}
 
 document.onkeydown = e => {
-	if (dbSection.style.display === 'block')
+	if (dbSection.style.display === 'block') {
 		if (e.which === 67)
 			btnCopy.click()
-	else if (e.which === 66)
-		buildDeck()
-	else if (e.which === 83)
-		saveDeck()
-	else if (e.ctrlKey && e.which === 86)
-		pasteDeck()
+		else if (e.which === 66)
+			buildDeck()
+		else if (e.which === 83)
+			saveDeck()
+		else if (e.ctrlKey && e.which === 86)
+			pasteDeck()
+	} else if (cntConfig.style.display === 'block' && e.which === 27)
+		showConfig()
 }
 
 window.onload = function () {
@@ -1106,7 +1213,7 @@ window.onload = function () {
 	x.addListener(matche);
 	matche2(y);
 	y.addListener(matche2);
-	loading.style.display = 'none';
+	document.querySelector('.lds-ring').style.display = 'none';
 	navSection.style.display = 'block';
 	dbSection.style.display = 'block';
 	if (location.search.startsWith('?deck='))
@@ -1114,7 +1221,6 @@ window.onload = function () {
 }
 
 function showConfig() {
-	let cntConfig = document.querySelector('.containerConfig');
 	if (cntConfig.style.display === 'block') {
 		document.querySelector('body').style.overflowY = 'auto';
 		cntConfig.style.display = 'none'
@@ -1129,9 +1235,8 @@ function stop(event) {
 	event.stopPropagation()
 }
 
-let cont = [dbSection, selectSection, savedSection, bestSection, chestSection, configSection, aboutSection];
 window.onpopstate = function () {
-	if (document.querySelector('.containerConfig').style.display === 'block')
+	if (cntConfig.style.display === 'block')
 		showConfig()
 	switchContainer(cont[history.state])
 }

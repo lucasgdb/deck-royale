@@ -7,7 +7,7 @@
 
 html, body {
 	margin: 0;
-	min-height: 100%;
+	height: calc(100% - 17.5px);
 	background-color: var(--corDeFundo);
 	color: var(--corDeLetra);
 }
@@ -32,33 +32,28 @@ button {
   line-height: 22px;
 	-moz-user-select: none;
 	background-color: var(--corSecundaria);
-	background-position: center;
-	font-weight: 500;
-	transition: background 0.3s
+	font-weight: 500
 }
 
 select:disabled { color: darkgray }
-
-button:hover { background: var(--corSecundaria) radial-gradient(circle, transparent 1%, var(--corTercearia) 1%) center/15000% }
-
-button:active {
-	background-color: var(--corPrimaria);
-	background-size: 100%;
-	transition: background 0s
-}
 
 select {
 	margin-top: 5px;
 	width: 205px;
 	margin-bottom: 2px;
-	position: relative;
 	background-color: var(--corSecundaria);
-	padding: 10px 20px 10px 20px;
+	padding: 7px 15px;
+	text-align-last: center;
 	color: var(--corDeLetraBotao);
 	display: block;
-	left: 50%;
 	font-size: 20px;
-	font-weight: 900;
+	position: relative;
+	font-weight: 900
+}
+
+select, .navSection svg, .cardsContainer, .cardsContainerS, .configContainer, .infoContainer, .selectSection img:not(#configCards), .configContainerS, .btnApagar,
+.btnCenter, .configSection div, .config button, .idCenter, .information, .aboutSection h2, .logo {
+	left: 50%;
 	transform: translateX(-50%)
 }
 
@@ -72,7 +67,7 @@ ins {
 ::-webkit-scrollbar-track {	background-color: var(--corDeLetraBotao) }
 
 .chest-ring, .player-ring { display: none }
-.lds-ring {
+.lds-ring, .chest-ring, .player-ring {
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
@@ -81,13 +76,14 @@ ins {
 	position: absolute
 }
 
+.lds-ring div { border: 6px solid var(--corDeLetra) }
+.chest-ring div, .player-ring div { border: 3px solid var(--corDeLetra) }
 .lds-ring div, .chest-ring div, .player-ring div {
   box-sizing: border-box;
   display: block;
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 6px solid var(--corDeLetra);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: var(--corDeLetra) transparent transparent transparent
@@ -107,6 +103,8 @@ ins {
 	background-color: var(--corPrimaria);
 	color: var(--corDeLetraBotao);
 	z-index: 1;
+	display: none;
+	overflow-y: scroll;
 	position: fixed
 }
 
@@ -114,8 +112,6 @@ ins {
 	width: 24px;
 	height: 24px;
 	top: 2px;
-	left: 50%;
-	transform: translateX(-50%);
 	position: absolute
 }
 
@@ -128,7 +124,6 @@ ins {
 	width: 100%;
 	margin-bottom: 1px;
 	font-size: 17px;
-	border: 1px solid var(--corDeLetraBotao);
 	padding: 25px 0 3px 0;
 }
 
@@ -166,8 +161,8 @@ ins {
 
 /* BUILDER SECTION
 ********************/
-.navSection, .builderSection, .playerSection, .savedSection, .bestSection, .chestSection { display: none }
 .builderSection, .playerSection, .selectSection, .savedSection, .bestSection, .chestSection, .configSection, .aboutSection {
+	display: none;
 	position: relative;
 	top: 35px;
 	width: 100%;
@@ -183,8 +178,6 @@ ins {
 
 .cardsContainer, .cardsContainerS, .configContainer, .infoContainer {
 	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
 	max-width: 600px
 }
 
@@ -299,9 +292,7 @@ ins {
 .selectSection img:not(#configCards) {
 	position: relative;
 	width: 150px;
-	height: 180px;
-	left: 50%;
-	transform: translateX(-50%)
+	height: 180px
 }
 
 .selectSection div {
@@ -338,11 +329,6 @@ ins {
 	position: relative
 }
 
-.configContainerS, .btnApagar {
-	left: 50%;
-	transform: translateX(-50%)
-}
-
 .btnApagar, .btnColarS, .btnCopiarS {
 	height: 100%;
 	width: 100px;
@@ -375,8 +361,6 @@ ins {
 ********************/
 .btnCenter {
 	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
 	padding: 10px 20px;
 	font-size: 18px;
 	margin-top: 5px
@@ -384,19 +368,13 @@ ins {
 
 /* THEME SECTION
 ********************/
-.configSection { display: none }
-
 .configSection section {
 	position: relative;
 	width: 100%;
 	height: 20px
 }
 
-.configSection div {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%)
-}
+.configSection div { position: absolute }
 
 .configSection label {
 	font-variant: small-caps;
@@ -453,20 +431,14 @@ ins {
 
 .config button {
 	padding: 5px;
-	left: 50%;
-	transform: translateX(-50%);
 	margin-top: 5px
 }
 
-/* CHEST SECTION
+/* CHEST SECTION, PLAYER SECTION
 ********************/
 .player-ring, .chest-ring {
-	float: right;
-	margin-left: 2px;
-	margin-top: 2px;
-	width: 28px;
-	height: 28px;
-	position: relative
+	width: 36px;
+	height: 36px
 }
 .idContainer, .chestContainer, .playerContainer {
 	width: 100%;
@@ -481,9 +453,7 @@ ins {
 
 .idCenter {
 	position: absolute;
-	white-space: nowrap;
-	left: 50%;
-	transform: translateX(-50%)
+	white-space: nowrap
 }
 
 .idCenter p {
@@ -499,7 +469,6 @@ ins {
 
 .chestInfo {
 	display: inline-block;
-	position: relative;
 	width: 180px;
 	height: 210px
 }
@@ -514,10 +483,29 @@ ins {
 
 .idContainer button { top: -2px }
 
+.information {
+	position: relative;
+	text-align: center;
+	max-width: 602px;
+	min-height: 0
+}
+
+.information{ margin-top: 5px }
+
+.information table {
+	margin-left: -5px;
+	display: inline-block;
+	text-align: center;
+	word-break: break-all
+}
+
+.information th, .information td {
+	border: 1px solid var(--corDeBorda);
+	padding: 10px
+}
+
 /* ABOUT
 ********************/
-.aboutSection, .selectSection { display: none }
-
 .aboutSection h1 {
 	margin: 0;
 	font-weight: 900;
@@ -531,10 +519,8 @@ ins {
 .aboutSection h2 {
 	position: relative;
 	display: inline-block;
-	left: 50%;
-	transform: translateX(-50%);
 	font-weight: 400;
-	margin: -10px 0 20px 0;
+	margin: -10px 0 20px 0
 }
 
 .aboutSection h4, .aboutSection p {
@@ -548,9 +534,7 @@ ins {
 
 .logo {
 	position: relative;
-	display: block;
-	left: 50%;
-	transform: translateX(-50%)
+	display: block
 }
 .aboutSection a, .navSection a { color: var(--corDeLetra) }
 
@@ -563,6 +547,7 @@ ins {
 @media (min-width: 600px) {	.cardsContainer, .cardsContainerS {	height: 360px } }
 
 @media (min-width: 768px) {
+	html, body { height: 100% }
 	.selectSection button:nth-last-of-type(2) { margin-left: 10px }
 	.selectSection section {
 		width: calc(50% - 8px);
@@ -582,11 +567,6 @@ ins {
 		margin-top: 2px;
 		margin-bottom: 2px;
 		text-align: center
-	}
-
-	select {
-		left: 50%;
-		transform: translateX(-50%)
 	}
 
 	.aboutSection h3 { text-align: center }
@@ -624,6 +604,7 @@ ins {
 	.navSection div { display: none }
 
 	.navSection button {
+		border-right: none;
 		width: 100%;
 		font-size: 19px
 	}
@@ -649,12 +630,8 @@ ins {
 		margin-left: 9px
 	}
 
-	button:hover { background: var(--corTercearia) radial-gradient(circle, transparent 1%, var(--corTercearia) 1%) center/15000% }
-
-	button:active {
-		background-color: var(--corPrimaria);
-		background-size: 100%
-	}
+	button:hover { background-color: var(--corTercearia) }
+	button:active { background-color: var(--corSecundaria) }
 
 	#configCards { cursor: pointer }
 
@@ -663,9 +640,12 @@ ins {
 
 	.aboutSection h1 { cursor: default }
 
-	.builderSection>section {
+	.builderSection > section {
 		position: relative;
-		width: 850px;
+		width: 850px
+	}
+
+	.builderSection > section, .dropdowns, .infoText, .effect:after {
 		left: 50%;
 		transform: translateX(-50%)
 	}
@@ -698,18 +678,11 @@ ins {
 	}
 
 	.dropdowns, .infoText {
-		left: 50%;
-		width: 100%;
-		transform: translateX(-50%)
-	}
-	.dropdowns {
 		position: absolute;
-		top: 5px
+		width: 100%
 	}
-	.infoText {
-		position: absolute;
-		top: 165px
-	}
+	.dropdowns { top: 5px }
+	.infoText {	top: 165px }
 
 	.btnVoltar { width: 20px }
 
@@ -723,8 +696,6 @@ ins {
 		content: '';
 		background-color: var(--corDeLetra);
 		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
 		bottom: 0;
 		width: 0;
 		height: 2px;

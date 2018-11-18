@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 0.3.0
+# 0.3.1
 
 CACHE:
 ./icon.png
@@ -12,6 +12,7 @@ CACHE:
 ./src/js/scripts.js
 ./src/js/jquery-3.3.1.min.js
 ./src/css/styles.css
+./images/wooden.png
 ./images/epic.png
 ./images/giant.png
 ./images/gold.png

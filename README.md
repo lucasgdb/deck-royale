@@ -12,7 +12,7 @@
   - Build smart decks (personal battle)
   - Build random decks (friendly battle)
   - Build your own decks (personal and friendly battle)
-  - Copy/paste decks directly into the game
+  - Paste decks directly into the game
   - Remove cards that you don't have
   - Filter between arena, rarity and type
   - Login using your Clash Royale ID for stats view
@@ -27,4 +27,4 @@
   - **[GitHub](https://github.com/LucasNaja)**
   - **[Portfolio](https://lucasnaja.github.io/portfolio-reactjs)**
 
-### Current build: **0.3.1**
+### Current build: **0.3.2**

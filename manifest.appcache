@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 0.3.1
+# 0.3.2
 
 CACHE:
 ./icon.png
@@ -10,7 +10,6 @@ CACHE:
 ./src/css/Roboto-Regular.ttf
 ./src/js/save.js
 ./src/js/scripts.js
-./src/js/jquery-3.3.1.min.js
 ./src/css/styles.css
 ./images/wooden.png
 ./images/epic.png

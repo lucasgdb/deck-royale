@@ -23,7 +23,7 @@ self.onmessage = e => {
       <h1 class="elixir">Elixir average: ${((cardsElixir[decks[i][0]] + cardsElixir[decks[i][1]] + cardsElixir[decks[i][2]] + cardsElixir[decks[i][3]] + cardsElixir[decks[i][4]] + cardsElixir[decks[i][5]] + cardsElixir[decks[i][6]] + cardsElixir[decks[i][7]]) / 8).toFixed(1)}</h1>
 
       <section class="configContainerS">
-        <button class="btnCopiarS" title="Copy deck" ${e.data.screenSize < 1024 ? `onclick="copyDeckSaved('${contentToCopy}')" oncontextmenu="copyDeckPhone('${contentToCopy}')"` : `data-clipboard-text="https://link.clashroyale.com/deck/pt?deck=${contentToCopy}" oncontextmenu="copyDeckSaved('${contentToCopy}')"`}>Copy deck</button>
+        <button class="btnCopiarS" title="Open deck" ${e.data.screenSize < 1024 ? `onclick="copyDeckSaved('${contentToCopy}')"` : `onclick="openDeck('https://link.clashroyale.com/deck/pt?deck=${contentToCopy}')"`} oncontextmenu="copyDeckPhone('${contentToCopy}')">Open deck</button>
         <button class="btnApagar" title="Remove deck" onclick="deleteDeck([${decks[i].join(',')}])">Remove deck</button>
         <button class="btnColarS" title="Paste deck" onclick="pasteDeck('https://link.clashroyale.com/deck/pt?deck=${contentToCopy}')">Paste deck</button>
       </section>

@@ -249,7 +249,7 @@ ins {
 
 .configContainer div {
 	top: 112px;
-	left: 99%;
+	left: 98%;
 	transform: translateX(-99%);
 	white-space: nowrap
 }

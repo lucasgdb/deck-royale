@@ -247,9 +247,11 @@ const cardsName = [
 	chkConfigText = document.querySelectorAll('.config label'),
 	playerRing = document.querySelector('.player-ring'),
 	chestRing = document.querySelector('.chest-ring'),
+	bestRing = document.querySelector('.best-ring'),
 	idUser = document.querySelector('#idUser'),
 	idPlayer = document.querySelector('#idPlayer'),
 	cntConfig = document.querySelector('.containerConfig'),
+	searchCard = document.querySelector('#searchCard'),
 	arenas = [90, 90, 83, 77, 71, 63, 55, 47, 39, 31, 25, 19],
 	root = document.querySelector(':root'),
 	cont = [dbSection, playerSection, selectSection, savedSection, bestSection, chestSection, configSection, aboutSection];
@@ -413,7 +415,7 @@ function changeDeck() {
 		chkConfig[7].checked = true;
 	else chkConfig[7].checked = false;
 
-	document.querySelector('.selectSection h2').textContent = `Amount of allowed decks: ${all}`;
+	document.querySelector('.selectSection h2').textContent = `Amount of allowed Cards: ${all}`;
 
 	while (allowedCards.indexOf(0) !== -1)
 		for (let i = 0; i < allowedCards.length; i++)
@@ -580,8 +582,8 @@ function combination() {
 
 function infoCards() {
 	alert(
-		(window.innerWidth < 1024 ? 'To change any card, simply press and hold a card.\nTo remove the current deck, simply press and hold the Paste deck button.\nTo shuffle the current deck, simply press and hold the Build deck button.\nThe function Previous deck is only valid for smart decks.\nTo make the site link a direct link to deck, simply press and hold the Open deck button.' : 'To change any card, simply press right click on card.\nTo remove current deck, simply press right click on Paste deck button.\nTo shuffle current deck, simply press right click on Build deck button.\nTo make the site link to direct deck link, simply press right click on Build deck button.') +
-		(cbDeckInteligente.checked ? '\nCard selector, dropdowns of arenas, rarities and types only works when smart deck are deactived.' : `\nAmount of cards to generate: ${allowedCards.length}\nPossible deck combinations: ${combination()}`)
+		(window.innerWidth < 1024 ? 'To change any card, simply press and hold a card.\nTo remove the current deck, simply press and hold the Paste deck button.\nTo shuffle the current deck, simply press and hold the Build deck button.\nThe function Previous Deck is only valid for smart Decks.\nTo make the site link a direct link to Deck, simply press and hold the Open Deck button.' : 'To change any card, simply press right click on card.\nTo remove current Deck, simply press right click on Paste Deck button.\nTo shuffle current Deck, simply press right click on Build Deck button.\nTo make the site link to direct Deck link, simply press right click on Build Deck button.') +
+		(cbDeckInteligente.checked ? '\nCard selector, dropdowns of arenas, rarities and types only works when smart Deck are deactived.' : `\nAmount of Cards to generate: ${allowedCards.length}\nPossible Deck combinations: ${combination()}`)
 	)
 }
 
@@ -589,7 +591,7 @@ function copyDeck() {
 	if (prevDeck.length > 0)
 		prevDeck.pop()
 	if (innerWidth < 1024) {
-		if (confirm('Do you wanna open this deck on Clash Royale game?'))
+		if (confirm('Do you wanna open this Deck on Clash Royale game?'))
 			open(`clashroyale://copyDeck?${contentToCopy}`, '_self')
 	} else open(`https://link.clashroyale.com/deck/pt?${contentToCopy}`)
 }
@@ -609,7 +611,7 @@ function copyDeckPhone(deck) {
 }
 
 function copyDeckSaved(deck) {
-	if (confirm('Do you wanna open this deck on Clash Royale game?'))
+	if (confirm('Do you wanna open this Deck on Clash Royale game?'))
 		open(`clashroyale://copyDeck?deck=${deck}`, '_self')
 }
 
@@ -639,14 +641,14 @@ function paste(linkDeck = String) {
 		} catch {
 			currentDeck = backup.map(card => card);
 			setDeck(currentDeck);
-			alert('Invalid deck link!')
+			alert('Invalid Deck link!')
 		}
 	}
 }
 
 function pasteDeck(content = null) {
 	if (content === null) {
-		let linkDeck = prompt('Paste a deck link below\nE.g: https://link.clashroyale.com/deck/en?deck=26000018;28000009;26000003;28000008...');
+		let linkDeck = prompt('Paste a Deck link below\nE.g: https://link.clashroyale.com/deck/en?deck=26000018;28000009;26000003;28000008...');
 		paste(linkDeck)
 	} else paste(content)
 }
@@ -690,7 +692,7 @@ function randomizeDeck() {
 			currentDeck[i] = newDeck[i]
 
 		setDeck(currentDeck)
-	} else alert('Shuffling deck with missing cards is not allowed.')
+	} else alert('Shuffling Deck with missing Cards is not allowed.')
 }
 
 const x = matchMedia('(min-width: 768px)');
@@ -718,7 +720,7 @@ function matche(xvar) {
 		navSection.style.width = '175px';
 		navSection.style.transition = 'all 0s';
 		navSection.style.height = '100%';
-		navSection.style.overflow = 'initial';
+		navSection.style.overflowY = 'auto';
 		navSection.style.borderRight = '1px solid var(--corDeBorda)'
 	}
 }
@@ -729,7 +731,7 @@ function matche2(yvar) {
 	if (yvar.matches) {
 		navSection.style.width = '40px';
 		navSection.style.height = '35px';
-		navSection.style.overflow = 'hidden';
+		navSection.style.overflowY = 'hidden';
 		navSection.style.transition = 'all .2s';
 		navSection.style.borderRight = 'none';
 	}
@@ -738,6 +740,7 @@ function matche2(yvar) {
 function showSections(event) {
 	event.stopPropagation();
 	if (navSection.style.width !== '100%') {
+		navSection.style.overflowY = 'auto';
 		navSection.style.width = '100%';
 		navSection.style.height = '100%';
 		if (selectedContainer === 0)
@@ -757,6 +760,7 @@ function showSections(event) {
 		else
 			aboutSection.style.display = 'none'
 	} else {
+		navSection.style.overflowY = 'hidden';
 		navSection.style.width = '40px';
 		navSection.style.height = '35px';
 		if (selectedContainer === 0)
@@ -781,70 +785,56 @@ function showSections(event) {
 function closeNav(event) {
 	event.stopPropagation();
 	if (navSection.style.width === '100%') {
+		navSection.style.overflowY = 'hidden';
 		navSection.style.width = '40px';
 		navSection.style.height = '35px'
 	}
 }
 
-function darkTheme() {
-	root.style.setProperty('--corDeFundo', 'rgb(42, 44, 51)');
-	root.style.setProperty('--corPrimaria', 'rgb(35, 35, 35)');
-	root.style.setProperty('--corSecundaria', 'rgb(25, 25, 25)');
-	root.style.setProperty('--corTercearia', 'rgb(20, 20, 20)');
-	root.style.setProperty('--corDeLetraBotao', 'rgb(237, 237, 237)');
-	root.style.setProperty('--corDeBorda', 'var(--corDeLetraBotao)');
-	root.style.setProperty('--corDeLetra', 'rgb(237, 237, 237)');
-	localStorage.removeItem('theme')
-}
-
-function blueTheme() {
-	root.style.setProperty('--corDeFundo', '#343e51');
-	root.style.setProperty('--corPrimaria', '#242b38');
-	root.style.setProperty('--corSecundaria', '#1a1f29');
-	root.style.setProperty('--corTercearia', '#13161d');
-	root.style.setProperty('--corDeLetraBotao', 'white');
-	root.style.setProperty('--corDeBorda', 'white');
-	root.style.setProperty('--corDeLetra', 'white');
-	localStorage.setItem('theme', 'blue')
-}
-
 let maxDown = 0,
 	response = null,
-	html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all decks</button><h2 class="elixir"></h2>';
+	html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
 
 async function downDecks() {
-	if (response === null)
+	if (response === null) {
+		bestRing.style.display = 'block';
 		response = await fetch('https://docs.royaleapi.com/json/popular_decks.json').then(data => data.json()).catch(() => alert('An error occurred, please come back later.'))
+	}
 
 	if (response !== null)
-		if (response.length === maxDown) alert('No more decks to show.')
+		if (response.length === maxDown) alert('No more Decks to show.')
 	else {
 		for (let i = maxDown; i < maxDown + (maxDown + 10 > response.length ? response.length - maxDown : 10); i++)
 			html += `
-						<section class="cardsContainerS">
-							<div><img src="./images/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${capitalize(response[i].cards[0].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id)})"/></div>
-							<div><img src="./images/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${capitalize(response[i].cards[1].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id)})"/></div>
-							<div><img src="./images/${response[i].cards[2].key}_opt-min.png" alt="${response[i].cards[2].key}" title="${capitalize(response[i].cards[2].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[2].id)})"/></div>
-							<div><img src="./images/${response[i].cards[3].key}_opt-min.png" alt="${response[i].cards[3].key}" title="${capitalize(response[i].cards[3].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[3].id)})"/></div>
-							<div><img src="./images/${response[i].cards[4].key}_opt-min.png" alt="${response[i].cards[4].key}" title="${capitalize(response[i].cards[4].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[4].id)})"/></div>
-							<div><img src="./images/${response[i].cards[5].key}_opt-min.png" alt="${response[i].cards[5].key}" title="${capitalize(response[i].cards[5].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[5].id)})"/></div>
-							<div><img src="./images/${response[i].cards[6].key}_opt-min.png" alt="${response[i].cards[6].key}" title="${capitalize(response[i].cards[6].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[6].id)})"/></div>
-							<div><img src="./images/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${capitalize(response[i].cards[7].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id)})"/></div>
-						</section>
+				<section class="cardsContainerS">
+					<div><img src="./images/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${capitalize(response[i].cards[0].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id)})"/></div>
+					<div><img src="./images/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${capitalize(response[i].cards[1].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id)})"/></div>
+					<div><img src="./images/${response[i].cards[2].key}_opt-min.png" alt="${response[i].cards[2].key}" title="${capitalize(response[i].cards[2].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[2].id)})"/></div>
+					<div><img src="./images/${response[i].cards[3].key}_opt-min.png" alt="${response[i].cards[3].key}" title="${capitalize(response[i].cards[3].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[3].id)})"/></div>
+					<div><img src="./images/${response[i].cards[4].key}_opt-min.png" alt="${response[i].cards[4].key}" title="${capitalize(response[i].cards[4].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[4].id)})"/></div>
+					<div><img src="./images/${response[i].cards[5].key}_opt-min.png" alt="${response[i].cards[5].key}" title="${capitalize(response[i].cards[5].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[5].id)})"/></div>
+					<div><img src="./images/${response[i].cards[6].key}_opt-min.png" alt="${response[i].cards[6].key}" title="${capitalize(response[i].cards[6].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[6].id)})"/></div>
+					<div><img src="./images/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${capitalize(response[i].cards[7].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id)})"/></div>
+				</section>
 
-						<h1 class="elixir">Elixir average: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
+				<h1 class="elixir">Elixir average: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
 
-						<section class="configContainerS">
-							<button class="btnCopiarS" title="Open deck" oncontextmenu="copyDeckPhone('${response[i].cards.map(card => card.id).join(';')}')" ${innerWidth < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `onclick="openDeck('${response[i].decklink}')"`}>Open deck</button>
-							<button class="btnApagar" title="Save deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id)},${cardsCode.indexOf(response[i].cards[1].id)},${cardsCode.indexOf(response[i].cards[2].id)},${cardsCode.indexOf(response[i].cards[3].id)},${cardsCode.indexOf(response[i].cards[4].id)},${cardsCode.indexOf(response[i].cards[5].id)},${cardsCode.indexOf(response[i].cards[6].id)},${cardsCode.indexOf(response[i].cards[7].id)}])">Save deck</button>
-							<button class="btnColarS" title="Paste deck" onclick="pasteDeck('${response[i].decklink}')">Paste deck</button>
-						</section>
-					`;
+				<section class="configContainerS">
+					<button class="btnCopiarS" title="Open deck" oncontextmenu="copyDeckPhone('${response[i].cards.map(card => card.id).join(';')}')" ${innerWidth < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `onclick="openDeck('${response[i].decklink}')"`}>Open Deck</button>
+					<button class="btnApagar" title="Save Deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id)},${cardsCode.indexOf(response[i].cards[1].id)},${cardsCode.indexOf(response[i].cards[2].id)},${cardsCode.indexOf(response[i].cards[3].id)},${cardsCode.indexOf(response[i].cards[4].id)},${cardsCode.indexOf(response[i].cards[5].id)},${cardsCode.indexOf(response[i].cards[6].id)},${cardsCode.indexOf(response[i].cards[7].id)}])">Save Deck</button>
+					<button class="btnColarS" title="Paste Deck" onclick="pasteDeck('${response[i].decklink}')">Paste Deck</button>
+				</section>
+			`;
 
 		bestDecks.innerHTML = html;
 		maxDown += (maxDown + 10 > response.length ? response.length - maxDown : 10);
-		document.querySelector('.bestSection h2').innerText = `Amount of best decks: ${maxDown}`
+		document.querySelector('.bestSection h2').innerText = `Amount of best Decks: ${maxDown}`
 	}
+	bestRing.style.display = 'none'
+}
+
+function toTop() {
+	scrollTo(0, 0)
 }
 
 (function updateCards() {
@@ -861,10 +851,13 @@ async function downDecks() {
 			</section>
 		`;
 	}
-	selectSection.innerHTML += content;
+	selectSection.innerHTML += `
+		${content}
+		<img title="To top" onclick="toTop()" src="./images/uparrow.png" class="upArrow"/>
+	`;
 
 	btn = document.querySelectorAll('.selectSection div button');
-	img = document.querySelectorAll('.selectSection img:not(#configCards)');
+	img = document.querySelectorAll('.selectSection img:not(#configCards):not(.upArrow)');
 
 	btn[0].addEventListener('click', () => {
 		for (let i = 1; i < cardsName.length; i++)
@@ -903,7 +896,7 @@ const createDecks = new Worker('./src/js/render.js'),
 
 createDecks.onmessage = e => {
 	savedDecks.innerHTML = e.data;
-	document.querySelector('.savedSection h2').innerText = `Amount of saved decks: ${JSON.parse(localStorage.getItem('decks')).deckList.length}`
+	document.querySelector('.savedSection h2').innerText = `Amount of saved Decks: ${JSON.parse(localStorage.getItem('decks')).deckList.length}`
 }
 
 saveDecks.onmessage = e => {
@@ -928,7 +921,7 @@ function render() {
 			'cardsCode': cardsCode,
 			'screenSize': innerWidth
 		});
-	} else savedDecks.innerHTML = '<h2 class="noneDeck">None deck saved.</h2>'
+	} else savedDecks.innerHTML = '<h2 class="noneDeck">None Deck saved.</h2>'
 }
 
 function saveDeck(deck = currentDeck) {
@@ -940,12 +933,12 @@ function saveDeck(deck = currentDeck) {
 			"decks": JSON.parse(localStorage.getItem('decks')),
 			"currentDeck": deck
 		})
-	else if (empty) alert('Saving deck with missing cards is not allowed.')
-	else alert('Saving more than 100 decks is not allowed.')
+	else if (empty) alert('Saving Deck with missing cards is not allowed.')
+	else alert('Saving more than 100 Decks is not allowed.')
 }
 
 function deleteDeck(deck = Array) {
-	if (confirm('Do you wanna remove this deck?'))
+	if (confirm('Do you wanna remove this Deck?'))
 		deleteDecks.postMessage({
 			"deckList": JSON.parse(localStorage.getItem('decks')).deckList,
 			"deck": deck
@@ -953,16 +946,16 @@ function deleteDeck(deck = Array) {
 }
 
 function deleteAll() {
-	if (confirm('Do you wanna remove all saved decks?')) {
+	if (confirm('Do you wanna remove all saved Decks?')) {
 		localStorage.removeItem('decks');
 		render()
 	}
 }
 
 function deleteAllBest() {
-	if (confirm('Do you wanna remove all best decks?')) {
-		html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all decks</button><h2 class="elixir"></h2>';
-		bestDecks.innerHTML = '<h1 class="noneDeck">None deck in this area.</h1>';
+	if (confirm('Do you wanna remove all best Decks?')) {
+		html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
+		bestDecks.innerHTML = '<h1 class="noneDeck">None Deck in this area.</h1>';
 		maxDown = 0
 	}
 }
@@ -990,16 +983,16 @@ async function showChests(int = 0) {
 	button.disabled = true;
 	chestContainer.innerHTML = '';
 
-	fetch(`https://api.royaleapi.com/player/${idUser.value.trim()}/chests`, settings).then(data => data.text()).then(data => JSON.parse(data)).then(response => {
+	await fetch(`https://api.royaleapi.com/player/${idUser.value.trim()}/chests`, settings).then(data => data.json()).then(response => {
 		localStorage.setItem('id', idUser.value.trim());
 		button.textContent = 'Refresh';
-		button.setAttribute('title', 'Refresh next chests');
+		button.setAttribute('title', 'Refresh next Chests');
 		let html = '';
 		const chests = [];
 		for (let i = 0; i < response.upcoming.length; i++)
 			html += `
 				<section class="chestInfo">
-					<img title="${capitalize(response.upcoming[i])} chest" alt="${response.upcoming[i]}" src="../images/${response.upcoming[i]}.png" />
+					<img title="${capitalize(response.upcoming[i])} Chest" alt="${response.upcoming[i]}" src="../images/${response.upcoming[i]}.png" />
 					<p>${i === 0 ? 'Next' : '+' + (i)}</p>
 				</section>
 			`
@@ -1008,15 +1001,13 @@ async function showChests(int = 0) {
 			if (chest !== 'upcoming')
 				chests.push([chest, response[chest]])
 
-		chests.sort((a, b) => {
-			return a[1] - b[1]
-		});
+		chests.sort((a, b) => a[1] - b[1]);
 
 		for (let i = 0; i < chests.length; i++)
 			if (!(chests[i][1] < 9))
 				html += `
 				<div class="chestInfo">
-					<img title="${capitalize(chests[i][0])} chest" alt="${chests[i][0]}" src="../images/${chests[i][0]}.png" />
+					<img title="${capitalize(chests[i][0])} Chest" alt="${chests[i][0]}" src="../images/${chests[i][0]}.png" />
 					<p>+${chests[i][1]}</p>
 				</div>
 			`
@@ -1049,10 +1040,10 @@ async function login(id = idPlayer.value.trim()) {
 	document.querySelector('.playerContainer').innerHTML = '';
 	playerRing.style.display = 'block';
 
-	fetch(`https://api.royaleapi.com/player/${id}`, settings).then(data => data.text()).then(data => JSON.parse(data)).then(response => {
+	await fetch(`https://api.royaleapi.com/player/${id}`, settings).then(data => data.json()).then(response => {
 		playerInfo = response.cards;
 		const html = `
-			<h2 class="elixir">Current deck</h2>
+			<h2 class="elixir">Current Deck</h2>
 			<section class="cardsContainerS">
 				<div><img src="./images/${response.currentDeck[0].key}_opt-min.png" alt="${response.currentDeck[0].key}" title="${capitalize(response.currentDeck[0].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[0].id)})"/></div>
 				<div><img src="./images/${response.currentDeck[1].key}_opt-min.png" alt="${response.currentDeck[1].key}" title="${capitalize(response.currentDeck[1].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[1].id)})"/></div>
@@ -1067,9 +1058,9 @@ async function login(id = idPlayer.value.trim()) {
 			<h1 class="elixir">Elixir average: ${((response.currentDeck[0].elixir + response.currentDeck[1].elixir + response.currentDeck[2].elixir + response.currentDeck[3].elixir + response.currentDeck[4].elixir + response.currentDeck[5].elixir + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[6].elixir) + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].elixir)) / 8).toFixed(1)}</h1>
 
 			<section class="configContainerS">
-				<button class="btnCopiarS" title="Open deck" ${innerWidth < 1024 ? `onclick="copyDeckSaved('${response.deckLink.split('deck=')[1]}')"` : `onclick="openDeck('https://link.clashroyale.com/deck/pt?deck=${response.deckLink.split('deck=')[1]}')"`} oncontextmenu="copyDeckPhone('${response.deckLink.split('deck=')[1]}')">Open deck</button>
-				<button class="btnApagar" title="Save deck" onclick="saveDeck([${response.deckLink.split('deck=')[1].split(';').map(id => cardsCode.indexOf(parseInt(id))).join(',')}])">Save deck</button>
-				<button class="btnColarS" title="Paste deck" onclick="pasteDeck('https://link.clashroyale.com/deck/pt?deck=${response.deckLink.split('deck=')[1]}')">Paste deck</button>
+				<button class="btnCopiarS" title="Open Deck" ${innerWidth < 1024 ? `onclick="copyDeckSaved('${response.deckLink.split('deck=')[1]}')"` : `onclick="openDeck('https://link.clashroyale.com/deck/pt?deck=${response.deckLink.split('deck=')[1]}')"`} oncontextmenu="copyDeckPhone('${response.deckLink.split('deck=')[1]}')">Open Deck</button>
+				<button class="btnApagar" title="Save Deck" onclick="saveDeck([${response.deckLink.split('deck=')[1].split(';').map(id => cardsCode.indexOf(parseInt(id))).join(',')}])">Save Deck</button>
+				<button class="btnColarS" title="Paste Deck" onclick="pasteDeck('https://link.clashroyale.com/deck/pt?deck=${response.deckLink.split('deck=')[1]}')">Paste Deck</button>
 			</section>
 
 			<section class="information">
@@ -1079,10 +1070,10 @@ async function login(id = idPlayer.value.trim()) {
 					<tr><td>${response.trophies}</td></tr>
 				</table>
 				${response.rank === null ? '' : `
-				<table>
-					<tr><th>World rank</th></tr>
-					<tr><td>${response.rank}</td></tr>
-				</table>`
+					<table>
+						<tr><th>World rank</th></tr>
+						<tr><td>${response.rank}</td></tr>
+					</table>`
 				}
 				<table>
 					<tr><th>Max trophies</th></tr>
@@ -1120,10 +1111,10 @@ async function login(id = idPlayer.value.trim()) {
 				`
 				}	
 				${response.stats.favoriteCard === null ? '' : `
-				<table>
-					<tr><th>Favorite card</th></tr>
-					<tr><td>${response.stats.favoriteCard.name}</td></tr>
-				</table>`
+					<table>
+						<tr><th>Favorite card</th></tr>
+						<tr><td>${response.stats.favoriteCard.name}</td></tr>
+					</table>`
 				}		
 				<table>
 					<tr><th>Level</th></tr>
@@ -1186,6 +1177,47 @@ function basedCards() {
 	}
 }
 
+let cardName = '';
+for (let i = 1; i < cardsName.length; i++)
+	cardName += `<option value="${capitalize(cardsName[i])}"></option>`
+
+document.querySelector('#cardsName').innerHTML = cardName;
+document.querySelector('#searchCard').setAttribute('list', 'cardsName');
+
+document.querySelector('#searchCard').onkeypress = (e) => {
+	if (e.which === 13) {
+		const value = formatText(document.querySelector('#searchCard').value.trim().toLowerCase());
+		for (let i = 1; i < cardsName.length; i++)
+			if (value === cardsName[i].split('-').map(name => name).join(' ').toLowerCase() || value === formatText(cardPtName[i].toLowerCase())) {
+				document.querySelector('#searchCard').value = '';
+				scrollTo(0, img[i - 1].offsetTop + (innerWidth < 768 ? 33 : -1));
+				break
+			}
+	}
+}
+
+function darkTheme() {
+	root.style.setProperty('--corDeFundo', 'rgb(42, 44, 51)');
+	root.style.setProperty('--corPrimaria', 'rgb(35, 35, 35)');
+	root.style.setProperty('--corSecundaria', 'rgb(25, 25, 25)');
+	root.style.setProperty('--corTercearia', 'rgb(20, 20, 20)');
+	root.style.setProperty('--corDeLetraBotao', 'rgb(237, 237, 237)');
+	root.style.setProperty('--corDeBorda', 'var(--corDeLetraBotao)');
+	root.style.setProperty('--corDeLetra', 'rgb(237, 237, 237)');
+	localStorage.removeItem('theme')
+}
+
+function blueTheme() {
+	root.style.setProperty('--corDeFundo', '#343e51');
+	root.style.setProperty('--corPrimaria', '#242b38');
+	root.style.setProperty('--corSecundaria', '#1a1f29');
+	root.style.setProperty('--corTercearia', '#13161d');
+	root.style.setProperty('--corDeLetraBotao', 'white');
+	root.style.setProperty('--corDeBorda', 'white');
+	root.style.setProperty('--corDeLetra', 'white');
+	localStorage.setItem('theme', 'blue')
+}
+
 if (localStorage.getItem('theme') === 'blue') {
 	blueTheme();
 	cbConfigs[1].checked = true
@@ -1196,7 +1228,7 @@ if (localStorage.getItem('theme') === 'blue') {
 
 for (let i = 0; i < cards.length; i++) {
 	cards[i].addEventListener('contextmenu', () => {
-		let name = prompt('Type card name below\nE.g: Mini P.E.K.K.A, mini p.e.k.k.a or mini pekka');
+		let name = prompt('Type Card name below\nE.g: Mini P.E.K.K.A, mini p.e.k.k.a or mini pekka');
 		if (name !== null && name.trim() !== '') {
 			name = formatText(name);
 			for (let j = 1; j < cardsInformation.length; j++)
@@ -1209,14 +1241,14 @@ for (let i = 0; i < cards.length; i++) {
 	});
 	cards[i].addEventListener('click', () => {
 		if (currentDeck[i] !== 0) showInfo(currentDeck[i])
-		else info.innerText = 'None card selected'
+		else info.innerText = 'None Card selected'
 	});
 }
 
 window.addEventListener('contextmenu', event => event.preventDefault());
 
-cbConfigs[0].addEventListener('change', darkTheme);
-cbConfigs[1].addEventListener('change', blueTheme);
+cbConfigs[0].onchange = darkTheme;
+cbConfigs[1].onchange = blueTheme;
 
 idUser.onkeydown = e => {
 	if (e.which === 13) showChests()
@@ -1250,6 +1282,11 @@ document.onkeydown = e => {
 		showSections(event)
 }
 
+selectSection.onclick = event => {
+	if (cntConfig.style.display === 'block')
+		showConfig()
+}
+
 window.onload = function () {
 	matche(x);
 	x.addListener(matche);
@@ -1262,7 +1299,9 @@ window.onload = function () {
 		paste(location.search.substring(6, location.search.length))
 }
 
-function showConfig() {
+function showConfig(event) {
+	if (event !== undefined)
+		event.stopPropagation();
 	if (cntConfig.style.display === 'block') {
 		document.querySelector('body').style.overflowY = 'auto';
 		cntConfig.style.display = 'none'
@@ -1281,6 +1320,7 @@ window.onpopstate = function () {
 	if (cntConfig.style.display === 'block')
 		showConfig()
 	if (navSection.style.width === '100%') {
+		navSection.style.overflowY = 'hidden';
 		navSection.style.width = '40px';
 		navSection.style.height = '35px'
 	}

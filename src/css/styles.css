@@ -1,10 +1,5 @@
 /*	GERAL
 ********************/
-@font-face {
-	font-family: 'Roboto';
-	src: url('./Roboto-Regular.ttf')
-}
-
 html, body {
 	margin: 0;
 	height: calc(100% - 17.5px);
@@ -13,7 +8,7 @@ html, body {
 }
 
 * {
-	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	outline: none
 }
 
@@ -51,8 +46,8 @@ select {
 	font-weight: 900
 }
 
-select, .navSection svg, .cardsContainer, .cardsContainerS, .configContainer, .infoContainer, .selectSection img:not(#configCards), .configContainerS, .btnApagar,
-.btnCenter, .configSection div, .config button, .idCenter, .information, .aboutSection h2, .logo {
+select, .navSection svg, .cardsContainer, .cardsContainerS, .configContainer, .infoContainer, .selectSection img:not(#configCards):not(.upArrow), .configContainerS, .btnApagar,
+.btnCenter, .upArrow, .selectSection input, .configSection div, .config button, .idCenter, .information, .aboutSection h2, .logo {
 	left: 50%;
 	transform: translateX(-50%)
 }
@@ -66,8 +61,8 @@ ins {
 ::-webkit-scrollbar-thumb {	background-color: var(--corSecundaria) }
 ::-webkit-scrollbar-track {	background-color: var(--corDeLetraBotao) }
 
-.chest-ring, .player-ring { display: none }
-.lds-ring, .chest-ring, .player-ring {
+.chest-ring, .player-ring, .best-ring { display: none }
+.lds-ring, .chest-ring, .player-ring, .best-ring {
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
@@ -77,8 +72,8 @@ ins {
 }
 
 .lds-ring div { border: 6px solid var(--corDeLetra) }
-.chest-ring div, .player-ring div { border: 3px solid var(--corDeLetra) }
-.lds-ring div, .chest-ring div, .player-ring div {
+.chest-ring div, .player-ring div, .best-ring div { border: 3px solid var(--corDeLetra) }
+.lds-ring div, .chest-ring div, .player-ring div, .best-ring div {
   box-sizing: border-box;
   display: block;
   position: absolute;
@@ -88,9 +83,9 @@ ins {
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: var(--corDeLetra) transparent transparent transparent
 }
-.lds-ring div:nth-child(1), .chest-ring div:nth-child(1), .player-ring div:nth-child(1) { animation-delay: -0.45s }
-.lds-ring div:nth-child(2), .chest-ring div:nth-child(2), .player-ring div:nth-child(2) { animation-delay: -0.3s }
-.lds-ring div:nth-child(3), .chest-ring div:nth-child(3), .player-ring div:nth-child(3) { animation-delay: -0.15s }
+.lds-ring div:nth-child(1), .chest-ring div:nth-child(1), .player-ring div:nth-child(1), .best-ring div:nth-child(1) { animation-delay: -0.45s }
+.lds-ring div:nth-child(2), .chest-ring div:nth-child(2), .player-ring div:nth-child(2), .best-ring div:nth-child(2) { animation-delay: -0.3s }
+.lds-ring div:nth-child(3), .chest-ring div:nth-child(3), .player-ring div:nth-child(3), .best-ring div:nth-child(3) { animation-delay: -0.15s }
 
 @keyframes lds-ring {
   from { transform: rotate(0deg) }
@@ -104,7 +99,7 @@ ins {
 	color: var(--corDeLetraBotao);
 	z-index: 1;
 	display: none;
-	overflow-y: scroll;
+	overflow-x: hidden;
 	position: fixed
 }
 
@@ -133,6 +128,7 @@ ins {
 }
 
 .container {
+	display: block !important;
 	width: 40px;
 	height: 35px;
 	position: relative
@@ -289,7 +285,7 @@ ins {
 	margin-top: 5px
 }
 
-.selectSection img:not(#configCards) {
+.selectSection img:not(#configCards):not(.upArrow) {
 	position: relative;
 	width: 150px;
 	height: 180px
@@ -300,7 +296,7 @@ ins {
 	height: 55px
 }
 
-.selectSection button {
+.selectSection div button {
 	margin-top: 5px;
 	width: 50%;
 	float: left;
@@ -317,6 +313,25 @@ ins {
 }
 
 .notAllowed {	filter: grayscale(1) }
+
+.selectSection input {
+	position: relative;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+	background-color: var(--corDeFundo);
+	color: var(--corDeLetraBotao);
+	font-size: 20px;
+	width: 95%;
+	padding: 10px 0
+}
+
+.upArrow {
+	display: block;
+	position: relative;
+	width: 40px;
+	height: 40px
+}
 
 /* SAVED CARDS
 ********************/
@@ -346,9 +361,7 @@ ins {
 	text-align: center
 }
 
-.elixir {
-	margin-top: 10px;
-}
+.elixir {	margin-top: 10px }
 
 .btnRemoveAll {
 	margin-top: 5px;
@@ -387,7 +400,6 @@ ins {
 	display: none;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, .6);
 	position: absolute;
 	z-index: 2
 }
@@ -411,9 +423,7 @@ ins {
 	text-align: center
 }
 
-.config label {
-	font-size: 20px
-}
+.config label { font-size: 20px }
 
 .config section {
 	position: relative;
@@ -431,12 +441,13 @@ ins {
 
 .config button {
 	padding: 5px;
-	margin-top: 5px
+	margin-top: 5px;
+	margin-bottom: 5px
 }
 
 /* CHEST SECTION, PLAYER SECTION
 ********************/
-.player-ring, .chest-ring {
+.player-ring, .chest-ring, .best-ring {
 	width: 36px;
 	height: 36px
 }
@@ -547,13 +558,15 @@ ins {
 @media (min-width: 600px) {	.cardsContainer, .cardsContainerS {	height: 360px } }
 
 @media (min-width: 768px) {
+	.selectSection input { width: 300px }
+	.container { display: none !important }
 	html, body { height: 100% }
-	.selectSection button:nth-last-of-type(2) { margin-left: 10px }
+	.selectSection div button:nth-last-of-type(2) { margin-left: 10px }
 	.selectSection section {
 		width: calc(50% - 8px);
 		margin-left: 3px
 	}
-	.selectSection button {
+	.selectSection div button {
 		display: inline-block;
 		margin-left: 5px;
 		width: 240px
@@ -605,7 +618,6 @@ ins {
 
 	.navSection button {
 		border-right: none;
-		width: 100%;
 		font-size: 19px
 	}
 
@@ -662,7 +674,7 @@ ins {
 		transform: translate(0, 0)
 	}
 
-	.selectSection img:not(#configCards) { transition: all .1s }
+	.selectSection img:not(#configCards):not(.upArrow) { transition: all .1s }
 
 	.cardsContainer, .configContainer {
 		left: calc(100% - 605px);
@@ -682,7 +694,7 @@ ins {
 		width: 100%
 	}
 	.dropdowns { top: 5px }
-	.infoText {	top: 165px }
+	.infoText {	top: 152px }
 
 	.btnVoltar { width: 20px }
 
@@ -703,6 +715,8 @@ ins {
 	}
 
 	.effect:hover.effect:after { width: 100% }
+
+	#selectedButton:hover { background-color: var(--corPrimaria) }
 }
 
 @media (min-width: 2560px) {

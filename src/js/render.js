@@ -4,7 +4,7 @@ self.onmessage = e => {
     cardsCode = e.data.cardsCode,
     cardsElixir = e.data.cardsElixir,
     contentToCopy,
-    html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAll()">Remove all decks</button><h2 class="elixir"></h2>';
+    html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAll()">Remove all Decks</button><h2 class="elixir"></h2>';
 
   for (let i = 0; i < decks.length; i++) {
     contentToCopy = `${cardsCode[decks[i][0]]};${cardsCode[decks[i][1]]};${cardsCode[decks[i][2]]};${cardsCode[decks[i][3]]};${cardsCode[decks[i][4]]};${cardsCode[decks[i][5]]};${cardsCode[decks[i][6]]};${cardsCode[decks[i][7]]}`;
@@ -23,9 +23,9 @@ self.onmessage = e => {
       <h1 class="elixir">Elixir average: ${((cardsElixir[decks[i][0]] + cardsElixir[decks[i][1]] + cardsElixir[decks[i][2]] + cardsElixir[decks[i][3]] + cardsElixir[decks[i][4]] + cardsElixir[decks[i][5]] + cardsElixir[decks[i][6]] + cardsElixir[decks[i][7]]) / 8).toFixed(1)}</h1>
 
       <section class="configContainerS">
-        <button class="btnCopiarS" title="Open deck" ${e.data.screenSize < 1024 ? `onclick="copyDeckSaved('${contentToCopy}')"` : `onclick="openDeck('https://link.clashroyale.com/deck/pt?deck=${contentToCopy}')"`} oncontextmenu="copyDeckPhone('${contentToCopy}')">Open deck</button>
-        <button class="btnApagar" title="Remove deck" onclick="deleteDeck([${decks[i].join(',')}])">Remove deck</button>
-        <button class="btnColarS" title="Paste deck" onclick="pasteDeck('https://link.clashroyale.com/deck/pt?deck=${contentToCopy}')">Paste deck</button>
+        <button class="btnCopiarS" title="Open Deck" ${e.data.screenSize < 1024 ? `onclick="copyDeckSaved('${contentToCopy}')"` : `onclick="openDeck('https://link.clashroyale.com/deck/pt?deck=${contentToCopy}')"`} oncontextmenu="copyDeckPhone('${contentToCopy}')">Open Deck</button>
+        <button class="btnApagar" title="Remove Deck" onclick="deleteDeck([${decks[i].join(',')}])">Remove Deck</button>
+        <button class="btnColarS" title="Paste Deck" onclick="pasteDeck('https://link.clashroyale.com/deck/pt?deck=${contentToCopy}')">Paste Deck</button>
       </section>
     `;
   }

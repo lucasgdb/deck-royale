@@ -846,7 +846,7 @@ function toTop() {
 
 	for (let i = 1; i < cardsInformation.length; i++) {
 		content += `
-			<section>
+			<section class="cardContainer">
 				<img class="${localStorage.getItem(cardsName[i]) === 'e' ? '' : 'notAllowed'}" src="./images/${cardsName[i]}_opt-min.png" alt="${cardsName[i]}" title="${capitalize(cardsName[i])}" />				
 			</section>
 		`;
@@ -921,7 +921,7 @@ function render() {
 			'cardsCode': cardsCode,
 			'screenSize': innerWidth
 		});
-	} else savedDecks.innerHTML = '<h2 class="noneDeck">None Deck saved.</h2>'
+	} else savedDecks.innerHTML = '<h2 class="noneDeck">No Deck saved</h2>'
 }
 
 function saveDeck(deck = currentDeck) {
@@ -955,7 +955,7 @@ function deleteAll() {
 function deleteAllBest() {
 	if (confirm('Do you wanna remove all best Decks?')) {
 		html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
-		bestDecks.innerHTML = '<h1 class="noneDeck">None Deck in this area.</h1>';
+		bestDecks.innerHTML = '<h2 class="noneDeck">No Deck in this area</h2>';
 		maxDown = 0
 	}
 }
@@ -1190,7 +1190,7 @@ document.querySelector('#searchCard').onkeypress = (e) => {
 		for (let i = 1; i < cardsName.length; i++)
 			if (value === cardsName[i].split('-').map(name => name).join(' ').toLowerCase() || value === formatText(cardPtName[i].toLowerCase())) {
 				document.querySelector('#searchCard').value = '';
-				scrollTo(0, img[i - 1].offsetTop + (innerWidth < 768 ? 33 : -1));
+				scrollTo(0, img[i - 1].parentElement.offsetTop + (innerWidth < 768 ? 33 : -1));
 				break
 			}
 	}

@@ -29,6 +29,7 @@ button {
 	background-color: var(--corSecundaria);
 	font-weight: 500
 }
+button:active { background-color: var(--corTercearia) }
 
 select:disabled { color: darkgray }
 
@@ -47,7 +48,7 @@ select {
 }
 
 select, .navSection svg, .cardsContainer, .cardsContainerS, .configContainer, .infoContainer, .selectSection img:not(#configCards):not(.upArrow), .configContainerS, .btnApagar,
-.btnCenter, .upArrow, .selectSection input, .configSection div, .config button, .idCenter, .information, .aboutSection h2, .logo {
+.btnCenter, .upArrow, .configSection div, .config button, .idCenter, .information, .aboutSection h2, .logo {
 	left: 50%;
 	transform: translateX(-50%)
 }
@@ -165,6 +166,8 @@ ins {
 	min-height: 100%
 }
 
+.configContainer, .configContainer *, .infoContainer, .cardsContainer { transition: all .5s, background-color 0s }
+
 .builderSection { overflow-x: hidden }
 
 .builderSection > section {
@@ -181,8 +184,7 @@ ins {
 ********************/
 .cardsContainer, .cardsContainerS {
 	height: 210px;
-	margin-bottom: 5px;
-	transition: all .1s
+	margin-bottom: 5px
 }
 
 .cardsContainer div, .cardsContainerS div {
@@ -277,18 +279,27 @@ ins {
 
 /* CARD SELECTOR
 ********************/
-.selectSection section {
+.selectSection { text-align: center }
+.cardsToChange {
+	text-align: center;
+	background-color: red;
+	width: 100%;
+	min-height: 0
+}
+
+.cardContainer {
+	position: relative;
 	display: inline-block;
 	border: 1px solid var(--corDeBorda);
-	width: calc(100% - 2px);
+	width: 150px;
 	height: 180px;
 	margin-top: 5px
 }
 
 .selectSection img:not(#configCards):not(.upArrow) {
-	position: relative;
-	width: 150px;
-	height: 180px
+	position: absolute;
+	width: 100%;
+	height: 100%
 }
 
 .selectSection div {
@@ -566,10 +577,6 @@ ins {
 	.container { display: none !important }
 	html, body { height: 100% }
 	.selectSection div button:nth-last-of-type(2) { margin-left: 10px }
-	.selectSection section {
-		width: calc(50% - 8px);
-		margin-left: 3px
-	}
 	.selectSection div button {
 		display: inline-block;
 		margin-left: 5px;
@@ -581,7 +588,7 @@ ins {
 	.navSection h1 {
 		display: block;
 		font-size: 15px;
-		margin-top: 2px;
+		margin: 0;
 		margin-bottom: 2px;
 		text-align: center
 	}
@@ -597,7 +604,7 @@ ins {
 	}
 
 	.configContainer img {
-		left: 140px;
+		left: 145px;
 		top: 70px
 	}
 
@@ -641,13 +648,9 @@ ins {
 	ins { cursor: default }
 	.btnGerar ins { cursor: pointer }
 
-	.selectSection section {
-		width: calc(25% - 16px);
-		margin-left: 9px
-	}
-
 	button:hover { background-color: var(--corTercearia) }
 	button:active { background-color: var(--corSecundaria) }
+
 
 	#configCards { cursor: pointer }
 
@@ -698,7 +701,7 @@ ins {
 		width: 100%
 	}
 	.dropdowns { top: 5px }
-	.infoText {	top: 152px }
+	.infoText {	top: 147px }
 
 	.btnVoltar { width: 20px }
 
@@ -719,13 +722,4 @@ ins {
 	}
 
 	.effect:hover.effect:after { width: 100% }
-
-	#selectedButton:hover { background-color: var(--corPrimaria) }
-}
-
-@media (min-width: 2560px) {
-	.selectSection section {
-		width: calc(20% - 20px);
-		margin-left: 12px
-	}
 }

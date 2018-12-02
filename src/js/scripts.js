@@ -381,14 +381,14 @@ function changeDeck() {
 		}
 	}
 
-	chkConfigText[0].textContent = `All cards (${all})`;
-	chkConfigText[1].textContent = `All common cards (${common})`;
-	chkConfigText[2].textContent = `All rare cards (${rare})`;
-	chkConfigText[3].textContent = `All epic cards (${epic})`;
-	chkConfigText[4].textContent = `All legendary cards (${legendary})`;
-	chkConfigText[5].textContent = `All troop cards (${troop})`;
-	chkConfigText[6].textContent = `All spell cards (${spell})`;
-	chkConfigText[7].textContent = `All construction cards (${construction})`;
+	chkConfigText[0].textContent = `All Cards => ${all}`;
+	chkConfigText[1].textContent = `All Common Cards => ${common}`;
+	chkConfigText[2].textContent = `All Rare Cards => ${rare}`;
+	chkConfigText[3].textContent = `All epic Cards => ${epic}`;
+	chkConfigText[4].textContent = `All Legendary Cards => ${legendary}`;
+	chkConfigText[5].textContent = `All Troop Cards => ${troop}`;
+	chkConfigText[6].textContent = `All Spell Cards => ${spell}`;
+	chkConfigText[7].textContent = `All Construction Cards => ${construction}`;
 
 	if (all === qtdAll)
 		chkConfig[0].checked = true;
@@ -820,7 +820,7 @@ async function downDecks() {
 				<h1 class="elixir">Elixir average: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
 
 				<section class="configContainerS">
-					<button class="btnCopiarS" title="Open deck" oncontextmenu="copyDeckPhone('${response[i].cards.map(card => card.id).join(';')}')" ${innerWidth < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `onclick="openDeck('${response[i].decklink}')"`}>Open Deck</button>
+					<button class="btnCopiarS" title="Open Deck" oncontextmenu="copyDeckPhone('${response[i].cards.map(card => card.id).join(';')}')" ${innerWidth < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `onclick="openDeck('${response[i].decklink}')"`}>Open Deck</button>
 					<button class="btnApagar" title="Save Deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id)},${cardsCode.indexOf(response[i].cards[1].id)},${cardsCode.indexOf(response[i].cards[2].id)},${cardsCode.indexOf(response[i].cards[3].id)},${cardsCode.indexOf(response[i].cards[4].id)},${cardsCode.indexOf(response[i].cards[5].id)},${cardsCode.indexOf(response[i].cards[6].id)},${cardsCode.indexOf(response[i].cards[7].id)}])">Save Deck</button>
 					<button class="btnColarS" title="Paste Deck" onclick="pasteDeck('${response[i].decklink}')">Paste Deck</button>
 				</section>

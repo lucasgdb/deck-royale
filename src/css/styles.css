@@ -408,7 +408,8 @@ ins {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	box-shadow: 0 0 20px black;
+	box-shadow: 0 5px 17px black;
+	border: 2px solid rgba(5, 5, 5, .4);
 	border-radius: 2px;
 	transform: translate(-50%, -50%);
 	width: 300px;
@@ -418,7 +419,7 @@ ins {
 
 .config h1 {
 	margin: 0;
-	font-size: 29px;
+	font-size: 39px;
 	font-weight: 500;
 	text-align: center
 }
@@ -431,7 +432,7 @@ ins {
 	width: 100%;
 	border-top: 1px solid var(--corPrimaria);
 	border-bottom: 1px solid var(--corPrimaria);
-	height: 24px
+	height: 26px
 }
 
 .config div {
@@ -440,6 +441,7 @@ ins {
 }
 
 .config button {
+	font-size: 20px;
 	padding: 5px;
 	margin-top: 5px;
 	margin-bottom: 5px
@@ -558,6 +560,8 @@ ins {
 @media (min-width: 600px) {	.cardsContainer, .cardsContainerS {	height: 360px } }
 
 @media (min-width: 768px) {
+	.config { width: 330px }
+	.config label { font-size: 23px }
 	.selectSection input { width: 300px }
 	.container { display: none !important }
 	html, body { height: 100% }

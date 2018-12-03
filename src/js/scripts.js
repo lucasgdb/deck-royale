@@ -592,11 +592,17 @@ function copyDeck() {
 		prevDeck.pop()
 	if (innerWidth < 1024) {
 		if (confirm('Do you wanna open this Deck on Clash Royale game?'))
-			open(`clashroyale://copyDeck?${contentToCopy}`, '_self')
-	} else open(`https://link.clashroyale.com/deck/pt?${contentToCopy}`)
+			openDeck(`clashroyale://copyDeck?${contentToCopy}`, '_self')
+	} else openDeck(`https://link.clashroyale.com/deck/pt?${contentToCopy}`)
 }
 
 function openDeck(link) {
+	if (!link.split('deck=')[1].split(';').find(item => item === '0'))
+		open(link)
+	else alert('Open links with missing Cards is not allowed')
+}
+
+function openLink(link) {
 	open(link)
 }
 
@@ -612,7 +618,7 @@ function copyDeckPhone(deck) {
 
 function copyDeckSaved(deck) {
 	if (confirm('Do you wanna open this Deck on Clash Royale game?'))
-		open(`clashroyale://copyDeck?deck=${deck}`, '_self')
+		openDeck(`clashroyale://copyDeck?deck=${deck}`)
 }
 
 function paste(linkDeck = String) {
@@ -827,6 +833,7 @@ async function downDecks() {
 			`;
 
 		bestDecks.innerHTML = html;
+		document.querySelector('.bestSection .upArrow').style.display = 'block';
 		maxDown += (maxDown + 10 > response.length ? response.length - maxDown : 10);
 		document.querySelector('.bestSection h2').innerText = `Amount of best Decks: ${maxDown}`
 	}
@@ -834,7 +841,15 @@ async function downDecks() {
 }
 
 function toTop() {
-	scrollTo(0, 0)
+	let scrollYN = scrollY;
+	const interval = setInterval(() => {
+		if (scrollYN >= 100)
+			scrollTo(0, scrollYN -= (100 * (scrollY / 1000)))
+		else {
+			scrollTo(0, 0);
+			clearInterval(interval)
+		}
+	}, 1)
 }
 
 (function updateCards() {
@@ -895,7 +910,10 @@ const createDecks = new Worker('./src/js/render.js'),
 	deleteDecks = new Worker('./src/js/delete.js');
 
 createDecks.onmessage = e => {
-	savedDecks.innerHTML = e.data;
+	savedDecks.innerHTML = `
+		${e.data.html}
+		${e.data.amount > 5 ? '<img style="margin-top: 5px" title="To top" onclick="toTop()" src="./images/uparrow.png" class="upArrow"/>' : ''}
+	`;
 	document.querySelector('.savedSection h2').innerText = `Amount of saved Decks: ${JSON.parse(localStorage.getItem('decks')).deckList.length}`
 }
 
@@ -956,6 +974,7 @@ function deleteAllBest() {
 	if (confirm('Do you wanna remove all best Decks?')) {
 		html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
 		bestDecks.innerHTML = '<h2 class="noneDeck">No Deck in this area</h2>';
+		document.querySelector('.bestSection .upArrow').style.display = 'none';
 		maxDown = 0
 	}
 }
@@ -1229,14 +1248,24 @@ if (localStorage.getItem('theme') === 'blue') {
 for (let i = 0; i < cards.length; i++) {
 	cards[i].addEventListener('contextmenu', () => {
 		let name = prompt('Type Card name below\nE.g: Mini P.E.K.K.A, mini p.e.k.k.a or mini pekka');
-		if (name !== null && name.trim() !== '') {
-			name = formatText(name);
-			for (let j = 1; j < cardsInformation.length; j++)
-				if (currentDeck.indexOf(j) === -1 && (name === cardsName[j].replace('-', ' ').toLowerCase() || name === formatText(cardPtName[j]))) {
-					currentDeck[i] = j;
-					setDeck(currentDeck);
-					break
-				}
+		if (name !== null && name !== '' && name !== '0') {
+			if (!Number.isInteger(parseInt(name))) {
+				name = formatText(name);
+				for (let j = 1; j < cardsInformation.length; j++)
+					if (currentDeck.indexOf(j) === -1 && (name === cardsName[j].replace('-', ' ').toLowerCase() || name === formatText(cardPtName[j]))) {
+						currentDeck[i] = j;
+						setDeck(currentDeck);
+						break
+					}
+			} else {
+				name = parseInt(name);
+				if (currentDeck.indexOf(name) === -1 && name > 0 && name < cardsName.length) {
+					currentDeck[i] = name
+				} else if (currentDeck.indexOf(cardsCode.indexOf(name)) === -1)
+					currentDeck[i] = cardsCode.indexOf(name) === -1 ? currentDeck[i] : cardsCode.indexOf(name)
+
+				setDeck(currentDeck)
+			}
 		}
 	});
 	cards[i].addEventListener('click', () => {

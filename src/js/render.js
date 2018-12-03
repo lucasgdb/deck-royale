@@ -30,7 +30,7 @@ self.onmessage = e => {
     `;
   }
 
-  self.postMessage(html)
+  self.postMessage({"html": html, "amount": decks.length})
 }
 
 function capitalize(string) { return string.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') }

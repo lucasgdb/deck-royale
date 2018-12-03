@@ -29,21 +29,13 @@
 			<section onclick="stop(event)" class="config">
 				<h1>Configurations</h1>
 				<section><div><input type="checkbox" id="all" /> <label for="all">All Cards</label></div></section>
-
 				<section><div><input type="checkbox" id="common" /> <label for="common">All Common Cards</label></div></section>
-
 				<section><div><input type="checkbox" id="rare" /> <label for="rare">All Rare Cards</label></div></section>
-
 				<section><div><input type="checkbox" id="epic" /> <label for="epic">All Epic Cards</label></div></section>
-
 				<section><div><input type="checkbox" id="legendary" /> <label for="legendary">All Legendary Cards</label></div></section>
-
 				<section><div><input type="checkbox" id="troop" /> <label for="troop">All Troop Cards</label></div></section>
-
 				<section><div><input type="checkbox" id="spell" /> <label for="spell">All Spell Cards</label></div></section>
-
 				<section><div><input type="checkbox" id="construction" /> <label for="construction">All Construction Cards</label></div></section>
-
 				<button title="Change based in your Cards" onclick="basedCards()">Based on my Cards</button>
 			</section>
 		</section>
@@ -79,26 +71,18 @@
 
 				<section class="configContainer">
 					<button class="btnCopiar" id="copy" onclick="copyDeck()" oncontextmenu="copyDeckSec()" title="Open Deck">Open Deck</button>
-
 					<button class="btnColar" onclick="pasteDeck()" oncontextmenu="setDeck(currentDeck = [0, 0, 0, 0, 0, 0, 0, 0])" title="Paste Deck">Paste Deck</button>
-
 					<button class="btnSalvar" onclick="saveDeck()" title="Save Deck"><ins>S</ins>ave Deck</button>
-
 					<img onclick="infoCards()" title="Information" src="./images/info.png" />
-
 					<button class="btnVoltar" onclick="previousDeck()" title="Previous deck" hidden>&lt;</button>
-
 					<button class="btnGerar" onclick="buildDeck()" oncontextmenu="randomizeDeck()" title="Build Deck"><ins>B</ins>uild Deck</button>
-
 					<div><input type="checkbox" id="smartDeck" title="Smart Deck mode" /><label title="Smart Deck mode" for="smartDeck">Smart Decks</label></div>
 				</section>
 
 				<section class="infoContainer">
 					<section class="infoText">
 						<h3 id="elixirMedio"></h3>
-
 						<h1>Information</h1>
-
 						<h2>None Card selected</h2>
 					</section>
 
@@ -188,6 +172,7 @@
 				<!-- Código a ser gerado pelo JavaScript -->
 			</section>
 			<button class="btnCenter" onclick="downDecks()" title="Show more">Show more 10 Decks</button>
+			<img style="display: none" title="To top" onclick="toTop()" src="./images/uparrow.png" class="upArrow"/>
 		</section>
 
 		<section class="chestSection">
@@ -234,7 +219,7 @@
 				• Easy to use<br />
 				• Faster and better than others
 			</h2>
-			<h3>Leave me on your friends list: <span class="effect" style="cursor: pointer" onclick="openDeck(`${innerWidth < 1024 ? 'clashroyale://add_friend?tag=C8Q2QR08&token=fx2btphn' : 'https://link.clashroyale.com/invite/friend/en?tag=C8Q2QR08&token=fx2btphn&platform=android'}`)">Click here</span></h3>
+			<h3>Leave me on your friends list: <span class="effect" style="cursor: pointer" onclick="openLink(`${innerWidth < 1024 ? 'clashroyale://add_friend?tag=C8Q2QR08&token=fx2btphn' : 'https://link.clashroyale.com/invite/friend/en?tag=C8Q2QR08&token=fx2btphn&platform=android'}`)">Click here</span></h3>
 			<h3>E-mail for contact: <address>lucasnaja0@gmail.com</address></h3>
 			<h3>Facebook: <a class="effect" href="http://facebook.com/lucas.naja0/" target="_blank" rel="noopener noreferrer">Lucas Bittencourt</a></h3>
 			<h3>GitHub: <a class="effect" href="http://github.com/LucasNaja/" target="_blank" rel="noopener noreferrer">Click here</a></h3>
@@ -242,7 +227,7 @@
 
 			<h1><strong>Deck Builder</strong> for Clash Royale</h1>
 			<p>Deck Royale is a <strong>Deck Builder</strong> for Clash Royale game that makes easier your friendly and personal battles and much more!</p>
-			<h4>v0.3.3</h4>
+			<h4>v0.3.4</h4>
 		</section>
 
 		<noscript>Please, active your JavaScript to work!</noscript>

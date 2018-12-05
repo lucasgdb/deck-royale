@@ -2,6 +2,7 @@ let currentDeck = [0, 0, 0, 0, 0, 0, 0, 0],
 	contentToCopy,
 	selectedContainer = 0,
 	id = -1,
+	cardName = '',
 	btn, img, playerInfo;
 
 const cardsName = [
@@ -120,7 +121,7 @@ const cardsName = [
 		7, 3, 7, 6, 3, 5, 5, 2,
 		4, 5, 4, 4, 5, 4, 2, 2,
 		4, 2, 5, 6, 4, 6, 3, 4,
-		3, 3, 3, 4, 9, 3, 6, 8,
+		3, 3, 3, 4, 9, 3, 6, 7,
 		3, 4, 5, 3, 2, 6, 1, 2,
 		3, 5, 6, 3, 3, 5,
 		7, 4, 2, 5, 4, 6,
@@ -988,21 +989,21 @@ function showInfo(index = Number) {
 	info.innerHTML = `<ins>${capitalize(cardsName[index])}</ins><br />${cardsInformation[index]}<br />Elixir cost: ${cardsElixir[index]}<br />Arena: ${arena === 0 ? arenaName[arena] : `${arenaName[arena]} (${arena})`}`
 }
 
-async function showChests(int = 0) {
+function showChests(int = 0) {
 	const button = document.querySelector('#showChests'),
 		settings = {
 			"async": true,
 			"crossDomain": true,
 			"method": "GET",
 			"headers": {
-				"auth": await fetch('https://gist.githubusercontent.com/LucasNaja/61225bfab53c55bf2f32136c8125e347/raw/293936e00c40222b82fececae331c531ded75c81/token').then(raw => raw.text()).then(data => data)
+				"auth": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk3MiwiaWRlbiI6IjMxOTkwNTQwNjg4NzY1NzQ4MiIsIm1kIjp7InVzZXJuYW1lIjoiTHVjYXMgTmFqYSIsImtleVZlcnNpb24iOjMsImRpc2NyaW1pbmF0b3IiOiI4MDE0In0sInRzIjoxNTQ0MDIwNzY2MDMwfQ.Xio3eruuSh744G9UBNEdwm5zkeusKjpzOl0-OuVNkQs'
 			}
 		};
 	chestRing.style.display = 'block';
 	button.disabled = true;
 	chestContainer.innerHTML = '';
 
-	await fetch(`https://api.royaleapi.com/player/${idUser.value.trim()}/chests`, settings).then(data => data.json()).then(response => {
+	fetch(`https://api.royaleapi.com/player/${idUser.value.trim()}/chests`, settings).then(data => data.json()).then(response => {
 		localStorage.setItem('id', idUser.value.trim());
 		button.textContent = 'Refresh';
 		button.setAttribute('title', 'Refresh next Chests');
@@ -1045,21 +1046,21 @@ async function showChests(int = 0) {
 	});
 }
 
-async function login(id = idPlayer.value.trim()) {
+function login(id = idPlayer.value.trim()) {
 	const button = document.querySelector('#showPlayer'),
 		settings = {
 			"async": true,
 			"crossDomain": true,
 			"method": "GET",
 			"headers": {
-				"auth": await fetch('https://gist.githubusercontent.com/LucasNaja/61225bfab53c55bf2f32136c8125e347/raw/293936e00c40222b82fececae331c531ded75c81/token').then(raw => raw.text()).then(data => data)
+				"auth": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk3MiwiaWRlbiI6IjMxOTkwNTQwNjg4NzY1NzQ4MiIsIm1kIjp7InVzZXJuYW1lIjoiTHVjYXMgTmFqYSIsImtleVZlcnNpb24iOjMsImRpc2NyaW1pbmF0b3IiOiI4MDE0In0sInRzIjoxNTQ0MDIwNzY2MDMwfQ.Xio3eruuSh744G9UBNEdwm5zkeusKjpzOl0-OuVNkQs'
 			}
 		};
 	button.disabled = true;
 	document.querySelector('.playerContainer').innerHTML = '';
 	playerRing.style.display = 'block';
 
-	await fetch(`https://api.royaleapi.com/player/${id}`, settings).then(data => data.json()).then(response => {
+	fetch(`https://api.royaleapi.com/player/${id}`, settings).then(data => data.json()).then(response => {
 		playerInfo = response.cards;
 		const html = `
 			<h2 class="elixir">Current Deck</h2>
@@ -1196,7 +1197,6 @@ function basedCards() {
 	}
 }
 
-let cardName = '';
 for (let i = 1; i < cardsName.length; i++)
 	cardName += `<option value="${capitalize(cardsName[i])}"></option>`
 

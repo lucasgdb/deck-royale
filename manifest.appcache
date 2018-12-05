@@ -1,8 +1,8 @@
 CACHE MANIFEST
-# 0.3.4
+# 0.3.4.1
 
 CACHE:
-./icon.png
+./images/icon.png
 ./manifest.json
 ./src/js/buttons.js
 ./src/js/delete.js

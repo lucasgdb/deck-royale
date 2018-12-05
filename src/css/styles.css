@@ -166,7 +166,8 @@ ins {
 	min-height: 100%
 }
 
-.configContainer, .configContainer *, .infoContainer, .cardsContainer { transition: all .5s, background-color 0s }
+.configContainer, .configContainer *, .infoContainer { transition: all .5s, background-color 0s }
+.cardsContainer { transition: height .15s }
 
 .builderSection { overflow-x: hidden }
 
@@ -290,7 +291,6 @@ ins {
 .cardContainer {
 	position: relative;
 	display: inline-block;
-	border: 1px solid var(--corDeBorda);
 	width: 150px;
 	height: 180px;
 	margin-top: 5px
@@ -323,7 +323,10 @@ ins {
 	position: absolute
 }
 
-.notAllowed {	filter: grayscale(1) }
+.notAllowed {
+	filter: grayscale(1);
+	transition: filter .25s
+}
 
 .selectSection input {
 	position: relative;
@@ -580,10 +583,18 @@ ins {
 /* RESPONSIVIDADE
 ********************/
 @media (min-width: 360px) {	.cardsContainer, .cardsContainerS {	height: 240px	} }
+@media (min-width: 380px) {	.cardsContainer, .cardsContainerS {	height: 250px	} }
+@media (min-width: 400px) {	.cardsContainer, .cardsContainerS {	height: 260px	} }
 @media (min-width: 420px) {	.cardsContainer, .cardsContainerS {	height: 270px	} }
-@media (min-width: 480px) {	.cardsContainer, .cardsContainerS {	height: 300px	} }
-@media (min-width: 540px) {	.cardsContainer, .cardsContainerS {	height: 330px	} }
-@media (min-width: 600px) {	.cardsContainer, .cardsContainerS {	height: 360px } }
+@media (min-width: 440px) {	.cardsContainer, .cardsContainerS {	height: 280px	} }
+@media (min-width: 480px) {	.cardsContainer, .cardsContainerS {	height: 290px	} }
+@media (min-width: 500px) {	.cardsContainer, .cardsContainerS {	height: 300px	} }
+@media (min-width: 530px) {	.cardsContainer, .cardsContainerS {	height: 310px	} }
+@media (min-width: 540px) {	.cardsContainer, .cardsContainerS {	height: 320px	} }
+@media (min-width: 550px) {	.cardsContainer, .cardsContainerS {	height: 330px } }
+@media (min-width: 580px) {	.cardsContainer, .cardsContainerS {	height: 340px	} }
+@media (min-width: 590px) {	.cardsContainer, .cardsContainerS {	height: 350px	} }
+@media (min-width: 600px) {	.cardsContainer, .cardsContainerS {	height: 360px	} }
 
 @media (min-width: 768px) {
 	.config { width: 330px }
@@ -660,6 +671,7 @@ ins {
 }
 
 @media (min-width: 1024px) {
+	.config { width: 340px }
 	ins { cursor: default }
 	.btnGerar ins, .btnSalvar ins { cursor: pointer }
 
@@ -695,8 +707,6 @@ ins {
 		height: 100%;
 		transform: translate(0, 0)
 	}
-
-	.selectSection img:not(#configCards):not(.upArrow) { transition: all .1s }
 
 	.cardsContainer, .configContainer {
 		left: calc(100% - 605px);

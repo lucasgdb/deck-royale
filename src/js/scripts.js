@@ -385,7 +385,7 @@ function changeDeck() {
 	chkConfigText[0].textContent = `All Cards => ${all}`;
 	chkConfigText[1].textContent = `All Common Cards => ${common}`;
 	chkConfigText[2].textContent = `All Rare Cards => ${rare}`;
-	chkConfigText[3].textContent = `All epic Cards => ${epic}`;
+	chkConfigText[3].textContent = `All Epic Cards => ${epic}`;
 	chkConfigText[4].textContent = `All Legendary Cards => ${legendary}`;
 	chkConfigText[5].textContent = `All Troop Cards => ${troop}`;
 	chkConfigText[6].textContent = `All Spell Cards => ${spell}`;

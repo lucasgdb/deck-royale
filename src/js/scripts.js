@@ -1274,7 +1274,15 @@ for (let i = 0; i < cards.length; i++) {
 	});
 }
 
-window.addEventListener('contextmenu', event => event.preventDefault());
+dbSection.oncontextmenu = event => event.preventDefault();
+playerSection.oncontextmenu = event => event.preventDefault();
+cntConfig.oncontextmenu = event => event.preventDefault();
+selectSection.oncontextmenu = event => {
+	event.preventDefault();
+	showConfig()
+}
+savedSection.oncontextmenu = event => event.preventDefault();
+bestSection.oncontextmenu = event => event.preventDefault();
 
 cbConfigs[0].onchange = darkTheme;
 cbConfigs[1].onchange = blueTheme;
@@ -1282,13 +1290,13 @@ cbConfigs[1].onchange = blueTheme;
 idUser.onkeydown = e => {
 	if (e.which === 13) showChests()
 }
-idUser.onkeyup = e => {
+idUser.onkeyup = () => {
 	idUser.value = idUser.value.toUpperCase()
 }
 idPlayer.onkeydown = e => {
 	if (e.which === 13) login()
 }
-idPlayer.onkeyup = e => {
+idPlayer.onkeyup = () => {
 	idPlayer.value = idPlayer.value.toUpperCase()
 }
 

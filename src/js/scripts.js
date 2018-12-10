@@ -264,7 +264,7 @@ if (localStorage.getItem('ddRarity') !== null)
 if (localStorage.getItem('ddType') !== null)
 	ddType.selectedIndex = localStorage.getItem('ddType');
 
-chkConfig[0].onchange = function () {
+chkConfig[0].onchange = () => {
 	if (chkConfig[0].checked)
 		for (let i = 1; i < cardsName.length; i++) {
 			img[i - 1].removeAttribute('class');

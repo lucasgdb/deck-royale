@@ -646,7 +646,7 @@ function paste(linkDeck = String) {
 
 			currentDeck = linkDeck.map(card => parseInt(card));
 			setDeck(currentDeck)
-		} catch {
+		} catch (err) {
 			currentDeck = backup.map(card => card);
 			setDeck(currentDeck);
 			alert('Invalid Deck link!')
@@ -1186,7 +1186,7 @@ function basedCards() {
 							localStorage.setItem(cardsName[i], 'e')
 						}
 				}
-			} catch {
+			} catch (err) {
 				basedCards();
 			}
 			changeDeck();
@@ -1327,9 +1327,9 @@ window.onload = function () {
 	x.addListener(matche);
 	matche2(y);
 	y.addListener(matche2);
-	document.querySelector('.lds-ring').style.display = 'none';
 	navSection.style.display = 'block';
 	dbSection.style.display = 'block';
+	document.querySelector('.lds-ring').style.display = 'none';
 	if (location.search.startsWith('?deck='))
 		paste(location.search.substring(6, location.search.length))
 }

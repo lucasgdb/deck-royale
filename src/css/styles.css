@@ -4,7 +4,7 @@ html, body {
 	margin: 0;
 	height: calc(100% - 17.5px);
 	background-color: var(--corDeFundo);
-	color: var(--corDeLetra);
+	color: var(--corDeLetra)
 }
 
 * {

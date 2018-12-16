@@ -1046,6 +1046,10 @@ function showChests(int = 0) {
 	});
 }
 
+function removeRightClick(event) {
+	event.preventDefault()
+}
+
 function login(id = idPlayer.value.trim()) {
 	const button = document.querySelector('#showPlayer'),
 		settings = {
@@ -1077,7 +1081,7 @@ function login(id = idPlayer.value.trim()) {
 
 			<h1 class="elixir">Elixir average: ${((response.currentDeck[0].elixir + response.currentDeck[1].elixir + response.currentDeck[2].elixir + response.currentDeck[3].elixir + response.currentDeck[4].elixir + response.currentDeck[5].elixir + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[6].elixir) + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].elixir)) / 8).toFixed(1)}</h1>
 
-			<section class="configContainerS">
+			<section class="configContainerS" oncontextmenu="removeRightClick(event)">
 				<button class="btnCopiarS" title="Open Deck" ${innerWidth < 1024 ? `onclick="copyDeckSaved('${response.deckLink.split('deck=')[1]}')"` : `onclick="openDeck('https://link.clashroyale.com/deck/pt?deck=${response.deckLink.split('deck=')[1]}')"`} oncontextmenu="copyDeckPhone('${response.deckLink.split('deck=')[1]}')">Open Deck</button>
 				<button class="btnApagar" title="Save Deck" onclick="saveDeck([${response.deckLink.split('deck=')[1].split(';').map(id => cardsCode.indexOf(parseInt(id))).join(',')}])">Save Deck</button>
 				<button class="btnColarS" title="Paste Deck" onclick="pasteDeck('https://link.clashroyale.com/deck/pt?deck=${response.deckLink.split('deck=')[1]}')">Paste Deck</button>
@@ -1275,7 +1279,6 @@ for (let i = 0; i < cards.length; i++) {
 }
 
 dbSection.oncontextmenu = event => event.preventDefault();
-playerSection.oncontextmenu = event => event.preventDefault();
 cntConfig.oncontextmenu = event => event.preventDefault();
 selectSection.oncontextmenu = event => {
 	event.preventDefault();

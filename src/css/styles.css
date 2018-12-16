@@ -36,9 +36,9 @@ select:disabled { color: darkgray }
 select {
 	margin-top: 5px;
 	width: 205px;
+	height: 40px;
 	margin-bottom: 2px;
 	background-color: var(--corSecundaria);
-	padding: 7px 15px;
 	text-align-last: center;
 	color: var(--corDeLetraBotao);
 	display: block;
@@ -739,4 +739,5 @@ ins {
 	}
 
 	.effect:hover.effect:after { width: 100% }
+	::-webkit-scrollbar-thumb:hover { background-color: var(--corTercearia) }
 }

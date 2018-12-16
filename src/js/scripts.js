@@ -253,6 +253,7 @@ const cardsName = [
 	idPlayer = document.querySelector('#idPlayer'),
 	cntConfig = document.querySelector('.containerConfig'),
 	searchCard = document.querySelector('#searchCard'),
+	btnMore = document.querySelector('.btnCenter'),
 	arenas = [90, 90, 83, 77, 71, 63, 55, 47, 39, 31, 25, 19],
 	root = document.querySelector(':root'),
 	cont = [dbSection, playerSection, selectSection, savedSection, bestSection, chestSection, configSection, aboutSection];
@@ -808,11 +809,8 @@ async function downDecks() {
 		response = await fetch('https://docs.royaleapi.com/json/popular_decks.json').then(data => data.json()).catch(() => alert('An error occurred, please come back later.'))
 	}
 
-	if (response !== null)
-		if (response.length === maxDown) alert('No more Decks to show.')
-	else {
-		for (let i = maxDown; i < maxDown + (maxDown + 10 > response.length ? response.length - maxDown : 10); i++)
-			html += `
+	for (let i = maxDown; i < maxDown + (maxDown + 10 > response.length ? response.length - maxDown : 10); i++)
+		html += `
 				<section class="cardsContainerS">
 					<div><img src="./images/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${capitalize(response[i].cards[0].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id)})"/></div>
 					<div><img src="./images/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${capitalize(response[i].cards[1].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id)})"/></div>
@@ -826,18 +824,21 @@ async function downDecks() {
 
 				<h1 class="elixir">Elixir average: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
 
-				<section class="configContainerS">
+				<section class="configContainerS" oncontextmenu="(event => event.preventDefault())(event)">
 					<button class="btnCopiarS" title="Open Deck" oncontextmenu="copyDeckPhone('${response[i].cards.map(card => card.id).join(';')}')" ${innerWidth < 1024 ? `onclick="copyDeckSaved('${response[i].decklink.split('?deck=')[1]}')"` : `onclick="openDeck('${response[i].decklink}')"`}>Open Deck</button>
 					<button class="btnApagar" title="Save Deck" onclick="saveDeck([${cardsCode.indexOf(response[i].cards[0].id)},${cardsCode.indexOf(response[i].cards[1].id)},${cardsCode.indexOf(response[i].cards[2].id)},${cardsCode.indexOf(response[i].cards[3].id)},${cardsCode.indexOf(response[i].cards[4].id)},${cardsCode.indexOf(response[i].cards[5].id)},${cardsCode.indexOf(response[i].cards[6].id)},${cardsCode.indexOf(response[i].cards[7].id)}])">Save Deck</button>
 					<button class="btnColarS" title="Paste Deck" onclick="pasteDeck('${response[i].decklink}')">Paste Deck</button>
 				</section>
 			`;
 
-		bestDecks.innerHTML = html;
-		document.querySelector('.bestSection .upArrow').style.display = 'block';
-		maxDown += (maxDown + 10 > response.length ? response.length - maxDown : 10);
-		document.querySelector('.bestSection h2').innerText = `Amount of best Decks: ${maxDown}`
-	}
+	bestDecks.innerHTML = html;
+	document.querySelector('.bestSection .upArrow').style.display = 'block';
+	maxDown += (maxDown + 10 > response.length ? response.length - maxDown : 10);
+	if ((maxDown + 10 > response.length ? response.length - maxDown : 10) === 0)
+		btnMore.style.display = 'none'
+	else btnMore.textContent = `Show more ${(maxDown + 10 > response.length ? response.length - maxDown : 10)} Decks`;
+	document.querySelector('.bestSection h2').innerText = `Amount of best Decks: ${maxDown}`
+
 	bestRing.style.display = 'none'
 }
 
@@ -976,6 +977,8 @@ function deleteAllBest() {
 		html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
 		bestDecks.innerHTML = '<h2 class="noneDeck">No Deck in this area</h2>';
 		document.querySelector('.bestSection .upArrow').style.display = 'none';
+		btnMore.style.display = 'block';
+		btnMore.textContent = 'Show more 10 Decks';
 		maxDown = 0
 	}
 }
@@ -1046,10 +1049,6 @@ function showChests(int = 0) {
 	});
 }
 
-function removeRightClick(event) {
-	event.preventDefault()
-}
-
 function login(id = idPlayer.value.trim()) {
 	const button = document.querySelector('#showPlayer'),
 		settings = {
@@ -1081,7 +1080,7 @@ function login(id = idPlayer.value.trim()) {
 
 			<h1 class="elixir">Elixir average: ${((response.currentDeck[0].elixir + response.currentDeck[1].elixir + response.currentDeck[2].elixir + response.currentDeck[3].elixir + response.currentDeck[4].elixir + response.currentDeck[5].elixir + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[6].elixir) + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].elixir)) / 8).toFixed(1)}</h1>
 
-			<section class="configContainerS" oncontextmenu="removeRightClick(event)">
+			<section class="configContainerS" oncontextmenu="(event => event.preventDefault())(event)">
 				<button class="btnCopiarS" title="Open Deck" ${innerWidth < 1024 ? `onclick="copyDeckSaved('${response.deckLink.split('deck=')[1]}')"` : `onclick="openDeck('https://link.clashroyale.com/deck/pt?deck=${response.deckLink.split('deck=')[1]}')"`} oncontextmenu="copyDeckPhone('${response.deckLink.split('deck=')[1]}')">Open Deck</button>
 				<button class="btnApagar" title="Save Deck" onclick="saveDeck([${response.deckLink.split('deck=')[1].split(';').map(id => cardsCode.indexOf(parseInt(id))).join(',')}])">Save Deck</button>
 				<button class="btnColarS" title="Paste Deck" onclick="pasteDeck('https://link.clashroyale.com/deck/pt?deck=${response.deckLink.split('deck=')[1]}')">Paste Deck</button>
@@ -1278,14 +1277,10 @@ for (let i = 0; i < cards.length; i++) {
 	});
 }
 
-dbSection.oncontextmenu = event => event.preventDefault();
-cntConfig.oncontextmenu = event => event.preventDefault();
 selectSection.oncontextmenu = event => {
 	event.preventDefault();
 	showConfig()
 }
-savedSection.oncontextmenu = event => event.preventDefault();
-bestSection.oncontextmenu = event => event.preventDefault();
 
 cbConfigs[0].onchange = darkTheme;
 cbConfigs[1].onchange = blueTheme;
@@ -1350,10 +1345,6 @@ function showConfig(event) {
 		cntConfig.style.display = 'block';
 		scrollTo(0, 0)
 	}
-}
-
-function stop(event) {
-	event.stopPropagation()
 }
 
 window.onpopstate = function () {

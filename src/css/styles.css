@@ -502,7 +502,7 @@ ins {
 
 .chestSection input, .playerSection input {
 	margin-top: 2px;
-	font-size: 19px;
+	font-size: 22px;
 	background-color: var(--corDeFundo);
 	color: var(--corDeLetraBotao);
 	text-align: center

@@ -992,7 +992,7 @@ function showInfo(index = Number) {
 	info.innerHTML = `<ins>${capitalize(cardsName[index])}</ins><br />${cardsInformation[index]}<br />Elixir cost: ${cardsElixir[index]}<br />Arena: ${arena === 0 ? arenaName[arena] : `${arenaName[arena]} (${arena})`}`
 }
 
-function showChests(int = 0) {
+function showChests() {
 	const button = document.querySelector('#showChests'),
 		settings = {
 			"async": true,
@@ -1006,7 +1006,7 @@ function showChests(int = 0) {
 	button.disabled = true;
 	chestContainer.innerHTML = '';
 
-	fetch(`https://api.royaleapi.com/player/${idUser.value.trim()}/chests`, settings).then(data => data.json()).then(response => {
+	fetch(`https://api.royaleapi.com/player/${idUser.value.trim().replace('#', '')}/chests`, settings).then(data => data.json()).then(response => {
 		localStorage.setItem('id', idUser.value.trim());
 		button.textContent = 'Refresh';
 		button.setAttribute('title', 'Refresh next Chests');
@@ -1044,12 +1044,10 @@ function showChests(int = 0) {
 		button.textContent = 'Show';
 		button.setAttribute('title', 'Show next chests');
 		chestRing.style.display = 'none';
-		if (int === 1) showChests(1)
-		else if (idUser.value.trim() === localStorage.getItem('id')) showChests(1)
 	});
 }
 
-function login(id = idPlayer.value.trim()) {
+function login(id = idPlayer.value.trim().replace('#', '')) {
 	const button = document.querySelector('#showPlayer'),
 		settings = {
 			"async": true,
@@ -1155,12 +1153,12 @@ function login(id = idPlayer.value.trim()) {
 		idUser.value = id;
 		playerRing.style.display = 'none';
 		localStorage.setItem('id', id);
-		showChests(1)
+		showChests()
 	}).catch(error => {
 		console.log(error);
 		button.disabled = false;
 		playerRing.style.display = 'none';
-		if (idPlayer.value.trim() === localStorage.getItem('id')) login()
+		if (idPlayer.value.trim().replace('#', '') === localStorage.getItem('id')) login()
 	})
 }
 

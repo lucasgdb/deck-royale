@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="manifest.appcache">
 
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +33,7 @@
 	</head>
 
 	<body>
+		<noscript>Please, active your JavaScript to work!</noscript>
 		<section onclick="showConfig()" oncontextmenu="(event => event.preventDefault())(event)" class="containerConfig">
 			<section onclick="(event => event.stopPropagation())(event)" class="config">
 				<h1>Configurations</h1>
@@ -224,7 +225,7 @@
 			</h2>
 			<h3>Join our clan: <span class="effect" style="cursor: pointer" onclick="openLink(`${innerWidth < 1024 ? 'clashroyale://join_clan?tag=9QU8RCPL&token=wd8w2eb8' : 'https://link.clashroyale.com/invite/clan/en?tag=9QU8RCPL&token=wd8w2eb8&platform=android'}`)">Click here</span></h3>
 			<h3>Leave me on your friends list: <span class="effect" style="cursor: pointer" onclick="openLink(`${innerWidth < 1024 ? 'clashroyale://add_friend?tag=C8Q2QR08&token=fx2btphn' : 'https://link.clashroyale.com/invite/friend/en?tag=C8Q2QR08&token=fx2btphn&platform=android'}`)">Click here</span></h3>
-			<h3>E-mail for contact: <address>lucasnaja0@gmail.com</address></h3>
+			<h3>Contact e-mail: <address>lucasnaja0@gmail.com</address></h3>
 			<h3>Facebook: <a class="effect" href="http://facebook.com/lucas.naja0/" target="_blank" rel="noopener noreferrer">Lucas Bittencourt</a></h3>
 			<h3>GitHub: <a class="effect" href="http://github.com/LucasNaja/" target="_blank" rel="noopener noreferrer">Click here</a></h3>
 			<h3>Portfolio: <a class="effect" href="http://lucasnaja.github.io/portfolio-reactjs/" target="_blank" rel="noopener noreferrer">Click here</a></h3>
@@ -234,7 +235,6 @@
 			<h4>v0.3.5</h4>
 		</section>
 
-		<noscript>Please, active your JavaScript to work!</noscript>
 		<script async src="./src/js/scripts.js"></script>
 		<script async src="./src/js/buttons.js"></script>
 	</body>

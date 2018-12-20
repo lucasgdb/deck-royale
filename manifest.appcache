@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 0.3.5
+# 0.3.5-1
 
 CACHE:
 ./images/icon.png
@@ -18,7 +18,7 @@ CACHE:
 ./images/legendary.png
 ./images/magical.png
 ./images/silver.png
-./images/superMagical.png
+./images/megaLightning.png
 ./images/witch_opt-min.png
 ./images/skeleton-army_opt-min.png
 ./images/baby-dragon_opt-min.png

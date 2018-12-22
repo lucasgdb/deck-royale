@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 0.3.5-1
+# 0.3.6
 
 CACHE:
 ./images/icon.png
@@ -10,6 +10,7 @@ CACHE:
 ./src/js/save.js
 ./src/js/scripts.js
 ./src/css/styles.css
+./images/uparrow.png
 ./images/heart.png
 ./images/wooden.png
 ./images/epic.png
@@ -95,6 +96,7 @@ CACHE:
 ./images/dart-goblin_opt-min.png
 ./images/goblin-gang_opt-min.png
 ./images/rascals_opt-min.png
+./images/ram-rider_opt-min.png
 ./images/mega-knight_opt-min.png
 ./images/magic-archer_opt-min.png
 ./images/rage_opt-min.png

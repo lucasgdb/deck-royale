@@ -19,7 +19,7 @@
   - See your next chests after battle
   - Open source
   - Easy to use
-  - Fastest tool
+  - Fastest Tool
 
 ## Contact
   - **[Facebook](https://www.facebook.com/Lucas.Naja0)**
@@ -27,4 +27,4 @@
   - **[GitHub](https://github.com/LucasNaja)**
   - **[Portfolio](https://lucasnaja.github.io/portfolio-reactjs)**
 
-### Current build: **0.3.6**
+### Current build: **0.3.7**

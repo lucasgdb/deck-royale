@@ -6,7 +6,7 @@ let currentDeck = [0, 0, 0, 0, 0, 0, 0, 0],
 	btn, img, playerInfo;
 
 const cardsName = [
-		'none-card',
+		'no-card',
 		'witch', 'skeleton-army', 'baby-dragon', 'prince', 'giant', 'musketeer', 'mini-pekka', 'fireball', 'knight', 'archers', 'minions', 'arrows',
 		'hunter', 'goblin-barrel', 'hog-rider', 'goblin-hut', 'goblins', 'spear-goblins',
 		'balloon', 'giant-skeleton', 'valkyrie', 'tombstone', 'skeletons', 'bomber',
@@ -21,7 +21,7 @@ const cardsName = [
 		'sparky', 'electro-wizard', 'electro-dragon', 'mirror', 'clone', 'zappies', 'tesla'
 	],
 	cardsInformation = [
-		'None card selected',
+		'No card selected',
 		'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Spell', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Spell',
 		'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Spell', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Construction', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop',
 		'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Construction', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop',
@@ -414,9 +414,9 @@ function setDeck(deck = Array) {
 
 	for (let i = deck.length; i < 8; i++) {
 		currentDeck.push(0);
-		cards[i].src = './images/none-card_opt-min.png';
-		cards[i].alt = 'None Card';
-		cards[i].title = 'None Card'
+		cards[i].src = './images/no-card_opt-min.png';
+		cards[i].alt = 'No Card';
+		cards[i].title = 'No Card'
 	}
 }
 
@@ -475,12 +475,12 @@ function switchContainer(container = dbSection) {
 	for (let i = 0; i < cont.length; i++)
 		if (cont[i] === container) {
 			changeContainers[i].setAttribute('id', 'selectedButton');
-			changeContainers[i].style.color = 'var(--corDeLetra)';
+			changeContainers[i].style.color = 'var(--textColor)';
 			cont[i].style.display = 'block';
 			selectedContainer = i
 		} else {
 			changeContainers[i].removeAttribute('id');
-			changeContainers[i].style.color = 'var(--corDeLetraBotao)';
+			changeContainers[i].style.color = 'var(--buttonTextColor)';
 			cont[i].style.display = 'none'
 		}
 }
@@ -651,7 +651,7 @@ function matche(xvar) {
 		navSection.style.transition = 'all 0s';
 		navSection.style.height = '100%';
 		navSection.style.overflowY = 'auto';
-		navSection.style.borderRight = '1px solid var(--corDeBorda)'
+		navSection.style.borderRight = '1px solid var(--borderColor)'
 	}
 }
 
@@ -863,7 +863,7 @@ function render() {
 			'cardsCode': cardsCode,
 			'screenSize': innerWidth
 		});
-	} else savedDecks.innerHTML = '<h2 class="noneDeck">No Deck saved</h2>'
+	} else savedDecks.innerHTML = '<h2 class="noneDeck">No Deck saved</h2><button title="Save Decks now!" onclick="closeNav(event); switchContainer(); if (history.state !== 0 && history.state !== null) history.pushState(0, \'changed\')" class="btnCenter">Save Decks now!</button>'
 }
 
 function saveDeck(deck = currentDeck) {
@@ -994,8 +994,8 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 				<div><img src="./images/${response.currentDeck[3].key}_opt-min.png" alt="${response.currentDeck[3].key}" title="${capitalize(response.currentDeck[3].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[3].id)})"/></div>
 				<div><img src="./images/${response.currentDeck[4].key}_opt-min.png" alt="${response.currentDeck[4].key}" title="${capitalize(response.currentDeck[4].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[4].id)})"/></div>
 				<div><img src="./images/${response.currentDeck[5].key}_opt-min.png" alt="${response.currentDeck[5].key}" title="${capitalize(response.currentDeck[5].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[5].id)})"/></div>
-				<div><img src="./images/${response.currentDeck[6] === undefined ? 'none-card' : response.currentDeck[6].key}_opt-min.png" alt="${response.currentDeck[6] === undefined ? 'None card' : response.currentDeck[6].key}" title="${response.currentDeck[6] === undefined ? 'None card' : capitalize(response.currentDeck[6].key)}" onclick="if(${response.currentDeck[6] === undefined}) info.innerText = 'None card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
-				<div><img src="./images/${response.currentDeck[7] === undefined ? 'none-card' : response.currentDeck[7].key}_opt-min.png" alt="${response.currentDeck[7] === undefined ? 'None card' : response.currentDeck[7].key}" title="${response.currentDeck[7] === undefined ? 'None card' : capitalize(response.currentDeck[7].key)}" onclick="if(${response.currentDeck[7] === undefined}) info.innerText = 'None card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[7] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
+				<div><img src="./images/${response.currentDeck[6] === undefined ? 'no-card' : response.currentDeck[6].key}_opt-min.png" alt="${response.currentDeck[6] === undefined ? 'No Card' : response.currentDeck[6].key}" title="${response.currentDeck[6] === undefined ? 'No Card' : capitalize(response.currentDeck[6].key)}" onclick="if(${response.currentDeck[6] === undefined}) info.innerText = 'No Card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
+				<div><img src="./images/${response.currentDeck[7] === undefined ? 'no-card' : response.currentDeck[7].key}_opt-min.png" alt="${response.currentDeck[7] === undefined ? 'No Card' : response.currentDeck[7].key}" title="${response.currentDeck[7] === undefined ? 'No Card' : capitalize(response.currentDeck[7].key)}" onclick="if(${response.currentDeck[7] === undefined}) info.innerText = 'No Card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[7] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
 			</section>
 
 			<h1 class="elixir">Elixir average: ${((response.currentDeck[0].elixir + response.currentDeck[1].elixir + response.currentDeck[2].elixir + response.currentDeck[3].elixir + response.currentDeck[4].elixir + response.currentDeck[5].elixir + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[6].elixir) + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].elixir)) / 8).toFixed(1)}</h1>
@@ -1138,24 +1138,24 @@ document.querySelector('#searchCard').onkeypress = (e) => {
 }
 
 function darkTheme() {
-	root.style.setProperty('--corDeFundo', 'rgb(42, 44, 51)');
-	root.style.setProperty('--corPrimaria', 'rgb(35, 35, 35)');
-	root.style.setProperty('--corSecundaria', 'rgb(25, 25, 25)');
-	root.style.setProperty('--corTercearia', 'rgb(20, 20, 20)');
-	root.style.setProperty('--corDeLetraBotao', 'rgb(237, 237, 237)');
-	root.style.setProperty('--corDeBorda', 'var(--corDeLetraBotao)');
-	root.style.setProperty('--corDeLetra', 'rgb(237, 237, 237)');
+	root.style.setProperty('--backColor', 'rgb(42, 44, 51)');
+	root.style.setProperty('--primaryColor', 'rgb(35, 35, 35)');
+	root.style.setProperty('--secondaryColor', 'rgb(25, 25, 25)');
+	root.style.setProperty('--thidColor', 'rgb(20, 20, 20)');
+	root.style.setProperty('--buttonTextColor', 'rgb(237, 237, 237)');
+	root.style.setProperty('--borderColor', 'var(--buttonTextColor)');
+	root.style.setProperty('--textColor', 'rgb(237, 237, 237)');
 	localStorage.removeItem('theme')
 }
 
 function blueTheme() {
-	root.style.setProperty('--corDeFundo', '#343e51');
-	root.style.setProperty('--corPrimaria', '#242b38');
-	root.style.setProperty('--corSecundaria', '#1a1f29');
-	root.style.setProperty('--corTercearia', '#13161d');
-	root.style.setProperty('--corDeLetraBotao', 'white');
-	root.style.setProperty('--corDeBorda', 'white');
-	root.style.setProperty('--corDeLetra', 'white');
+	root.style.setProperty('--backColor', '#343e51');
+	root.style.setProperty('--primaryColor', '#242b38');
+	root.style.setProperty('--secondaryColor', '#1a1f29');
+	root.style.setProperty('--thidColor', '#13161d');
+	root.style.setProperty('--buttonTextColor', 'white');
+	root.style.setProperty('--borderColor', 'white');
+	root.style.setProperty('--textColor', 'white');
 	localStorage.setItem('theme', 'blue')
 }
 
@@ -1192,7 +1192,7 @@ for (let i = 0; i < cards.length; i++) {
 	});
 	cards[i].addEventListener('click', () => {
 		if (currentDeck[i] !== 0) showInfo(currentDeck[i])
-		else info.innerText = 'None Card selected'
+		else info.innerText = 'No Card selected'
 	});
 }
 

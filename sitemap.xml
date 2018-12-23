@@ -7,9 +7,9 @@
 
 <url>
   <loc>https://deckroyale.now.sh/</loc>
-  <priority>1</priority>
-  <changefreq>never</changefreq>
-  <lastmod>2018-11-05T00:02:32+00:00</lastmod>
+  <priority>1.0</priority>
+  <changefreq>daily</changefreq>
+  <lastmod>2018-12-22T22:08:45+00:00</lastmod>
 </url>
 
 </urlset>

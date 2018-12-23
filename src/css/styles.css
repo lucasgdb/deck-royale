@@ -36,7 +36,7 @@ select:disabled { color: darkgray }
 select {
 	margin-top: 5px;
 	width: 205px;
-	height: 40px;
+	padding: 9px 0;
 	margin-bottom: 2px;
 	background-color: var(--secondaryColor);
 	text-align-last: center;
@@ -670,13 +670,17 @@ ins {
 }
 
 @media (min-width: 1024px) {
+	select {
+		padding: 0;
+		height: 41px;
+	}
+	
 	.config { width: 340px }
 	ins { cursor: default }
 	.btnGerar ins, .btnSalvar ins { cursor: pointer }
 
 	button:hover { background-color: var(--thidColor) }
 	button:active { background-color: var(--secondaryColor) }
-
 
 	#configCards { cursor: pointer }
 

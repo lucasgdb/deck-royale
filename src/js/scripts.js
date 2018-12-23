@@ -3,7 +3,10 @@ let currentDeck = [0, 0, 0, 0, 0, 0, 0, 0],
 	selectedContainer = 0,
 	id = -1,
 	cardName = '',
-	btn, img, playerInfo;
+	btn, img, playerInfo,
+	maxDown = 0,
+	response = null,
+	html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
 
 const cardsName = [
 		'no-card',
@@ -144,6 +147,9 @@ const cardsName = [
 	],
 	allowedCards = [],
 	prevDeck = [],
+	createDecks = new Worker('./src/js/render.js'),
+	saveDecks = new Worker('./src/js/save.js'),
+	deleteDecks = new Worker('./src/js/delete.js'),
 	cards = document.querySelectorAll('.cardsContainer img'),
 	info = document.querySelector('.infoContainer h2'),
 	dbSection = document.querySelector('.builderSection'),
@@ -175,10 +181,11 @@ const cardsName = [
 	idUser = document.querySelector('#idUser'),
 	idPlayer = document.querySelector('#idPlayer'),
 	cntConfig = document.querySelector('.containerConfig'),
-	searchCard = document.querySelector('#searchCard'),
 	btnMore = document.querySelector('.btnCenter'),
 	arenas = [91, 91, 84, 77, 71, 63, 55, 47, 39, 31, 25, 19],
 	root = document.querySelector(':root'),
+	minWidth = matchMedia('(min-width: 768px)'),
+	maxWidth = matchMedia('(max-width: 767px)'),
 	cont = [dbSection, playerSection, selectSection, savedSection, bestSection, chestSection, configSection, aboutSection];
 
 if (localStorage.getItem('ddArena') !== null)
@@ -625,48 +632,6 @@ function randomizeDeck() {
 	} else alert('Shuffling Deck with missing Cards is not allowed.')
 }
 
-const x = matchMedia('(min-width: 768px)');
-
-function matche(xvar) {
-	if (xvar.matches) {
-		if (navSection.style.width === '100%') {
-			if (selectedContainer === 0)
-				dbSection.style.display = 'block'
-			else if (selectedContainer === 1)
-				playerSection.style.display = 'block'
-			else if (selectedContainer === 2)
-				selectSection.style.display = 'block'
-			else if (selectedContainer === 3)
-				savedSection.style.display = 'block'
-			else if (selectedContainer === 4)
-				bestSection.style.display = 'block'
-			else if (selectedContainer === 5)
-				chestSection.style.display = 'block'
-			else if (selectedContainer === 6)
-				configSection.style.display = 'block'
-			else
-				aboutSection.style.display = 'block'
-		}
-		navSection.style.width = '175px';
-		navSection.style.transition = 'all 0s';
-		navSection.style.height = '100%';
-		navSection.style.overflowY = 'auto';
-		navSection.style.borderRight = '1px solid var(--borderColor)'
-	}
-}
-
-const y = matchMedia('(max-width: 767px)');
-
-function matche2(yvar) {
-	if (yvar.matches) {
-		navSection.style.width = '40px';
-		navSection.style.height = '35px';
-		navSection.style.overflowY = 'hidden';
-		navSection.style.transition = 'all .2s';
-		navSection.style.borderRight = 'none';
-	}
-}
-
 function showSections(event) {
 	event.stopPropagation();
 	if (navSection.style.width !== '100%') {
@@ -720,10 +685,6 @@ function closeNav(event) {
 		navSection.style.height = '35px'
 	}
 }
-
-let maxDown = 0,
-	response = null,
-	html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
 
 async function downDecks() {
 	if (response === null) {
@@ -828,10 +789,6 @@ function toTop() {
 			changeDeck()
 		})
 })();
-
-const createDecks = new Worker('./src/js/render.js'),
-	saveDecks = new Worker('./src/js/save.js'),
-	deleteDecks = new Worker('./src/js/delete.js');
 
 createDecks.onmessage = e => {
 	savedDecks.innerHTML = `
@@ -1234,6 +1191,11 @@ document.onkeydown = e => {
 		showConfig()
 	else if (navSection.style.width === '100%' && e.which === 27)
 		showSections(event)
+	else if (selectSection.style.display === 'block' && e.ctrlKey && e.which === 70) {
+		e.preventDefault();
+		toTop();
+		document.querySelector('#searchCard').select()
+	}
 }
 
 selectSection.onclick = event => {
@@ -1241,11 +1203,49 @@ selectSection.onclick = event => {
 		showConfig()
 }
 
+function matche(xvar = minWidth) {
+	if (xvar.matches) {
+		if (navSection.style.width === '100%') {
+			if (selectedContainer === 0)
+				dbSection.style.display = 'block'
+			else if (selectedContainer === 1)
+				playerSection.style.display = 'block'
+			else if (selectedContainer === 2)
+				selectSection.style.display = 'block'
+			else if (selectedContainer === 3)
+				savedSection.style.display = 'block'
+			else if (selectedContainer === 4)
+				bestSection.style.display = 'block'
+			else if (selectedContainer === 5)
+				chestSection.style.display = 'block'
+			else if (selectedContainer === 6)
+				configSection.style.display = 'block'
+			else
+				aboutSection.style.display = 'block'
+		}
+		navSection.style.width = '175px';
+		navSection.style.transition = 'all 0s';
+		navSection.style.height = '100%';
+		navSection.style.overflowY = 'auto';
+		navSection.style.borderRight = '1px solid var(--borderColor)'
+	}
+}
+
+function matche2(yvar = maxWidth) {
+	if (yvar.matches) {
+		navSection.style.width = '40px';
+		navSection.style.height = '35px';
+		navSection.style.overflowY = 'hidden';
+		navSection.style.transition = 'all .2s';
+		navSection.style.borderRight = 'none';
+	}
+}
+
 window.onload = function () {
-	matche(x);
-	x.addListener(matche);
-	matche2(y);
-	y.addListener(matche2);
+	matche();
+	minWidth.addListener(matche);
+	matche2();
+	maxWidth.addListener(matche2);
 	navSection.style.display = 'block';
 	dbSection.style.display = 'block';
 	document.querySelector('.lds-ring').style.display = 'none';

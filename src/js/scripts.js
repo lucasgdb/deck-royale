@@ -6,6 +6,7 @@ let currentDeck = [0, 0, 0, 0, 0, 0, 0, 0],
 	btn, img, playerInfo,
 	maxDown = 0,
 	response = null,
+	name = null,
 	html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
 
 const cardsName = [
@@ -853,6 +854,7 @@ function deleteAll() {
 
 function deleteAllBest() {
 	if (confirm('Do you wanna remove all best Decks?')) {
+		response = null;
 		html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
 		bestDecks.innerHTML = '<h2 class="noneDeck">No Deck in this area</h2>';
 		document.querySelector('.bestSection .upArrow').style.display = 'none';
@@ -890,11 +892,15 @@ function showChests() {
 		button.textContent = 'Refresh';
 		button.setAttribute('title', 'Refresh next Chests');
 		let html = '';
+		if (name !== null)
+			html = `<h2 class="elixir">Next chests of ${name}</h2>`
+
 		const chests = [];
+
 		for (let i = 0; i < response.upcoming.length; i++)
 			html += `
 				<section class="chestInfo">
-					<img title="${capitalize(response.upcoming[i])} Chest" alt="${response.upcoming[i]}" src="../images/${response.upcoming[i]}.png" />
+					<img class="notPointer" title="${capitalize(response.upcoming[i])} Chest" alt="${response.upcoming[i]}" src="../images/${response.upcoming[i]}.png" />
 					<p>${i === 0 ? 'Next' : '+' + (i)}</p>
 				</section>
 			`
@@ -909,7 +915,7 @@ function showChests() {
 			if (!(chests[i][1] < 9))
 				html += `
 				<div class="chestInfo">
-					<img title="${capitalize(chests[i][0])} Chest" alt="${chests[i][0]}" src="../images/${chests[i][0]}.png" />
+					<img class="notPointer" title="${capitalize(chests[i][0])} Chest" alt="${chests[i][0]}" src="../images/${chests[i][0]}.png" />
 					<p>+${chests[i][1]}</p>
 				</div>
 			`
@@ -942,6 +948,7 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 
 	fetch(`https://api.royaleapi.com/player/${id}`, settings).then(data => data.json()).then(response => {
 		playerInfo = response.cards;
+		name = response.name;
 		const html = `
 			<h2 class="elixir">Current Deck</h2>
 			<section class="cardsContainerS">
@@ -964,7 +971,7 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 			</section>
 
 			<section class="information">
-				<h1 class="elixir">${response.name !== '' ? response.name[response.name.length - 1] === 's' ? `${capitalize(response.name)} i` : `${capitalize(response.name)}'s i` : 'I'}nformation</h1>
+				<h2 class="elixir">${name !== '' ? name[response.name.length - 1] === 's' ? `${capitalize(name)} i` : `${capitalize(name)}'s i` : 'I'}nformation</h2>
 				<table>
 					<tr><th>Trophies</th></tr>
 					<tr><td>${response.trophies}</td></tr>
@@ -1012,7 +1019,7 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 				}	
 				${response.stats.favoriteCard === null ? '' : `
 					<table>
-						<tr><th>Favorite card</th></tr>
+						<tr><th>Favorite Card</th></tr>
 						<tr><td>${response.stats.favoriteCard.name}</td></tr>
 					</table>`
 				}		
@@ -1047,12 +1054,12 @@ function basedCards() {
 				if (playerInfo.length === cardsName.length - 1) {
 					for (let i = 0; i < img.length; i++) {
 						img[i].removeAttribute('class');
-						localStorage.setItem(cardsName[i + 1], 'e');
+						localStorage.setItem(cardsName[i + 1], 'e')
 					}
 				} else {
 					const cards = [];
 					for (let card in playerInfo)
-						cards.push(playerInfo[card].key);
+						cards.push(playerInfo[card].key)
 					for (let i = 1; i < cardsName.length; i++)
 						if (cards.indexOf(cardsName[i]) === -1) {
 							img[i - 1].setAttribute('class', 'notAllowed');
@@ -1063,9 +1070,9 @@ function basedCards() {
 						}
 				}
 			} catch (err) {
-				basedCards();
+				basedCards()
 			}
-			changeDeck();
+			changeDeck()
 		}
 	} else {
 		showConfig();

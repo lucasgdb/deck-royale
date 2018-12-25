@@ -6,7 +6,7 @@ let currentDeck = [0, 0, 0, 0, 0, 0, 0, 0],
 	btn, img, playerInfo,
 	maxDown = 0,
 	response = null,
-	name = null,
+	userName = null,
 	html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
 
 const cardsName = [
@@ -25,7 +25,7 @@ const cardsName = [
 		'sparky', 'electro-wizard', 'electro-dragon', 'mirror', 'clone', 'zappies', 'tesla'
 	],
 	cardsInformation = [
-		'No card selected',
+		'No Card selected',
 		'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Spell', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Spell',
 		'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Spell', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Construction', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop',
 		'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Construction', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop',
@@ -514,7 +514,7 @@ function combination() {
 
 function infoCards() {
 	alert(
-		(window.innerWidth < 1024 ? 'To change any card, simply press and hold a card.\nTo remove the current deck, simply press and hold the Paste deck button.\nTo shuffle the current deck, simply press and hold the Build deck button.\nThe function Previous Deck is only valid for smart Decks.\nTo make the site link a direct link to Deck, simply press and hold the Open Deck button.' : 'To change any card, simply press right click on card.\nTo remove current Deck, simply press right click on Paste Deck button.\nTo shuffle current Deck, simply press right click on Build Deck button.\nTo make the site link to direct Deck link, simply press right click on Build Deck button.') +
+		(window.innerWidth < 1024 ? 'To change any Card, simply press and hold a Card.\nTo remove the current Deck, simply press and hold the Paste Deck button.\nTo shuffle the current Deck, simply press and hold the Build Deck button.\nThe function Previous Deck is only valid for smart Decks.\nTo make the site link a direct link to Deck, simply press and hold the Open Deck button.' : 'To change any Card, simply press right click on Card.\nTo remove current Deck, simply press right click on Paste Deck button.\nTo shuffle current Deck, simply press right click on Build Deck button.\nTo make the site link to direct Deck link, simply press right click on Build Deck button.') +
 		(cbDeckInteligente.checked ? '\nCard selector, dropdowns of arenas, rarities and types only works when smart Deck are deactived.' : `\nAmount of Cards to generate: ${allowedCards.length}\nPossible Deck combinations: ${combination()}`)
 	)
 }
@@ -892,8 +892,8 @@ function showChests() {
 		button.textContent = 'Refresh';
 		button.setAttribute('title', 'Refresh next Chests');
 		let html = '';
-		if (name !== null)
-			html = `<h2 class="elixir">Next Chests of ${name}</h2>`
+		if (userName !== null)
+			html = `<h2 class="elixir">Next Chests of ${userName}</h2>`
 
 		const chests = [];
 
@@ -948,7 +948,7 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 
 	fetch(`https://api.royaleapi.com/player/${id}`, settings).then(data => data.json()).then(response => {
 		playerInfo = response.cards;
-		name = response.name;
+		userName = response.name;
 		const html = `
 			<h2 class="elixir">Current Deck</h2>
 			<section class="cardsContainerS">
@@ -971,7 +971,7 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 			</section>
 
 			<section class="information">
-				<h2 class="elixir">${name !== '' ? name[response.name.length - 1] === 's' ? `${capitalize(name)} i` : `${capitalize(name)}'s i` : 'I'}nformation</h2>
+				<h2 class="elixir">${userName !== '' ? userName[response.name.length - 1] === 's' ? `${capitalize(userName)} i` : `${capitalize(userName)}'s i` : 'I'}nformation</h2>
 				<table>
 					<tr><th>Trophies</th></tr>
 					<tr><td>${response.trophies}</td></tr>

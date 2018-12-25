@@ -888,13 +888,13 @@ function showChests() {
 	chestContainer.innerHTML = '';
 
 	fetch(`https://api.royaleapi.com/player/${idUser.value.trim().replace('#', '')}/chests`, settings).then(data => data.json()).then(response => {
-		localStorage.setItem('id', idUser.value.trim());
+		if (localStorage.getItem('id') === null)
+			localStorage.setItem('id', idUser.value.trim());
+
 		button.textContent = 'Refresh';
 		button.setAttribute('title', 'Refresh next Chests');
-		let html = '';
-		if (userName !== null)
-			html = `<h2 class="elixir">Next Chests of ${userName}</h2>`
 
+		let html = `${userName === null ? '' : idUser.value.trim().replace('#', '') === idPlayer.value.trim().replace('#', '') ? `<h2 class="elixir">Next Chests of ${userName}</h2>` : ''}`;
 		const chests = [];
 
 		for (let i = 0; i < response.upcoming.length; i++)
@@ -927,7 +927,7 @@ function showChests() {
 		console.log(error);
 		button.disabled = false;
 		button.textContent = 'Show';
-		button.setAttribute('title', 'Show next chests');
+		button.setAttribute('title', 'Show next Chests');
 		chestRing.style.display = 'none'
 	});
 }

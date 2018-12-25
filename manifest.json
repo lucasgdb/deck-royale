@@ -1,15 +1,41 @@
 {
-  "short_name": "Deck Buider",
-  "name": "Deck Builder",
-  "icons": [
+  "name": "Deck Royale",
+  "short_name": "Deck Royale",
+  "description": "Deck Builder and Tools for Clash Royale",
+  "lang": "en-US",
+  "start_url": "./?utm_source=homescreen",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#343e51",
+  "theme_color": "#343e51",
+  "icons": [{
+      "src": "./images/logo.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }, {
+      "src": "./images/logo.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    }, {
+      "src": "./images/logo.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
     {
-      "src": "./icon.ico",
-      "type": "image-x/ico",
-      "sizes": "16x16"
+      "src": "./images/logo.png",
+      "sizes": "100x100",
+      "type": "image/png"
+    },
+    {
+      "src": "./images/logo.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    },
+    {
+      "src": "./images/logo.png",
+      "sizes": "300x300",
+      "type": "image/png"
     }
   ],
-  "start_url": "./",
-  "background_color": "rgb(42, 44, 51)",
-  "display": "standalone",
-  "theme_color": "rgb(35, 35, 35)"
+  "prefer_related_applications": true
 }

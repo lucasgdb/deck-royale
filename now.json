@@ -1,9 +1,4 @@
 {
   "name": "Deck Royale",
-  "alias": "deckroyale",
-  "version": 2,
-  "files": [
-    "google1abf4ecce1258ee8.html",
-    "sitemap.xml"
-  ]
+  "alias": "deckroyale"
 }

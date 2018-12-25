@@ -893,7 +893,7 @@ function showChests() {
 		button.setAttribute('title', 'Refresh next Chests');
 		let html = '';
 		if (name !== null)
-			html = `<h2 class="elixir">Next chests of ${name}</h2>`
+			html = `<h2 class="elixir">Next Chests of ${name}</h2>`
 
 		const chests = [];
 

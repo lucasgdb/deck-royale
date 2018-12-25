@@ -8,16 +8,16 @@
   _Deck Royale_ is a **Deck Builder Tool** for Clash Royale game that makes easier your friendly and personal battles.
 
 ## Why
-  - Save your preferred decks (until 100 decks!!!)
-  - Build smart decks (personal battle)
-  - Build random decks (friendly battle)
-  - Build your own decks (personal and friendly battle)
-  - Paste decks directly into the game
-  - Remove cards that you don't have
-  - Filter between arena, rarity and type
+  - Save your preferred Decks (until 100 decks!!!)
+  - Build smart Decks (personal battle)
+  - Build random Decks (friendly battle)
+  - Build your own Decks (personal and friendly battle)
+  - Paste Decks directly into the game
+  - Remove Cards you don't have
+  - Filter between Arena, Rarity and Type
   - Login using your Clash Royale ID for stats view
-  - See your next chests after battle
-  - Open source
+  - See your next Chests after battle
+  - Open Source ([MIT License](https://github.com/LucasNaja/deck-royale/blob/master/LICENSE))
   - Easy to use
   - Fastest Tool
 

@@ -183,7 +183,7 @@ const cardsName = [
 	idPlayer = document.querySelector('#idPlayer'),
 	cntConfig = document.querySelector('.containerConfig'),
 	btnMore = document.querySelector('.btnCenter'),
-	arenas = [91, 91, 84, 77, 71, 63, 55, 47, 39, 31, 25, 19],
+	arenas = [91, 91, 84, 77, 71, 63, 55, 47, 39, 31, 25, 19, 13],
 	root = document.querySelector(':root'),
 	minWidth = matchMedia('(min-width: 768px)'),
 	maxWidth = matchMedia('(max-width: 767px)'),
@@ -412,7 +412,7 @@ function setDeck(deck = Array) {
 	contentToCopy = 'deck=';
 	for (let i = 0; i < deck.length; i++) {
 		contentToCopy += cardsCode[deck[i]] + (i === deck.length - 1 ? '' : ';');
-		cards[i].src = `./images/${cardsName[deck[i]]}_opt-min.png`;
+		cards[i].src = `./images/cards/${cardsName[deck[i]]}_opt-min.png`;
 		cards[i].alt = cardsName[deck[i]];
 		cards[i].title = capitalize(cardsName[deck[i]]);
 		media += cardsElixir[deck[i]] / 8
@@ -422,7 +422,7 @@ function setDeck(deck = Array) {
 
 	for (let i = deck.length; i < 8; i++) {
 		currentDeck.push(0);
-		cards[i].src = './images/no-card_opt-min.png';
+		cards[i].src = './images/cards/no-card_opt-min.png';
 		cards[i].alt = 'No Card';
 		cards[i].title = 'No Card'
 	}
@@ -696,14 +696,14 @@ async function downDecks() {
 	for (let i = maxDown; i < maxDown + (maxDown + 10 > response.length ? response.length - maxDown : 10); i++)
 		html += `
 				<section class="cardsContainerS">
-					<div><img src="./images/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${capitalize(response[i].cards[0].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id)})"/></div>
-					<div><img src="./images/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${capitalize(response[i].cards[1].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id)})"/></div>
-					<div><img src="./images/${response[i].cards[2].key}_opt-min.png" alt="${response[i].cards[2].key}" title="${capitalize(response[i].cards[2].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[2].id)})"/></div>
-					<div><img src="./images/${response[i].cards[3].key}_opt-min.png" alt="${response[i].cards[3].key}" title="${capitalize(response[i].cards[3].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[3].id)})"/></div>
-					<div><img src="./images/${response[i].cards[4].key}_opt-min.png" alt="${response[i].cards[4].key}" title="${capitalize(response[i].cards[4].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[4].id)})"/></div>
-					<div><img src="./images/${response[i].cards[5].key}_opt-min.png" alt="${response[i].cards[5].key}" title="${capitalize(response[i].cards[5].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[5].id)})"/></div>
-					<div><img src="./images/${response[i].cards[6].key}_opt-min.png" alt="${response[i].cards[6].key}" title="${capitalize(response[i].cards[6].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[6].id)})"/></div>
-					<div><img src="./images/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${capitalize(response[i].cards[7].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id)})"/></div>
+					<div><img src="./images/cards/${response[i].cards[0].key}_opt-min.png" alt="${response[i].cards[0].key}" title="${capitalize(response[i].cards[0].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[0].id)})"/></div>
+					<div><img src="./images/cards/${response[i].cards[1].key}_opt-min.png" alt="${response[i].cards[1].key}" title="${capitalize(response[i].cards[1].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[1].id)})"/></div>
+					<div><img src="./images/cards/${response[i].cards[2].key}_opt-min.png" alt="${response[i].cards[2].key}" title="${capitalize(response[i].cards[2].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[2].id)})"/></div>
+					<div><img src="./images/cards/${response[i].cards[3].key}_opt-min.png" alt="${response[i].cards[3].key}" title="${capitalize(response[i].cards[3].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[3].id)})"/></div>
+					<div><img src="./images/cards/${response[i].cards[4].key}_opt-min.png" alt="${response[i].cards[4].key}" title="${capitalize(response[i].cards[4].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[4].id)})"/></div>
+					<div><img src="./images/cards/${response[i].cards[5].key}_opt-min.png" alt="${response[i].cards[5].key}" title="${capitalize(response[i].cards[5].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[5].id)})"/></div>
+					<div><img src="./images/cards/${response[i].cards[6].key}_opt-min.png" alt="${response[i].cards[6].key}" title="${capitalize(response[i].cards[6].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[6].id)})"/></div>
+					<div><img src="./images/cards/${response[i].cards[7].key}_opt-min.png" alt="${response[i].cards[7].key}" title="${capitalize(response[i].cards[7].key)}" onclick="showInfo(${cardsCode.indexOf(response[i].cards[7].id)})"/></div>
 				</section>
 
 				<h1 class="elixir">Elixir average: ${((response[i].cards[0].elixir + response[i].cards[1].elixir + response[i].cards[2].elixir + response[i].cards[3].elixir + response[i].cards[4].elixir + response[i].cards[5].elixir + response[i].cards[6].elixir + response[i].cards[7].elixir) / 8).toFixed(1)}</h1>
@@ -748,7 +748,7 @@ function toTop() {
 	for (let i = 1; i < cardsInformation.length; i++) {
 		content += `
 			<section class="cardContainer">
-				<img class="${localStorage.getItem(cardsName[i]) === 'e' ? '' : 'notAllowed'}" src="./images/${cardsName[i]}_opt-min.png" alt="${cardsName[i]}" title="${capitalize(cardsName[i])}" />				
+				<img class="${localStorage.getItem(cardsName[i]) === 'e' ? '' : 'notAllowed'}" src="./images/cards/${cardsName[i]}_opt-min.png" alt="${cardsName[i]}" title="${capitalize(cardsName[i])}" />				
 			</section>
 		`;
 	}
@@ -900,7 +900,7 @@ function showChests() {
 		for (let i = 0; i < response.upcoming.length; i++)
 			html += `
 				<section class="chestInfo">
-					<img class="notPointer" title="${capitalize(response.upcoming[i])} Chest" alt="${response.upcoming[i]}" src="../images/${response.upcoming[i]}.png" />
+					<img class="notPointer" title="${capitalize(response.upcoming[i])} Chest" alt="${response.upcoming[i]}" src="../images/chests/${response.upcoming[i]}.png" />
 					<p>${i === 0 ? 'Next' : '+' + (i)}</p>
 				</section>
 			`
@@ -915,7 +915,7 @@ function showChests() {
 			if (!(chests[i][1] < 9))
 				html += `
 				<div class="chestInfo">
-					<img class="notPointer" title="${capitalize(chests[i][0])} Chest" alt="${chests[i][0]}" src="../images/${chests[i][0]}.png" />
+					<img class="notPointer" title="${capitalize(chests[i][0])} Chest" alt="${chests[i][0]}" src="../images/chests/${chests[i][0]}.png" />
 					<p>+${chests[i][1]}</p>
 				</div>
 			`
@@ -952,14 +952,14 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 		const html = `
 			<h2 class="elixir">Current Deck</h2>
 			<section class="cardsContainerS">
-				<div><img src="./images/${response.currentDeck[0].key}_opt-min.png" alt="${response.currentDeck[0].key}" title="${capitalize(response.currentDeck[0].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[0].id)})"/></div>
-				<div><img src="./images/${response.currentDeck[1].key}_opt-min.png" alt="${response.currentDeck[1].key}" title="${capitalize(response.currentDeck[1].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[1].id)})"/></div>
-				<div><img src="./images/${response.currentDeck[2].key}_opt-min.png" alt="${response.currentDeck[2].key}" title="${capitalize(response.currentDeck[2].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[2].id)})"/></div>
-				<div><img src="./images/${response.currentDeck[3].key}_opt-min.png" alt="${response.currentDeck[3].key}" title="${capitalize(response.currentDeck[3].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[3].id)})"/></div>
-				<div><img src="./images/${response.currentDeck[4].key}_opt-min.png" alt="${response.currentDeck[4].key}" title="${capitalize(response.currentDeck[4].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[4].id)})"/></div>
-				<div><img src="./images/${response.currentDeck[5].key}_opt-min.png" alt="${response.currentDeck[5].key}" title="${capitalize(response.currentDeck[5].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[5].id)})"/></div>
-				<div><img src="./images/${response.currentDeck[6] === undefined ? 'no-card' : response.currentDeck[6].key}_opt-min.png" alt="${response.currentDeck[6] === undefined ? 'No Card' : response.currentDeck[6].key}" title="${response.currentDeck[6] === undefined ? 'No Card' : capitalize(response.currentDeck[6].key)}" onclick="if(${response.currentDeck[6] === undefined}) info.innerText = 'No Card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
-				<div><img src="./images/${response.currentDeck[7] === undefined ? 'no-card' : response.currentDeck[7].key}_opt-min.png" alt="${response.currentDeck[7] === undefined ? 'No Card' : response.currentDeck[7].key}" title="${response.currentDeck[7] === undefined ? 'No Card' : capitalize(response.currentDeck[7].key)}" onclick="if(${response.currentDeck[7] === undefined}) info.innerText = 'No Card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[7] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
+				<div><img src="./images/cards/${response.currentDeck[0].key}_opt-min.png" alt="${response.currentDeck[0].key}" title="${capitalize(response.currentDeck[0].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[0].id)})"/></div>
+				<div><img src="./images/cards/${response.currentDeck[1].key}_opt-min.png" alt="${response.currentDeck[1].key}" title="${capitalize(response.currentDeck[1].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[1].id)})"/></div>
+				<div><img src="./images/cards/${response.currentDeck[2].key}_opt-min.png" alt="${response.currentDeck[2].key}" title="${capitalize(response.currentDeck[2].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[2].id)})"/></div>
+				<div><img src="./images/cards/${response.currentDeck[3].key}_opt-min.png" alt="${response.currentDeck[3].key}" title="${capitalize(response.currentDeck[3].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[3].id)})"/></div>
+				<div><img src="./images/cards/${response.currentDeck[4].key}_opt-min.png" alt="${response.currentDeck[4].key}" title="${capitalize(response.currentDeck[4].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[4].id)})"/></div>
+				<div><img src="./images/cards/${response.currentDeck[5].key}_opt-min.png" alt="${response.currentDeck[5].key}" title="${capitalize(response.currentDeck[5].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[5].id)})"/></div>
+				<div><img src="./images/cards/${response.currentDeck[6] === undefined ? 'no-card' : response.currentDeck[6].key}_opt-min.png" alt="${response.currentDeck[6] === undefined ? 'No Card' : response.currentDeck[6].key}" title="${response.currentDeck[6] === undefined ? 'No Card' : capitalize(response.currentDeck[6].key)}" onclick="if(${response.currentDeck[6] === undefined}) info.innerText = 'No Card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
+				<div><img src="./images/cards/${response.currentDeck[7] === undefined ? 'no-card' : response.currentDeck[7].key}_opt-min.png" alt="${response.currentDeck[7] === undefined ? 'No Card' : response.currentDeck[7].key}" title="${response.currentDeck[7] === undefined ? 'No Card' : capitalize(response.currentDeck[7].key)}" onclick="if(${response.currentDeck[7] === undefined}) info.innerText = 'No Card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[7] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
 			</section>
 
 			<h1 class="elixir">Elixir average: ${((response.currentDeck[0].elixir + response.currentDeck[1].elixir + response.currentDeck[2].elixir + response.currentDeck[3].elixir + response.currentDeck[4].elixir + response.currentDeck[5].elixir + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[6].elixir) + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].elixir)) / 8).toFixed(1)}</h1>
@@ -1109,7 +1109,7 @@ function darkTheme() {
 	root.style.setProperty('--buttonTextColor', 'rgb(237, 237, 237)');
 	root.style.setProperty('--borderColor', 'var(--buttonTextColor)');
 	root.style.setProperty('--textColor', 'rgb(237, 237, 237)');
-	localStorage.removeItem('theme')
+	localStorage.setItem('theme', 'dark')
 }
 
 function blueTheme() {
@@ -1120,15 +1120,15 @@ function blueTheme() {
 	root.style.setProperty('--buttonTextColor', 'white');
 	root.style.setProperty('--borderColor', 'white');
 	root.style.setProperty('--textColor', 'white');
-	localStorage.setItem('theme', 'blue')
+	localStorage.removeItem('theme')
 }
 
-if (localStorage.getItem('theme') === 'blue') {
-	blueTheme();
-	cbConfigs[1].checked = true
+if (localStorage.getItem('theme') === 'dark') {
+	darkTheme();
+	cbConfigs[0].checked = true
 } else {
-	cbConfigs[0].checked = true;
-	darkTheme()
+	cbConfigs[1].checked = true;
+	blueTheme()
 }
 
 for (let i = 0; i < cards.length; i++) {

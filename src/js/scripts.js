@@ -187,7 +187,8 @@ const cardsName = [
 	root = document.querySelector(':root'),
 	minWidth = matchMedia('(min-width: 768px)'),
 	maxWidth = matchMedia('(max-width: 767px)'),
-	cont = [dbSection, playerSection, selectSection, savedSection, bestSection, chestSection, configSection, aboutSection];
+	cont = [dbSection, playerSection, selectSection, savedSection, bestSection, chestSection, configSection, aboutSection],
+	apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk3MiwiaWRlbiI6IjMxOTkwNTQwNjg4NzY1NzQ4MiIsIm1kIjp7InVzZXJuYW1lIjoiTHVjYXMgTmFqYSIsImtleVZlcnNpb24iOjMsImRpc2NyaW1pbmF0b3IiOiI4MDE0In0sInRzIjoxNTQ1ODY3Mjg5ODIyfQ.NCSnyJtAk6kcZMpXxtLGfiSuii5NpVm43ls9QGxG0mc';
 
 if (localStorage.getItem('ddArena') !== null)
 	ddArena.selectedIndex = localStorage.getItem('ddArena');
@@ -880,7 +881,7 @@ function showChests() {
 			"crossDomain": true,
 			"method": "GET",
 			"headers": {
-				"auth": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk3MiwiaWRlbiI6IjMxOTkwNTQwNjg4NzY1NzQ4MiIsIm1kIjp7InVzZXJuYW1lIjoiTHVjYXMgTmFqYSIsImtleVZlcnNpb24iOjMsImRpc2NyaW1pbmF0b3IiOiI4MDE0In0sInRzIjoxNTQ0MDIwNzY2MDMwfQ.Xio3eruuSh744G9UBNEdwm5zkeusKjpzOl0-OuVNkQs'
+				"auth": apiKey
 			}
 		};
 	chestRing.style.display = 'block';
@@ -939,7 +940,7 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 			"crossDomain": true,
 			"method": "GET",
 			"headers": {
-				"auth": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk3MiwiaWRlbiI6IjMxOTkwNTQwNjg4NzY1NzQ4MiIsIm1kIjp7InVzZXJuYW1lIjoiTHVjYXMgTmFqYSIsImtleVZlcnNpb24iOjMsImRpc2NyaW1pbmF0b3IiOiI4MDE0In0sInRzIjoxNTQ0MDIwNzY2MDMwfQ.Xio3eruuSh744G9UBNEdwm5zkeusKjpzOl0-OuVNkQs'
+				"auth": apiKey
 			}
 		};
 	button.disabled = true;

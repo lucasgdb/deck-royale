@@ -856,7 +856,7 @@ function deleteAllBest() {
 	if (confirm('Do you wanna remove all best Decks?')) {
 		response = null;
 		html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
-		bestDecks.innerHTML = '<h2 class="noneDeck">No Deck in this area</h2>';
+		bestDecks.innerHTML = '<h2 class="noneDeck">No Deck here</h2>';
 		document.querySelector('.bestSection .upArrow').style.display = 'none';
 		btnMore.style.display = 'block';
 		btnMore.textContent = 'Show more 10 Decks';

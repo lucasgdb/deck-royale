@@ -5,7 +5,7 @@
   "lang": "en-US",
   "start_url": "./?utm_source=web_app_manifest",
   "display": "standalone",
-  "orientation": "any",
+  "orientation": "portrait",
   "background_color": "#343e51",
   "theme_color": "#343e51",
   "icons": [{

@@ -336,7 +336,7 @@ ins {
 	background-color: var(--backColor);
 	color: var(--buttonTextColor);
 	font-size: 20px;
-	width: 95%;
+	width: 99%;
 	padding: 10px 0
 }
 
@@ -598,7 +598,7 @@ ins {
 @media (min-width: 768px) {
 	.config { width: 330px }
 	.config label { font-size: 23px }
-	.selectSection input { width: 300px }
+	.selectSection input { width: 320px }
 	.container { display: none !important }
 	html, body { height: 100% }
 	.selectSection div button:nth-last-of-type(2) { margin-left: 10px }

@@ -950,6 +950,7 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 	fetch(`https://api.royaleapi.com/player/${id}`, settings).then(data => data.json()).then(response => {
 		playerInfo = response.cards;
 		userName = response.name;
+		button.textContent = 'Refresh';
 		const html = `
 			<h2 class="elixir">Current Deck</h2>
 			<section class="cardsContainerS">
@@ -1043,6 +1044,7 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 		showChests()
 	}).catch(error => {
 		console.log(error);
+		button.textContent = 'Show';
 		button.disabled = false;
 		playerRing.style.display = 'none'
 	})

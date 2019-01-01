@@ -27,6 +27,6 @@
   - **[Facebook](https://www.facebook.com/Lucas.Naja0 "My Facebook")**
   - **[Twitter](https://twitter.com/LucasNaja0 "My Twitter")**
   - **[GitHub](https://github.com/LucasNaja "My GitHub")**
-  - **[Portfolio](https://lucasnaja.github.io/portfolio-reactjs "My OnLine Portfolio")**
+  - **[Portfolio](https://lucasnaja.github.io/portfolio/ "My OnLine Portfolio")**
 
 ### Current build: **0.3.7**

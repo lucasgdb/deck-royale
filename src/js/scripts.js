@@ -523,14 +523,16 @@ function infoCards() {
 function copyDeck() {
 	if (prevDeck.length > 0)
 		prevDeck.pop()
-	if (innerWidth < 1024) {
-		if (confirm('Do you wanna open this Deck on Clash Royale game?'))
-			openDeck(`clashroyale://copyDeck?${contentToCopy}`, '_self')
-	} else openDeck(`https://link.clashroyale.com/deck/pt?${contentToCopy}`)
+	if (innerWidth < 1024)
+		if (!`clashroyale://copyDeck?${contentToCopy}`.split('deck=')[1].split(';').some(item => item === '0')) {
+			if (confirm('Do you wanna open this Deck on Clash Royale game?'))
+				openDeck(`clashroyale://copyDeck?${contentToCopy}`, '_self')
+		} else alert('Open links with missing Cards is not allowed')
+	else openDeck(`https://link.clashroyale.com/deck/pt?${contentToCopy}`)
 }
 
 function openDeck(link) {
-	if (!link.split('deck=')[1].split(';').find(item => item === '0'))
+	if (!link.split('deck=')[1].split(';').some(item => item === '0'))
 		open(link)
 	else alert('Open links with missing Cards is not allowed')
 }
@@ -877,11 +879,11 @@ function showInfo(index = Number) {
 function showChests() {
 	const button = document.querySelector('#showChests'),
 		settings = {
-			"async": true,
-			"crossDomain": true,
-			"method": "GET",
-			"headers": {
-				"auth": apiKey
+			async: true,
+			crossDomain: true,
+			method: 'GET',
+			headers: {
+				auth: apiKey
 			}
 		};
 	chestRing.style.display = 'block';
@@ -936,11 +938,11 @@ function showChests() {
 function login(id = idPlayer.value.trim().replace('#', '')) {
 	const button = document.querySelector('#showPlayer'),
 		settings = {
-			"async": true,
-			"crossDomain": true,
-			"method": "GET",
-			"headers": {
-				"auth": apiKey
+			async: true,
+			crossDomain: true,
+			method: 'GET',
+			headers: {
+				auth: apiKey
 			}
 		};
 	button.disabled = true;

@@ -2,6 +2,7 @@
 ********************/
 html, body {
 	margin: 0;
+	min-width: 320px;
 	height: calc(100% - 17.5px);
 	background-color: var(--backColor);
 	color: var(--textColor)
@@ -11,8 +12,6 @@ html, body {
 	font-family: Arial, Helvetica, sans-serif;
 	outline: none
 }
-
-html, body { min-width: 300px }
 
 img, ins, .navSection h1 {
 	user-select: none;
@@ -456,7 +455,7 @@ ins {
 
 .config button {
 	font-size: 20px;
-	padding: 5px;
+	padding: 10px;
 	margin-top: 5px;
 	margin-bottom: 5px
 }

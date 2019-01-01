@@ -1102,7 +1102,19 @@ document.querySelector('#searchCard').onkeypress = (e) => {
 		for (let i = 1; i < cardsName.length; i++)
 			if (value === cardsName[i].split('-').map(name => name).join(' ').toLowerCase() || value === formatText(cardPtName[i].toLowerCase())) {
 				document.querySelector('#searchCard').value = '';
-				scrollTo(0, img[i - 1].parentElement.offsetTop + (innerWidth < 768 ? 33 : -1));
+				let currentY = 0;
+				const y = img[i - 1].parentElement.offsetTop + (innerWidth < 768 ? 33 : -1),
+					interval = setInterval(() => {
+						currentY = scrollY;
+						if (scrollY < y)
+							scrollTo(0, scrollY + 25)
+						else {
+							scrollTo(0, y);
+							clearInterval(interval)
+						}
+						if (currentY === scrollY)
+							clearInterval(interval)
+					}, 1);
 				break
 			}
 	}

@@ -953,6 +953,7 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 		playerInfo = response.cards;
 		userName = response.name;
 		button.textContent = 'Refresh';
+		button.setAttribute('title', 'Refresh login');
 		const html = `
 			<h2 class="elixir">Current Deck</h2>
 			<section class="cardsContainerS">
@@ -1047,6 +1048,7 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 	}).catch(error => {
 		console.log(error);
 		button.textContent = 'Show';
+		button.setAttribute('title', 'Show');
 		button.disabled = false;
 		playerRing.style.display = 'none'
 	})

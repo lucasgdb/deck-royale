@@ -422,10 +422,9 @@ ins {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	border: 1px solid rgba(0, 0, 0, .5);
-	border-radius: 2px;
+	border-radius: 5px;
 	transform: translate(-50%, -50%);
-	width: 300px;
+	width: 320px;
 	min-height: 0;
 	background-color: var(--backColor)
 }
@@ -437,7 +436,7 @@ ins {
 	text-align: center
 }
 
-.config label { font-size: 20px }
+.config label { font-size: 21px }
 
 .config section {
 	position: relative;
@@ -445,7 +444,7 @@ ins {
 	width: 100%;
 	border-top: 1px solid var(--primaryColor);
 	border-bottom: 1px solid var(--primaryColor);
-	height: 24px
+	height: 23px
 }
 
 .config div {
@@ -595,8 +594,6 @@ ins {
 @media (min-width: 600px) {	.cardsContainer, .cardsContainerS {	height: 360px	} }
 
 @media (min-width: 768px) {
-	.config { width: 330px }
-	.config label { font-size: 23px }
 	.selectSection input { width: 320px }
 	.container { display: none !important }
 	html, body { height: 100% }
@@ -606,6 +603,10 @@ ins {
 		margin-left: 5px;
 		width: 240px
 	}
+	
+	.config { width: 350px }
+	.config label { font-size: 24px }
+	.config section { height: 26px }
 
 	#configCards { top: 2px	}
 

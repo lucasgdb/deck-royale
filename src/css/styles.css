@@ -30,7 +30,10 @@ button {
 }
 button:active { background-color: var(--thidColor) }
 
-select:disabled { color: darkgray }
+select:disabled {
+	cursor: not-allowed;
+	color: darkgray
+}
 
 select {
 	margin-top: 5px;

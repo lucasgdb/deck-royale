@@ -29,4 +29,4 @@
   - **[GitHub](https://github.com/LucasNaja "My GitHub")**
   - **[Portfolio](https://lucasnaja.github.io/portfolio/ "My OnLine Portfolio")**
 
-### Current build: **0.3.7**
+### Current build: **0.3.8**

@@ -25,7 +25,7 @@ const cardsName = [
 		'sparky', 'electro-wizard', 'electro-dragon', 'mirror', 'clone', 'zappies', 'tesla'
 	],
 	cardsInformation = [
-		'No Card selected',
+		'There isn\'t Card selected',
 		'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Spell', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Spell',
 		'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Spell', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Construction', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop',
 		'Rarity: Epic<br />Type: Troop', 'Rarity: Epic<br />Type: Troop', 'Rarity: Rare<br />Type: Troop', 'Rarity: Rare<br />Type: Construction', 'Rarity: Common<br />Type: Troop', 'Rarity: Common<br />Type: Troop',
@@ -824,7 +824,7 @@ function render() {
 			'cardsCode': cardsCode,
 			'screenSize': innerWidth
 		});
-	} else savedDecks.innerHTML = '<h2 class="noneDeck">No Deck saved</h2><button title="Save Decks now!" onclick="closeNav(event); switchContainer(); if (history.state !== 0 && history.state !== null) history.pushState(0, \'changed\')" class="btnCenter">Save Decks now!</button>'
+	} else savedDecks.innerHTML = '<h2 class="noneDeck">There isn\'t Deck saved</h2><button title="Save Decks now!" onclick="closeNav(event); switchContainer(); if (history.state !== 0 && history.state !== null) history.pushState(0, \'changed\')" class="btnCenter">Save Decks now!</button>'
 }
 
 function saveDeck(deck = currentDeck) {
@@ -859,7 +859,7 @@ function deleteAllBest() {
 	if (confirm('Do you wanna remove all best Decks?')) {
 		response = null;
 		html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>';
-		bestDecks.innerHTML = '<h2 class="noneDeck">No Deck here</h2>';
+		bestDecks.innerHTML = '<h2 class="noneDeck">There isn\'t Deck here</h2>';
 		document.querySelector('.bestSection .upArrow').style.display = 'none';
 		btnMore.style.display = 'block';
 		btnMore.textContent = 'Show more 10 Decks';
@@ -963,8 +963,8 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
 				<div><img src="./images/cards/${response.currentDeck[3].key}_opt-min.png" alt="${response.currentDeck[3].key}" title="${capitalize(response.currentDeck[3].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[3].id)})"/></div>
 				<div><img src="./images/cards/${response.currentDeck[4].key}_opt-min.png" alt="${response.currentDeck[4].key}" title="${capitalize(response.currentDeck[4].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[4].id)})"/></div>
 				<div><img src="./images/cards/${response.currentDeck[5].key}_opt-min.png" alt="${response.currentDeck[5].key}" title="${capitalize(response.currentDeck[5].key)}" onclick="showInfo(${cardsCode.indexOf(response.currentDeck[5].id)})"/></div>
-				<div><img src="./images/cards/${response.currentDeck[6] === undefined ? 'no-card' : response.currentDeck[6].key}_opt-min.png" alt="${response.currentDeck[6] === undefined ? 'No Card' : response.currentDeck[6].key}" title="${response.currentDeck[6] === undefined ? 'No Card' : capitalize(response.currentDeck[6].key)}" onclick="if(${response.currentDeck[6] === undefined}) info.innerText = 'No Card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
-				<div><img src="./images/cards/${response.currentDeck[7] === undefined ? 'no-card' : response.currentDeck[7].key}_opt-min.png" alt="${response.currentDeck[7] === undefined ? 'No Card' : response.currentDeck[7].key}" title="${response.currentDeck[7] === undefined ? 'No Card' : capitalize(response.currentDeck[7].key)}" onclick="if(${response.currentDeck[7] === undefined}) info.innerText = 'No Card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[7] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
+				<div><img src="./images/cards/${response.currentDeck[6] === undefined ? 'no-card' : response.currentDeck[6].key}_opt-min.png" alt="${response.currentDeck[6] === undefined ? 'No Card' : response.currentDeck[6].key}" title="${response.currentDeck[6] === undefined ? 'No Card' : capitalize(response.currentDeck[6].key)}" onclick="if(${response.currentDeck[6] === undefined}) info.innerText = 'There isn\'t Card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
+				<div><img src="./images/cards/${response.currentDeck[7] === undefined ? 'no-card' : response.currentDeck[7].key}_opt-min.png" alt="${response.currentDeck[7] === undefined ? 'No Card' : response.currentDeck[7].key}" title="${response.currentDeck[7] === undefined ? 'No Card' : capitalize(response.currentDeck[7].key)}" onclick="if(${response.currentDeck[7] === undefined}) info.innerText = 'There isn\'t Card selected'; else showInfo(cardsCode.indexOf(${response.currentDeck[7] === undefined ? 0 : response.currentDeck[7].id}))"/></div>
 			</section>
 
 			<h1 class="elixir">Elixir average: ${((response.currentDeck[0].elixir + response.currentDeck[1].elixir + response.currentDeck[2].elixir + response.currentDeck[3].elixir + response.currentDeck[4].elixir + response.currentDeck[5].elixir + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[6].elixir) + (response.currentDeck[6] === undefined ? 0 : response.currentDeck[7].elixir)) / 8).toFixed(1)}</h1>
@@ -1175,7 +1175,7 @@ for (let i = 0; i < cards.length; i++) {
 	});
 	cards[i].addEventListener('click', () => {
 		if (currentDeck[i] !== 0) showInfo(currentDeck[i])
-		else info.innerText = 'No Card selected'
+		else info.innerText = 'There isn\'t Card selected'
 	});
 }
 

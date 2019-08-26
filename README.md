@@ -19,14 +19,13 @@
   - Filter between Arena, Rarity and Type
   - Login using your Clash Royale ID for stats view
   - See your next Chests after battle
-  - Open Source ([MIT License](https://github.com/LucasNaja/deck-royale/blob/master/LICENSE))
+  - Open Source ([MIT License](https://github.com/lucasnaja/deck-royale/blob/master/LICENSE))
   - Easy to use
   - Fastest Tool
 
 ## Contact
-  - **[Facebook](https://www.facebook.com/Lucas.Naja0 "My Facebook")**
-  - **[Twitter](https://twitter.com/LucasNaja0 "My Twitter")**
-  - **[GitHub](https://github.com/LucasNaja "My GitHub")**
-  - **[Portfolio](https://lucasnaja.github.io/portfolio/ "My OnLine Portfolio")**
+  - **[Twitter](https://twitter.com/lucasnaja0 "My Twitter")**
+  - **[GitHub](https://github.com/lucasnaja "My GitHub")**
+  - **[Portfolio](https://lucasnaja.github.io "My OnLine Portfolio")**
 
-### Current build: **0.3.8**
+### Current build: **0.3.9**

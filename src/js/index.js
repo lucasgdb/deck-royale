@@ -276,8 +276,9 @@ function changeDeck() {
         else if (ddType.selectedIndex === 3 && cardsInformation[allowedCards[i]].split('<br />')[1] !== 'Type: Spell') allowedCards[i] = 0
     }
 
-    for (let i = 0; i < allowedCards.length; i++)
+    for (let i = 0; i < allowedCards.length; i++) {
         if (allowedCards[i] !== 0 && localStorage.getItem(cardsName[allowedCards[i]]) !== 'e') allowedCards[i] = 0
+    }
 
     for (let i = 1; i < cardsName.length; i++) {
         qtdAll++
@@ -394,7 +395,8 @@ function pasteCard(event) {
     }
 }
 
-const capitalize = string => string.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+const capitalize = string =>
+    string.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
 
 function setDeck(deck = Array) {
     let media = 0.0

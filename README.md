@@ -1,10 +1,10 @@
 # _Deck Royale_
 
-## An [OnLine Tool](https://deckroyale.netlify.com) for Clash Royale game
+## An [OnLine Tool](https://lucasnaja.github.io/deck-royale) for Clash Royale game
 
 ### Made with <img src="./images/heart.png" width=15> for y'all!
 
-[<img src="./images/deck_royale.png" />](https://deckroyale.netlify.com "Deck Royale")
+[<img src="./images/deck_royale.png" />](https://lucasnaja.github.io/deck-royale "Deck Royale")
 
 ## Description
   _Deck Royale_ is a **Deck Builder Tool** for Clash Royale game that makes easier your friendly and personal battles.

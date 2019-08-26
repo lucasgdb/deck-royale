@@ -5,10 +5,10 @@ self.onmessage = e => {
         cardsCode = e.data.cardsCode,
         cardsElixir = e.data.cardsElixir,
         contentToCopy,
-        html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAll()">Remove all Decks</button><h2 class="elixir"></h2>';
+        html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAll()">Remove all Decks</button><h2 class="elixir"></h2>'
 
     for (let i = 0; i < decks.length; i++) {
-        contentToCopy = `${cardsCode[decks[i][0]]};${cardsCode[decks[i][1]]};${cardsCode[decks[i][2]]};${cardsCode[decks[i][3]]};${cardsCode[decks[i][4]]};${cardsCode[decks[i][5]]};${cardsCode[decks[i][6]]};${cardsCode[decks[i][7]]}`;
+        contentToCopy = `${cardsCode[decks[i][0]]};${cardsCode[decks[i][1]]};${cardsCode[decks[i][2]]};${cardsCode[decks[i][3]]};${cardsCode[decks[i][4]]};${cardsCode[decks[i][5]]};${cardsCode[decks[i][6]]};${cardsCode[decks[i][7]]}`
         html += `
             <section class="cardsContainerS">
                 <div><img src="./images/cards/${cardsName[decks[i][0]]}_opt-min.png" alt=${cardsName[decks[i][0]]} title="${capitalize(cardsName[decks[i][0]])}" onclick="showInfo('${decks[i][0]}')"/></div>

@@ -181,7 +181,7 @@ ins {
 .navSection svg {
     width: 24px;
     height: 24px;
-    top: 2px;
+    top: 3px;
     position: absolute
 }
 
@@ -202,7 +202,7 @@ ins {
     width: 100%;
     margin-bottom: 1px;
     font-size: 17px;
-    padding: 25px 0 3px 0
+    padding: 28px 0 3px 0
 }
 
 #selectedButton {
@@ -997,8 +997,8 @@ ins {
     .configSection,
     .aboutSection {
         top: 0;
-        left: 176px;
-        width: calc(100% - 176px)
+        left: 191px;
+        width: calc(100% - 191px)
     }
 
     .btnRemoveAll {

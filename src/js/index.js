@@ -191,7 +191,19 @@ const
     minWidth = matchMedia('(min-width: 768px)'),
     maxWidth = matchMedia('(max-width: 767px)'),
     cont = [dbSection, playerSection, selectSection, savedSection, bestSection, chestSection, configSection, aboutSection],
-    apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mjk4MiwiaWRlbiI6IjMxOTkwNTQwNjg4NzY1NzQ4MiIsIm1kIjp7InVzZXJuYW1lIjoiIiwiZGlzY3JpbWluYXRvciI6IiIsImtleVZlcnNpb24iOjB9LCJ0cyI6MTU2Njc4ODMyMzU0OH0.18271KSDhNSKOfHDhlZ2VNkqpJ4jDBuw5-_KcXsaBC4'
+    apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mjk4MiwiaWRlbiI6IjMxOTkwNTQwNjg4NzY1NzQ4MiIsIm1kIjp7InVzZXJuYW1lIjoiIiwiZGlzY3JpbWluYXRvciI6IiIsImtleVZlcnNpb24iOjB9LCJ0cyI6MTU2Njc4ODMyMzU0OH0.18271KSDhNSKOfHDhlZ2VNkqpJ4jDBuw5-_KcXsaBC4',
+    settings = {
+        async: true,
+        crossDomain: true,
+        method: 'GET',
+        headers: {
+            'Access-Control-Allow-Origin': 'http://127.0.0.1:5500',
+            'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT',
+            'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Origin, Accept, Authorization, Access-Control-Allow-Origin',
+            'Access-Control-Allow-Credentials': true,
+            auth: apiKey
+        }
+    }
 
 if (localStorage.getItem('ddArena') !== null) ddArena.selectedIndex = localStorage.getItem('ddArena')
 if (localStorage.getItem('ddRarity') !== null) ddRarity.selectedIndex = localStorage.getItem('ddRarity')
@@ -406,7 +418,7 @@ function setDeck(deck = Array) {
         contentToCopy += cardsCode[deck[i]] + (i === deck.length - 1 ? '' : ';')
         cards[i].src = `./images/cards/${cardsName[deck[i]]}_opt-min.png`
         cards[i].alt = cardsName[deck[i]]
-        cards[i].title = capitalize(cardsName[deck[i]])
+        cards[i].title = cardsName[deck[i]] === 'no-card' ? 'No card' : capitalize(cardsName[deck[i]])
         media += cardsElixir[deck[i]] / 8
     }
 
@@ -515,7 +527,7 @@ function copyDeck() {
 
     if (innerWidth < 1024) {
         if (!`clashroyale://copyDeck?${contentToCopy}`.split('deck=')[1].split(';').some(item => item === '0')) {
-            if (confirm('Do you wanna open this Deck on Clash Royale game?')) openDeck(`clashroyale://copyDeck?${contentToCopy}`, '_self')
+            if (confirm('Do you want to open this Deck on Clash Royale game?')) openDeck(`clashroyale://copyDeck?${contentToCopy}`, '_self')
         } else alert('Open links with missing cards is not allowed')
     } else openDeck(`https://link.clashroyale.com/deck/pt?${contentToCopy}`)
 }
@@ -529,15 +541,15 @@ const openDeck = link => {
 const openLink = link => { open(link) }
 
 function copyDeckSec() {
-    if (confirm('Do you wanna create a shareable link?')) location.search = `deck=${contentToCopy.split('deck=')[1]}`
+    if (confirm('Do you want to create a shareable link?')) location.search = `deck=${contentToCopy.split('deck=')[1]}`
 }
 
 function copyDeckPhone(deck) {
-    if (confirm('Do you wanna create a shareable link?')) location.search = `deck=${deck}`
+    if (confirm('Do you want to create a shareable link?')) location.search = `deck=${deck}`
 }
 
 function copyDeckSaved(deck) {
-    if (confirm('Do you wanna open this Deck on Clash Royale game?')) openDeck(`clashroyale://copyDeck?deck=${deck}`)
+    if (confirm('Do you want to open this Deck on Clash Royale game?')) openDeck(`clashroyale://copyDeck?deck=${deck}`)
 }
 
 function paste(linkDeck = String) {
@@ -811,7 +823,7 @@ function saveDeck(deck = currentDeck) {
 }
 
 function deleteDeck(deck = Array) {
-    if (confirm('Do you wanna remove this Deck?')) {
+    if (confirm('Do you want to remove this Deck?')) {
         deleteDecks.postMessage({
             deckList: JSON.parse(localStorage.getItem('decks')).deckList,
             deck: deck
@@ -820,14 +832,14 @@ function deleteDeck(deck = Array) {
 }
 
 function deleteAll() {
-    if (confirm('Do you wanna remove all saved Decks?')) {
+    if (confirm('Do you want to remove all saved Decks?')) {
         localStorage.removeItem('decks')
         render()
     }
 }
 
 function deleteAllBest() {
-    if (confirm('Do you wanna remove all best Decks?')) {
+    if (confirm('Do you want to remove all best Decks?')) {
         response = null
         html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAllBest()">Remove all Decks</button><h2 class="elixir"></h2>'
         bestDecks.innerHTML = '<h2 class="noneDeck">There isn\'t Deck here</h2>'
@@ -838,28 +850,20 @@ function deleteAllBest() {
     }
 }
 
-function showInfo(index = Number) {
-    const arenaName = ['Goblin Stadium', 'Bone Pit', 'Barbarian Bowl', 'P.E.K.K.A\'s Playhouse', 'Spell Valley', 'Builder\'s Workshop', 'Royal Arena', 'Frozen Peak', 'Jungle Arena', 'Hog Mountain', 'Electro Valley']
+function showInfo(index) {
+    const arenaName = ['Training Camp', 'Goblin Stadium', 'Bone Pit', 'Barbarian Bowl', 'P.E.K.K.A\'s Playhouse', 'Spell Valley', 'Builder\'s Workshop', 'Royal Arena', 'Frozen Peak', 'Jungle Arena', 'Hog Mountain', 'Electro Valley']
     const arena = (() => {
-        for (let j = 0; j < arenas.length; j++) {
-            if (index < (j === 0 ? 13 : arenas[arenas.length - j])) return j
+        for (let i = 1; i < arenas.length; i++) {
+            if (index < 13) return 0
+            else if (index >= arenas[i]) return arenas.length - i
         }
     })()
 
-    info.innerHTML = `<ins>${capitalize(cardsName[index])}</ins><br />${cardsInformation[index]}<br />Elixir cost: ${cardsElixir[index]}<br />Arena: ${arena === 0 ? 'Training Camp' : `${arenaName[arena - 2]} (${arena - 1})`}`
+    info.innerHTML = `<ins>${capitalize(cardsName[index])}</ins><br />${cardsInformation[index]}<br />Elixir cost: ${cardsElixir[index]}<br />Arena: ${arena === 0 ? arenaName[0] : `${arenaName[arena]} (${arena})`}`
 }
 
 function showChests() {
-    const
-        button = document.querySelector('#showChests'),
-        settings = {
-            async: true,
-            crossDomain: true,
-            method: 'GET',
-            headers: {
-                auth: apiKey
-            }
-        }
+    const button = document.querySelector('#showChests')
 
     chestRing.style.display = 'block'
     button.disabled = true
@@ -874,26 +878,29 @@ function showChests() {
         let html = `${userName === null ? '' : idUser.value.trim().replace('#', '') === idPlayer.value.trim().replace('#', '') ? `<h2 class="elixir">Next Chests of ${userName}</h2>` : ''}`
         const chests = []
 
-        for (let i = 0; i < response.upcoming.length; i++)
+        for (let i = 0; i < response.upcoming.length; i++) {
             html +=
                 `<section class="chestInfo">
 					<img class="notPointer" title="${capitalize(response.upcoming[i])} Chest" alt="${response.upcoming[i]}" src="../images/chests/${response.upcoming[i]}.png" />
 					<p>${i === 0 ? 'Next' : '+' + (i)}</p>
-				</section>`
+                </section>`
+        }
 
-        for (let chest in response)
-            if (chest !== 'upcoming')
-                chests.push([chest, response[chest]])
+        for (let chest in response) {
+            if (chest !== 'upcoming') chests.push([chest, response[chest]])
+        }
 
         chests.sort((a, b) => a[1] - b[1])
 
-        for (let i = 0; i < chests.length; i++)
-            if (!(chests[i][1] < 9))
+        for (let i = 0; i < chests.length; i++) {
+            if (!(chests[i][1] < 9)) {
                 html +=
                     `<div class="chestInfo">
                         <img class="notPointer" title="${capitalize(chests[i][0])} Chest" alt="${chests[i][0]}" src="../images/chests/${chests[i][0]}.png" />
                         <p>+${chests[i][1]}</p>
                     </div>`
+            }
+        }
 
         chestContainer.innerHTML = html
         chestRing.style.display = 'none'
@@ -908,17 +915,7 @@ function showChests() {
 }
 
 function login(id = idPlayer.value.trim().replace('#', '')) {
-    const
-        button = document.querySelector('#showPlayer'),
-        settings = {
-            async: true,
-            crossDomain: true,
-            method: 'GET',
-            mode: 'no-cors',
-            headers: {
-                auth: apiKey
-            }
-        }
+    const button = document.querySelector('#showPlayer')
 
     button.disabled = true
     document.querySelector('.playerContainer').innerHTML = ''
@@ -1028,8 +1025,7 @@ function login(id = idPlayer.value.trim().replace('#', '')) {
         playerRing.style.display = 'none'
         localStorage.setItem('id', id)
         showChests()
-    }).catch(error => {
-        console.log(error)
+    }).catch(() => {
         button.textContent = 'Show'
         button.setAttribute('title', 'Show')
         button.disabled = false
@@ -1230,7 +1226,7 @@ function matche(xvar = minWidth) {
             else aboutSection.style.display = 'block'
         }
 
-        navSection.style.width = '175px'
+        navSection.style.width = '190px'
         navSection.style.transition = 'all 0s'
         navSection.style.height = '100%'
         navSection.style.overflowY = 'auto'

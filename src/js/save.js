@@ -1,1 +1,28 @@
-self.onmessage=a=>{let b=!1,c=a.data.decks,d=a.data.currentDeck,f=null;for(let h,g=0;g<(null===c?0:c.deckList.length);g++){h=0;for(let l=0;l<d.length;l++)for(let m=0;m<d.length;m++)d[l]===c.deckList[g][m]&&h++;if(8===h){b=!0;break}}b||(f=`{"deckList": [${null===c?`[${d.join(',')}]`:`[${c.deckList.join('],[')}],[${d.join(',')}]`}]}`),self.postMessage({exists:b,deck:f})};
+self.onmessage = e => {
+    let
+        exists = false,
+        decks = e.data.decks,
+        currentDeck = e.data.currentDeck,
+        deck = null
+
+    for (let i = 0; i < (decks === null ? 0 : decks.deckList.length); i++) {
+        let qtd = 0
+
+        for (let j = 0; j < currentDeck.length; j++) {
+            for (let k = 0; k < currentDeck.length; k++) {
+                if (currentDeck[j] === decks.deckList[i][k]) qtd++
+            }
+        }
+
+        if (qtd === 8) {
+            exists = true
+            break
+        }
+    }
+
+    if (!exists) {
+        deck = `{"deckList": [${decks !== null ? `[${decks.deckList.join('],[')}],[${currentDeck.join(',')}]` : `[${currentDeck.join(',')}]`}]}`
+    }
+
+    self.postMessage({ "exists": exists, "deck": deck })
+}

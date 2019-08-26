@@ -1,1 +1,36 @@
-self.onmessage=a=>{let g,b=a.data.decks,c=a.data.cardsName,d=a.data.cardsCode,f=a.data.cardsElixir,h='<button title="Remove all" class="btnRemoveAll" onclick="deleteAll()">Remove all Decks</button><h2 class="elixir"></h2>';for(let j=0;j<b.length;j++)g=`${d[b[j][0]]};${d[b[j][1]]};${d[b[j][2]]};${d[b[j][3]]};${d[b[j][4]]};${d[b[j][5]]};${d[b[j][6]]};${d[b[j][7]]}`,h+=`<section class="cardsContainerS"><div><img src="./images/cards/${c[b[j][0]]}_opt-min.png" alt=${c[b[j][0]]} title="${capitalize(c[b[j][0]])}" onclick="showInfo('${b[j][0]}')"/></div><div><img src="./images/cards/${c[b[j][1]]}_opt-min.png" alt=${c[b[j][1]]} title="${capitalize(c[b[j][1]])}" onclick="showInfo('${b[j][1]}')"/></div><div><img src="./images/cards/${c[b[j][2]]}_opt-min.png" alt=${c[b[j][2]]} title="${capitalize(c[b[j][2]])}" onclick="showInfo('${b[j][2]}')"/></div><div><img src="./images/cards/${c[b[j][3]]}_opt-min.png" alt=${c[b[j][3]]} title="${capitalize(c[b[j][3]])}" onclick="showInfo('${b[j][3]}')"/></div><div><img src="./images/cards/${c[b[j][4]]}_opt-min.png" alt=${c[b[j][4]]} title="${capitalize(c[b[j][4]])}" onclick="showInfo('${b[j][4]}')"/></div><div><img src="./images/cards/${c[b[j][5]]}_opt-min.png" alt=${c[b[j][5]]} title="${capitalize(c[b[j][5]])}" onclick="showInfo('${b[j][5]}')"/></div><div><img src="./images/cards/${c[b[j][6]]}_opt-min.png" alt=${c[b[j][6]]} title="${capitalize(c[b[j][6]])}" onclick="showInfo('${b[j][6]}')"/></div><div><img src="./images/cards/${c[b[j][7]]}_opt-min.png" alt=${c[b[j][7]]} title="${capitalize(c[b[j][7]])}" onclick="showInfo('${b[j][7]}')"/></div></section><h1 class="elixir">Elixir average: ${((f[b[j][0]]+f[b[j][1]]+f[b[j][2]]+f[b[j][3]]+f[b[j][4]]+f[b[j][5]]+f[b[j][6]]+f[b[j][7]])/8).toFixed(1)}</h1><section class="configContainerS" oncontextmenu="(event => event.preventDefault())(event)"><button class="btnCopiarS" title="Open Deck" ${1024>a.data.screenSize?`onclick="copyDeckSaved('${g}')"`:`onclick="openDeck('https://link.clashroyale.com/deck/pt?deck=${g}')"`} oncontextmenu="copyDeckPhone('${g}')">Open Deck</button><button class="btnApagar" title="Remove Deck" onclick="deleteDeck([${b[j].join(',')}])">Remove Deck</button><button class="btnColarS" title="Paste Deck" onclick="pasteDeck('https://link.clashroyale.com/deck/pt?deck=${g}')">Paste Deck</button></section>`;self.postMessage({html:h,amount:b.length})};function capitalize(a){return a.split('-').map(b=>b.charAt(0).toUpperCase()+b.slice(1)).join(' ')}
+self.onmessage = e => {
+    let
+        decks = e.data.decks,
+        cardsName = e.data.cardsName,
+        cardsCode = e.data.cardsCode,
+        cardsElixir = e.data.cardsElixir,
+        contentToCopy,
+        html = '<button title="Remove all" class="btnRemoveAll" onclick="deleteAll()">Remove all Decks</button><h2 class="elixir"></h2>'
+
+    for (let i = 0; i < decks.length; i++) {
+        contentToCopy = `${cardsCode[decks[i][0]]};${cardsCode[decks[i][1]]};${cardsCode[decks[i][2]]};${cardsCode[decks[i][3]]};${cardsCode[decks[i][4]]};${cardsCode[decks[i][5]]};${cardsCode[decks[i][6]]};${cardsCode[decks[i][7]]}`
+        html += `
+            <section class="cardsContainerS">
+                <div><img src="./images/cards/${cardsName[decks[i][0]]}_opt-min.png" alt=${cardsName[decks[i][0]]} title="${capitalize(cardsName[decks[i][0]])}" onclick="showInfo('${decks[i][0]}')"/></div>
+                <div><img src="./images/cards/${cardsName[decks[i][1]]}_opt-min.png" alt=${cardsName[decks[i][1]]} title="${capitalize(cardsName[decks[i][1]])}" onclick="showInfo('${decks[i][1]}')"/></div>
+                <div><img src="./images/cards/${cardsName[decks[i][2]]}_opt-min.png" alt=${cardsName[decks[i][2]]} title="${capitalize(cardsName[decks[i][2]])}" onclick="showInfo('${decks[i][2]}')"/></div>
+                <div><img src="./images/cards/${cardsName[decks[i][3]]}_opt-min.png" alt=${cardsName[decks[i][3]]} title="${capitalize(cardsName[decks[i][3]])}" onclick="showInfo('${decks[i][3]}')"/></div>
+                <div><img src="./images/cards/${cardsName[decks[i][4]]}_opt-min.png" alt=${cardsName[decks[i][4]]} title="${capitalize(cardsName[decks[i][4]])}" onclick="showInfo('${decks[i][4]}')"/></div>
+                <div><img src="./images/cards/${cardsName[decks[i][5]]}_opt-min.png" alt=${cardsName[decks[i][5]]} title="${capitalize(cardsName[decks[i][5]])}" onclick="showInfo('${decks[i][5]}')"/></div>
+                <div><img src="./images/cards/${cardsName[decks[i][6]]}_opt-min.png" alt=${cardsName[decks[i][6]]} title="${capitalize(cardsName[decks[i][6]])}" onclick="showInfo('${decks[i][6]}')"/></div>
+                <div><img src="./images/cards/${cardsName[decks[i][7]]}_opt-min.png" alt=${cardsName[decks[i][7]]} title="${capitalize(cardsName[decks[i][7]])}" onclick="showInfo('${decks[i][7]}')"/></div>
+            </section>
+
+            <h1 class="elixir">Elixir average: ${((cardsElixir[decks[i][0]] + cardsElixir[decks[i][1]] + cardsElixir[decks[i][2]] + cardsElixir[decks[i][3]] + cardsElixir[decks[i][4]] + cardsElixir[decks[i][5]] + cardsElixir[decks[i][6]] + cardsElixir[decks[i][7]]) / 8).toFixed(1)}</h1>
+
+            <section class="configContainerS" oncontextmenu="(event => event.preventDefault())(event)">
+                <button class="btnCopiarS" title="Open Deck" ${e.data.screenSize < 1024 ? `onclick="copyDeckSaved('${contentToCopy}')"` : `onclick="openDeck('https://link.clashroyale.com/deck/pt?deck=${contentToCopy}')"`} oncontextmenu="copyDeckPhone('${contentToCopy}')">Open Deck</button>
+                <button class="btnApagar" title="Remove Deck" onclick="deleteDeck([${decks[i].join(',')}])">Remove Deck</button>
+                <button class="btnColarS" title="Paste Deck" onclick="pasteDeck('https://link.clashroyale.com/deck/pt?deck=${contentToCopy}')">Paste Deck</button>
+            </section>`
+    }
+
+    self.postMessage({ "html": html, "amount": decks.length })
+}
+
+const capitalize = string => string.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
